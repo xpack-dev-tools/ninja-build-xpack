@@ -190,21 +190,3 @@ function run_ninja()
 }
 
 # -----------------------------------------------------------------------------
-
-function copy_distro_files()
-{
-  (
-    xbb_activate
-
-    mkdir -p "${APP_PREFIX}/${DISTRO_INFO_NAME}"
-
-    copy_build_files
-
-    echo
-    echo "Copying xPack files..."
-
-    cd "${WORK_FOLDER_PATH}/build.git"
-    install -v -c -m 644 "scripts/${README_OUT_FILE_NAME}" \
-      "${APP_PREFIX}/README.md"
-  )
-}
