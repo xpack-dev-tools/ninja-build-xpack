@@ -186,7 +186,7 @@ function do_ninja()
 
 # -----------------------------------------------------------------------------
 
-function run_ninja()
+function do_test()
 {
   run_app "${APP_PREFIX}/bin/ninja" --version
 }
