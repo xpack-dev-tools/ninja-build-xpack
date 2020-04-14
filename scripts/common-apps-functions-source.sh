@@ -84,7 +84,7 @@ env | sort
       mkdir -p "${APP_PREFIX}/bin"
       /usr/bin/install -v -m755 -c ninja "${APP_PREFIX}/bin"
 
-      prepare_app_libraries "${APP_PREFIX}/bin/${APP_EXECUTABLE_NAME}"
+      prepare_app_libraries "${APP_PREFIX}/bin/ninja"
 
     ) 2>&1 | tee "${LOGS_FOLDER_PATH}/build-ninja-output.txt"
 
@@ -170,7 +170,7 @@ function do_ninja()
       mkdir -p "${APP_PREFIX}/bin"
       /usr/bin/install -v -m755 -c ninja "${APP_PREFIX}/bin"
 
-      prepare_app_libraries "${APP_PREFIX}/bin/${APP_EXECUTABLE_NAME}"
+      prepare_app_libraries "${APP_PREFIX}/bin/ninja"
 
     ) 2>&1 | tee "${LOGS_FOLDER_PATH}/build-ninja-output.txt"
 
@@ -186,30 +186,7 @@ function do_ninja()
 
 function run_ninja()
 {
-  echo
-
-  run_app "${APP_PREFIX}/bin/${APP_EXECUTABLE_NAME}" --version
-}
-
-function strip_binaries()
-{
-  if [ "${WITH_STRIP}" == "y" ]
-  then
-    (
-      xbb_activate
-
-      echo
-      echo "Stripping binaries..."
-
-      if [ "${TARGET_PLATFORM}" == "win32" ]
-      then
-        ${CROSS_COMPILE_PREFIX}-strip "${APP_PREFIX}/bin/${APP_EXECUTABLE_NAME}.exe" || true
-        # ${CROSS_COMPILE_PREFIX}-strip "${APP_PREFIX}/bin/"*.dll || true
-      else
-        strip "${APP_PREFIX}/bin/${APP_EXECUTABLE_NAME}" || true
-      fi
-    )
-  fi
+  run_app "${APP_PREFIX}/bin/ninja" --version
 }
 
 # -----------------------------------------------------------------------------

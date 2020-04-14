@@ -21,8 +21,6 @@ APP_NAME=${APP_NAME:-"Ninja Build"}
 # Used as part of file/folder paths.
 APP_LC_NAME=${APP_LC_NAME:-"ninja-build"}
 
-APP_EXECUTABLE_NAME=${APP_EXECUTABLE_NAME:-"ninja"}
-
 DISTRO_UC_NAME=${DISTRO_UC_NAME:-"xPack"}
 DISTRO_LC_NAME=${DISTRO_LC_NAME:-"xpack"}
 DISTRO_TOP_FOLDER=${DISTRO_TOP_FOLDER:-"xPacks"}
