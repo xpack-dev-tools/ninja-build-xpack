@@ -120,6 +120,8 @@ function do_ninja()
     mkdir -p "${BUILD_FOLDER_PATH}/${ninja_folder_name}"
     cd "${BUILD_FOLDER_PATH}/${ninja_folder_name}"
 
+    mkdir -pv "${LOGS_FOLDER_PATH}/${ninja_folder_name}"
+
     xbb_activate
 
     if [ "${TARGET_PLATFORM}" == "win32" ]
@@ -155,7 +157,7 @@ function do_ninja()
           -DCMAKE_BUILD_TYPE="${build_type}" \
           "${SOURCES_FOLDER_PATH}/${ninja_src_folder_name}"
 
-      ) 2>&1 | tee "${LOGS_FOLDER_PATH}/cmake-ninja-output.txt"
+      ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${ninja_folder_name}/cmake-output.txt"
     fi
 
     (
@@ -172,7 +174,7 @@ function do_ninja()
 
       prepare_app_libraries "${APP_PREFIX}/bin/ninja"
 
-    ) 2>&1 | tee "${LOGS_FOLDER_PATH}/build-ninja-output.txt"
+    ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${ninja_folder_name}/build-output.txt"
 
     copy_license \
       "${SOURCES_FOLDER_PATH}/${ninja_src_folder_name}" \
