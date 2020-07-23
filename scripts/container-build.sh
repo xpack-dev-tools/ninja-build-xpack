@@ -182,20 +182,13 @@ echo
 echo "Here we go..."
 echo
 
-# -----------------------------------------------------------------------------
-# Build dependent libraries.
+build_versions
 
 # -----------------------------------------------------------------------------
-
-do_build_versions "1.10.0"
-
-do_test
-
-# -----------------------------------------------------------------------------
-
-check_binaries
 
 copy_distro_files
+
+check_binaries
 
 create_archive
 
@@ -203,6 +196,8 @@ create_archive
 fix_ownership
 
 # -----------------------------------------------------------------------------
+
+tests_run
 
 stop_timer
 

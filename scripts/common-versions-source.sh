@@ -13,7 +13,7 @@
 
 # -----------------------------------------------------------------------------
 
-function do_build_versions()
+function build_versions()
 {
   # The \x2C is a comma in hex; without this trick the regular expression
   # that processes this string in the Makefile, silently fails and the 
@@ -24,17 +24,13 @@ function do_build_versions()
   # NINJA_BUILD_GIT_COMMIT=${NINJA_BUILD_GIT_COMMIT:-"HEAD"}
   README_OUT_FILE_NAME=${README_OUT_FILE_NAME:-"README-${RELEASE_VERSION}.md"}
 
-  USE_TAR_GZ=${USE_TAR_GZ:-"y"}
-  USE_SINGLE_FOLDER_PATH=${USE_SINGLE_FOLDER_PATH:-"y"}
-
   # Keep them in sync with combo archive content.
   if [[ "${RELEASE_VERSION}" =~ 1\.10\.0-1 ]]
   then
 
     # -------------------------------------------------------------------------
     
-    do_ninja "1.10.0"
-    # do_ninja_bootstrap "1.10.0"
+    build_ninja "1.10.0"
 
     # -------------------------------------------------------------------------
   else
