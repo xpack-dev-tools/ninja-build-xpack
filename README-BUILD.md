@@ -8,7 +8,8 @@ build and publish the
 
 The build scripts use the
 [xPack Build Box (XBB)](https://github.com/xpack/xpack-build-box),
-a set of elaborate build environments based on GCC 7.4 (Docker containers
+a set of elaborate build environments based on recent GCC versions
+(Docker containers
 for GNU/Linux and Windows or a custom folder for MacOS).
 
 ## Repositories
@@ -53,7 +54,14 @@ $ git clone --recurse-submodules \
 > Note: the repository uses submodules; for a successful build it is
 > mandatory to recurse the submodules.
 
-To use the `xpack-develop` branch of the build scripts, use:
+For development purposes, there is a shortcut to clone the `xpack-develop`
+branch:
+
+```console
+$ curl -L https://github.com/xpack-dev-tools/ninja-build-xpack/raw/xpack/scripts/git-clone-develop.sh | bash
+```
+
+which is a shortcut for:
 
 ```console
 $ rm -rf ~/Downloads/ninja-build-xpack.git
@@ -156,9 +164,10 @@ The result should look similar to:
 
 ```console
 $ docker images
-REPOSITORY          TAG                    IMAGE ID            CREATED             SIZE
-ilegeul/ubuntu      i386-12.04-xbb-v3.1    6274c178b54c        5 days ago          3.7GB
-ilegeul/ubuntu      amd64-12.04-xbb-v3.1   3846ecf3ba1a        5 days ago          4.07GB
+REPOSITORY          TAG                              IMAGE ID            CREATED             SIZE
+ilegeul/ubuntu      i386-12.04-xbb-v3.2              fadc6405b606        2 days ago          4.55GB
+ilegeul/ubuntu      amd64-12.04-xbb-v3.2             3aba264620ea        2 days ago          4.98GB
+hello-world         latest                           bf756fb1ae65        5 months ago        13.3kB
 ```
 
 Since the build takes a while, use `screen` to isolate the build session
@@ -182,14 +191,14 @@ archives and their SHA signatures, created in the `deploy` folder:
 $ cd ~/Work/ninja-build-*
 $ ls -l deploy
 total 13180
--rw-rw-rw- 1 ilg ilg 3685468 Mar 26 14:21 xpack-ninja-build-0.10.0-14-linux-x32.tar.gz
--rw-rw-rw- 1 ilg ilg     107 Mar 26 14:21 xpack-ninja-build-0.10.0-14-linux-x32.tar.gz.sha
--rw-rw-rw- 1 ilg ilg 3609865 Mar 26 14:03 xpack-ninja-build-0.10.0-14-linux-x64.tar.gz
--rw-rw-rw- 1 ilg ilg     107 Mar 26 14:03 xpack-ninja-build-0.10.0-14-linux-x64.tar.gz.sha
--rw-rw-rw- 1 ilg ilg 3088321 Mar 26 14:30 xpack-ninja-build-0.10.0-14-win32-x32.zip
--rw-rw-rw- 1 ilg ilg     104 Mar 26 14:30 xpack-ninja-build-0.10.0-14-win32-x32.zip.sha
--rw-rw-rw- 1 ilg ilg 3092435 Mar 26 14:16 xpack-ninja-build-0.10.0-14-win32-x64.zip
--rw-rw-rw- 1 ilg ilg     104 Mar 26 14:16 xpack-ninja-build-0.10.0-14-win32-x64.zip.sha
+-rw-rw-rw- 1 ilg ilg 3685468 Mar 26 14:21 xpack-ninja-build-1.10.0-1-linux-x32.tar.gz
+-rw-rw-rw- 1 ilg ilg     107 Mar 26 14:21 xpack-ninja-build-1.10.0-1-linux-x32.tar.gz.sha
+-rw-rw-rw- 1 ilg ilg 3609865 Mar 26 14:03 xpack-ninja-build-1.10.0-1-linux-x64.tar.gz
+-rw-rw-rw- 1 ilg ilg     107 Mar 26 14:03 xpack-ninja-build-1.10.0-1-linux-x64.tar.gz.sha
+-rw-rw-rw- 1 ilg ilg 3088321 Mar 26 14:30 xpack-ninja-build-1.10.0-1-win32-x32.zip
+-rw-rw-rw- 1 ilg ilg     104 Mar 26 14:30 xpack-ninja-build-1.10.0-1-win32-x32.zip.sha
+-rw-rw-rw- 1 ilg ilg 3092435 Mar 26 14:16 xpack-ninja-build-1.10.0-1-win32-x64.zip
+-rw-rw-rw- 1 ilg ilg     104 Mar 26 14:16 xpack-ninja-build-1.10.0-1-win32-x64.zip.sha
 ```
 
 To copy the files from the build machine to the current development
@@ -199,14 +208,82 @@ folder in a terminal and use `scp`:
 ```console
 $ cd ~/Work/ninja-build-*
 $ cd deploy
-$ scp * ilg@wks:Downloads/xpack-binaries/ninja-build
+$ scp * ilg@wks:Downloads/xpack-binaries/ninja
+```
+
+#### Build the Arm GNU/Linux binaries
+
+The current platform for GNU/Linux and Windows production builds is an
+Manjaro 19, running on an Raspberry Pi 4B with 4 GB of RAM
+and 256 GB of fast M.2 SSD.
+
+```console
+$ ssh xbba
+```
+
+Before starting a build, check if Docker is started:
+
+```console
+$ docker info
+```
+
+Before running a build for the first time, it is recommended to preload the
+docker images.
+
+```console
+$ bash ~/Downloads/ninja-build-xpack.git/scripts/build.sh preload-images
+```
+
+The result should look similar to:
+
+```console
+$ docker images
+REPOSITORY          TAG                                IMAGE ID            CREATED             SIZE
+ilegeul/ubuntu      arm32v7-16.04-xbb-v3.2             b501ae18580a        27 hours ago        3.23GB
+ilegeul/ubuntu      arm64v8-16.04-xbb-v3.2             db95609ffb69        37 hours ago        3.45GB
+hello-world         latest                             a29f45ccde2a        5 months ago        9.14kB
+```
+
+Since the build takes a while, use `screen` to isolate the build session
+from unexpected events, like a broken
+network connection or a computer entering sleep.
+
+```console
+$ screen -S ninja
+
+$ sudo rm -rf ~/Work/ninja-build-*
+$ bash ~/Downloads/ninja-build-xpack.git/scripts/build.sh --all
+```
+
+To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
+`screen -r ninja`; to kill the session use `Ctrl-a` `Ctrl-k` and confirm.
+
+About 55 minutes later, the output of the build script is a set of 2
+archives and their SHA signatures, created in the `deploy` folder:
+
+```console
+$ cd ~/Work/ninja-build-*
+$ ls -l deploy
+total 7120
+-rw-rw-rw- 1 ilg ilg 3632743 Mar 26 15:25 xpack-ninja-build-1.10.0-1-linux-arm64.tar.gz
+-rw-rw-rw- 1 ilg ilg     109 Mar 26 15:25 xpack-ninja-build-1.10.0-1-linux-arm64.tar.gz.sha
+-rw-rw-rw- 1 ilg ilg 3646739 Mar 26 15:50 xpack-ninja-build-1.10.0-1-linux-arm.tar.gz
+-rw-rw-rw- 1 ilg ilg     107 Mar 26 15:50 xpack-ninja-build-1.10.0-1-linux-arm.tar.gz.sha
+```
+
+To copy the files from the build machine to the current development
+machine, either use NFS to mount the entire folder, or open the `deploy`
+folder in a terminal and use `scp`:
+
+```console
+$ cd ~/Work/ninja-build-*/deploy
+$ scp * ilg@wks:Downloads/xpack-binaries/ninja
 ```
 
 #### Build the macOS binary
 
 The current platform for macOS production builds is a macOS 10.10.5
-VirtualBox image running on a macMini with 16 GB of RAM and a
-fast SSD.
+running on a MacBook Pro with 32 GB of RAM and a fast SSD.
 
 ```console
 $ ssh xbbm
@@ -232,8 +309,8 @@ archive and its SHA signature, created in the `deploy` folder:
 $ cd ~/Work/ninja-build-*
 $ ls -l deploy
 total 5528
--rw-r--r--  1 ilg  staff  2822538 Jul 17 15:30 xpack-ninja-build-0.10.0-14-darwin-x64.tgz
--rw-r--r--  1 ilg  staff      105 Jul 17 15:30 xpack-ninja-build-0.10.0-14-darwin-x64.tgz.sha
+-rw-r--r--  1 ilg  staff  2822538 Jul 17 15:30 xpack-ninja-build-1.10.0-1-darwin-x64.tgz
+-rw-r--r--  1 ilg  staff      105 Jul 17 15:30 xpack-ninja-build-1.10.0-1-darwin-x64.tgz.sha
 ```
 
 To copy the files from the build machine to the current development
@@ -243,76 +320,7 @@ folder in a terminal and use `scp`:
 ```console
 $ cd ~/Work/ninja-build-*
 $ cd deploy
-$ scp * ilg@wks:Downloads/xpack-binaries/ninja-build
-```
-
-#### Build the Arm GNU/Linux binaries
-
-The current platform for GNU/Linux and Windows production builds is an
-Manjaro 19, running on an Raspberry Pi 4B with 4 GB of RAM
-and 256 GB of fast M.2 SSD.
-
-```console
-$ ssh xbba
-$ ssh berry
-```
-
-Before starting a build, check if Docker is started:
-
-```console
-$ docker info
-```
-
-Before running a build for the first time, it is recommended to preload the
-docker images.
-
-```console
-$ bash ~/Downloads/ninja-build-xpack.git/scripts/build.sh preload-images
-```
-
-The result should look similar to:
-
-```console
-$ docker images
-REPOSITORY          TAG                            IMAGE ID            CREATED             SIZE
-ilegeul/ubuntu      arm32v7-16.04-xbb-v3.1         e08db859d5e9        4 days ago          2.97GB
-ilegeul/ubuntu      arm64v8-16.04-xbb-v3.1         7ea793693fcc        5 days ago          3.15GB
-```
-
-Since the build takes a while, use `screen` to isolate the build session
-from unexpected events, like a broken
-network connection or a computer entering sleep.
-
-```console
-$ screen -S ninja
-
-$ sudo rm -rf ~/Work/ninja-build-*
-$ bash ~/Downloads/ninja-build-xpack.git/scripts/build.sh --all
-```
-
-To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
-`screen -r ninja`; to kill the session use `Ctrl-a` `Ctrl-k` and confirm.
-
-About 55 minutes later, the output of the build script is a set of 2
-archives and their SHA signatures, created in the `deploy` folder:
-
-```console
-$ cd ~/Work/ninja-build-*
-$ ls -l deploy
-total 7120
--rw-rw-rw- 1 ilg ilg 3632743 Mar 26 15:25 xpack-ninja-build-0.10.0-14-linux-arm64.tar.gz
--rw-rw-rw- 1 ilg ilg     109 Mar 26 15:25 xpack-ninja-build-0.10.0-14-linux-arm64.tar.gz.sha
--rw-rw-rw- 1 ilg ilg 3646739 Mar 26 15:50 xpack-ninja-build-0.10.0-14-linux-arm.tar.gz
--rw-rw-rw- 1 ilg ilg     107 Mar 26 15:50 xpack-ninja-build-0.10.0-14-linux-arm.tar.gz.sha
-```
-
-To copy the files from the build machine to the current development
-machine, either use NFS to mount the entire folder, or open the `deploy`
-folder in a terminal and use `scp`:
-
-```console
-$ cd ~/Work/ninja-build-*/deploy
-$ scp * ilg@wks:Downloads/xpack-binaries/ninja-build
+$ scp * ilg@wks:Downloads/xpack-binaries/ninja
 ```
 
 ### Subsequent runs
@@ -387,7 +395,7 @@ look like:
 
 ```console
 $ /Users/ilg/Downloads/xPacks/ninja-build/1.10.0-1/bin/ninja --version
-xPack Ninja Build, 64-bit Open On-Chip Debugger 0.10.0+dev (2019-07-17-15:21)
+1.10.0
 ```
 
 ## Installed folders
