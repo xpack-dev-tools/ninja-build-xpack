@@ -19,6 +19,6 @@ github_org="xpack-dev-tools"
 github_repo="ninja-build-xpack"
 github_pre_releases="pre-releases"
 
-npm_package="@xpack-dev-tools/nonja-build@next"
+npm_package="@xpack-dev-tools/ninja-build@next"
 
 # -----------------------------------------------------------------------------
