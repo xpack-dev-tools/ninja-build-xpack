@@ -35,6 +35,12 @@ In this Git repo:
 
 ### Run the build scripts
 
+Clear the folder where the binaries from all build machines will be collected.
+
+```
+$ rm -f ~/Downloads/xpack-binaries/ninja/*
+```
+
 When everything is ready, follow the instructions in the
 [build](https://github.com/xpack-dev-tools/ninja-build-xpack/blob/xpack/README-BUILD.md)
 page.
@@ -53,7 +59,8 @@ TBD
 - as description
   - add a downloads badge like `![Github Releases (by Release)](https://img.shields.io/github/downloads/xpack-dev-tools/ninja-build-xpack/v1.10.1-1/total.svg)`
   - draft a short paragraph explaining what are the main changes
-- **attach binaries** and SHA (drag and drop from the archives folder will do it)
+- **attach binaries** and SHA (drag and drop from the
+`~/Downloads/xpack-binaries/ninja/` folder)
 - **enable** the **pre-release** button
 - click the **Publish Release** button
 
@@ -61,7 +68,8 @@ Note: at this moment the system should send a notification to all clients watchi
 
 ## Run the Travis tests
 
-Run the tests on stable and latest platforms.
+Run the tests on **stable** and **latest** platforms. This may take about 30
+minutes.
 
 The test results are available at
 [Travis](https://travis-ci.org/github/xpack-dev-tools/ninja-build-xpack/builds/).
