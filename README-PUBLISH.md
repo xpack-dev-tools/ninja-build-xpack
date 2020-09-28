@@ -61,11 +61,7 @@ Note: at this moment the system should send a notification to all clients watchi
 
 ## Run the Travis tests
 
-As URL, use something like
-
-```
-base_url="https://github.com/xpack-dev-tools/ninja-build-xpack/releases/download/v1.10.0-1/"
-```
+Run the tests on stable and latest platforms.
 
 The test results are available at
 [Travis](https://travis-ci.org/github/xpack-dev-tools/ninja-build-xpack/builds/).
