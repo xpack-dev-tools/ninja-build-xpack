@@ -106,9 +106,9 @@ function build_ninja()
       mkdir -pv "${APP_PREFIX}/bin"
       if [ "${TARGET_PLATFORM}" == "win32" ]
       then
-        /usr/bin/install -v -m755 -c ninja.exe "${APP_PREFIX}/bin"
+        install -v -m755 -c ninja.exe "${APP_PREFIX}/bin"
       else
-        /usr/bin/install -v -m755 -c ninja "${APP_PREFIX}/bin"
+        install -v -m755 -c ninja "${APP_PREFIX}/bin"
       fi
 
       prepare_app_libraries "${APP_PREFIX}/bin/ninja"
