@@ -47,11 +47,11 @@ TBD
 
 - go to the [GitHub Releases](https://github.com/xpack-dev-tools/ninja-build-xpack/releases) page
 - click the **Draft a new release** button
-- name the tag like **v1.10.0-1** (mind the dash in the middle!)
+- name the tag like **v1.10.1-1** (mind the dash in the middle!)
 - select the `xpack` branch
-- name the release like **xPack Ninja Build v1.10.0-1** (mind the dash)
+- name the release like **xPack Ninja Build v1.10.1-1** (mind the dash)
 - as description
-  - add a downloads badge like `![Github Releases (by Release)](https://img.shields.io/github/downloads/xpack-dev-tools/ninja-build-xpack/v1.10.0-1/total.svg)`
+  - add a downloads badge like `![Github Releases (by Release)](https://img.shields.io/github/downloads/xpack-dev-tools/ninja-build-xpack/v1.10.1-1/total.svg)`
   - draft a short paragraph explaining what are the main changes
 - **attach binaries** and SHA (drag and drop from the archives folder will do it)
 - **enable** the **pre-release** button
@@ -74,8 +74,8 @@ In the `xpack.github.io` web Git:
 
 - add a new file to `_posts/ninja-build/releases`
 - name the file like `2020-07-23-ninja-build-v1-10-0-1-released.md`
-- name the post like: **xPack Ninja Build v1.10.0-1 released**.
-- as `download_url` use the tagged URL like `https://github.com/xpack-dev-tools/ninja-build-xpack/releases/tag/v1.10.0-1/`
+- name the post like: **xPack Ninja Build v1.10.1-1 released**.
+- as `download_url` use the tagged URL like `https://github.com/xpack-dev-tools/ninja-build-xpack/releases/tag/v1.10.1-1/`
 - update the `date:` field with the current date
 
 If any, close
@@ -94,25 +94,25 @@ Copy/paste the build report at the end of the post as:
 The SHA-256 hashes for the files are:
 
 06d2251a893f932b38f41c418cdc14e51893f68553ba5a183f02001bd92d9454  
-xpack-ninja-build-v1.10.0-1-darwin-x64.tar.gz
+xpack-ninja-build-v1.10.1-1-darwin-x64.tar.gz
 
 a1c7e77001cb549bd6b6dc00bb0193283179667e56f652182204229b55f58bc8  
-xpack-ninja-build-v1.10.0-1-linux-arm64.tar.gz
+xpack-ninja-build-v1.10.1-1-linux-arm64.tar.gz
 
 c812f12b7159b7f149c211fb521c0e405de64bb087f138cda8ea5ac04be87e15  
-xpack-ninja-build-v1.10.0-1-linux-arm.tar.gz
+xpack-ninja-build-v1.10.1-1-linux-arm.tar.gz
 
 ebb4b08e8b94bd04b5493549b0ba2c02f1be5cc5f42c754e09a0c279ae8cc854  
-xpack-ninja-build-v1.10.0-1-linux-x32.tar.gz
+xpack-ninja-build-v1.10.1-1-linux-x32.tar.gz
 
 687ac941c995eab069955fd673b6cd78a6b95048cac4a92728b09be444d0118e  
-xpack-ninja-build-v1.10.0-1-linux-x64.tar.gz
+xpack-ninja-build-v1.10.1-1-linux-x64.tar.gz
 
 a0bde52aa8846a2a5b982031ad0bdebea55b9b3953133b363f54862473d71686  
-xpack-ninja-build-v1.10.0-1-win32-x32.zip
+xpack-ninja-build-v1.10.1-1-win32-x32.zip
 
 b25987e4153e42384ff6273ba228c3eaa7a61a2a6cc8f7a3fbf800099c3f6a49  
-xpack-ninja-build-v1.10.0-1-win32-x64.zip
+xpack-ninja-build-v1.10.1-1-win32-x64.zip
 ```
 
 If you missed this, `cat` the content of the `.sha` files:
@@ -125,7 +125,7 @@ $ cat *.sha
 ## Update the Web
 
 - commit the `xpack.github.io` project; use a message
-  like **xPack Ninja Build v1.10.0-1 released**
+  like **xPack Ninja Build v1.10.1-1 released**
 - wait for the GitHub Pages build to complete
 - remember the post URL, since it must be updated in the release page
 
@@ -138,11 +138,11 @@ $ cat *.sha
 no terminating `/` is required
 - from the web release, copy the SHA & file names
 - commit all changes, use a message like
-  `package.json: update urls for v1.10.0-1 release` (without `v`)
+  `package.json: update urls for v1.10.1-1 release` (without `v`)
 - check the latest commits `npm run git-log`
 - update `CHANGELOG.md`; commit with a message like
-  _CHANGELOG: prepare npm v1.10.0-1.1_
-- `npm version v1.10.0-1.1`; the first 4 numbers are the same as the
+  _CHANGELOG: prepare npm v1.10.1-1.1_
+- `npm version v1.10.1-1.1`; the first 4 numbers are the same as the
   GitHub release; the fifth number is the npm specific version
 - `npm pack` and check the content of the archive, which should list
 only the `package.json`, the `README.md`, `LICENSE` and `CHANGELOG.md`
@@ -152,7 +152,7 @@ only the `package.json`, the `README.md`, `LICENSE` and `CHANGELOG.md`
 When the release is considered stable, promote it as `latest`:
 
 - `npm dist-tag ls @xpack-dev-tools/ninja-build`
-- `npm dist-tag add @xpack-dev-tools/ninja-build@1.10.0-1.1 latest`
+- `npm dist-tag add @xpack-dev-tools/ninja-build@1.10.1-1.1 latest`
 - `npm dist-tag ls @xpack-dev-tools/ninja-build`
 
 ## Test npm binaries
@@ -175,6 +175,6 @@ $ xpm install --global @xpack-dev-tools/ninja-build@next
 
 - in a separate browser windows, open [TweetDeck](https://tweetdeck.twitter.com/)
 - using the `@xpack_project` account
-- paste the release name like **xPack Ninja Build v1.10.0-1 released**
+- paste the release name like **xPack Ninja Build v1.10.1-1 released**
 - paste the link to the blog release URL
 - click the **Tweet** button
