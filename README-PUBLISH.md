@@ -138,7 +138,7 @@ $ cat *.sha
 - open [GitHub Releases](https://github.com/xpack-dev-tools/ninja-build-xpack/releases)
   and select the latest release
 - check the download counter, it should match the number of tests
-- update the `baseUrl:` with the file URLs (including the tag/version); 
+- update the `baseUrl:` with the file URLs (including the tag/version);
 no terminating `/` is required
 - from the web release, copy the SHA & file names
 - commit all changes, use a message like

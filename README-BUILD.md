@@ -14,14 +14,16 @@ for GNU/Linux and Windows or a custom folder for MacOS).
 
 ## Repositories
 
-- `https://github.com/xpack-dev-tools/ninja-build.git` - the URL of the
-  [xPack Ninja Build fork](https://github.com/xpack-dev-tools/ninja-build)
+- `https://github.com/xpack-dev-tools/ninja-build-xpack.git` - the URL of the
+  [xPack Ninja Build fork](https://github.com/xpack-dev-tools/ninja-build-xpack)
+- `https://github.com/xpack-dev-tools/build-helper` - the URL of the
+  xPack build helper, used as the `scripts/helper` submodule.
 
 ### Branches
 
 - `xpack` - the updated content, used during builds
 - `xpack-develop` - the updated content, used during development
-- `master` - the original content; it follows the upstream master.
+- `master` - empty
 
 ## Prerequisites
 
@@ -406,43 +408,18 @@ only the first two depth levels are shown):
 ```console
 $ tree -L 2 /Users/ilg/Library/xPacks/\@xpack-dev-tools/ninja-build/1.10.0-1.1/.content/
 /Users/ilg/Library/xPacks/\@xpack-dev-tools/ninja-build/1.10.0-1.1/.content/
-├── OpenULINK
-│   └── ulink_firmware.hex
 ├── README.md
 ├── bin
-│   ├── libftdi1.2.4.0.dylib
-│   ├── libftdi1.2.dylib -> libftdi1.2.4.0.dylib
 │   ├── libgcc_s.1.dylib
-│   ├── libhidapi.0.dylib
-│   ├── libusb-0.1.4.dylib
-│   ├── libusb-1.0.0.dylib
-│   └── ninja-build
-├── contrib
-│   ├── 60-ninja-build.rules
-│   └── libdcc
-├── distro-info
-│   ├── CHANGELOG.md
-│   ├── licenses
-│   ├── patches
-│   └── scripts
-├── scripts
-│   ├── bitsbytes.tcl
-│   ├── board
-│   ├── chip
-│   ├── cpld
-│   ├── cpu
-│   ├── fpga
-│   ├── interface
-│   ├── mem_helper.tcl
-│   ├── memory.tcl
-│   ├── mmr_helpers.tcl
-│   ├── target
-│   ├── test
-│   └── tools
-└── share
-    └── doc
+│   ├── libstdc++.6.dylib
+│   └── ninja
+└── distro-info
+    ├── CHANGELOG.md
+    ├── licenses
+    ├── patches
+    └── scripts
 
-20 directories, 15 files
+5 directories, 5 files
 ```
 
 No other files are installed in any system folders or other locations.
