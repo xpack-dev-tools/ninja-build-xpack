@@ -208,8 +208,7 @@ machine, either use NFS to mount the entire folder, or open the `deploy`
 folder in a terminal and use `scp`:
 
 ```console
-$ cd ~/Work/ninja-build-*/deploy
-$ scp * ilg@wks:Downloads/xpack-binaries/ninja
+$ (cd ~/Work/ninja-build-*/deploy; scp * ilg@wks:Downloads/xpack-binaries/ninja)
 ```
 
 #### Build the Arm GNU/Linux binaries
@@ -277,8 +276,7 @@ machine, either use NFS to mount the entire folder, or open the `deploy`
 folder in a terminal and use `scp`:
 
 ```console
-$ cd ~/Work/ninja-build-*/deploy
-$ scp * ilg@wks:Downloads/xpack-binaries/ninja
+$ (cd ~/Work/ninja-build-*/deploy; scp * ilg@wks:Downloads/xpack-binaries/ninja)
 ```
 
 #### Build the macOS binary
@@ -319,8 +317,7 @@ machine, either use NFS to mount the entire folder, or open the `deploy`
 folder in a terminal and use `scp`:
 
 ```console
-$ cd ~/Work/ninja-build-*/deploy
-$ scp * ilg@wks:Downloads/xpack-binaries/ninja
+$ (cd ~/Work/ninja-build-*/deploy; scp * ilg@wks:Downloads/xpack-binaries/ninja)
 ```
 
 ### Subsequent runs
