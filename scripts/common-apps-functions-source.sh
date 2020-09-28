@@ -81,7 +81,7 @@ function build_ninja()
         echo "Running ninja configure..."
 
         run_verbose cmake \
-          -G Ninja \
+          -G "Unix Makefiles" \
           -DCMAKE_BUILD_TYPE="${build_type}" \
           -DWIN32="${build_win32}" \
           "${SOURCES_FOLDER_PATH}/${ninja_src_folder_name}" \
