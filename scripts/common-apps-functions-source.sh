@@ -130,7 +130,7 @@ function test_ninja()
 {
   run_app "${APP_PREFIX}/bin/ninja" --version
 
-  run_app "${APP_PREFIX}/bin/ninja" --help
+  run_app "${APP_PREFIX}/bin/ninja" --help || true
 }
 
 # -----------------------------------------------------------------------------

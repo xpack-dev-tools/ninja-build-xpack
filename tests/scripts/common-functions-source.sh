@@ -21,7 +21,7 @@ function run_tests()
 {
   time run_app "${app_folder_path}/bin/ninja" --version
 
-  run_app "${app_folder_path}/bin/ninja" --help
+  run_app "${app_folder_path}/bin/ninja" --help || true
 }
 
 # -----------------------------------------------------------------------------
