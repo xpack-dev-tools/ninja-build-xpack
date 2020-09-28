@@ -1,3 +1,4 @@
+
 # -----------------------------------------------------------------------------
 # This file is part of the xPack distribution.
 #   (https://xpack.github.io)
@@ -7,21 +8,15 @@
 # for any purpose is hereby granted, under the terms of the MIT license.
 # -----------------------------------------------------------------------------
 
-# -----------------------------------------------------------------------------
-# Common functions used in various tests.
-#
-# Requires 
-# - app_folder_path
-# - test_folder_path
-# - archive_platform (win32|linux|darwin)
+# Appliction specific definitions, common to multiple scripts.
 
 # -----------------------------------------------------------------------------
 
-function run_tests()
-{
-  time run_app "${app_folder_path}/bin/ninja" --version
+app_lc_name="ninja-build"
+app_description="xPack Ninja Build"
 
-  run_app "${app_folder_path}/bin/ninja" --help
-}
+github_org="xpack-dev-tools"
+github_repo="ninja-build-xpack"
+github_pre_releases="pre-releases"
 
 # -----------------------------------------------------------------------------
