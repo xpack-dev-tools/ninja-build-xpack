@@ -186,21 +186,21 @@ $ bash ~/Downloads/ninja-build-xpack.git/scripts/build.sh --all
 To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
 `screen -r ninja-build`; to kill the session use `Ctrl-a` `Ctrl-k` and confirm.
 
-About 30 minutes later, the output of the build script is a set of 4
+A few minutes later, the output of the build script is a set of 4
 archives and their SHA signatures, created in the `deploy` folder:
 
 ```console
 $ cd ~/Work/ninja-build-*
 $ ls -l deploy
-total 13180
--rw-rw-rw- 1 ilg ilg 3685468 Mar 26 14:21 xpack-ninja-build-1.10.0-1-linux-x32.tar.gz
--rw-rw-rw- 1 ilg ilg     107 Mar 26 14:21 xpack-ninja-build-1.10.0-1-linux-x32.tar.gz.sha
--rw-rw-rw- 1 ilg ilg 3609865 Mar 26 14:03 xpack-ninja-build-1.10.0-1-linux-x64.tar.gz
--rw-rw-rw- 1 ilg ilg     107 Mar 26 14:03 xpack-ninja-build-1.10.0-1-linux-x64.tar.gz.sha
--rw-rw-rw- 1 ilg ilg 3088321 Mar 26 14:30 xpack-ninja-build-1.10.0-1-win32-x32.zip
--rw-rw-rw- 1 ilg ilg     104 Mar 26 14:30 xpack-ninja-build-1.10.0-1-win32-x32.zip.sha
--rw-rw-rw- 1 ilg ilg 3092435 Mar 26 14:16 xpack-ninja-build-1.10.0-1-win32-x64.zip
--rw-rw-rw- 1 ilg ilg     104 Mar 26 14:16 xpack-ninja-build-1.10.0-1-win32-x64.zip.sha
+total 1624
+-rw-rw-r-- 1 ilg ilg 233764 Sep 28 16:53 xpack-ninja-build-1.10.0-1-linux-x32.tar.gz
+-rw-rw-r-- 1 ilg ilg    110 Sep 28 16:53 xpack-ninja-build-1.10.0-1-linux-x32.tar.gz.sha
+-rw-rw-r-- 1 ilg ilg 217440 Sep 28 16:52 xpack-ninja-build-1.10.0-1-linux-x64.tar.gz
+-rw-rw-r-- 1 ilg ilg    110 Sep 28 16:52 xpack-ninja-build-1.10.0-1-linux-x64.tar.gz.sha
+-rw-rw-r-- 1 ilg ilg 475368 Sep 28 16:53 xpack-ninja-build-1.10.0-1-win32-x32.zip
+-rw-rw-r-- 1 ilg ilg    107 Sep 28 16:53 xpack-ninja-build-1.10.0-1-win32-x32.zip.sha
+-rw-rw-r-- 1 ilg ilg 706151 Sep 28 16:52 xpack-ninja-build-1.10.0-1-win32-x64.zip
+-rw-rw-r-- 1 ilg ilg    107 Sep 28 16:52 xpack-ninja-build-1.10.0-1-win32-x64.zip.sha
 ```
 
 To copy the files from the build machine to the current development
@@ -208,8 +208,7 @@ machine, either use NFS to mount the entire folder, or open the `deploy`
 folder in a terminal and use `scp`:
 
 ```console
-$ cd ~/Work/ninja-build-*
-$ cd deploy
+$ cd ~/Work/ninja-build-*/deploy
 $ scp * ilg@wks:Downloads/xpack-binaries/ninja
 ```
 
@@ -260,17 +259,17 @@ $ bash ~/Downloads/ninja-build-xpack.git/scripts/build.sh --all
 To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
 `screen -r ninja`; to kill the session use `Ctrl-a` `Ctrl-k` and confirm.
 
-About 55 minutes later, the output of the build script is a set of 2
+A few minutes later, the output of the build script is a set of 2
 archives and their SHA signatures, created in the `deploy` folder:
 
 ```console
 $ cd ~/Work/ninja-build-*
 $ ls -l deploy
-total 7120
--rw-rw-rw- 1 ilg ilg 3632743 Mar 26 15:25 xpack-ninja-build-1.10.0-1-linux-arm64.tar.gz
--rw-rw-rw- 1 ilg ilg     109 Mar 26 15:25 xpack-ninja-build-1.10.0-1-linux-arm64.tar.gz.sha
--rw-rw-rw- 1 ilg ilg 3646739 Mar 26 15:50 xpack-ninja-build-1.10.0-1-linux-arm.tar.gz
--rw-rw-rw- 1 ilg ilg     107 Mar 26 15:50 xpack-ninja-build-1.10.0-1-linux-arm.tar.gz.sha
+total 416
+-rw-rw-r-- 1 ilg ilg 215309 Sep 28 14:00 xpack-ninja-build-1.10.0-1-linux-arm64.tar.gz
+-rw-rw-r-- 1 ilg ilg    112 Sep 28 14:00 xpack-ninja-build-1.10.0-1-linux-arm64.tar.gz.sha
+-rw-rw-r-- 1 ilg ilg 199196 Sep 28 14:01 xpack-ninja-build-1.10.0-1-linux-arm.tar.gz
+-rw-rw-r-- 1 ilg ilg    110 Sep 28 14:01 xpack-ninja-build-1.10.0-1-linux-arm.tar.gz.sha
 ```
 
 To copy the files from the build machine to the current development
@@ -304,15 +303,15 @@ To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
 `screen -r ninja`; to kill the session use `Ctrl-a` `Ctrl-\` or
 `Ctrl-a` `Ctrl-k` and confirm.
 
-Several minutes later, the output of the build script is a compressed
+Several moments later, the output of the build script is a compressed
 archive and its SHA signature, created in the `deploy` folder:
 
 ```console
 $ cd ~/Work/ninja-build-*
 $ ls -l deploy
-total 5528
--rw-r--r--  1 ilg  staff  2822538 Jul 17 15:30 xpack-ninja-build-1.10.0-1-darwin-x64.tgz
--rw-r--r--  1 ilg  staff      105 Jul 17 15:30 xpack-ninja-build-1.10.0-1-darwin-x64.tgz.sha
+total 1768
+-rw-r--r--  1 ilg  staff  900060 Sep 28 17:04 xpack-ninja-build-1.10.0-1-darwin-x64.tar.gz
+-rw-r--r--  1 ilg  staff     111 Sep 28 17:04 xpack-ninja-build-1.10.0-1-darwin-x64.tar.gz.sha
 ```
 
 To copy the files from the build machine to the current development
@@ -320,8 +319,7 @@ machine, either use NFS to mount the entire folder, or open the `deploy`
 folder in a terminal and use `scp`:
 
 ```console
-$ cd ~/Work/ninja-build-*
-$ cd deploy
+$ cd ~/Work/ninja-build-*/deploy
 $ scp * ilg@wks:Downloads/xpack-binaries/ninja
 ```
 
