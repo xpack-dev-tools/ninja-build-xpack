@@ -92,7 +92,7 @@ be added only as pre-release strings, separated by a dash,
 like `1.10.0-1`. When published as a npm package, the version gets
 a fifth number, like `1.10.0-1.1`.
 
-Since adherance to third party packages to semver is not guaranteed,
+Since adherance of third party packages to semver is not guaranteed,
 it is recommended to use semver expressions like `^1.10.0` and `~1.10.0`
 with caution, and prefer exact matches, like `1.10.0-1.1`.
 
