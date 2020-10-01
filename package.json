@@ -1,7 +1,7 @@
 {
   "name": "@xpack-dev-tools/ninja-build",
   "version": "1.10.1-1.1",
-  "description": "An xPack with Ninja Build",
+  "description": "A binary xPack with Ninja Build",
   "main": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
