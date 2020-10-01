@@ -157,12 +157,6 @@ only the `package.json`, the `README.md`, `LICENSE` and `CHANGELOG.md`
 - push all changes to GitHub
 - `npm publish --tag next` (use `--access public` when publishing for the first time)
 
-When the release is considered stable, promote it as `latest`:
-
-- `npm dist-tag ls @xpack-dev-tools/ninja-build`
-- `npm dist-tag add @xpack-dev-tools/ninja-build@1.10.1-1.1 latest`
-- `npm dist-tag ls @xpack-dev-tools/ninja-build`
-
 ## Test npm binaries
 
 Install the binaries on all platforms.
@@ -170,6 +164,17 @@ Install the binaries on all platforms.
 ```console
 $ xpm install --global @xpack-dev-tools/ninja-build@next
 ```
+
+As a shortcut, there is Travis test that checks the package on 
+Intel Ubuntu, macOS and Windows.
+
+## Tag the npm package as `latest`
+
+When the release is considered stable, promote it as `latest`:
+
+- `npm dist-tag ls @xpack-dev-tools/ninja-build`
+- `npm dist-tag add @xpack-dev-tools/ninja-build@1.10.1-1.1.1 latest`
+- `npm dist-tag ls @xpack-dev-tools/ninja-build`
 
 ## Create the final GitHub release
 
