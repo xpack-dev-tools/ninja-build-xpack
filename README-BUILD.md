@@ -18,6 +18,7 @@ for GNU/Linux and Windows or a custom folder for MacOS).
   [xPack Ninja Build fork](https://github.com/xpack-dev-tools/ninja-build-xpack)
 - `https://github.com/xpack-dev-tools/build-helper` - the URL of the
   xPack build helper, used as the `scripts/helper` submodule.
+- `https://github.com/ninja-build/ninja` - the URL of the original Ninja repo
 
 ### Branches
 
@@ -183,6 +184,12 @@ $ sudo rm -rf ~/Work/ninja-build-*
 $ bash ~/Downloads/ninja-build-xpack.git/scripts/build.sh --all
 ```
 
+or, for development builds:
+
+```console
+$ bash ~/Downloads/ninja-build-xpack.git/scripts/build.sh --linux64 --linux32 --win64 --win32 --develop
+```
+
 To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
 `screen -r ninja-build`; to kill the session use `Ctrl-a` `Ctrl-k` and confirm.
 
@@ -190,8 +197,7 @@ A few minutes later, the output of the build script is a set of 4
 archives and their SHA signatures, created in the `deploy` folder:
 
 ```console
-$ cd ~/Work/ninja-build-*
-$ ls -l deploy
+$ ls -l ~/Work/ninja-build-*/deploy
 total 1624
 -rw-rw-r-- 1 ilg ilg 233764 Sep 28 16:53 xpack-ninja-build-1.10.0-1-linux-x32.tar.gz
 -rw-rw-r-- 1 ilg ilg    110 Sep 28 16:53 xpack-ninja-build-1.10.0-1-linux-x32.tar.gz.sha
@@ -262,8 +268,7 @@ A few minutes later, the output of the build script is a set of 2
 archives and their SHA signatures, created in the `deploy` folder:
 
 ```console
-$ cd ~/Work/ninja-build-*
-$ ls -l deploy
+$ ls -l ~/Work/ninja-build-*/deploy
 total 416
 -rw-rw-r-- 1 ilg ilg 215309 Sep 28 14:00 xpack-ninja-build-1.10.0-1-linux-arm64.tar.gz
 -rw-rw-r-- 1 ilg ilg    112 Sep 28 14:00 xpack-ninja-build-1.10.0-1-linux-arm64.tar.gz.sha
@@ -305,8 +310,7 @@ Several moments later, the output of the build script is a compressed
 archive and its SHA signature, created in the `deploy` folder:
 
 ```console
-$ cd ~/Work/ninja-build-*
-$ ls -l deploy
+$ ls -l ~/Work/ninja-build-*/deploy
 total 1768
 -rw-r--r--  1 ilg  staff  900060 Sep 28 17:04 xpack-ninja-build-1.10.0-1-darwin-x64.tar.gz
 -rw-r--r--  1 ilg  staff     111 Sep 28 17:04 xpack-ninja-build-1.10.0-1-darwin-x64.tar.gz.sha
