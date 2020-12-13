@@ -33,6 +33,8 @@ instructions in the separate
 [Prerequisites for building binaries](https://xpack.github.io/xbb/prerequisites/)
 page and return when ready.
 
+Note: Building the Arm binaries requires an Arm machine.
+
 ## Download the build scripts
 
 The build scripts are available in the `scripts` folder of the
@@ -284,7 +286,7 @@ folder in a terminal and use `scp`:
 $ (cd ~/Work/ninja-build-*/deploy; scp * ilg@wks:Downloads/xpack-binaries/ninja)
 ```
 
-#### Build the macOS binary
+#### Build the macOS binaries
 
 The current platform for macOS production builds is a macOS 10.10.5
 running on a MacBook Pro with 32 GB of RAM and a fast SSD.
@@ -384,7 +386,7 @@ However, for an interrupted build, this step is skipped, and files in
 the install folder will remain owned by root. Thus, before removing
 the build folder, it might be necessary to run a recursive `chown`.
 
-## Test
+## Testing
 
 A simple test is performed by the script at the end, by launching the
 executable to check if all shared/dynamic libraries are correctly used.
