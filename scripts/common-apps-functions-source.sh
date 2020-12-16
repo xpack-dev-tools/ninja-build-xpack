@@ -48,19 +48,23 @@ function build_ninja()
     xbb_activate
     # xbb_activate_installed_dev
 
-    local build_win32
-    if [ "${TARGET_PLATFORM}" == "win32" ]
+    if false # [ "${TARGET_PLATFORM}" == "win32" ]
     then
       prepare_gcc_env "${CROSS_COMPILE_PREFIX}-"
-      build_win32="true"
-    else
-      build_win32="false"
     fi
 
     # CPPFLAGS="${XBB_CPPFLAGS}"
-    CFLAGS="${XBB_CPPFLAGS} ${XBB_CFLAGS}"
-    CXXFLAGS="${XBB_CPPFLAGS} ${XBB_CXXFLAGS}"
-    LDFLAGS="${XBB_CPPFLAGS} ${XBB_LDFLAGS_APP_STATIC_GCC}"
+    CFLAGS="$(echo ${XBB_CPPFLAGS} ${XBB_CFLAGS_NO_W} | sed -e 's|-O[0123s]||')"
+    CXXFLAGS="$(echo ${XBB_CPPFLAGS} ${XBB_CFLAGS_NO_W} | sed -e 's|-O[0123s]||')"
+    LDFLAGS="$(echo ${XBB_CPPFLAGS} ${XBB_LDFLAGS_APP_STATIC_GCC} | sed -e 's|-O[0123s]||')"
+    if [ "${TARGET_PLATFORM}" == "linux" ]
+    then
+      LDFLAGS+=" -Wl,-rpath,${LD_LIBRARY_PATH}"
+    fi      
+    if [ "${IS_DEVELOP}" == "y" ]
+    then
+      LDFLAGS+=" -v"
+    fi
 
     export CFLAGS
     export CXXFLAGS
@@ -76,16 +80,33 @@ function build_ninja()
       build_type=Release
     fi
 
-    if [ ! -f "CMakeCache.txt" ]
+    if true # [ ! -f "CMakeCache.txt" ]
     then
       (
         echo
         echo "Running ninja configure..."
 
-        run_verbose cmake \
-          -G "Unix Makefiles" \
-          -DCMAKE_BUILD_TYPE="${build_type}" \
-          -DWIN32="${build_win32}" \
+        config_options=()
+
+        config_options+=("-G" "Unix Makefiles")
+
+        config_options+=("-DCMAKE_BUILD_TYPE=${build_type}")
+
+        if [ "${TARGET_PLATFORM}" == "win32" ]
+        then
+            config_options+=("-DWIN32=ON")
+        fi
+
+        if [ "${IS_DEBUG}" == "y" ]
+        then
+          config_options+=("-DCMAKE_VERBOSE_MAKEFILE=ON")
+        fi
+
+        config_options+=("-DCMAKE_INSTALL_PREFIX=${APP_PREFIX}")
+
+        run_verbose_timed cmake \
+          ${config_options[@]} \
+          \
           "${SOURCES_FOLDER_PATH}/${ninja_src_folder_name}" \
 
       ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${ninja_folder_name}/cmake-output.txt"
@@ -95,16 +116,19 @@ function build_ninja()
       echo
       echo "Running ninja build..."
 
-      run_verbose cmake \
+      #  --parallel ${JOBS} \
+      run_verbose_timed cmake \
         --build . \
         --parallel ${JOBS} \
+        --verbose \
         --config "${build_type}" \
 
       if [ "${TARGET_PLATFORM}" != "win32" ]
       then
-        run_verbose ctest -vv
+        run_verbose_timed ctest -vv
       fi
 
+      # The install target is not funtional:
       mkdir -pv "${APP_PREFIX}/bin"
       if [ "${TARGET_PLATFORM}" == "win32" ]
       then
