@@ -112,8 +112,8 @@ No need to add a tag here, it'll be added when the release is created.
 ### Prepare release
 
 To prepare a new release, first determine the Ninja Build version
-(like `1.10.0`) and update the `scripts/VERSION` file. The format is
-`1.10.0-1`. The fourth number is the xPack release number
+(like `1.10.2`) and update the `scripts/VERSION` file. The format is
+`1.10.2-1`. The fourth number is the xPack release number
 of this version. A fifth number will be added when publishing
 the package on the `npm` server.
 
@@ -201,14 +201,14 @@ archives and their SHA signatures, created in the `deploy` folder:
 ```console
 $ ls -l ~/Work/ninja-build-*/deploy
 total 1624
--rw-rw-r-- 1 ilg ilg 233764 Sep 28 16:53 xpack-ninja-build-1.10.0-1-linux-x32.tar.gz
--rw-rw-r-- 1 ilg ilg    110 Sep 28 16:53 xpack-ninja-build-1.10.0-1-linux-x32.tar.gz.sha
--rw-rw-r-- 1 ilg ilg 217440 Sep 28 16:52 xpack-ninja-build-1.10.0-1-linux-x64.tar.gz
--rw-rw-r-- 1 ilg ilg    110 Sep 28 16:52 xpack-ninja-build-1.10.0-1-linux-x64.tar.gz.sha
--rw-rw-r-- 1 ilg ilg 475368 Sep 28 16:53 xpack-ninja-build-1.10.0-1-win32-x32.zip
--rw-rw-r-- 1 ilg ilg    107 Sep 28 16:53 xpack-ninja-build-1.10.0-1-win32-x32.zip.sha
--rw-rw-r-- 1 ilg ilg 706151 Sep 28 16:52 xpack-ninja-build-1.10.0-1-win32-x64.zip
--rw-rw-r-- 1 ilg ilg    107 Sep 28 16:52 xpack-ninja-build-1.10.0-1-win32-x64.zip.sha
+-rw-rw-r-- 1 ilg ilg 233764 Sep 28 16:53 xpack-ninja-build-1.10.2-1-linux-x32.tar.gz
+-rw-rw-r-- 1 ilg ilg    110 Sep 28 16:53 xpack-ninja-build-1.10.2-1-linux-x32.tar.gz.sha
+-rw-rw-r-- 1 ilg ilg 217440 Sep 28 16:52 xpack-ninja-build-1.10.2-1-linux-x64.tar.gz
+-rw-rw-r-- 1 ilg ilg    110 Sep 28 16:52 xpack-ninja-build-1.10.2-1-linux-x64.tar.gz.sha
+-rw-rw-r-- 1 ilg ilg 475368 Sep 28 16:53 xpack-ninja-build-1.10.2-1-win32-x32.zip
+-rw-rw-r-- 1 ilg ilg    107 Sep 28 16:53 xpack-ninja-build-1.10.2-1-win32-x32.zip.sha
+-rw-rw-r-- 1 ilg ilg 706151 Sep 28 16:52 xpack-ninja-build-1.10.2-1-win32-x64.zip
+-rw-rw-r-- 1 ilg ilg    107 Sep 28 16:52 xpack-ninja-build-1.10.2-1-win32-x64.zip.sha
 ```
 
 To copy the files from the build machine to the current development
@@ -272,10 +272,10 @@ archives and their SHA signatures, created in the `deploy` folder:
 ```console
 $ ls -l ~/Work/ninja-build-*/deploy
 total 416
--rw-rw-r-- 1 ilg ilg 215309 Sep 28 14:00 xpack-ninja-build-1.10.0-1-linux-arm64.tar.gz
--rw-rw-r-- 1 ilg ilg    112 Sep 28 14:00 xpack-ninja-build-1.10.0-1-linux-arm64.tar.gz.sha
--rw-rw-r-- 1 ilg ilg 199196 Sep 28 14:01 xpack-ninja-build-1.10.0-1-linux-arm.tar.gz
--rw-rw-r-- 1 ilg ilg    110 Sep 28 14:01 xpack-ninja-build-1.10.0-1-linux-arm.tar.gz.sha
+-rw-rw-r-- 1 ilg ilg 215309 Sep 28 14:00 xpack-ninja-build-1.10.2-1-linux-arm64.tar.gz
+-rw-rw-r-- 1 ilg ilg    112 Sep 28 14:00 xpack-ninja-build-1.10.2-1-linux-arm64.tar.gz.sha
+-rw-rw-r-- 1 ilg ilg 199196 Sep 28 14:01 xpack-ninja-build-1.10.2-1-linux-arm.tar.gz
+-rw-rw-r-- 1 ilg ilg    110 Sep 28 14:01 xpack-ninja-build-1.10.2-1-linux-arm.tar.gz.sha
 ```
 
 To copy the files from the build machine to the current development
@@ -314,8 +314,8 @@ archive and its SHA signature, created in the `deploy` folder:
 ```console
 $ ls -l ~/Work/ninja-build-*/deploy
 total 1768
--rw-r--r--  1 ilg  staff  900060 Sep 28 17:04 xpack-ninja-build-1.10.0-1-darwin-x64.tar.gz
--rw-r--r--  1 ilg  staff     111 Sep 28 17:04 xpack-ninja-build-1.10.0-1-darwin-x64.tar.gz.sha
+-rw-r--r--  1 ilg  staff  900060 Sep 28 17:04 xpack-ninja-build-1.10.2-1-darwin-x64.tar.gz
+-rw-r--r--  1 ilg  staff     111 Sep 28 17:04 xpack-ninja-build-1.10.2-1-darwin-x64.tar.gz.sha
 ```
 
 To copy the files from the build machine to the current development
@@ -397,8 +397,8 @@ program from there. For example on macOS the output should
 look like:
 
 ```console
-$ /Users/ilg/Downloads/xPacks/ninja-build/1.10.0-1/bin/ninja --version
-1.10.0
+$ /Users/ilg/Downloads/xPacks/ninja-build/1.10.2-1/bin/ninja --version
+1.10.2
 ```
 
 ## Installed folders
@@ -407,8 +407,8 @@ After install, the package should create a structure like this (macOS files;
 only the first two depth levels are shown):
 
 ```console
-$ tree -L 2 /Users/ilg/Library/xPacks/\@xpack-dev-tools/ninja-build/1.10.0-1.1/.content/
-/Users/ilg/Library/xPacks/\@xpack-dev-tools/ninja-build/1.10.0-1.1/.content/
+$ tree -L 2 /Users/ilg/Library/xPacks/\@xpack-dev-tools/ninja-build/1.10.2-1.1/.content/
+/Users/ilg/Library/xPacks/\@xpack-dev-tools/ninja-build/1.10.2-1.1/.content/
 ├── README.md
 ├── bin
 │   ├── libgcc_s.1.dylib

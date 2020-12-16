@@ -22,15 +22,24 @@ function build_versions()
 
   # NINJA_BUILD_GIT_BRANCH=${NINJA_BUILD_GIT_BRANCH:-"master"}
   # NINJA_BUILD_GIT_COMMIT=${NINJA_BUILD_GIT_COMMIT:-"HEAD"}
-  README_OUT_FILE_NAME=${README_OUT_FILE_NAME:-"README-${RELEASE_VERSION}.md"}
 
   NINJA_VERSION="$(echo "${RELEASE_VERSION}" | sed -e 's|-[0-9]*||')"
 
   # Keep them in sync with combo archive content.
-  if [[ "${RELEASE_VERSION}" =~ 1\.10\.[01]-1 ]]
+  if [[ "${RELEASE_VERSION}" =~ 1\.10\.[2]-* ]]
   then
 
     # -------------------------------------------------------------------------
+    
+    build_ninja "${NINJA_VERSION}"
+
+    # -------------------------------------------------------------------------
+  elif [[ "${RELEASE_VERSION}" =~ 1\.10\.[01]-* ]]
+  then
+
+    # -------------------------------------------------------------------------
+    
+    README_OUT_FILE_NAME=${README_OUT_FILE_NAME:-"README-${RELEASE_VERSION}.md"}
     
     build_ninja "${NINJA_VERSION}"
 
