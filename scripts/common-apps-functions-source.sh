@@ -28,6 +28,8 @@ function build_ninja()
   local ninja_src_folder_name="ninja-${ninja_version}"
   local ninja_folder_name="${ninja_src_folder_name}"
 
+  local ninja_patch="${ninja_folder_name}.patch"
+
   # GitHub release archive.
   local ninja_archive_file_name="${ninja_src_folder_name}.tar.gz"
   local ninja_url="https://github.com/ninja-build/ninja/archive/v${ninja_version}.tar.gz"
@@ -35,7 +37,7 @@ function build_ninja()
   cd "${SOURCES_FOLDER_PATH}"
 
   download_and_extract "${ninja_url}" "${ninja_archive_file_name}" \
-    "${ninja_src_folder_name}"
+    "${ninja_src_folder_name}" "${ninja_patch}"
 
   (
     mkdir -p "${BUILD_FOLDER_PATH}/${ninja_folder_name}"

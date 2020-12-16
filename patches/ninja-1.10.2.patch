@@ -1,0 +1,15 @@
+--- CMakeLists-orig.txt	2020-12-16 17:08:37.000000000 +0200
++++ CMakeLists.txt	2020-12-16 17:24:52.000000000 +0200
+@@ -71,7 +71,11 @@
+ 	set(${RESULT} "${PLATFORM_HAS_UNISTD_HEADER}" PARENT_SCOPE)
+ endfunction()
+ 
+-check_platform_supports_browse_mode(platform_supports_ninja_browse)
++if(WIN32)
++  set(platform_supports_ninja_browse FALSE)
++else()
++  check_platform_supports_browse_mode(platform_supports_ninja_browse)
++endif()
+ 
+ # Core source files all build into ninja library.
+ add_library(libninja OBJECT
