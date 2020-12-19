@@ -165,7 +165,7 @@ functional.
   - add a downloads badge like `![Github Releases (by Release)](https://img.shields.io/github/downloads/xpack-dev-tools/ninja-build-xpack/v1.10.2-1/total.svg)`
   - draft a short paragraph explaining what are the main changes, like
   _Version v1.10.2-1 is a new release of the **xPack Ninja Build** package, following the Ninja Build release._
-  - add _At this moment these binaries are provided for tests only!_
+  - add _At this moment these binaries are provided only for testing purposes!_
 - **attach binaries** and SHA (drag and drop from the archives folder will do it)
 - **enable** the **pre-release** button
 - click the **Publish Release** button
@@ -257,6 +257,7 @@ xpack-ninja-build-1.10.2-1-win32-x64.zip
 - run `xpm-dev binaries-update`
 
 ```
+cd ~/Downloads/ninja-build-xpack.git
 xpm-js.git/bin/xpm-dev.js binaries-update '1.10.2-1' "${HOME}/Downloads/xpack-binaries/ninja-build"
 ```
 
