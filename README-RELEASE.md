@@ -274,6 +274,7 @@ xpm-js.git/bin/xpm-dev.js binaries-update '1.10.2-1' "${HOME}/Downloads/xpack-bi
 
 ## Publish on the npmjs.com server
 
+- select the `xpack-develop` branch
 - check the latest commits `npm run git-log`
 - update `CHANGELOG.md`; commit with a message like
   _CHANGELOG: prepare npm v1.10.2-1.1_
@@ -378,4 +379,3 @@ When the release is considered stable, promote it as `latest`:
 - paste the link to the Web page
   [release](https://xpack.github.io/ninja-build/releases/)
 - click the **Tweet** button
-
