@@ -117,7 +117,7 @@ To prepare a new release, first determine the Ninja Build version
 of this version. A fifth number will be added when publishing
 the package on the `npm` server.
 
-Add a new set of definitions in the `scripts/container-build.sh`, with
+Add a new set of definitions in the `scripts/common-versions-source.sh`, with
 the versions of various components.
 
 ### Check `README.md`
