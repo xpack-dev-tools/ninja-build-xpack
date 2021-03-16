@@ -99,7 +99,7 @@ with caution, and prefer exact matches, like `1.10.0-1.1`.
 ## Maintainer info
 
 - [How to build](https://github.com/xpack-dev-tools/ninja-build-xpack/blob/xpack/README-BUILD.md)
-- [How to publish](https://github.com/xpack-dev-tools/ninja-build-xpack/blob/xpack/README-PUBLISH.md)
+- [How to publish](https://github.com/xpack-dev-tools/ninja-build-xpack/blob/xpack/README-RELEASE.md)
 
 ## Support
 
