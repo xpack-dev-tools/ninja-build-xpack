@@ -1,4 +1,4 @@
-# How to build the xPack Ninja Build?
+# How to build the xPack Ninja Build
 
 ## Introduction
 
@@ -88,7 +88,7 @@ Compared to the original Ninja Build distribution, there should be no
 functional changes.
 
 The actual changes for each version are documented in the
-`scripts/README-<version>.md` files.
+release web pages.
 
 ## How to build local/native binaries
 
