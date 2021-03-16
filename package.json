@@ -32,36 +32,36 @@
   "xpack": {
     "binaries": {
       "destination": "./.content",
-      "baseUrl": "https://github.com/xpack-dev-tools/ninja-build-xpack/releases/download/v1.10.2-1",
+      "baseUrl": "https://github.com/xpack-dev-tools/ninja-build-xpack/releases/download/v1.10.2-2",
       "skip": 1,
       "platforms": {
         "darwin-x64": {
-          "fileName": "xpack-ninja-build-1.10.2-1-darwin-x64.tar.gz",
-          "sha256": "06135291fd6153c6ea98243013e834dd3491c0e919b01dc22159f438006a18db"
+          "fileName": "xpack-ninja-build-1.10.2-2-darwin-x64.tar.gz",
+          "sha256": "64d764c3bfb386037126725b3a4ff58b9bc9b72985490cd9e3d0f93b5133a43c"
         },
         "linux-arm64": {
-          "fileName": "xpack-ninja-build-1.10.2-1-linux-arm64.tar.gz",
-          "sha256": "df05a2ba777d7af2657325f9ff895252364d2a8c81083f1d7282974fae5a556a"
+          "fileName": "xpack-ninja-build-1.10.2-2-linux-arm64.tar.gz",
+          "sha256": "c633669347fce592757bd44d6a9f058e6391528a8593c91552e2547ffa7b4d19"
         },
         "linux-arm": {
-          "fileName": "xpack-ninja-build-1.10.2-1-linux-arm.tar.gz",
-          "sha256": "3af6ff22520383a5e0e539835a13114d5db055adfc899a1f61fb3b784f9141c3"
+          "fileName": "xpack-ninja-build-1.10.2-2-linux-arm.tar.gz",
+          "sha256": "74131427efe2a61e25f7a75d866631cea696bd00ff98f2dc096778a8cae29be1"
         },
         "linux-ia32": {
-          "fileName": "xpack-ninja-build-1.10.2-1-linux-ia32.tar.gz",
-          "sha256": "2d72d42004033c6595e359e36634494aaad798bfacc2197827beb8007d73be52"
+          "fileName": "xpack-ninja-build-1.10.2-2-linux-ia32.tar.gz",
+          "sha256": "5dcdfcb8d217fe60a26a3b5989b9886359dd5409bb7066e0915174124275a640"
         },
         "linux-x64": {
-          "fileName": "xpack-ninja-build-1.10.2-1-linux-x64.tar.gz",
-          "sha256": "6c47cc86d549c1078d2d7c1ceb5f5b96c5c6768f6f1cb09866e95ca9dcee2b6e"
+          "fileName": "xpack-ninja-build-1.10.2-2-linux-x64.tar.gz",
+          "sha256": "99bac03fee8c482c2ea3aed0f18f5b09198069503aff28b5831fa7cca88c5121"
         },
         "win32-ia32": {
-          "fileName": "xpack-ninja-build-1.10.2-1-win32-ia32.zip",
-          "sha256": "cc8fc51d9394f8822ae88c4b479f2d5e15eae05ff87063c5e52f56c03e6adf5d"
+          "fileName": "xpack-ninja-build-1.10.2-2-win32-ia32.zip",
+          "sha256": "dd3b64d7513eb37d661d756824c98343ef10b47d1ae7b9b059bee2168b442e9f"
         },
         "win32-x64": {
-          "fileName": "xpack-ninja-build-1.10.2-1-win32-x64.zip",
-          "sha256": "d9743f21206e0bd93729b05a1d909ab12f73e6facd2d016fc5fba2f62b0e57e2"
+          "fileName": "xpack-ninja-build-1.10.2-2-win32-x64.zip",
+          "sha256": "4187623b5595f2efa7196ccaf982739f5bb83954ac0c82a1412d5eea1cc3a6db"
         }
       }
     },
