@@ -1,6 +1,6 @@
 {
   "name": "@xpack-dev-tools/ninja-build",
-  "version": "1.10.2-1.1",
+  "version": "1.10.2-2.1",
   "description": "A binary xPack with the Ninja Build executables",
   "main": "",
   "scripts": {
@@ -27,7 +27,6 @@
   },
   "license": "MIT",
   "config": {},
-  "dependencies": {},
   "devDependencies": {},
   "xpack": {
     "binaries": {
