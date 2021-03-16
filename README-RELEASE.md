@@ -183,7 +183,7 @@ Using the scripts in `tests/scripts/`, start:
 
 The test results are available from:
 
-- https://travis-ci.org/github/xpack-dev-tools/ninja-build-xpack
+- https://travis-ci.com/github/xpack-dev-tools/ninja-build-xpack
 
 For more details, see `tests/scripts/README.md`.
 
@@ -283,6 +283,7 @@ xpm-js.git/bin/xpm-dev.js binaries-update '1.10.2-1' "${HOME}/Downloads/xpack-bi
 - `npm pack` and check the content of the archive, which should list
   only the `package.json`, the `README.md`, `LICENSE` and `CHANGELOG.md`
 - push the `xpack-develop` branch to GitHub
+- push tags with `git push origin --tags`
 - `npm publish --tag next` (use `--access public` when publishing for
   the first time)
 
@@ -297,7 +298,7 @@ will install the package on Intel Linux 64-bit, macOS and Windows 64-bit.
 
 The test results are available from:
 
-- https://travis-ci.org/github/xpack-dev-tools/ninja-build-xpack
+- https://travis-ci.com/github/xpack-dev-tools/ninja-build-xpack
 
 For 32-bit Windows, 32-bit Intel GNU/Linux and 32-bit Arm, install manually.
 
