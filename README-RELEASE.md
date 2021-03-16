@@ -293,10 +293,10 @@ xpm-dev binaries-update -C "${HOME}/Downloads/ninja-build-xpack.git" '1.10.2-2' 
 - check the latest commits `npm run git-log`
 - update `CHANGELOG.md`; commit with a message like
   _CHANGELOG: prepare npm v1.10.2-2.1_
-- `npm version 1.10.2-2.1`; the first 5 numbers are the same as the
-  GitHub release; the sixth number is the npm specific version
 - `npm pack` and check the content of the archive, which should list
   only the `package.json`, the `README.md`, `LICENSE` and `CHANGELOG.md`
+- `npm version 1.10.2-2.1`; the first 5 numbers are the same as the
+  GitHub release; the sixth number is the npm specific version
 - push the `xpack-develop` branch to GitHub
 - push tags with `git push origin --tags`
 - `npm publish --tag next` (use `--access public` when publishing for
