@@ -16,10 +16,22 @@ Before starting the build, perform some checks and tweaks.
 - switch to the `xpack-develop` branch
 - if needed, merge the `xpack` branch
 
+### Update git repos
+
+To keep the development repository in sync with the original OpenOCD
+repository, in the `xpack-dev-tools/ninja` Git repo:
+
+- checkout `release` 
+- merge from `upstream/release`
+- checkout `xpack-develop`
+- merge `release`
+- checkout `xpack`
+- merge `xpack-develop`
+
 ### Increase the version
 
 Determine the version (like `1.10.2`) and update the `scripts/VERSION`
-file; the format is `1.10.2-1`. The fourth number is the xPack release number
+file; the format is `1.10.2-2`. The fourth number is the xPack release number
 of this version. A fifth number will be added when publishing
 the package on the `npm` server.
 
@@ -29,7 +41,7 @@ Check GitHub issues and pull requests:
 
 - https://github.com/xpack-dev-tools/ninja-build-xpack/issues/
 
-and fix them; assign them to a milestone (like `1.10.2-1`).
+and fix them; assign them to a milestone (like `1.10.2-2`).
 
 ### Check `README.md`
 
@@ -44,8 +56,8 @@ but in the version specific file (below).
 
 - open the `CHANGELOG.md` file
 - check if all previous fixed issues are in
-- add a new entry like _v1.10.2-1 prepared_
-- commit commit with a message like _CHANGELOG: prepare v1.10.2-1_
+- add a new entry like _v1.10.2-2 prepared_
+- commit commit with a message like _prepare v1.10.2-2_
 
 Note: if you missed to update the `CHANGELOG.md` before starting the build,
 edit the file and rerun the build, it should take only a few minutes to
@@ -158,13 +170,13 @@ functional.
 - commit and push the `xpack-develop` branch
 - go to the GitHub [releases](https://github.com/xpack-dev-tools/ninja-build-xpack/releases) page
 - click **Draft a new release**, in the `xpack-develop` branch
-- name the tag like **v1.10.2-1** (mind the dash in the middle!)
-- name the release like **xPack Ninja Build v1.10.2-1**
+- name the tag like **v1.10.2-2** (mind the dash in the middle!)
+- name the release like **xPack Ninja Build v1.10.2-2**
 (mind the dash)
 - as description
-  - add a downloads badge like `![Github Releases (by Release)](https://img.shields.io/github/downloads/xpack-dev-tools/ninja-build-xpack/v1.10.2-1/total.svg)`
+  - add a downloads badge like `![Github Releases (by Release)](https://img.shields.io/github/downloads/xpack-dev-tools/ninja-build-xpack/v1.10.2-2/total.svg)`
   - draft a short paragraph explaining what are the main changes, like
-  _Version v1.10.2-1 is a new release of the **xPack Ninja Build** package, following the Ninja Build release._
+  _Version v1.10.2-2 is a new release of the **xPack Ninja Build** package, following the Ninja Build release._
   - add _At this moment these binaries are provided only for testing purposes!_
 - **attach binaries** and SHA (drag and drop from the archives folder will do it)
 - **enable** the **pre-release** button
@@ -194,8 +206,8 @@ In the `xpack/web-jekyll` GitHub repo:
 - select the `develop` branch
 - add a new file to `_posts/ninja-build/releases`
 - name the file like `2020-12-19-ninja-build-v1-10-2-1-released.md`
-- name the post like: **xPack Ninja Build v1.10.2-1 released**
-- as `download_url` use the tagged URL like `https://github.com/xpack-dev-tools/ninja-build-xpack/releases/tag/v1.10.2-1/`
+- name the post like: **xPack Ninja Build v1.10.2-2 released**
+- as `download_url` use the tagged URL like `https://github.com/xpack-dev-tools/ninja-build-xpack/releases/tag/v1.10.2-2/`
 - update the `date:` field with the current date
 - update the Travis URLs using the actual test pages
 - update the SHA sums via copy/paste from the original build machines
@@ -222,31 +234,31 @@ Copy/paste the build report at the end of the post as:
 The SHA-256 hashes for the files are:
 
 0a2a2550ec99b908c92811f8dbfde200956a22ab3d9af1c92ce9926bf8feddf9
-xpack-ninja-build-1.10.2-1-darwin-x64.tar.gz
+xpack-ninja-build-1.10.2-2-darwin-x64.tar.gz
 
 254588cbcd685748598dd7bbfaf89280ab719bfcd4dabeb0269fdb97a52b9d7a
-xpack-ninja-build-1.10.2-1-linux-arm.tar.gz
+xpack-ninja-build-1.10.2-2-linux-arm.tar.gz
 
 10e30128d626f9640c0d585e6b65ac943de59fbdce5550386add015bcce408fa
-xpack-ninja-build-1.10.2-1-linux-arm64.tar.gz
+xpack-ninja-build-1.10.2-2-linux-arm64.tar.gz
 
 50f2e399382c29f8cdc9c77948e1382dfd5db20c2cb25c5980cb29774962483f
-xpack-ninja-build-1.10.2-1-linux-ia32.tar.gz
+xpack-ninja-build-1.10.2-2-linux-ia32.tar.gz
 
 9b147443780b7f825eec333857ac7ff9e9e9151fd17c8b7ce2a1ecb6e3767fd6
-xpack-ninja-build-1.10.2-1-linux-x64.tar.gz
+xpack-ninja-build-1.10.2-2-linux-x64.tar.gz
 
 501366492cd73b06fca98b8283f65b53833622995c6e44760eda8f4483648525
-xpack-ninja-build-1.10.2-1-win32-ia32.zip
+xpack-ninja-build-1.10.2-2-win32-ia32.zip
 
 dffc858d64be5539410aa6d3f3515c6de751cd295c99217091f5ccec79cabf39
-xpack-ninja-build-1.10.2-1-win32-x64.zip
+xpack-ninja-build-1.10.2-2-win32-x64.zip
 ```
 
 ## Update the preview Web
 
 - commit the `develop` branch of `xpack/web-jekyll` GitHub repo;
-  use a message like **xPack Ninja Build v1.10.2-1 released**
+  use a message like **xPack Ninja Build v1.10.2-2 released**
 - wait for the GitHub Pages build to complete
 - the preview web is https://xpack.github.io/web-preview/
 
@@ -258,7 +270,7 @@ xpack-ninja-build-1.10.2-1-win32-x64.zip
 
 ```
 cd ~/Downloads/ninja-build-xpack.git
-xpm-js.git/bin/xpm-dev.js binaries-update '1.10.2-1' "${HOME}/Downloads/xpack-binaries/ninja-build"
+xpm-js.git/bin/xpm-dev.js binaries-update '1.10.2-2' "${HOME}/Downloads/xpack-binaries/ninja-build"
 ```
 
 - open the GitHub [releases](https://github.com/xpack-dev-tools/ninja-build-xpack/releases)
@@ -270,15 +282,15 @@ xpm-js.git/bin/xpm-dev.js binaries-update '1.10.2-1' "${HOME}/Downloads/xpack-bi
 - compare the SHA sums with those shown by `cat *.sha`
 - check the executable names
 - commit all changes, use a message like
-  `package.json: update urls for 1.10.2-1.1 release` (without `v`)
+  `package.json: update urls for 1.10.2-2.1 release` (without `v`)
 
 ## Publish on the npmjs.com server
 
 - select the `xpack-develop` branch
 - check the latest commits `npm run git-log`
 - update `CHANGELOG.md`; commit with a message like
-  _CHANGELOG: prepare npm v1.10.2-1.1_
-- `npm version 1.10.2-1.1`; the first 5 numbers are the same as the
+  _CHANGELOG: prepare npm v1.10.2-2.1_
+- `npm version 1.10.2-2.1`; the first 5 numbers are the same as the
   GitHub release; the sixth number is the npm specific version
 - `npm pack` and check the content of the archive, which should list
   only the `package.json`, the `README.md`, `LICENSE` and `CHANGELOG.md`
@@ -317,7 +329,7 @@ xpm install --global @xpack-dev-tools/ninja-build@next
 On GNU/Linux systems, including Raspberry Pi, use the following commands:
 
 ```sh
-~/opt/xPacks/@xpack-dev-tools/ninja-build/1.10.2-1.1/.content/bin/ninja-build --version
+~/opt/xPacks/@xpack-dev-tools/ninja-build/1.10.2-2.1/.content/bin/ninja-build --version
 
 ninja-build version 1.10.2
 
@@ -327,7 +339,7 @@ Ninja Build suite maintained and supported by Kitware (kitware.com/ninja-build).
 On macOS, use:
 
 ```sh
-~/Library/xPacks/@xpack-dev-tools/ninja-build/1.10.2-1.1/.content/bin/ninja-build --version
+~/Library/xPacks/@xpack-dev-tools/ninja-build/1.10.2-2.1/.content/bin/ninja-build --version
 
 ninja-build version 1.10.2
 
@@ -337,7 +349,7 @@ Ninja Build suite maintained and supported by Kitware (kitware.com/ninja-build).
 On Windows use:
 
 ```
-%HOMEPATH%\AppData\Roaming\xPacks\@xpack-dev-tools\ninja-build\1.10.2-1.1\.content\bin\ninja-build --version
+%HOMEPATH%\AppData\Roaming\xPacks\@xpack-dev-tools\ninja-build\1.10.2-2.1\.content\bin\ninja-build --version
 
 ninja-build version 1.10.2
 
@@ -354,7 +366,7 @@ Ninja Build suite maintained and supported by Kitware (kitware.com/ninja-build).
 When the release is considered stable, promote it as `latest`:
 
 - `npm dist-tag ls @xpack-dev-tools/ninja-build`
-- `npm dist-tag add @xpack-dev-tools/ninja-build@1.10.2-1.1 latest`
+- `npm dist-tag add @xpack-dev-tools/ninja-build@1.10.2-2.1 latest`
 - `npm dist-tag ls @xpack-dev-tools/ninja-build`
 
 ## Update the Web
@@ -376,7 +388,7 @@ When the release is considered stable, promote it as `latest`:
 
 - in a separate browser windows, open [TweetDeck](https://tweetdeck.twitter.com/)
 - using the `@xpack_project` account
-- paste the release name like **xPack Ninja Build v1.10.2-1 released**
+- paste the release name like **xPack Ninja Build v1.10.2-2 released**
 - paste the link to the Web page
   [release](https://xpack.github.io/ninja-build/releases/)
 - click the **Tweet** button
