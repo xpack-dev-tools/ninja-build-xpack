@@ -332,7 +332,7 @@ xpm install --global @xpack-dev-tools/ninja-build@next
 On GNU/Linux systems, including Raspberry Pi, use the following commands:
 
 ```sh
-~/opt/xPacks/@xpack-dev-tools/ninja-build/1.10.2-2.1/.content/bin/ninja-build --version
+~/opt/xPacks/@xpack-dev-tools/ninja-build/1.10.2-2.1/.content/bin/ninja --version
 
 ninja-build version 1.10.2
 
@@ -342,7 +342,7 @@ Ninja Build suite maintained and supported by Kitware (kitware.com/ninja-build).
 On macOS, use:
 
 ```sh
-~/Library/xPacks/@xpack-dev-tools/ninja-build/1.10.2-2.1/.content/bin/ninja-build --version
+~/Library/xPacks/@xpack-dev-tools/ninja-build/1.10.2-2.1/.content/bin/ninja --version
 
 ninja-build version 1.10.2
 
@@ -352,7 +352,7 @@ Ninja Build suite maintained and supported by Kitware (kitware.com/ninja-build).
 On Windows use:
 
 ```console
-%HOMEPATH%\AppData\Roaming\xPacks\@xpack-dev-tools\ninja-build\1.10.2-2.1\.content\bin\ninja-build --version
+%HOMEPATH%\AppData\Roaming\xPacks\@xpack-dev-tools\ninja-build\1.10.2-2.1\.content\bin\ninja --version
 
 ninja-build version 1.10.2
 
