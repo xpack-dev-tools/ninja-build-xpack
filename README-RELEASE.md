@@ -131,7 +131,7 @@ On the macOS machine (`xbbm`):
 caffeinate bash ~/Downloads/ninja-build-xpack.git/scripts/build.sh --osx
 ```
 
-A typical run takes about 10 minutes.
+A typical run takes about 1 minute.
 
 On both Linux machines (`xbbi` and `xbba`):
 
@@ -139,8 +139,8 @@ On both Linux machines (`xbbi` and `xbba`):
 bash ~/Downloads/ninja-build-xpack.git/scripts/build.sh --all
 ```
 
-A typical run on the Intel machine takes about 25 minutes;
-on the Arm machine it takes about 60 minutes.
+A typical run on the Intel machine takes about 2 minutes;
+on the Arm machine it takes about 5 minutes.
 
 ### Clean the destination folder
 
@@ -173,11 +173,16 @@ functional.
 - name the tag like **v1.10.2-2** (mind the dash in the middle!)
 - name the release like **xPack Ninja Build v1.10.2-2**
 (mind the dash)
-- as description
-  - add a downloads badge like `![Github Releases (by Release)](https://img.shields.io/github/downloads/xpack-dev-tools/ninja-build-xpack/v1.10.2-2/total.svg)`
-  - draft a short paragraph explaining what are the main changes, like
-  _Version v1.10.2-2 is a new release of the **xPack Ninja Build** package, following the Ninja Build release._
-  - add _At this moment these binaries are provided only for testing purposes!_
+- as description, use:
+
+```console
+![Github Releases (by Release)](https://img.shields.io/github/downloads/xpack-dev-tools/ninja-build-xpack/v1.10.2-2/total.svg)
+
+Version v1.10.2-2 is a new/maintenance release of the **xPack Ninja Build** package, following the Ninja Build release/fixing...
+
+_For the moment these binaries are provided only for testing purposes!_
+```
+
 - **attach binaries** and SHA (drag and drop from the archives folder will do it)
 - **enable** the **pre-release** button
 - click the **Publish Release** button
@@ -265,12 +270,10 @@ xpack-ninja-build-1.10.2-2-win32-x64.zip
 ## Update package.json binaries
 
 - select the `xpack-develop` branch
-- open the `package.json` file
 - run `xpm-dev binaries-update`
 
-```
-cd ~/Downloads/ninja-build-xpack.git
-xpm-js.git/bin/xpm-dev.js binaries-update '1.10.2-2' "${HOME}/Downloads/xpack-binaries/ninja-build"
+```console
+xpm-dev binaries-update -C "${HOME}/Downloads/ninja-build-xpack.git" '1.10.2-2' "${HOME}/Downloads/xpack-binaries/ninja-build"
 ```
 
 - open the GitHub [releases](https://github.com/xpack-dev-tools/ninja-build-xpack/releases)
@@ -348,7 +351,7 @@ Ninja Build suite maintained and supported by Kitware (kitware.com/ninja-build).
 
 On Windows use:
 
-```
+```console
 %HOMEPATH%\AppData\Roaming\xPacks\@xpack-dev-tools\ninja-build\1.10.2-2.1\.content\bin\ninja-build --version
 
 ninja-build version 1.10.2
