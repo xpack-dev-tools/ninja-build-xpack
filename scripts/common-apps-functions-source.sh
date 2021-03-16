@@ -30,13 +30,16 @@ function build_ninja()
 
   cd "${SOURCES_FOLDER_PATH}"
 
-  (
-    xbb_activate
+  if [ ! -d "${SOURCES_FOLDER_PATH}/${ninja_src_folder_name}" ]
+  then
+    (
+      xbb_activate
 
-    cd "${SOURCES_FOLDER_PATH}"
-    git_clone "${NINJA_GIT_URL}" "${NINJA_GIT_BRANCH}" \
-        "${NINJA_GIT_COMMIT}" "${ninja_src_folder_name}"
-  )
+      cd "${SOURCES_FOLDER_PATH}"
+      git_clone "${NINJA_GIT_URL}" "${NINJA_GIT_BRANCH}" \
+          "${NINJA_GIT_COMMIT}" "${ninja_src_folder_name}"
+    )
+  fi
 
   (
     mkdir -p "${BUILD_FOLDER_PATH}/${ninja_folder_name}"
