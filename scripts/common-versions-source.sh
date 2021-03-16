@@ -29,6 +29,13 @@ function build_versions()
   if [[ "${RELEASE_VERSION}" =~ 1\.10\.[2]-* ]]
   then
 
+    if [ "${RELEASE_VERSION}" == "1.10.2-2" ]
+    then
+      NINJA_GIT_URL=${NINJA_GIT_URL:-"https://github.com/xpack-dev-tools/ninja.git"}
+      NINJA_GIT_BRANCH=${NINJA_GIT_BRANCH:-"xpack"}
+      NINJA_GIT_COMMIT=${NINJA_GIT_COMMIT:-"73218c896d51b91a4654531e90bf9a277bdf0300"}
+    fi
+
     # -------------------------------------------------------------------------
     
     build_ninja "${NINJA_VERSION}"
