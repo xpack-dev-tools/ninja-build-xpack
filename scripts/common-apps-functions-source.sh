@@ -58,6 +58,11 @@ function build_ninja()
     # CPPFLAGS="${XBB_CPPFLAGS}"
     CFLAGS="$(echo ${XBB_CPPFLAGS} ${XBB_CFLAGS_NO_W} | sed -e 's|-O[0123s]||')"
     CXXFLAGS="$(echo ${XBB_CPPFLAGS} ${XBB_CFLAGS_NO_W} | sed -e 's|-O[0123s]||')"
+    if [ "${TARGET_PLATFORM}" == "win32" ]
+    then
+      CFLAGS+=" -DUSE_WIN32_CMD_EXE_TO_CREATE_PROCESS"
+      CXXFLAGS+=" -DUSE_WIN32_CMD_EXE_TO_CREATE_PROCESS"
+    fi
     LDFLAGS="$(echo ${XBB_CPPFLAGS} ${XBB_LDFLAGS_APP_STATIC_GCC} | sed -e 's|-O[0123s]||')"
     if [ "${TARGET_PLATFORM}" == "linux" ]
     then
