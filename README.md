@@ -43,7 +43,7 @@ With the `xpm` tool available, installing
 the latest version of the package is quite easy:
 
 ```console
-$ xpm install --global @xpack-dev-tools/ninja-build@latest
+xpm install --global @xpack-dev-tools/ninja-build@latest
 ```
 
 This command will always install the latest available version,
@@ -64,7 +64,7 @@ identify binaries installed with
 To remove the installed xPack, the command is similar:
 
 ```console
-$ xpm uninstall --global @xpack-dev-tools/ninja-build
+xpm uninstall --global @xpack-dev-tools/ninja-build
 ```
 
 (Note: not yet implemented. As a temporary workaround, simply remove the

@@ -2,6 +2,12 @@
 
 Releases in reverse chronological order.
 
+## 2021-04-28
+
+- v1.10.2-3.1 published on npmjs.com
+- v1.10.2-3 released
+- use local fork, with cmd.exe fix
+
 ## 2021-03-16
 
 - v1.10.2-2.1 published on npmjs.com

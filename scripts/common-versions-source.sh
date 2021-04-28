@@ -34,6 +34,14 @@ function build_versions()
       NINJA_GIT_URL=${NINJA_GIT_URL:-"https://github.com/xpack-dev-tools/ninja.git"}
       NINJA_GIT_BRANCH=${NINJA_GIT_BRANCH:-"xpack"}
       NINJA_GIT_COMMIT=${NINJA_GIT_COMMIT:-"73218c896d51b91a4654531e90bf9a277bdf0300"}
+    elif [ "${RELEASE_VERSION}" == "1.10.2-3" ]
+    then
+      NINJA_GIT_URL=${NINJA_GIT_URL:-"https://github.com/xpack-dev-tools/ninja.git"}
+      NINJA_GIT_BRANCH=${NINJA_GIT_BRANCH:-"xpack"}
+      NINJA_GIT_COMMIT=${NINJA_GIT_COMMIT:-"148d49dd50c9d126bbcb509c1082ac8ef8dcf76a"}
+    else
+      echo "Unsupported version"
+      exit 1
     fi
 
     # -------------------------------------------------------------------------
