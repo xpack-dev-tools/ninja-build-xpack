@@ -6,7 +6,7 @@ Releases in reverse chronological order.
 
 - v1.10.2-3.1 published on npmjs.com
 - v1.10.2-3 released
-- use local fork, with cmd.exe fix
+- [#1] - add quotes to cmd.exe /c to fix meson builds on windows
 
 ## 2021-03-16
 
