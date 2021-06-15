@@ -20,6 +20,8 @@
 function run_tests()
 {
   time run_app "${app_folder_path}/bin/ninja" --version
+
+  ls -l /Library/Developer/CommandLineTools/SDKs || true
 }
 
 # -----------------------------------------------------------------------------
