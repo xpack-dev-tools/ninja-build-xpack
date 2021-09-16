@@ -86,7 +86,10 @@ function build_ninja()
 
         config_options=()
 
-        config_options+=("-G" "Ninja")
+        # With ninja, the windows build fails with:
+        # The install of the ninja target requires changing an RPATH from the build
+        # tree, but this is not supported with the Ninja generator
+        config_options+=("-G" "Unix Makefiles")
 
         config_options+=("-DCMAKE_BUILD_TYPE=${build_type}")
 
