@@ -1,4 +1,4 @@
-# Scripts to test the OpenOCD xPack
+# Scripts to test the Ninja Build xPack
 
 The binaries can be available from one of the pre-releases:
 
@@ -6,24 +6,23 @@ The binaries can be available from one of the pre-releases:
 
 ## Download the repo
 
-The test script is part of the OpenOCD xPack:
+The test script is part of the Ninja Build xPack:
 
 ```sh
 rm -rf ~/Downloads/openocd-xpack.git; \
 git clone \
-  --recurse-submodules \
   --branch xpack-develop \
-  https://github.com/xpack-dev-tools/openocd-xpack.git  \
-  ~/Downloads/openocd-xpack.git
+  https://github.com/xpack-dev-tools/ninja-build-xpack.git  \
+  ~/Downloads/ninja-build-xpack.git; \
+git -C ~/Downloads/ninja-build-xpack.git submodule update --init --recursive 
 ```
 
 ## Start a local test
 
-To check if OpenCOD starts on the current platform, run a native test:
+To check if Ninja Build starts on the current platform, run a native test:
 
 ```sh
-bash ~/Downloads/openocd-xpack.git/scripts/helper/tests/native-test.sh \
-  --base-url "https://github.com/xpack-dev-tools/pre-releases/releases/download/test/"
+bash ~/Downloads/ninja-build-xpack.git/tests/scripts/native-test.sh
 ```
 
 The script stores the downloaded archive in a local cache, and
@@ -32,28 +31,17 @@ does not download it again if available locally.
 To force a new download, remove the local archive:
 
 ```sh
-rm -rf ~/Work/cache/xpack-openocd-*
+rm -rf ~/Work/cache/xpack-ninja-build-*
 ```
 
-## Start the GitHub Actions tests
+## Start the Travis test
 
-The multi-platform tests run on GitHub Actions; they do not fire on
-git commits, but only via a manual POST to the GitHub API.
+The multi-platform test runs on Travis CI; it is configured to not fire on
+git actions, but only via a manual POST to the Travis API.
 
 ```sh
-bash ~/Downloads/openocd-xpack.git/scripts/tests/trigger-workflow-test-native.sh \
-  --branch xpack-develop \
-  --base-url "https://github.com/xpack-dev-tools/pre-releases/releases/download/test/"
-
-bash ~/Downloads/openocd-xpack.git/scripts/tests/trigger-workflow-test-docker-linux-intel.sh \
-  --branch xpack-develop \
-  --base-url "https://github.com/xpack-dev-tools/pre-releases/releases/download/test/"
-
-bash ~/Downloads/openocd-xpack.git/scripts/tests/trigger-workflow-test-docker-linux-arm.sh \
-  --branch xpack-develop \
-  --base-url "https://github.com/xpack-dev-tools/pre-releases/releases/download/test/"
-
+bash ~/Downloads/ninja-build-xpack.git/tests/scripts/travis-trigger.sh
 ```
 
-The results are available at the project
-[Actions](https://github.com/xpack-dev-tools/openocd-xpack/actions/) page.
+For convenience, on macOS this can be invoked from Finder, using
+the `travis-trigger.mac.command` shortcut.
