@@ -1,4 +1,4 @@
-# How to build the xPack Ninja Build
+# How to build the xPack Ninja Build binaries
 
 ## Introduction
 
@@ -12,13 +12,27 @@ a set of elaborate build environments based on recent GCC versions
 (Docker containers
 for GNU/Linux and Windows or a custom folder for MacOS).
 
+There are two types of builds:
+
+- **local/native builds**, which use the tools available on the
+  host machine; generally the binaries do not run on a different system
+  distribution/version; intended mostly for development purposes;
+- **distribution builds**, which create the archives distributed as
+  binaries; expected to run on most modern systems.
+
+This page documents the distribution builds.
+
+For native builds, see the `build-native.sh` script.
+
 ## Repositories
 
-- `https://github.com/xpack-dev-tools/ninja-build-xpack.git` - the URL of the
-  [xPack Ninja Build fork](https://github.com/xpack-dev-tools/ninja-build-xpack)
-- `https://github.com/xpack-dev-tools/build-helper` - the URL of the
+- <https://github.com/xpack-dev-tools/ninja-build-xpack.git> -
+  the URL of the xPack build scripts repository
+- <https://github.com/xpack-dev-tools/build-helper> - the URL of the
   xPack build helper, used as the `scripts/helper` submodule.
-- `https://github.com/ninja-build/ninja` - the URL of the original Ninja repo
+- <https://github.com/xpack-dev-tools/ninja.git> - the URL of the
+  [xPack Ninja Build fork](https://github.com/xpack-dev-tools/ninja)
+- <https://github.com/ninja-build/ninja> - the URL of the original Ninja repo
 
 ### Branches
 
@@ -41,36 +55,26 @@ The build scripts are available in the `scripts` folder of the
 [`xpack-dev-tools/ninja-build-xpack`](https://github.com/xpack-dev-tools/ninja-build-xpack)
 Git repo.
 
-To download them, the following shortcut is available:
+To download them, issue the following two commands:
 
-```console
-$ curl -L https://github.com/xpack-dev-tools/ninja-build-xpack/raw/xpack/scripts/git-clone.sh | bash
-```
-
-This small script issues the following two commands:
-
-```console
-$ rm -rf ~/Downloads/ninja-build-xpack.git
-$ git clone --recurse-submodules \
-  https://github.com/xpack-dev-tools/ninja-build-xpack.git \
-  ~/Downloads/ninja-build-xpack.git
+```sh
+rm -rf ~/Downloads/ninja-build-xpack.git; \
+git clone https://github.com/xpack-dev-tools/ninja-build-xpack.git \
+  ~/Downloads/ninja-build-xpack.git; \
+git -C ~/Downloads/ninja-build-xpack.git submodule update --init --recursive 
 ```
 
 > Note: the repository uses submodules; for a successful build it is
 > mandatory to recurse the submodules.
 
-For development purposes, there is a shortcut to clone the `xpack-develop`
+For development purposes, clone the `xpack-develop`
 branch:
 
-```console
-$ curl -L https://github.com/xpack-dev-tools/ninja-build-xpack/raw/xpack/scripts/git-clone-develop.sh | bash
-```
-
-which is a shortcut for:
-
-```console
-$ rm -rf ~/Downloads/ninja-build-xpack.git
-$ git clone --recurse-submodules --branch xpack-develop \
+```sh
+rm -rf ~/Downloads/ninja-build-xpack.git; \
+git clone \
+  --recurse-submodules \
+  --branch xpack-develop \
   https://github.com/xpack-dev-tools/ninja-build-xpack.git \
   ~/Downloads/ninja-build-xpack.git
 ```
@@ -81,6 +85,32 @@ The scripts create a temporary build `Work/ninja-build-${version}` folder in
 the user home. Although not recommended, if for any reasons you need to
 change the location of the `Work` folder,
 you can redefine `WORK_FOLDER_PATH` variable before invoking the script.
+
+## Spaces in folder names
+
+Due to the limitations of `make`, builds started in folders with
+spaces in names are known to fail.
+
+If on your system the work folder is in such a location, redefine it in a
+folder without spaces and set the `WORK_FOLDER_PATH` variable before invoking
+the script.
+
+## Customizations
+
+There are many other settings that can be redefined via
+environment variables. If necessary,
+place them in a file and pass it via `--env-file`. This file is
+either passed to Docker or sourced to shell. The Docker syntax
+**is not** identical to shell, so some files may
+not be accepted by bash.
+
+## Versioning
+
+The version string is an extension to semver, the format looks like `1.10.0-1`.
+It includes the three digits with the original Ninja Build version and a fourth
+digit with the xPack release number.
+
+When publishing on the **npmjs.com** server, a fifth digit is appended.
 
 ## Changes
 
@@ -99,70 +129,32 @@ The details on how to prepare the development environment for Ninja Build are in
 
 ## How to build distributions
 
-### Update git repos
+## Build
 
-To keep the development repository in sync with the original Ninja Build
-repository, in the `xpack-dev-tools/ninja-build` Git repo:
+The builds currently run on 3 dedicated machines (Intel GNU/Linux,
+Arm GNU/Linux and Intel macOS). A fourth machine for Arm macOS is planned.
 
-- checkout `xpack`
-- merge `xpack-develop`
+### Build the Intel GNU/Linux and Windows binaries
 
-No need to add a tag here, it'll be added when the release is created.
+The current platform for GNU/Linux and Windows production builds is a
+Debian 10, running on an Intel NUC8i7BEH mini PC with 32 GB of RAM
+and 512 GB of fast M.2 SSD. The machine name is `xbbi`.
 
-### Prepare release
-
-To prepare a new release, first determine the Ninja Build version
-(like `1.10.2`) and update the `scripts/VERSION` file. The format is
-`1.10.2-3`. The fourth number is the xPack release number
-of this version. A fifth number will be added when publishing
-the package on the `npm` server.
-
-Add a new set of definitions in the `scripts/common-versions-source.sh`, with
-the versions of various components.
-
-### Check `README.md`
-
-Normally `README.md` should not need changes, but better check.
-Information related to the new version should not be included here,
-but in the version specific file (below).
-
-### Create `README-<version>.md`
-
-In the `scripts` folder create a copy of the previous one and update the
-Git commit and possible other details.
-
-### Update `CHANGELOG.md`
-
-Check `CHANGELOG.md` and add the new release.
-
-### Build
-
-Although it is perfectly possible to build all binaries in a single step
-on a macOS system, due to Docker specifics, it is faster to build the
-GNU/Linux and Windows binaries on a GNU/Linux system and the macOS binary
-separately on a macOS system.
-
-#### Build the Intel GNU/Linux and Windows binaries
-
-The current platform for GNU/Linux and Windows production builds is an
-Manjaro 19, running on an Intel NUC8i7BEH mini PC with 32 GB of RAM
-and 512 GB of fast M.2 SSD.
-
-```console
-$ ssh xbbi
+```sh
+caffeinate ssh xbbi
 ```
 
 Before starting a build, check if Docker is started:
 
-```console
-$ docker info
+```sh
+docker info
 ```
 
 Before running a build for the first time, it is recommended to preload the
 docker images.
 
-```console
-$ bash ~/Downloads/ninja-build-xpack.git/scripts/build.sh preload-images
+```sh
+bash ~/Downloads/ninja-build-xpack.git/scripts/helper/build.sh preload-images
 ```
 
 The result should look similar to:
@@ -175,21 +167,38 @@ ilegeul/ubuntu      amd64-12.04-xbb-v3.2             3aba264620ea        2 days 
 hello-world         latest                           bf756fb1ae65        5 months ago        13.3kB
 ```
 
+It is also recommended to Remove unused Docker space. This is mostly useful
+after failed builds, during development, when dangling images may be left
+by Docker.
+
+To check the content of a Docker image:
+
+```sh
+docker run --interactive --tty ilegeul/ubuntu:amd64-12.04-xbb-v3.2
+```
+
+To remove unused files:
+
+```sh
+docker system prune --force
+```
+
 Since the build takes a while, use `screen` to isolate the build session
 from unexpected events, like a broken
 network connection or a computer entering sleep.
 
-```console
-$ screen -S ninja
+```sh
+screen -S ninja
 
-$ sudo rm -rf ~/Work/ninja-build-*
-$ bash ~/Downloads/ninja-build-xpack.git/scripts/build.sh --all
+sudo rm -rf ~/Work/ninja-build-*
+bash ~/Downloads/ninja-build-xpack.git/scripts/helper/build.sh --develop --all
 ```
 
 or, for development builds:
 
-```console
-$ bash ~/Downloads/ninja-build-xpack.git/scripts/build.sh --linux64 --linux32 --win64 --win32 --develop
+```sh
+sudo rm -rf ~/Work/ninja-build-*
+bash ~/Downloads/ninja-build-xpack.git/scripts/helper/build.sh --develop --without-pdf --disable-tests --linux64 --linux32 --win64 --win32
 ```
 
 To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
@@ -201,45 +210,42 @@ archives and their SHA signatures, created in the `deploy` folder:
 ```console
 $ ls -l ~/Work/ninja-build-*/deploy
 total 1624
--rw-rw-r-- 1 ilg ilg 233764 Sep 28 16:53 xpack-ninja-build-1.10.2-3-linux-x32.tar.gz
--rw-rw-r-- 1 ilg ilg    110 Sep 28 16:53 xpack-ninja-build-1.10.2-3-linux-x32.tar.gz.sha
--rw-rw-r-- 1 ilg ilg 217440 Sep 28 16:52 xpack-ninja-build-1.10.2-3-linux-x64.tar.gz
--rw-rw-r-- 1 ilg ilg    110 Sep 28 16:52 xpack-ninja-build-1.10.2-3-linux-x64.tar.gz.sha
--rw-rw-r-- 1 ilg ilg 475368 Sep 28 16:53 xpack-ninja-build-1.10.2-3-win32-x32.zip
--rw-rw-r-- 1 ilg ilg    107 Sep 28 16:53 xpack-ninja-build-1.10.2-3-win32-x32.zip.sha
--rw-rw-r-- 1 ilg ilg 706151 Sep 28 16:52 xpack-ninja-build-1.10.2-3-win32-x64.zip
--rw-rw-r-- 1 ilg ilg    107 Sep 28 16:52 xpack-ninja-build-1.10.2-3-win32-x64.zip.sha
+-rw-rw-r-- 1 ilg ilg 233764 Sep 28 16:53 xpack-ninja-build-1.10.2-4-linux-x32.tar.gz
+-rw-rw-r-- 1 ilg ilg    110 Sep 28 16:53 xpack-ninja-build-1.10.2-4-linux-x32.tar.gz.sha
+-rw-rw-r-- 1 ilg ilg 217440 Sep 28 16:52 xpack-ninja-build-1.10.2-4-linux-x64.tar.gz
+-rw-rw-r-- 1 ilg ilg    110 Sep 28 16:52 xpack-ninja-build-1.10.2-4-linux-x64.tar.gz.sha
+-rw-rw-r-- 1 ilg ilg 475368 Sep 28 16:53 xpack-ninja-build-1.10.2-4-win32-x32.zip
+-rw-rw-r-- 1 ilg ilg    107 Sep 28 16:53 xpack-ninja-build-1.10.2-4-win32-x32.zip.sha
+-rw-rw-r-- 1 ilg ilg 706151 Sep 28 16:52 xpack-ninja-build-1.10.2-4-win32-x64.zip
+-rw-rw-r-- 1 ilg ilg    107 Sep 28 16:52 xpack-ninja-build-1.10.2-4-win32-x64.zip.sha
 ```
 
-To copy the files from the build machine to the current development
-machine, either use NFS to mount the entire folder, or open the `deploy`
-folder in a terminal and use `scp`:
+### Build the Arm GNU/Linux binaries
 
-```console
-$ (cd ~/Work/ninja-build-*/deploy; scp * ilg@wks:Downloads/xpack-binaries/ninja)
-```
+The supported Arm architectures are:
 
-#### Build the Arm GNU/Linux binaries
+- `armhf` for 32-bit devices
+- `aarch64` for 64-bit devices
 
-The current platform for GNU/Linux and Windows production builds is an
-Manjaro 19, running on an Raspberry Pi 4B with 4 GB of RAM
-and 256 GB of fast M.2 SSD.
+The current platform for Arm GNU/Linux production builds is a
+Raspberry Pi OS 10, running on a Raspberry Pi Compute Module 4, with
+8 GB of RAM and 256 GB of fast M.2 SSD. The machine name is `xbba`.
 
-```console
-$ ssh xbba
+```sh
+caffeinate ssh xbba
 ```
 
 Before starting a build, check if Docker is started:
 
-```console
-$ docker info
+```sh
+docker info
 ```
 
 Before running a build for the first time, it is recommended to preload the
 docker images.
 
-```console
-$ bash ~/Downloads/ninja-build-xpack.git/scripts/build.sh preload-images
+```sh
+bash ~/Downloads/ninja-build-xpack.git/scripts/helper/build.sh preload-images
 ```
 
 The result should look similar to:
@@ -256,11 +262,18 @@ Since the build takes a while, use `screen` to isolate the build session
 from unexpected events, like a broken
 network connection or a computer entering sleep.
 
-```console
-$ screen -S ninja
+```sh
+screen -S ninja
 
-$ sudo rm -rf ~/Work/ninja-build-*
-$ bash ~/Downloads/ninja-build-xpack.git/scripts/build.sh --all
+sudo rm -rf ~/Work/ninja-build-*
+bash ~/Downloads/ninja-build-xpack.git/scripts/helper/build.sh --develop --all
+```
+
+or, for development builds:
+
+```sh
+sudo rm -rf ~/Work/ninja-build-*
+bash ~/Downloads/ninja-build-xpack.git/scripts/helper/build.sh --develop --without-pdf --disable-tests --arm64 --arm32 
 ```
 
 To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
@@ -272,36 +285,38 @@ archives and their SHA signatures, created in the `deploy` folder:
 ```console
 $ ls -l ~/Work/ninja-build-*/deploy
 total 416
--rw-rw-r-- 1 ilg ilg 215309 Sep 28 14:00 xpack-ninja-build-1.10.2-3-linux-arm64.tar.gz
--rw-rw-r-- 1 ilg ilg    112 Sep 28 14:00 xpack-ninja-build-1.10.2-3-linux-arm64.tar.gz.sha
--rw-rw-r-- 1 ilg ilg 199196 Sep 28 14:01 xpack-ninja-build-1.10.2-3-linux-arm.tar.gz
--rw-rw-r-- 1 ilg ilg    110 Sep 28 14:01 xpack-ninja-build-1.10.2-3-linux-arm.tar.gz.sha
+-rw-rw-r-- 1 ilg ilg 215309 Sep 28 14:00 xpack-ninja-build-1.10.2-4-linux-arm64.tar.gz
+-rw-rw-r-- 1 ilg ilg    112 Sep 28 14:00 xpack-ninja-build-1.10.2-4-linux-arm64.tar.gz.sha
+-rw-rw-r-- 1 ilg ilg 199196 Sep 28 14:01 xpack-ninja-build-1.10.2-4-linux-arm.tar.gz
+-rw-rw-r-- 1 ilg ilg    110 Sep 28 14:01 xpack-ninja-build-1.10.2-4-linux-arm.tar.gz.sha
 ```
 
-To copy the files from the build machine to the current development
-machine, either use NFS to mount the entire folder, or open the `deploy`
-folder in a terminal and use `scp`:
+### Build the macOS binaries
 
-```console
-$ (cd ~/Work/ninja-build-*/deploy; scp * ilg@wks:Downloads/xpack-binaries/ninja)
-```
+The current platform for macOS production builds is a macOS 10.13.6
+running on a MacBook Pro 2011 with 32 GB of RAM and a fast SSD.
+The machine name is `xbbm`.
 
-#### Build the macOS binaries
-
-The current platform for macOS production builds is a macOS 10.10.5
-running on a MacBook Pro with 32 GB of RAM and a fast SSD.
-
-```console
-$ ssh xbbm
+```sh
+caffeinate ssh xbbm
 ```
 
 To build the latest macOS version:
 
-```console
-$ screen -S ninja
+```sh
+screen -S ninja
 
-$ rm -rf ~/Work/ninja-build-*
-$ caffeinate bash ~/Downloads/ninja-build-xpack.git/scripts/build.sh --osx
+rm -rf ~/Work/ninja-build-*
+caffeinate bash ~/Downloads/ninja-build-xpack.git/scripts/helper/build.sh --develop --osx
+```
+
+or, for development builds:
+
+```sh
+screen -S ninja
+
+rm -rf ~/Work/ninja-build-*
+caffeinate bash ~/Downloads/ninja-build-xpack.git/scripts/helper/build.sh --develop --without-pdf --disable-tests --osx
 ```
 
 To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
@@ -314,47 +329,45 @@ archive and its SHA signature, created in the `deploy` folder:
 ```console
 $ ls -l ~/Work/ninja-build-*/deploy
 total 1768
--rw-r--r--  1 ilg  staff  900060 Sep 28 17:04 xpack-ninja-build-1.10.2-3-darwin-x64.tar.gz
--rw-r--r--  1 ilg  staff     111 Sep 28 17:04 xpack-ninja-build-1.10.2-3-darwin-x64.tar.gz.sha
+-rw-r--r--  1 ilg  staff  900060 Sep 28 17:04 xpack-ninja-build-1.10.2-4-darwin-x64.tar.gz
+-rw-r--r--  1 ilg  staff     111 Sep 28 17:04 xpack-ninja-build-1.10.2-4-darwin-x64.tar.gz.sha
 ```
 
-To copy the files from the build machine to the current development
-machine, either use NFS to mount the entire folder, or open the `deploy`
-folder in a terminal and use `scp`:
+## Subsequent runs
 
-```console
-$ (cd ~/Work/ninja-build-*/deploy; scp * ilg@wks:Downloads/xpack-binaries/ninja)
-```
-
-### Subsequent runs
-
-#### Separate platform specific builds
+### Separate platform specific builds
 
 Instead of `--all`, you can use any combination of:
 
-```
---win32 --win64 --linux32 --linux64
---arm --arm64
+```console
+--win32 --win64
+--linux32 --linux64
 ```
 
-#### `clean`
+On Arm, instead of `--all`, you can use:
+
+```console
+--arm32 --arm64
+```
+
+### `clean`
 
 To remove most build temporary files, use:
 
-```console
-$ bash ~/Downloads/ninja-build-xpack.git/scripts/build.sh --all clean
+```sh
+bash ~/Downloads/ninja-build-xpack.git/scripts/helper/build.sh --all clean
 ```
 
 To also remove the library build temporary files, use:
 
-```console
-$ bash ~/Downloads/ninja-build-xpack.git/scripts/build.sh --all cleanlibs
+```sh
+bash ~/Downloads/ninja-build-xpack.git/scripts/helper/build.sh --all cleanlibs
 ```
 
 To remove all temporary files, use:
 
-```console
-$ bash ~/Downloads/ninja-build-xpack.git/scripts/build.sh --all cleanall
+```sh
+bash ~/Downloads/ninja-build-xpack.git/scripts/helper/build.sh --all cleanall
 ```
 
 Instead of `--all`, any combination of `--win32 --win64 --linux32 --linux64`
@@ -362,7 +375,7 @@ will remove the more specific folders.
 
 For production builds it is recommended to completely remove the build folder.
 
-#### `--develop`
+### `--develop`
 
 For performance reasons, the actual build folders are internal to each
 Docker run, and are not persistent. This gives the best speed, but has
@@ -371,12 +384,17 @@ the disadvantage that interrupted builds cannot be resumed.
 For development builds, it is possible to define the build folders in
 the host file system, and resume an interrupted build.
 
-#### `--debug`
+### `--debug`
 
 For development builds, it is also possible to create everything with
 `-g -O0` and be able to run debug sessions.
 
-#### Interrupted builds
+### --jobs
+
+By default, the build steps use all available cores. If, for any reason,
+parallel builds fail, it is possible to reduce the load.
+
+### Interrupted builds
 
 The Docker scripts run with root privileges. This is generally not a
 problem, since at the end of the script the output files are reassigned
@@ -397,7 +415,7 @@ program from there. For example on macOS the output should
 look like:
 
 ```console
-$ /Users/ilg/Downloads/xPacks/ninja-build/1.10.2-3/bin/ninja --version
+$ /Users/ilg/Downloads/xPacks/ninja-build/1.10.2-4/bin/ninja --version
 1.10.2
 ```
 
@@ -407,20 +425,21 @@ After install, the package should create a structure like this (macOS files;
 only the first two depth levels are shown):
 
 ```console
-$ tree -L 2 /Users/ilg/Library/xPacks/\@xpack-dev-tools/ninja-build/1.10.2-3.1/.content/
-/Users/ilg/Library/xPacks/\@xpack-dev-tools/ninja-build/1.10.2-3.1/.content/
+$ tree -L 2 /Users/ilg/Library/xPacks/\@xpack-dev-tools/ninja-build/1.10.2-4.1/.content/
+/Users/ilg/Library/xPacks/\@xpack-dev-tools/ninja-build/1.10.2-4.1/.content/
 ├── README.md
 ├── bin
-│   ├── libgcc_s.1.dylib
-│   ├── libstdc++.6.dylib
 │   └── ninja
-└── distro-info
-    ├── CHANGELOG.md
-    ├── licenses
-    ├── patches
-    └── scripts
+├── distro-info
+│   ├── CHANGELOG.md
+│   ├── licenses
+│   ├── patches
+│   └── scripts
+└── libexec
+    ├── libgcc_s.1.dylib
+    └── libstdc++.6.dylib
 
-5 directories, 5 files
+6 directories, 5 files
 ```
 
 No other files are installed in any system folders or other locations.
@@ -441,7 +460,7 @@ may fail.
 
 The workaround is to manually download the files from an alternate
 location (like
-https://github.com/xpack-dev-tools/files-cache/tree/master/libs),
+<https://github.com/xpack-dev-tools/files-cache/tree/master/libs>),
 place them in the XBB cache (`Work/cache`) and restart the build.
 
 ## More build details

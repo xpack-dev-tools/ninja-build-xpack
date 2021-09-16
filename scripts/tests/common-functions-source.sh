@@ -19,7 +19,7 @@
 
 function run_tests()
 {
-  test_ninja
+  test_openocd
 }
 
 function update_image()
@@ -59,6 +59,5 @@ function update_image()
     run_verbose pacman -S -q --noconfirm --noprogressbar gcc-libs
   fi
 }
-
 
 # -----------------------------------------------------------------------------

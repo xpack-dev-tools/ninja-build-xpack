@@ -28,13 +28,13 @@ function build_ninja()
   local ninja_src_folder_name="ninja-${ninja_version}"
   local ninja_folder_name="${ninja_src_folder_name}"
 
+  mkdir -pv "${LOGS_FOLDER_PATH}/${ninja_folder_name}"
+
   cd "${SOURCES_FOLDER_PATH}"
 
   if [ ! -d "${SOURCES_FOLDER_PATH}/${ninja_src_folder_name}" ]
   then
     (
-      xbb_activate
-
       cd "${SOURCES_FOLDER_PATH}"
       git_clone "${NINJA_GIT_URL}" "${NINJA_GIT_BRANCH}" \
           "${NINJA_GIT_COMMIT}" "${ninja_src_folder_name}"
@@ -45,15 +45,7 @@ function build_ninja()
     mkdir -p "${BUILD_FOLDER_PATH}/${ninja_folder_name}"
     cd "${BUILD_FOLDER_PATH}/${ninja_folder_name}"
 
-    mkdir -pv "${LOGS_FOLDER_PATH}/${ninja_folder_name}"
-
-    xbb_activate
     # xbb_activate_installed_dev
-
-    if false # [ "${TARGET_PLATFORM}" == "win32" ]
-    then
-      prepare_gcc_env "${CROSS_COMPILE_PREFIX}-"
-    fi
 
     # CPPFLAGS="${XBB_CPPFLAGS}"
     CFLAGS="$(echo ${XBB_CPPFLAGS} ${XBB_CFLAGS_NO_W} | sed -e 's|-O[0123s]||')"
@@ -68,16 +60,10 @@ function build_ninja()
     then
       LDFLAGS+=" -Wl,-rpath,${LD_LIBRARY_PATH}"
     fi      
-    if [ "${IS_DEVELOP}" == "y" ]
-    then
-      LDFLAGS+=" -v"
-    fi
 
     export CFLAGS
     export CXXFLAGS
     export LDFLAGS
-
-    env | sort
 
     local build_type
     if [ "${IS_DEBUG}" == "y" ]
@@ -90,12 +76,17 @@ function build_ninja()
     if true # [ ! -f "CMakeCache.txt" ]
     then
       (
+        if [ "${IS_DEVELOP}" == "y" ]
+        then
+          env | sort
+        fi
+
         echo
         echo "Running ninja configure..."
 
         config_options=()
 
-        config_options+=("-G" "Unix Makefiles")
+        config_options+=("-G" "Ninja")
 
         config_options+=("-DCMAKE_BUILD_TYPE=${build_type}")
 
@@ -123,7 +114,6 @@ function build_ninja()
       echo
       echo "Running ninja build..."
 
-      #  --parallel ${JOBS} \
       run_verbose_timed cmake \
         --build . \
         --parallel ${JOBS} \
@@ -144,7 +134,7 @@ function build_ninja()
         install -v -m755 -c ninja "${APP_PREFIX}/bin"
       fi
 
-      prepare_app_libraries "${APP_PREFIX}/bin/ninja"
+      # prepare_app_libraries "${APP_PREFIX}/bin/ninja"
 
     ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${ninja_folder_name}/build-output.txt"
 
@@ -161,9 +151,27 @@ function build_ninja()
 
 function test_ninja()
 {
-  run_app "${APP_PREFIX}/bin/ninja" --version
+  if [ -d "xpacks/.bin" ]
+  then
+    NINJA="xpacks/.bin/ninja"
+  elif [ -d "${APP_PREFIX}/bin" ]
+  then
+    NINJA="${APP_PREFIX}/bin/ninja"
+  else
+    echo "Wrong folder."
+    exit 1
+  fi
 
-  run_app "${APP_PREFIX}/bin/ninja" --help || true
+  echo
+  echo "Checking the ninja shared libraries..."
+  show_libs "${NINJA}"
+
+  echo
+  echo "Checking if ninja starts..."
+
+  run_app "${NINJA}" --version
+
+  run_app "${NINJA}" --help || true
 }
 
 # -----------------------------------------------------------------------------

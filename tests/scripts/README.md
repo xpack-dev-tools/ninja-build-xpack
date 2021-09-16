@@ -2,15 +2,17 @@
 
 The binaries can be available from one of the pre-releases:
 
-https://github.com/xpack-dev-tools/pre-releases/releases
+<https://github.com/xpack-dev-tools/pre-releases/releases>
 
 ## Download the repo
 
 The test script is part of the Ninja Build xPack:
 
-```bash
-rm -rf ~/Downloads/opencod-xpack.git
-git clone --recurse-submodules -b xpack-develop \
+```sh
+rm -rf ~/Downloads/openocd-xpack.git; \
+git clone \
+  --recurse-submodules \
+  --branch xpack-develop \
   https://github.com/xpack-dev-tools/ninja-build-xpack.git  \
   ~/Downloads/ninja-build-xpack.git
 ```
@@ -19,7 +21,7 @@ git clone --recurse-submodules -b xpack-develop \
 
 To check if OpenCOD starts on the current platform, run a native test:
 
-```bash
+```sh
 bash ~/Downloads/ninja-build-xpack.git/tests/scripts/native-test.sh
 ```
 
@@ -28,8 +30,8 @@ does not download it again if available locally.
 
 To force a new download, remove the local archive:
 
-```console
-rm ~/Work/cache/xpack-ninja-build-*
+```sh
+rm -rf ~/Work/cache/xpack-ninja-build-*
 ```
 
 ## Start the Travis test
@@ -37,7 +39,7 @@ rm ~/Work/cache/xpack-ninja-build-*
 The multi-platform test runs on Travis CI; it is configured to not fire on
 git actions, but only via a manual POST to the Travis API.
 
-```bash
+```sh
 bash ~/Downloads/ninja-build-xpack.git/tests/scripts/travis-trigger.sh
 ```
 

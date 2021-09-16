@@ -2,6 +2,11 @@
 
 Releases in reverse chronological order.
 
+## 2021-09-16
+
+- prepare v1.10.2-4
+- update build scripts
+
 ## 2021-04-28
 
 - v1.10.2-3.1 published on npmjs.com

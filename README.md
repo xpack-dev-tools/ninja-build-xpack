@@ -1,21 +1,33 @@
 
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/xpack-dev-tools/ninja-build-xpack)](https://github.com/xpack-dev-tools/ninja-build-xpack/releases)
 [![npm (scoped)](https://img.shields.io/npm/v/@xpack-dev-tools/ninja-build.svg)](https://www.npmjs.com/package/@xpack-dev-tools/ninja-build/)
-[![npm](https://img.shields.io/npm/dt/@xpack-dev-tools/ninja-build.svg)](https://www.npmjs.com/package/@xpack-dev-tools/ninja-build/)
 
 # The xPack Ninja Build
+
+A standalone cross-platform (Windows/macOS/Linux) Ninja Build
+binary distribution.
+
+In addition to the the binary archives and the package meta data,
+this project also includes the build scripts.
+
+## Overview
 
 This open source project is hosted on GitHub as
 [`xpack-dev-tools/ninja-build-xpack`](https://github.com/xpack-dev-tools/ninja-build-xpack)
 and provides the platform specific binaries for the
 [xPack Ninja Build](https://xpack.github.io/ninja-build/).
 
-This distribution follows the official [Ninja](http://ninja-build.org) build system.
+This distribution follows the official
+[Ninja](http://ninja-build.org) build system.
 
 The binaries can be installed automatically as **binary xPacks** or manually as
 **portable archives**.
 
-In addition to the package meta data, this project also includes
-the build scripts.
+## Release schedule
+
+This distribution is generally one minor release behind the upstream releases.
+In practical terms, when the minor release number changes, it awaits a few
+more weeks to get the latest patch release.
 
 ## User info
 
@@ -40,40 +52,59 @@ follow the instructions from the
 #### Install
 
 With the `xpm` tool available, installing
-the latest version of the package is quite easy:
+the latest version of the package and adding it as
+a dependency for a project is quite easy:
 
-```console
-xpm install --global @xpack-dev-tools/ninja-build@latest
+```sh
+cd my-project
+xpm init # Only at first use.
+
+xpm install @xpack-dev-tools/ninja-build@latest
+
+ls -l xpacks/.bin
 ```
 
-This command will always install the latest available version,
-into the central xPacks repository, which is a platform dependent folder
-(check the output of the `xpm` command for the actual folder used on
-your platform).
+This command will:
 
-This location is configurable using the environment variable
+- install the latest available version,
+into the central xPacks store, if not already there
+- add symbolic links to the central store
+(or `.cmd` forwarders on Windows) into
+the local `xpacks/.bin` folder.
+
+The central xPacks store is a platform dependent
+folder; check the output of the `xpm` command for the actual
+folder used on your platform).
+This location is configurable via the environment variable
 `XPACKS_REPO_FOLDER`; for more details please check the
 [xpm folders](https://xpack.github.io/xpm/folders/) page.
 
-xPacks aware tools automatically
-identify binaries installed with
-`xpm` and provide a convenient method to manage paths.
+It is also possible to install Ninja Build globally, in the user home folder:
+
+```sh
+xpm install --global @xpack-dev-tools/ninja-build@latest
+```
 
 #### Uninstall
 
-To remove the installed xPack, the command is similar:
+To remove the links from the current project:
 
-```console
+```sh
+cd my-project
+
+xpm uninstall @xpack-dev-tools/ninja-build
+```
+
+To completely remove the package from the global store:
+
+```sh
 xpm uninstall --global @xpack-dev-tools/ninja-build
 ```
 
-(Note: not yet implemented. As a temporary workaround, simply remove the
-`xPacks/@xpack-dev-tools/ninja-build` folder, or one of the the versioned
-subfolders.)
-
 ### Manual install
 
-For all platforms, the **xPack Ninja Build** binaries are released as portable
+For all platforms, the **xPack Ninja Build**
+binaries are released as portable
 archives that can be installed in any location.
 
 The archives can be downloaded from the
@@ -83,7 +114,7 @@ page.
 For more details please read the
 [Install](https://xpack.github.io/ninja-build/install/) page.
 
-### Version information
+### Versioning
 
 The version strings used by the Ninja project are three number string
 like `1.10.0`; to this string the xPack distribution adds a four number,
@@ -126,7 +157,7 @@ corresponding licenses are available in the installed
   - latest xPack release
 [![Github All Releases](https://img.shields.io/github/downloads/xpack-dev-tools/ninja-build-xpack/latest/total.svg)](https://github.com/xpack-dev-tools/ninja-build-xpack/releases/)
   - all xPack releases [![Github All Releases](https://img.shields.io/github/downloads/xpack-dev-tools/ninja-build-xpack/total.svg)](https://github.com/xpack-dev-tools/ninja-build-xpack/releases/)
-  - [individual file counters](https://www.somsubhra.com/github-release-stats/?username=xpack-dev-tools&repository=ninja-build-xpack) (grouped per release)
+  - [individual file counters](https://somsubhra.github.io/github-release-stats/?username=xpack-dev-tools&repository=ninja-build-xpack) (grouped per release)
 - npmjs.com [`@xpack-dev-tools/ninja-build`](https://www.npmjs.com/package/@xpack-dev-tools/ninja-build/) xPack
   - latest release, per month
 [![npm (scoped)](https://img.shields.io/npm/v/@xpack-dev-tools/ninja-build.svg)](https://www.npmjs.com/package/@xpack-dev-tools/ninja-build/)
