@@ -19,16 +19,15 @@
 APP_NAME=${APP_NAME:-"Ninja Build"}
 
 # Used as part of file/folder paths.
-APP_UC_NAME=${APP_UC_NAME:-"Ninja Build"}
 APP_LC_NAME=${APP_LC_NAME:-"ninja-build"}
 
-DISTRO_UC_NAME=${DISTRO_UC_NAME:-"xPack"}
+DISTRO_NAME=${DISTRO_NAME:-"xPack"}
 DISTRO_LC_NAME=${DISTRO_LC_NAME:-"xpack"}
 DISTRO_TOP_FOLDER=${DISTRO_TOP_FOLDER:-"xPacks"}
 
-APP_DESCRIPTION="${DISTRO_UC_NAME} ${APP_UC_NAME}"
+APP_DESCRIPTION="${DISTRO_NAME} ${APP_NAME}"
 
-BRANDING="${BRANDING:-"${DISTRO_UC_NAME} ${APP_NAME}"}"
+BRANDING="${BRANDING:-"${DISTRO_NAME} ${APP_NAME}"}"
 
 # -----------------------------------------------------------------------------
 
