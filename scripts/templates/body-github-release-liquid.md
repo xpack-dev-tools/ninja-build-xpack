@@ -4,7 +4,7 @@ Version {{ RELEASE_VERSION }} is a maintenance release of the **xPack Ninja Buil
 
 Or (edit!):
 
-Version {{ RELEASE_VERSION }} is a new release of the **xPack Ninja Build** package, following the Ninja Build release.
+Version {{ RELEASE_VERSION }} is a new release of the **xPack Ninja Build** package, following the upstream Ninja Build release.
 
 [Continue reading »](edit, add URL!)
 
