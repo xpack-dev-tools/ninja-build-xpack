@@ -296,7 +296,7 @@ will install the package via `xpm install` on all supported platforms.
 
 The test results are available from:
 
-- <https://travis-ci.com/github/xpack-dev-tools/ninja-build-xpack>
+- <https://travis-ci.com/github/xpack-dev-tools/ninja-build-xpack/>
 
 ## Update the repo
 
