@@ -55,7 +55,7 @@ The build scripts are available in the `scripts` folder of the
 [`xpack-dev-tools/ninja-build-xpack`](https://github.com/xpack-dev-tools/ninja-build-xpack)
 Git repo.
 
-To download them, issue the following two commands:
+To download them, issue the following commands:
 
 ```sh
 rm -rf ~/Downloads/ninja-build-xpack.git; \
@@ -415,7 +415,7 @@ program from there. For example on macOS the output should
 look like:
 
 ```console
-$ /Users/ilg/Downloads/xPacks/ninja-build/1.10.2-4/bin/ninja --version
+$ .../xpack-ninja-build-1.10.2-4/bin/ninja --version
 1.10.2
 ```
 
