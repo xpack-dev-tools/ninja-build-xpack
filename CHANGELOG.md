@@ -4,11 +4,12 @@ Entries in this file are in reverse chronological order.
 
 ## 2021-10-13
 
+- v1.10.2-4 released
 - update for new build scripts & xbb v3.3
 
 ## 2021-09-16
 
-- prepare v1.10.2-4
+- v1.10.2-4 prepared
 - update build scripts
 
 ## 2021-04-28
