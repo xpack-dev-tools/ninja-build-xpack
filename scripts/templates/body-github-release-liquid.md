@@ -1,4 +1,4 @@
-![Github Releases (by Release)](https://img.shields.io/github/downloads/xpack-dev-tools/Ninja Build-xpack/v{{ RELEASE_VERSION }}/total.svg)
+![Github Releases (by Release)](https://img.shields.io/github/downloads/xpack-dev-tools/ninja-build-xpack/v{{ RELEASE_VERSION }}/total.svg)
 
 Version {{ RELEASE_VERSION }} is a maintenance release of the **xPack Ninja Build** package; it fixes <...>.
 
