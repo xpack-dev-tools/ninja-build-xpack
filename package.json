@@ -33,36 +33,36 @@
     "minimumXpmRequired": "0.10.2",
     "binaries": {
       "destination": "./.content",
-      "baseUrl": "https://github.com/xpack-dev-tools/ninja-build-xpack/releases/download/v1.10.2-3",
+      "baseUrl": "https://github.com/xpack-dev-tools/ninja-build-xpack/releases/download/v1.10.2-4",
       "skip": 1,
       "platforms": {
         "darwin-x64": {
-          "fileName": "xpack-ninja-build-1.10.2-3-darwin-x64.tar.gz",
-          "sha256": "bab7c9f80775d71c28bbf0c7322e9209059ca435276df221506c6a84d501e822"
+          "fileName": "xpack-ninja-build-1.10.2-4-darwin-x64.tar.gz",
+          "sha256": "ff591f7b164951a99fe7fd25cecda89c8b8c5467293e83568111b41ab2468551"
         },
         "linux-arm64": {
-          "fileName": "xpack-ninja-build-1.10.2-3-linux-arm64.tar.gz",
-          "sha256": "ae093330e3f55f983a8e8de3b3ee4d6962d8ac1ff439fa505ffa34e475d5c5f2"
+          "fileName": "xpack-ninja-build-1.10.2-4-linux-arm64.tar.gz",
+          "sha256": "ac654157c363286dd4c410bdb20fe391e3f7f4be7a9ca9ad4bea9f6aba461497"
         },
         "linux-arm": {
-          "fileName": "xpack-ninja-build-1.10.2-3-linux-arm.tar.gz",
-          "sha256": "97baabda3edf74726e5d60682a9b0fe95fdc8895e631694a65974ea94e4650a6"
+          "fileName": "xpack-ninja-build-1.10.2-4-linux-arm.tar.gz",
+          "sha256": "10f10f4318f25733ae36ba4e8862d9b41207201c1190b8cbacca62fa14539f49"
         },
         "linux-ia32": {
-          "fileName": "xpack-ninja-build-1.10.2-3-linux-ia32.tar.gz",
-          "sha256": "52ed3dd29174b584bd57ea100f69ab5b1888df7064b9368ba8522fb99957cdbd"
+          "fileName": "xpack-ninja-build-1.10.2-4-linux-ia32.tar.gz",
+          "sha256": "c34f6b38de394e434d359ce6e1b02a1dcbf38225ce77f4ebf181588910c65358"
         },
         "linux-x64": {
-          "fileName": "xpack-ninja-build-1.10.2-3-linux-x64.tar.gz",
-          "sha256": "b49522febca4c4605e335b9482b96994f530729337623efc153098738f517e62"
+          "fileName": "xpack-ninja-build-1.10.2-4-linux-x64.tar.gz",
+          "sha256": "fbe473e04b2d27d91aa8297824b3a3f209ea6a83062fb6ef9e85ae23170aa5d6"
         },
         "win32-ia32": {
-          "fileName": "xpack-ninja-build-1.10.2-3-win32-ia32.zip",
-          "sha256": "223a3a32c00c12f3a64e42994c88d28a2595f70369893187fef2c96deb0c9e5c"
+          "fileName": "xpack-ninja-build-1.10.2-4-win32-ia32.zip",
+          "sha256": "5d745ce53dcc7bae1a6379055827a25505b1d5fb6f7e796a5eb7c215a7c89545"
         },
         "win32-x64": {
-          "fileName": "xpack-ninja-build-1.10.2-3-win32-x64.zip",
-          "sha256": "e25d9f00bb4052eb6c61641f69ea7dcbf8ab45212d3c2078c98ef2cd1a074a5e"
+          "fileName": "xpack-ninja-build-1.10.2-4-win32-x64.zip",
+          "sha256": "5d454007c161019a64af405ae08a7aa7e3556548c1f80ad6ceff0871907e3bce"
         }
       }
     },
@@ -85,7 +85,7 @@
         "cat scripts/helper/templates/test-docker-linux-arm-liquid.yml | {{ properties.LIQUIDJS }} > .github/workflows/test-docker-linux-arm.yml",
         "cat scripts/helper/templates/publish-release-liquid.yml | {{ properties.LIQUIDJS }} > .github/workflows/publish-release.yml",
         "cat scripts/helper/templates/test-xpm-liquid.yml | {{ properties.LIQUIDJS }} > .github/workflows/test-xpm.yml"
-        ],
+      ],
       "trigger-workflow-build": "bash scripts/helper/trigger-workflow-build.sh",
       "trigger-workflow-test-prime": "bash scripts/helper/tests/trigger-workflow-test-prime.sh",
       "trigger-workflow-test-docker-linux-intel": "bash scripts/helper/tests/trigger-workflow-test-docker-linux-intel.sh",
