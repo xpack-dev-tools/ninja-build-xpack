@@ -1,6 +1,10 @@
 # Change & release log
 
-Releases in reverse chronological order.
+Entries in this file are in reverse chronological order.
+
+## 2021-10-13
+
+- update for new build scripts & xbb v3.3
 
 ## 2021-09-16
 

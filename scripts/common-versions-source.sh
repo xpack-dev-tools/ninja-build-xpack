@@ -23,7 +23,7 @@ function build_versions()
   # NINJA_BUILD_GIT_BRANCH=${NINJA_BUILD_GIT_BRANCH:-"master"}
   # NINJA_BUILD_GIT_COMMIT=${NINJA_BUILD_GIT_COMMIT:-"HEAD"}
 
-  NINJA_VERSION="$(echo "${RELEASE_VERSION}" | sed -e 's|-[0-9]*||')"
+  NINJA_VERSION="$(echo "${RELEASE_VERSION}" | sed -e 's|-.*||')"
 
   if [ "${TARGET_PLATFORM}" == "win32" ]
   then
@@ -39,11 +39,16 @@ function build_versions()
       NINJA_GIT_URL=${NINJA_GIT_URL:-"https://github.com/xpack-dev-tools/ninja.git"}
       NINJA_GIT_BRANCH=${NINJA_GIT_BRANCH:-"xpack"}
       NINJA_GIT_COMMIT=${NINJA_GIT_COMMIT:-"73218c896d51b91a4654531e90bf9a277bdf0300"}
-    elif [[ "${RELEASE_VERSION}" =~ 1\.10\.2-[34] ]]
+    elif [[ "${RELEASE_VERSION}" =~ 1\.10\.2-[3] ]]
     then
       NINJA_GIT_URL=${NINJA_GIT_URL:-"https://github.com/xpack-dev-tools/ninja.git"}
       NINJA_GIT_BRANCH=${NINJA_GIT_BRANCH:-"xpack"}
       NINJA_GIT_COMMIT=${NINJA_GIT_COMMIT:-"148d49dd50c9d126bbcb509c1082ac8ef8dcf76a"}
+    elif [[ "${RELEASE_VERSION}" =~ 1\.10\.2-[4] ]]
+    then
+      NINJA_GIT_URL=${NINJA_GIT_URL:-"https://github.com/xpack-dev-tools/ninja.git"}
+      NINJA_GIT_BRANCH=${NINJA_GIT_BRANCH:-"xpack"}
+      NINJA_GIT_COMMIT=${NINJA_GIT_COMMIT:-"9f78efd4a288cdb2dd63ce0f8d5634038e2df1d9"}
     else
       echo "Unsupported version. Quit."
       exit 1

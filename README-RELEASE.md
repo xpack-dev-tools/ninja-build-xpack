@@ -20,6 +20,11 @@ In the `xpack-dev-tools/ninja-build-xpack` Git repo:
 
 No need to add a tag here, it'll be added when the release is created.
 
+### Check the latest upstream release
+
+Check the Ninja Build GitHub [releases](https://github.com/ninja-build/ninja/releases/)
+and compare the the xPack [releases](https://github.com/xpack-dev-tools/ninja-build-xpack/releases/).
+
 ### Increase the version
 
 Determine the version (like `1.10.2`) and update the `scripts/VERSION`
@@ -47,7 +52,7 @@ but in the version specific release page.
 - update version in `README-BUILD.md`
 - update version in `README.md`
 
-## Update `CHANGELOG.md`
+### Update `CHANGELOG.md`
 
 - open the `CHANGELOG.md` file
 - check if all previous fixed issues are in
@@ -57,15 +62,6 @@ but in the version specific release page.
 Note: if you missed to update the `CHANGELOG.md` before starting the build,
 edit the file and rerun the build, it should take only a few minutes to
 recreate the archives with the correct file.
-
-### Update the version specific code
-
-- open the `common-versions-source.sh` file
-- add a new `if` with the new version before the existing code
-
-### Update helper
-
-With Sourcetree, go to the helper repo and update to the latest master commit.
 
 ### Merge upstream repo
 
@@ -79,6 +75,15 @@ repository, in the `xpack-dev-tools/ninja` Git fork repo:
 - checkout `xpack`
 - merge `xpack-develop`
 
+### Update the version specific code
+
+- open the `common-versions-source.sh` file
+- add a new `if` with the new version before the existing code
+
+### Update helper
+
+With Sourcetree, go to the helper repo and update to the latest master commit.
+
 ## Build
 
 ### Development run the build scripts
@@ -89,24 +94,24 @@ or the production machine (`xbbm`):
 ```sh
 sudo rm -rf ~/Work/ninja-build-*
 
-caffeinate bash ~/Downloads/ninja-build-xpack.git/scripts/helper/build.sh --develop --without-pdf --without-html --disable-tests --osx
+caffeinate bash ~/Downloads/ninja-build-xpack.git/scripts/helper/build.sh --develop --osx
 ```
 
 Similarly on the Intel Linux (`xbbi`):
 
 ```sh
-bash ~/Downloads/ninja-build-xpack.git/scripts/helper/build.sh --develop --without-pdf --without-html --disable-tests --linux64
-bash ~/Downloads/ninja-build-xpack.git/scripts/helper/build.sh --develop --without-pdf --without-html --disable-tests --linux32
+bash ~/Downloads/ninja-build-xpack.git/scripts/helper/build.sh --develop --linux64
+bash ~/Downloads/ninja-build-xpack.git/scripts/helper/build.sh --develop --linux32
 
-bash ~/Downloads/ninja-build-xpack.git/scripts/helper/build.sh --develop --without-pdf --without-html --disable-tests --win64
-bash ~/Downloads/ninja-build-xpack.git/scripts/helper/build.sh --develop --without-pdf --without-html --disable-tests --win32
+bash ~/Downloads/ninja-build-xpack.git/scripts/helper/build.sh --develop --win64
+bash ~/Downloads/ninja-build-xpack.git/scripts/helper/build.sh --develop --win32
 ```
 
 And on the Arm Linux (`xbba`):
 
 ```sh
-bash ~/Downloads/ninja-build-xpack.git/scripts/helper/build.sh --develop --without-pdf --without-html --disable-tests --arm64
-bash ~/Downloads/ninja-build-xpack.git/scripts/helper/build.sh --develop --without-pdf --without-html --disable-tests --arm32
+bash ~/Downloads/ninja-build-xpack.git/scripts/helper/build.sh --develop --arm64
+bash ~/Downloads/ninja-build-xpack.git/scripts/helper/build.sh --develop --arm32
 ```
 
 ## Push the build scripts
@@ -216,7 +221,7 @@ TBD
 
 ## Create a new GitHub pre-release draft
 
-- in `CHANGELOG.md`, add release date
+- in `CHANGELOG.md`, add the release date and a message like _v1.10.2-4 released_
 - commit and push the `xpack-develop` branch
 - run the xPack action `trigger-workflow-publish-release`
 
@@ -251,7 +256,8 @@ If any, refer to closed
 
 - go to the GitHub [releases](https://github.com/xpack-dev-tools/ninja-build-xpack/releases/) page
 - perform the final edits and check if everything is fine
-- save the release
+- keep the pre-release button enabled
+- publish the release
 
 Note: at this moment the system should send a notification to all clients
 watching this project.
@@ -273,8 +279,8 @@ watching this project.
 
 - select the `xpack-develop` branch
 - check the latest commits `npm run git-log`
-- update `CHANGELOG.md`; commit with a message like
-  _CHANGELOG: publish npm v1.10.2-4.1_
+- update `CHANGELOG.md`, add a line like _v1.10.2-4.1 published on npmjs.com_
+- commit with a message like _CHANGELOG: publish npm v1.10.2-4.1_
 - `npm pack` and check the content of the archive, which should list
   only the `package.json`, the `README.md`, `LICENSE` and `CHANGELOG.md`;
   possibly adjust `.npmignore`
@@ -291,12 +297,11 @@ After a few moments the version will be visible at:
 
 ## Test if the npm binaries can be installed with xpm
 
-Run the `scripts/tests/trigger-travis-xpm-install.sh` script, this
+Run the xPack action `trigger-workflow-test-xpm`, this
 will install the package via `xpm install` on all supported platforms.
 
-The test results are available from:
-
-- <https://travis-ci.com/github/xpack-dev-tools/ninja-build-xpack/>
+The tests results are available from the
+[Actions](https://github.com/xpack-dev-tools/ninja-build-xpack/actions/) page.
 
 ## Update the repo
 
@@ -323,6 +328,7 @@ When the release is considered stable, promote it as `latest`:
 - go to the GitHub [releases](https://github.com/xpack-dev-tools/ninja-build-xpack/releases/) page
 - check the download counter, it should match the number of tests
 - add a link to the Web page `[Continue reading »]()`; use an same blog URL
+- remove the _tests only_ notice
 - **disable** the **pre-release** button
 - click the **Update Release** button
 
