@@ -127,6 +127,9 @@ From here it'll be cloned on the production machines.
 
 The automation is provided by GitHub Actions and three self-hosted runners.
 
+Run the `generate-workflows` to re-generate the
+GitHub workflow files; commit and push if necessary.
+
 - on the macOS machine (`xbbm`) open ssh sessions to both Linux
 machines (`xbbi` and `xbba`):
 
