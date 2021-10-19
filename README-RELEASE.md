@@ -234,6 +234,8 @@ tagged like **v1.10.2-4** (mind the dash in the middle!) and
 named like **xPack Ninja Build v1.10.2-4** (mind the dash),
 with all binaries attached.
 
+- edit the draft and attach it to the `xpack-develop` branch (important!)
+
 ## Prepare a new blog post
 
 Run the xPack action `generate-jekyll-post`; this will leave a file
@@ -259,6 +261,8 @@ If any, refer to closed
 
 - go to the GitHub [releases](https://github.com/xpack-dev-tools/ninja-build-xpack/releases/) page
 - perform the final edits and check if everything is fine
+- temporarily fill in the _Continue Reading »_ with the URL of the
+  web-preview release
 - keep the pre-release button enabled
 - publish the release
 
