@@ -4,6 +4,7 @@ Entries in this file are in reverse chronological order.
 
 ## 2021-10-13
 
+- v1.10.2-4.1 published on npmjs.com
 - v1.10.2-4 released
 - update for new build scripts & xbb v3.3
 

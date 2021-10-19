@@ -56,7 +56,7 @@ but in the version specific release page.
 
 - open the `CHANGELOG.md` file
 - check if all previous fixed issues are in
-- add a new entry like _v1.10.2-4 prepared_
+- add a new entry like _- v1.10.2-4 prepared_
 - commit with a message like _prepare v1.10.2-4_
 
 Note: if you missed to update the `CHANGELOG.md` before starting the build,
@@ -224,7 +224,7 @@ TBD
 
 ## Create a new GitHub pre-release draft
 
-- in `CHANGELOG.md`, add the release date and a message like _v1.10.2-4 released_
+- in `CHANGELOG.md`, add the release date and a message like _- v1.10.2-4 released_
 - commit and push the `xpack-develop` branch
 - run the xPack action `trigger-workflow-publish-release`
 
@@ -286,7 +286,7 @@ watching this project.
 
 - select the `xpack-develop` branch
 - check the latest commits `npm run git-log`
-- update `CHANGELOG.md`, add a line like _v1.10.2-4.1 published on npmjs.com_
+- update `CHANGELOG.md`, add a line like _- v1.10.2-4.1 published on npmjs.com_
 - commit with a message like _CHANGELOG: publish npm v1.10.2-4.1_
 - `npm pack` and check the content of the archive, which should list
   only the `package.json`, the `README.md`, `LICENSE` and `CHANGELOG.md`;
