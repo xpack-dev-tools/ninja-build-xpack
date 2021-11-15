@@ -4,7 +4,7 @@
 
 # The xPack Ninja Build
 
-A standalone cross-platform (Windows/macOS/Linux) Ninja Build
+A standalone cross-platform (Windows/macOS/Linux) **Ninja Build**
 binary distribution, intended for reproducible builds.
 
 In addition to the the binary archives and the package meta data,
@@ -108,7 +108,7 @@ binaries are released as portable
 archives that can be installed in any location.
 
 The archives can be downloaded from the
-GitHub [releases](https://github.com/xpack-dev-tools/ninja-build-xpack/releases/)
+GitHub [Releases](https://github.com/xpack-dev-tools/ninja-build-xpack/releases/)
 page.
 
 For more details please read the

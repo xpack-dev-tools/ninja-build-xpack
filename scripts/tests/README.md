@@ -9,7 +9,7 @@ The binaries can be available from one of the pre-releases:
 The test script is part of the Ninja Build xPack:
 
 ```sh
-rm -rf ~/Downloads/openocd-xpack.git; \
+rm -rf ~/Downloads/meson-build-xpack.git; \
 git clone \
   --branch xpack-develop \
   https://github.com/xpack-dev-tools/ninja-build-xpack.git  \
@@ -34,14 +34,3 @@ To force a new download, remove the local archive:
 rm -rf ~/Work/cache/xpack-ninja-build-*
 ```
 
-## Start the Travis test
-
-The multi-platform test runs on Travis CI; it is configured to not fire on
-git actions, but only via a manual POST to the Travis API.
-
-```sh
-bash ~/Downloads/ninja-build-xpack.git/tests/scripts/travis-trigger.sh
-```
-
-For convenience, on macOS this can be invoked from Finder, using
-the `travis-trigger.mac.command` shortcut.
