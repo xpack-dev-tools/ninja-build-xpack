@@ -44,7 +44,7 @@ function build_versions()
       NINJA_GIT_URL=${NINJA_GIT_URL:-"https://github.com/xpack-dev-tools/ninja.git"}
       NINJA_GIT_BRANCH=${NINJA_GIT_BRANCH:-"xpack"}
       NINJA_GIT_COMMIT=${NINJA_GIT_COMMIT:-"148d49dd50c9d126bbcb509c1082ac8ef8dcf76a"}
-    elif [[ "${RELEASE_VERSION}" =~ 1\.10\.2-[4] ]]
+    elif [[ "${RELEASE_VERSION}" =~ 1\.10\.2-[45] ]]
     then
       NINJA_GIT_URL=${NINJA_GIT_URL:-"https://github.com/xpack-dev-tools/ninja.git"}
       NINJA_GIT_BRANCH=${NINJA_GIT_BRANCH:-"xpack"}
