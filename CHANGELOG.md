@@ -2,6 +2,11 @@
 
 Entries in this file are in reverse chronological order.
 
+## 2021-11-20
+
+- v1.10.2-5 prepared
+- update build scripts for Apple Silicon
+
 ## 2021-10-13
 
 - v1.10.2-4.1 published on npmjs.com
