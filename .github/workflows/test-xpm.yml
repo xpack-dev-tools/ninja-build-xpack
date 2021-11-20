@@ -36,6 +36,8 @@ jobs:
     name: 'Intel Linux 64-bit Ninja Build@${{ github.event.inputs.version }} test'
     runs-on: ubuntu-latest
     steps:
+      - name: 'Machine'
+        run: uname -a
       - name: 'Checkout'
         uses: actions/checkout@v2
         with:
@@ -52,6 +54,8 @@ jobs:
     name: 'Intel Linux 32-bit Ninja Build@${{ github.event.inputs.version }} test'
     runs-on: ubuntu-latest
     steps:
+      - name: 'Machine'
+        run: uname -a
       - name: 'Checkout'
         uses: actions/checkout@v2
         with:
@@ -66,8 +70,10 @@ jobs:
   
   linux-arm64:
     name: 'Arm Linux 64-bit Ninja Build@${{ github.event.inputs.version }} test'
-    runs-on: [self-hosted, Linux, ARM64]
+    runs-on: [self-hosted, linux, arm64]
     steps:
+      - name: 'Machine'
+        run: uname -a
       - name: 'Checkout'
         uses: actions/checkout@v2
         with:
@@ -82,8 +88,10 @@ jobs:
   
   linux-arm32:
     name: 'Arm Linux 32-bit Ninja Build@${{ github.event.inputs.version }} test'
-    runs-on: [self-hosted, Linux, ARM64]
+    runs-on: [self-hosted, linux, arm64]
     steps:
+      - name: 'Machine'
+        run: uname -a
       - name: 'Checkout'
         uses: actions/checkout@v2
         with:
@@ -100,6 +108,8 @@ jobs:
     name: 'Intel macOS 64-bit Ninja Build@${{ github.event.inputs.version }} test'
     runs-on: macos-latest
     steps:
+      - name: 'Machine'
+        run: uname -a
       - name: 'Checkout'
         uses: actions/checkout@v2
         with:
@@ -133,6 +143,8 @@ jobs:
     name: 'Windows 64-bit Ninja Build@${{ github.event.inputs.version }} test'
     runs-on: windows-latest
     steps:
+      - name: 'Machine'
+        run: uname -a
       - name: 'Checkout'
         uses: actions/checkout@v2
         with:

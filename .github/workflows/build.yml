@@ -34,7 +34,7 @@ jobs:
   linux-x64:
     name: 'Intel Linux Ninja Build ${{ github.event.inputs.version }} build'
     timeout-minutes: 5760 # 4 days
-    runs-on: [self-hosted, Linux, X64]
+    runs-on: [self-hosted, linux, x64]
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v2
@@ -85,7 +85,7 @@ jobs:
   linux-arm64:
     name: 'Arm Linux Ninja Build ${{ github.event.inputs.version }} build'
     timeout-minutes: 2880 # 2 days
-    runs-on: [self-hosted, Linux, ARM64]
+    runs-on: [self-hosted, linux, arm64]
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v2

@@ -61,6 +61,8 @@ jobs:
     name: 'x64 Ninja Build ${{ github.event.inputs.version }} test on Ubuntu 20, 18, 16, 14 stable'
     runs-on: ubuntu-latest
     steps:
+      - name: 'Machine'
+        run: uname -a
       - name: 'Checkout'
         uses: actions/checkout@v2
         with:
@@ -93,6 +95,8 @@ jobs:
     name: 'x64 Ninja Build ${{ github.event.inputs.version }} test on Debian 10, 9, 8 stable'
     runs-on: ubuntu-latest
     steps:
+      - name: 'Machine'
+        run: uname -a
       - name: 'Checkout'
         uses: actions/checkout@v2
         with:
@@ -148,6 +152,8 @@ jobs:
     name: 'x64 Ninja Build ${{ github.event.inputs.version }} test on RedHat 8 stable'
     runs-on: ubuntu-latest
     steps:
+      - name: 'Machine'
+        run: uname -a
       - name: 'Checkout'
         uses: actions/checkout@v2
         with:
@@ -166,6 +172,8 @@ jobs:
     name: 'x64 Ninja Build ${{ github.event.inputs.version }} test on Fedora 35, 33, 30, 25, 20, stable'
     runs-on: ubuntu-latest
     steps:
+      - name: 'Machine'
+        run: uname -a
       - name: 'Checkout'
         uses: actions/checkout@v2
         with:
@@ -204,6 +212,8 @@ jobs:
     name: 'x64 Ninja Build ${{ github.event.inputs.version }} test on OpenSUSE 15, 13 stable'
     runs-on: ubuntu-latest
     steps:
+      - name: 'Machine'
+        run: uname -a
       - name: 'Checkout'
         uses: actions/checkout@v2
         with:
@@ -224,6 +234,8 @@ jobs:
     name: 'x64 Ninja Build ${{ github.event.inputs.version }} test on Ubuntu latest'
     runs-on: ubuntu-latest
     steps:
+      - name: 'Machine'
+        run: uname -a
       - name: 'Checkout'
         uses: actions/checkout@v2
         with:
@@ -240,6 +252,8 @@ jobs:
     name: 'x64 Ninja Build ${{ github.event.inputs.version }} test on Debian latest'
     runs-on: ubuntu-latest
     steps:
+      - name: 'Machine'
+        run: uname -a
       - name: 'Checkout'
         uses: actions/checkout@v2
         with:
@@ -267,6 +281,8 @@ jobs:
     name: 'x64 Ninja Build ${{ github.event.inputs.version }} test on Arch latest'
     runs-on: ubuntu-latest
     steps:
+      - name: 'Machine'
+        run: uname -a
       - name: 'Checkout'
         uses: actions/checkout@v2
         with:
@@ -290,6 +306,8 @@ jobs:
     name: 'ia32 Ninja Build ${{ github.event.inputs.version }} test on Ubuntu 18, 16, 14 stable'
     runs-on: ubuntu-latest
     steps:
+      - name: 'Machine'
+        run: uname -a
       - name: 'Checkout'
         uses: actions/checkout@v2
         with:
@@ -321,6 +339,8 @@ jobs:
     name: 'ia32 Ninja Build ${{ github.event.inputs.version }} test on Debian 10, 9, 8 stable'
     runs-on: ubuntu-latest
     steps:
+      - name: 'Machine'
+        run: uname -a
       - name: 'Checkout'
         uses: actions/checkout@v2
         with:
@@ -348,6 +368,8 @@ jobs:
     name: 'ia32 Ninja Build ${{ github.event.inputs.version }} test on Debian latest'
     runs-on: ubuntu-latest
     steps:
+      - name: 'Machine'
+        run: uname -a
       - name: 'Checkout'
         uses: actions/checkout@v2
         with:

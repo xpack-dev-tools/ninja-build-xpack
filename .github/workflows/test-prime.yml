@@ -40,6 +40,8 @@ jobs:
     name: 'x64 Linux Ninja Build ${{ github.event.inputs.version }} test'
     runs-on: ubuntu-latest
     steps:
+      - name: 'Machine'
+        run: uname -a
       - name: 'Checkout'
         uses: actions/checkout@v2
         with:
@@ -53,6 +55,8 @@ jobs:
     name: 'ia32 Linux Ninja Build ${{ github.event.inputs.version }} test'
     runs-on: ubuntu-latest
     steps:
+      - name: 'Machine'
+        run: uname -a
       - name: 'Checkout'
         uses: actions/checkout@v2
         with:
@@ -69,6 +73,8 @@ jobs:
     name: 'arm64 Linux Ninja Build ${{ github.event.inputs.version }} test'
     runs-on: [self-hosted, Linux, Arm64]
     steps:
+      - name: 'Machine'
+        run: uname -a
       - name: 'Checkout'
         uses: actions/checkout@v2
         with:
@@ -85,6 +91,8 @@ jobs:
     name: 'arm32 Linux Ninja Build ${{ github.event.inputs.version }} test'
     runs-on: [self-hosted, Linux, Arm64]
     steps:
+      - name: 'Machine'
+        run: uname -a
       - name: 'Checkout'
         uses: actions/checkout@v2
         with:
@@ -101,6 +109,8 @@ jobs:
     name: 'x64 macOS Ninja Build ${{ github.event.inputs.version }} test'
     runs-on: macos-latest
     steps:
+      - name: 'Machine'
+        run: uname -a
       - name: 'Checkout'
         uses: actions/checkout@v2
         with:
@@ -120,7 +130,6 @@ jobs:
     steps:
       - name: 'Machine'
         run: uname -a
-
       - name: 'Checkout'
         uses: actions/checkout@v2
         with:
@@ -134,6 +143,8 @@ jobs:
     name: 'x64 Windows Ninja Build ${{ github.event.inputs.version }} test'
     runs-on: windows-latest
     steps:
+      - name: 'Machine'
+        run: uname -a
       - name: 'Checkout'
         uses: actions/checkout@v2
         with:
@@ -147,6 +158,8 @@ jobs:
     name: 'ia32 Windows Ninja Build ${{ github.event.inputs.version }} test'
     runs-on: windows-latest
     steps:
+      - name: 'Machine'
+        run: uname -a
       - name: 'Checkout'
         uses: actions/checkout@v2
         with:
