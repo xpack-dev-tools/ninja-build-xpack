@@ -36,6 +36,10 @@
       "baseUrl": "https://github.com/xpack-dev-tools/ninja-build-xpack/releases/download/v1.10.2-4",
       "skip": 1,
       "platforms": {
+        "darwin-arm64": {
+          "fileName": "xpack-ninja-build-1.10.2-4-darwin-arm64.tar.gz",
+          "sha256": "ff591f7b164951a99fe7fd25cecda89c8b8c5467293e83568111b41ab2468551"
+        },
         "darwin-x64": {
           "fileName": "xpack-ninja-build-1.10.2-4-darwin-x64.tar.gz",
           "sha256": "ff591f7b164951a99fe7fd25cecda89c8b8c5467293e83568111b41ab2468551"
