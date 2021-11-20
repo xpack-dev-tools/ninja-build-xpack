@@ -19,7 +19,7 @@
 # -----------------------------------------------------------------------------
 
 
-name: 'Build xPack Ninja Build'
+name: 'Build xPack Ninja Build xbbli'
 
 on:
   workflow_dispatch:
@@ -79,87 +79,4 @@ jobs:
           repo: 'pre-releases'
           tag: 'test'
           token: ${{ secrets.PUBLISH_TOKEN }}
-
-
-
-  linux-arm64:
-    name: 'Arm Linux Ninja Build ${{ github.event.inputs.version }} build'
-    timeout-minutes: 2880 # 2 days
-    runs-on: [self-hosted, Linux, ARM64]
-    steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 3
-          submodules: true
-
-      - name: 'Clean working area'
-        run: rm -rf ~/Work/ninja-build-${{ github.event.inputs.version }}*
-
-      - name: 'Build Linux arm64 binary'
-        timeout-minutes: 1440
-        run: bash scripts/helper/build.sh --version "${{ github.event.inputs.version }}" --arm64
-   
-      - name: 'Build Linux arm32 binary'
-        timeout-minutes: 1440
-        run: bash scripts/helper/build.sh --version "${{ github.event.inputs.version }}" --arm32
-  
-      - name: 'Publish pre-release'
-        # https://github.com/ncipollo/release-action
-        uses: ncipollo/release-action@v1
-        with:
-          allowUpdates: true
-          artifacts: '~/Work/ninja-build-${{ github.event.inputs.version }}/deploy/*'
-          bodyFile: '.github/workflows/body-github-pre-releases-test.md'
-          commit: 'master'
-          draft: false
-          name: 'Test binaries'
-          omitBodyDuringUpdate: true
-          omitNameDuringUpdate: true
-          owner: 'xpack-dev-tools'
-          prerelease: true
-          replacesArtifacts: true
-          repo: 'pre-releases'
-          tag: 'test'
-          token: ${{ secrets.PUBLISH_TOKEN }}
-
-
-
-  macos-x64:
-    name: 'Intel macOS Ninja Build ${{ github.event.inputs.version }} build'
-    timeout-minutes: 2880 # 2 days
-    runs-on: [self-hosted, macos, intel]
-    steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 3
-          submodules: true
-
-      - name: 'Clean working area'
-        run: rm -rf ~/Work/ninja-build-${{ github.event.inputs.version }}*
-
-      - name: 'Build macOS x64 binary'
-        timeout-minutes: 1440
-        run: bash scripts/helper/build.sh --version "${{ github.event.inputs.version }}" --osx
-  
-      - name: 'Publish pre-release'
-        # https://github.com/ncipollo/release-action
-        uses: ncipollo/release-action@v1
-        with:
-          allowUpdates: true
-          artifacts: '~/Work/ninja-build-${{ github.event.inputs.version }}/deploy/*'
-          bodyFile: '.github/workflows/body-github-pre-releases-test.md'
-          commit: 'master'
-          draft: false
-          name: 'Test binaries'
-          omitBodyDuringUpdate: true
-          omitNameDuringUpdate: true
-          owner: 'xpack-dev-tools'
-          prerelease: true
-          replacesArtifacts: true
-          repo: 'pre-releases'
-          tag: 'test'
-          token: ${{ secrets.PUBLISH_TOKEN }}
-
 

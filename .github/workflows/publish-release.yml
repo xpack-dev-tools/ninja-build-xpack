@@ -107,7 +107,7 @@ jobs:
 
   macos-x64:
     name: 'Intel macOS Ninja Build ${{ github.event.inputs.version }} publish release'
-    runs-on: [self-hosted, macOS, X64]
+    runs-on: [self-hosted, macos, intel]
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v2
@@ -139,4 +139,6 @@ jobs:
           token: ${{ secrets.PUBLISH_TOKEN }}
       - name: 'Show SHA'
         run: cat ~/Work/ninja-build-${{ github.event.inputs.version }}/deploy/*.sha
+
+
 
