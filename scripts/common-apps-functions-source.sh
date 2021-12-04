@@ -3,12 +3,12 @@
 #   (https://xpack.github.io)
 # Copyright (c) 2020 Liviu Ionescu.
 #
-# Permission to use, copy, modify, and/or distribute this software 
+# Permission to use, copy, modify, and/or distribute this software
 # for any purpose is hereby granted, under the terms of the MIT license.
 # -----------------------------------------------------------------------------
 
-# Helper script used in the second edition of the xPack build 
-# scripts. As the name implies, it should contain only functions and 
+# Helper script used in the second edition of the xPack build
+# scripts. As the name implies, it should contain only functions and
 # should be included with 'source' by the container build scripts.
 
 # -----------------------------------------------------------------------------
@@ -59,7 +59,7 @@ function build_ninja()
     if [ "${TARGET_PLATFORM}" == "linux" ]
     then
       LDFLAGS+=" -Wl,-rpath,${LD_LIBRARY_PATH}"
-    fi      
+    fi
 
     export CFLAGS
     export CXXFLAGS
@@ -136,8 +136,6 @@ function build_ninja()
       else
         install -v -m755 -c ninja "${APP_PREFIX}/bin"
       fi
-
-      # prepare_app_libraries "${APP_PREFIX}/bin/ninja"
 
     ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${ninja_folder_name}/build-output.txt"
 
