@@ -38,35 +38,35 @@
       "platforms": {
         "darwin-arm64": {
           "fileName": "xpack-ninja-build-1.10.2-5-darwin-arm64.tar.gz",
-          "sha256": "d748698bfb7b3d277a21e502c36dae2c5869ba64d30faf0fb6156cc13d8742f1"
+          "sha256": "94a0386774df3d9226a26d8b79ce265eb7a6150116af18a2bceb716e6bc6a1b0"
         },
         "darwin-x64": {
           "fileName": "xpack-ninja-build-1.10.2-5-darwin-x64.tar.gz",
-          "sha256": "61c233db4369882f1ca7bb86edf329df41005b11b41808e62719ec30d60d2b60"
+          "sha256": "391bf68fa24ab57120cda8da169cffb3444150633d02bbe65a580adb2cd6778e"
         },
         "linux-arm64": {
           "fileName": "xpack-ninja-build-1.10.2-5-linux-arm64.tar.gz",
-          "sha256": "253f5152cf0239bf40c4eee749ee1224924a8468e0a42261c43233eb6a826b7f"
+          "sha256": "c608873e8f3443a7d16b46971cfbc9810f15c7489c580cd2d4dc03f45b721974"
         },
         "linux-arm": {
           "fileName": "xpack-ninja-build-1.10.2-5-linux-arm.tar.gz",
-          "sha256": "07364ec2bb5fc1e9b2aff9e9906bd872ebecf6a6c8417d9a109ec390e544f77e"
+          "sha256": "65f3b8d3f08af303d6fa259d59dba180c78f912f9645b2d7304663a331f67f37"
         },
         "linux-ia32": {
           "fileName": "xpack-ninja-build-1.10.2-5-linux-ia32.tar.gz",
-          "sha256": "6599eb283cce5e612800830bc23e746e492fd5a11ef0141a854fd0219ac02aea"
+          "sha256": "83337e2a87f6f247e07b00975a05d3506d86dddddcdf2a83b0bee7ed438a0d36"
         },
         "linux-x64": {
           "fileName": "xpack-ninja-build-1.10.2-5-linux-x64.tar.gz",
-          "sha256": "3332c44b3138d777effae2219cd80998fbb22fa6c0319d70d17da216bc67c6c0"
+          "sha256": "46c193266ca3cf5abd25c4293216ab6f72461355067247d03909f7ae782cf094"
         },
         "win32-ia32": {
           "fileName": "xpack-ninja-build-1.10.2-5-win32-ia32.zip",
-          "sha256": "eb58aecaa2c4ce0d6351fecb5c70bff56c1dfd909cd81f2c055d3fc90e5709f5"
+          "sha256": "1dec39ab7cbe54db27264633c5b87b0fbda7fcff731522a797bc998ebed123d5"
         },
         "win32-x64": {
           "fileName": "xpack-ninja-build-1.10.2-5-win32-x64.zip",
-          "sha256": "cc57e6e70a38b7b238bd24a1b822fb7bdbbdadfc93eba1831f9993e4e8ee14bd"
+          "sha256": "8313137a133b2095bfcee2ac1898109a250072e535b0b4d0bdc9730f23ebd302"
         }
       }
     },
