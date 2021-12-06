@@ -61,7 +61,7 @@ To download them, issue the following commands:
 rm -rf ~/Downloads/ninja-build-xpack.git; \
 git clone https://github.com/xpack-dev-tools/ninja-build-xpack.git \
   ~/Downloads/ninja-build-xpack.git; \
-git -C ~/Downloads/ninja-build-xpack.git submodule update --init --recursive 
+git -C ~/Downloads/ninja-build-xpack.git submodule update --init --recursive
 ```
 
 > Note: the repository uses submodules; for a successful build it is
@@ -76,7 +76,7 @@ git clone \
   --branch xpack-develop \
   https://github.com/xpack-dev-tools/ninja-build-xpack.git \
   ~/Downloads/ninja-build-xpack.git; \
-git -C ~/Downloads/ninja-build-xpack.git submodule update --init --recursive 
+git -C ~/Downloads/ninja-build-xpack.git submodule update --init --recursive
 ```
 
 ## The `Work` folder
@@ -106,7 +106,7 @@ not be accepted by bash.
 
 ## Versioning
 
-The version string is an extension to semver, the format looks like `1.10.0-1`.
+The version string is an extension to semver, the format looks like `1.10.2-5`.
 It includes the three digits with the original Ninja Build version and a fourth
 digit with the xPack release number.
 
@@ -271,7 +271,7 @@ or, for development builds:
 
 ```sh
 sudo rm -rf ~/Work/ninja-build-*
-bash ~/Downloads/ninja-build-xpack.git/scripts/helper/build.sh --develop --without-pdf --without-html --disable-tests --arm64 --arm32 
+bash ~/Downloads/ninja-build-xpack.git/scripts/helper/build.sh --develop --without-pdf --without-html --disable-tests --arm64 --arm32
 ```
 
 To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use

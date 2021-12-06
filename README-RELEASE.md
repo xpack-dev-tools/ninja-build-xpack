@@ -237,7 +237,6 @@ On Windows use:
 1.10.2
 ```
 
-
 ## Create a new GitHub pre-release draft
 
 - in `CHANGELOG.md`, add the release date and a message like _- v1.10.2-5 released_
