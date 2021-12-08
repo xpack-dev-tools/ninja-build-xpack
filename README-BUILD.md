@@ -305,7 +305,7 @@ To build the latest macOS version:
 screen -S ninja
 
 rm -rf ~/Work/ninja-build-*
-caffeinate bash ~/Downloads/ninja-build-xpack.git/scripts/helper/build.sh --develop --osx
+caffeinate bash ~/Downloads/ninja-build-xpack.git/scripts/helper/build.sh --develop --macos
 ```
 
 or, for development builds:
@@ -314,7 +314,7 @@ or, for development builds:
 screen -S ninja
 
 rm -rf ~/Work/ninja-build-*
-caffeinate bash ~/Downloads/ninja-build-xpack.git/scripts/helper/build.sh --develop --without-pdf --without-html --disable-tests --osx
+caffeinate bash ~/Downloads/ninja-build-xpack.git/scripts/helper/build.sh --develop --without-pdf --without-html --disable-tests --macos
 ```
 
 To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
