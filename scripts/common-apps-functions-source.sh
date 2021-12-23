@@ -106,7 +106,7 @@ function build_ninja()
         config_options+=("-DCMAKE_INSTALL_PREFIX=${APP_PREFIX}")
 
         run_verbose_timed cmake \
-          ${config_options[@]} \
+          "${config_options[@]}" \
           \
           "${SOURCES_FOLDER_PATH}/${ninja_src_folder_name}" \
 
