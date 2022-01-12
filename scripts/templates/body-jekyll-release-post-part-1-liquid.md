@@ -1,5 +1,5 @@
 ---
-title:  xPack Ninja Build {{ RELEASE_VERSION }} released
+title:  xPack Ninja Build v{{ RELEASE_VERSION }} released
 
 TODO: select one summary
 
