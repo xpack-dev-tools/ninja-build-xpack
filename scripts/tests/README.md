@@ -9,12 +9,12 @@ The binaries can be available from one of the pre-releases:
 The test script is part of the Ninja Build xPack:
 
 ```sh
-rm -rf ~/Downloads/meson-build-xpack.git; \
+rm -rf ${HOME}/Work/meson-build-xpack.git; \
 git clone \
   --branch xpack-develop \
   https://github.com/xpack-dev-tools/ninja-build-xpack.git  \
-  ~/Downloads/ninja-build-xpack.git; \
-git -C ~/Downloads/ninja-build-xpack.git submodule update --init --recursive 
+  ${HOME}/Work/ninja-build-xpack.git; \
+git -C ${HOME}/Work/ninja-build-xpack.git submodule update --init --recursive
 ```
 
 ## Start a local test
@@ -22,7 +22,7 @@ git -C ~/Downloads/ninja-build-xpack.git submodule update --init --recursive
 To check if Ninja Build starts on the current platform, run a native test:
 
 ```sh
-bash ~/Downloads/ninja-build-xpack.git/tests/scripts/native-test.sh
+bash ${HOME}/Work/ninja-build-xpack.git/tests/scripts/native-test.sh
 ```
 
 The script stores the downloaded archive in a local cache, and
