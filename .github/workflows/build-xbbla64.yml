@@ -19,7 +19,7 @@
 # -----------------------------------------------------------------------------
 
 
-name: 'Build xPack Ninja Build xbbli'
+name: 'Build xPack Ninja Build xbbla64'
 
 on:
   workflow_dispatch:
@@ -31,10 +31,10 @@ on:
 
 jobs:
 
-  linux-x64:
-    name: 'Linux Intel - Ninja Build ${{ github.event.inputs.version }} build'
-    timeout-minutes: 5760 # 4 days
-    runs-on: [self-hosted, linux, x64]
+  linux-arm64:
+    name: 'Linux Arm 64 - Ninja Build ${{ github.event.inputs.version }} build'
+    timeout-minutes: 2880 # 2 days
+    runs-on: [self-hosted, linux, arm64, xbbla64]
     steps:
       - name: 'Machine'
         run: uname -a
@@ -47,15 +47,10 @@ jobs:
 
       - name: 'Clean working area'
         run: rm -rf ~/Work/ninja-build-${{ github.event.inputs.version }}*
+      - name: 'Build Linux arm64 binary'
+        timeout-minutes: 1440
+        run: bash scripts/helper/build.sh --version "${{ github.event.inputs.version }}" --arm64
 
-      - name: 'Build Linux x64 binary'
-        timeout-minutes: 1440
-        run: bash scripts/helper/build.sh --version "${{ github.event.inputs.version }}" --linux64
-    
-      - name: 'Build Windows x64 binary'
-        timeout-minutes: 1440
-        run: bash scripts/helper/build.sh --version "${{ github.event.inputs.version }}" --win64
-    
       - name: 'Publish pre-release'
         # https://github.com/ncipollo/release-action
         uses: ncipollo/release-action@v1
