@@ -31,6 +31,5 @@ does not download it again if available locally.
 To force a new download, remove the local archive:
 
 ```sh
-rm -rf ~/Work/cache/xpack-ninja-build-*
+rm -rf ~/Work/cache/xpack-ninja-build-*-*
 ```
-

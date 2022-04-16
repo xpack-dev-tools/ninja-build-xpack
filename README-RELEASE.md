@@ -92,7 +92,7 @@ Before the real build, run a test build on the development machine (`wks`)
 or the production machines (`xbbma`, `xbbmi`):
 
 ```sh
-sudo rm -rf ~/Work/ninja-build-*
+sudo rm -rf ~/Work/ninja-build-*-*
 
 caffeinate bash ${HOME}/Work/ninja-build-xpack.git/scripts/helper/build.sh --develop --macos
 ```

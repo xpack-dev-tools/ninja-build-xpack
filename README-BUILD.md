@@ -188,14 +188,14 @@ network connection or a computer entering sleep.
 ```sh
 screen -S ninja
 
-sudo rm -rf ~/Work/ninja-build-*
+sudo rm -rf ~/Work/ninja-build-*-*
 bash ${HOME}/Work/ninja-build-xpack.git/scripts/helper/build.sh --develop --all
 ```
 
 or, for development builds:
 
 ```sh
-sudo rm -rf ~/Work/ninja-build-*
+sudo rm -rf ~/Work/ninja-build-*-*
 bash ${HOME}/Work/ninja-build-xpack.git/scripts/helper/build.sh --develop --without-pdf --without-html --disable-tests --linux64 --win64
 ```
 
@@ -259,14 +259,14 @@ network connection or a computer entering sleep.
 ```sh
 screen -S ninja
 
-sudo rm -rf ~/Work/ninja-build-*
+sudo rm -rf ~/Work/ninja-build-*-*
 bash ${HOME}/Work/ninja-build-xpack.git/scripts/helper/build.sh --develop --all
 ```
 
 or, for development builds:
 
 ```sh
-sudo rm -rf ~/Work/ninja-build-*
+sudo rm -rf ~/Work/ninja-build-*-*
 bash ${HOME}/Work/ninja-build-xpack.git/scripts/helper/build.sh --develop --without-pdf --without-html --disable-tests --arm64 --arm32
 ```
 
@@ -305,7 +305,7 @@ To build the latest macOS version:
 ```sh
 screen -S ninja
 
-rm -rf ~/Work/ninja-build-*
+rm -rf ~/Work/ninja-build-*-*
 caffeinate bash ${HOME}/Work/ninja-build-xpack.git/scripts/helper/build.sh --develop --macos
 ```
 
@@ -314,7 +314,7 @@ or, for development builds:
 ```sh
 screen -S ninja
 
-rm -rf ~/Work/ninja-build-*
+rm -rf ~/Work/ninja-build-*-*
 caffeinate bash ${HOME}/Work/ninja-build-xpack.git/scripts/helper/build.sh --develop --without-pdf --without-html --disable-tests --macos
 ```
 
