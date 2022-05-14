@@ -116,14 +116,14 @@ For more details please read the
 
 ### Versioning
 
-The version strings used by the Ninja project are three number string
+The version strings used by the Ninja project are three number strings
 like `1.10.2`; to this string the xPack distribution adds a four number,
 but since semver allows only three numbers, all additional ones can
 be added only as pre-release strings, separated by a dash,
 like `1.10.2-5`. When published as a npm package, the version gets
 a fifth number, like `1.10.2-5.1`.
 
-Since adherance of third party packages to semver is not guaranteed,
+Since adherence of third party packages to semver is not guaranteed,
 it is recommended to use semver expressions like `^1.10.2` and `~1.10.2`
 with caution, and prefer exact matches, like `1.10.2-5.1`.
 
@@ -134,9 +134,8 @@ with caution, and prefer exact matches, like `1.10.2-5.1`.
 
 ## Support
 
-The quick answer is to use the
-[xPack forums](https://www.tapatalk.com/groups/xpack/);
-please select the correct forum.
+The quick answer is to use the GitHub
+[Discussions](https://github.com/xpack-dev-tools/ninja-build-xpack/discussions/).
 
 For more details please read the
 [Support](https://xpack.github.io/ninja-build/support/) page.
