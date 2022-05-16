@@ -14,9 +14,17 @@
     "UCRT",
     "aarch",
     "armv",
+    "caffeinate",
     "endraw",
+    "npmignore",
     "npmjs",
+    "postversion",
     "readelf",
-    "runpath"
+    "runpath",
+    "wksi",
+    "xbbla",
+    "xbbli",
+    "xbbma",
+    "xbbmi"
   ]
 }
