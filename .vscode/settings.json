@@ -8,5 +8,15 @@
   "spellright.language": [
     "en_GB"
   ],
-  "spellright.notificationClass": "warning"
+  "spellright.notificationClass": "warning",
+  "cSpell.ignoreWords": [
+    "RPATH",
+    "UCRT",
+    "aarch",
+    "armv",
+    "endraw",
+    "npmjs",
+    "readelf",
+    "runpath"
+  ]
 }
