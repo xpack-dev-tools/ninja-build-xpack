@@ -3,20 +3,20 @@
 #   (https://xpack.github.io)
 # Copyright (c) 2020 Liviu Ionescu.
 #
-# Permission to use, copy, modify, and/or distribute this software 
+# Permission to use, copy, modify, and/or distribute this software
 # for any purpose is hereby granted, under the terms of the MIT license.
 # -----------------------------------------------------------------------------
 
-# Helper script used in the second edition of the GNU MCU Eclipse build 
-# scripts. As the name implies, it should contain only functions and 
-# should be included with 'source' by the container build scripts.
+# Helper script used in the xPack build scripts. As the name implies,
+# it should contain only functions and should be included with 'source'
+# by the build scripts (both native and container).
 
 # -----------------------------------------------------------------------------
 
 function build_versions()
 {
   # Don't use a comma since the regular expression
-  # that processes this string in the Makefile, silently fails and the 
+  # that processes this string in the Makefile, silently fails and the
   # bfdver.h file remains empty.
   BRANDING="${DISTRO_NAME} ${APP_NAME} ${TARGET_MACHINE}"
 
@@ -31,7 +31,17 @@ function build_versions()
   fi
 
   # Keep them in sync with combo archive content.
-  if [[ "${RELEASE_VERSION}" =~ 1\.10\.[2]-* ]]
+  if [[ "${RELEASE_VERSION}" =~ 1\.11\.[0]-* ]]
+  then
+
+    (
+      xbb_activate
+
+      build_ninja "${RELEASE_VERSION}"
+    )
+
+    # -------------------------------------------------------------------------
+  elif [[ "${RELEASE_VERSION}" =~ 1\.10\.[2]-* ]]
   then
 
     if [ "${RELEASE_VERSION}" == "1.10.2-2" ]
@@ -55,7 +65,7 @@ function build_versions()
     fi
 
     # -------------------------------------------------------------------------
-    
+
     (
       xbb_activate
 
@@ -67,9 +77,9 @@ function build_versions()
   then
 
     # -------------------------------------------------------------------------
-    
+
     README_OUT_FILE_NAME=${README_OUT_FILE_NAME:-"README-${RELEASE_VERSION}.md"}
-    
+
     (
       xbb_activate
 

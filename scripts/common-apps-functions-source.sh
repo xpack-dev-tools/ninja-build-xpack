@@ -23,10 +23,17 @@ function build_ninja()
   # https://ninja-build.org
   # https://github.com/ninja-build/ninja/archive/v1.10.0.tar.gz
 
+  # https://github.com/xpack-dev-tools/ninja/tags/
+  # https://github.com/xpack-dev-tools/ninja/archive/refs/tags/v1.11.0-1-xpack.tar.gz
+
   # https://archlinuxarm.org/packages/aarch64/ninja/files/PKGBUILD
 
-  local ninja_src_folder_name="ninja-${ninja_version}"
-  local ninja_folder_name="${ninja_src_folder_name}"
+  local ninja_src_folder_name="ninja-${ninja_version}-xpack"
+  local ninja_folder_name="ninja-${ninja_version}"
+
+  # GitHub release archive.
+  local ninja_github_archive="ninja-${ninja_version}-xpack.tar.gz"
+  local ninja_github_url="https://github.com/xpack-dev-tools/ninja/archive/refs/tags/v${ninja_version}-xpack.tar.gz"
 
   mkdir -pv "${LOGS_FOLDER_PATH}/${ninja_folder_name}"
 
@@ -36,8 +43,15 @@ function build_ninja()
   then
     (
       cd "${SOURCES_FOLDER_PATH}"
-      git_clone "${NINJA_GIT_URL}" "${NINJA_GIT_BRANCH}" \
-          "${NINJA_GIT_COMMIT}" "${ninja_src_folder_name}"
+      if [ ! -z ${NINJA_GIT_URL+x} ]
+      then
+        git_clone "${NINJA_GIT_URL}" "${NINJA_GIT_BRANCH}" \
+            "${NINJA_GIT_COMMIT}" "${ninja_src_folder_name}"
+      else
+        download_and_extract "${ninja_github_url}" "${ninja_github_archive}" \
+          "${ninja_src_folder_name}"
+      fi
+      # exit 1
     )
   fi
 
@@ -68,9 +82,9 @@ function build_ninja()
     local build_type
     if [ "${IS_DEBUG}" == "y" ]
     then
-      build_type=Debug
+      build_type="Debug"
     else
-      build_type=Release
+      build_type="Release"
     fi
 
     if true # [ ! -f "CMakeCache.txt" ]
