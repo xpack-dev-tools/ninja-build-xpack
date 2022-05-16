@@ -176,7 +176,8 @@ relative path.
 
 ## Documentation
 
-The original documentation is available in the `share/doc` folder.
+The original documentation is available
+[online](https://ninja-build.org/manual.html).
 
 ## Build
 
