@@ -75,6 +75,7 @@ repository, in the `xpack-dev-tools/ninja` Git fork repo:
 - merge `release`
 - checkout `xpack`
 - merge `xpack-develop`
+- tag it with `v1.11.0-1-xpack`
 
 ### Update the version specific code
 
