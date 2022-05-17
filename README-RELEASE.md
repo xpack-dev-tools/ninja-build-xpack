@@ -179,13 +179,7 @@ page.
 
 This command uses the `xpack-develop` branch of this repo.
 
-The builds take about 14 minutes to complete:
-
-- `xbbmi`: ? min
-- `xbbma`: ? min
-- `xbbli`: ? min (Windows included)
-- `xbbla64`: ? min
-- `xbbla32`: ? min
+The builds take 2-3 minutes to complete.
 
 The workflow result and logs are available from the
 [Actions](https://github.com/xpack-dev-tools/ninja-build-xpack/actions/) page.
