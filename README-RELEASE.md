@@ -295,6 +295,8 @@ In the `xpack/web-jekyll` GitHub repo:
 
 - select the `develop` branch
 - copy the new file to `_posts/releases/ninja-build`
+- update version and date from last
+[release](https://github.com/ninja-build/ninja/releases/).
 
 If any, refer to closed
 [issues](https://github.com/xpack-dev-tools/ninja-build-xpack/issues/).

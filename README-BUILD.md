@@ -32,7 +32,8 @@ For native builds, see the `build-native.sh` script.
   xPack build helper, used as the `scripts/helper` submodule.
 - <https://github.com/xpack-dev-tools/ninja.git> - the URL of the
   [xPack Ninja Build fork](https://github.com/xpack-dev-tools/ninja)
-- <https://github.com/ninja-build/ninja> - the URL of the original Ninja repo
+- <https://github.com/ninja-build/ninja.git> - the URL of the original
+  Ninja repo
 
 ### Branches
 
@@ -189,14 +190,16 @@ network connection or a computer entering sleep.
 screen -S ninja
 
 sudo rm -rf ~/Work/ninja-build-*-*
-bash ${HOME}/Work/ninja-build-xpack.git/scripts/helper/build.sh --develop --linux64 --win64
+bash ${HOME}/Work/ninja-build-xpack.git/scripts/helper/build.sh --develop --linux64
+bash ${HOME}/Work/ninja-build-xpack.git/scripts/helper/build.sh --develop --win64
 ```
 
 or, for development builds:
 
 ```sh
 sudo rm -rf ~/Work/ninja-build-*-*
-bash ${HOME}/Work/ninja-build-xpack.git/scripts/helper/build.sh --develop --without-html --disable-tests --linux64 --win64
+bash ${HOME}/Work/ninja-build-xpack.git/scripts/helper/build.sh --develop --disable-tests --linux64
+bash ${HOME}/Work/ninja-build-xpack.git/scripts/helper/build.sh --develop --disable-tests --win64
 ```
 
 To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
@@ -207,11 +210,11 @@ archives and their SHA signatures, created in the `deploy` folder:
 
 ```console
 $ ls -l ~/Work/ninja-build-*/deploy
-total 1624
--rw-rw-r-- 1 ilg ilg 217440 Sep 28 16:52 xpack-ninja-build-1.11.0-1-linux-x64.tar.gz
--rw-rw-r-- 1 ilg ilg    110 Sep 28 16:52 xpack-ninja-build-1.11.0-1-linux-x64.tar.gz.sha
--rw-rw-r-- 1 ilg ilg 706151 Sep 28 16:52 xpack-ninja-build-1.11.0-1-win32-x64.zip
--rw-rw-r-- 1 ilg ilg    107 Sep 28 16:52 xpack-ninja-build-1.11.0-1-win32-x64.zip.sha
+total 1480
+-rw-rw-rw- 1 ilg ilg 551495 May 17 09:49 xpack-ninja-build-1.11.0-1-linux-x64.tar.gz
+-rw-rw-rw- 1 ilg ilg    110 May 17 09:49 xpack-ninja-build-1.11.0-1-linux-x64.tar.gz.sha
+-rw-rw-rw- 1 ilg ilg 951474 May 17 09:50 xpack-ninja-build-1.11.0-1-win32-x64.zip
+-rw-rw-rw- 1 ilg ilg    107 May 17 09:50 xpack-ninja-build-1.11.0-1-win32-x64.zip.sha
 ```
 
 ### Build the Arm GNU/Linux binaries
@@ -261,14 +264,16 @@ network connection or a computer entering sleep.
 screen -S ninja
 
 sudo rm -rf ~/Work/ninja-build-*-*
-bash ${HOME}/Work/ninja-build-xpack.git/scripts/helper/build.sh --develop --arm64 --arm32
+bash ${HOME}/Work/ninja-build-xpack.git/scripts/helper/build.sh --develop --arm64
+bash ${HOME}/Work/ninja-build-xpack.git/scripts/helper/build.sh --develop --arm32
 ```
 
 or, for development builds:
 
 ```sh
 sudo rm -rf ~/Work/ninja-build-*-*
-bash ${HOME}/Work/ninja-build-xpack.git/scripts/helper/build.sh --develop --without-html --disable-tests --arm64 --arm32
+bash ${HOME}/Work/ninja-build-xpack.git/scripts/helper/build.sh --develop --disable-tests --arm64
+bash ${HOME}/Work/ninja-build-xpack.git/scripts/helper/build.sh --develop --disable-tests --arm32
 ```
 
 To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
@@ -279,11 +284,18 @@ archives and their SHA signatures, created in the `deploy` folder:
 
 ```console
 $ ls -l ~/Work/ninja-build-*/deploy
-total 416
--rw-rw-r-- 1 ilg ilg 215309 Sep 28 14:00 xpack-ninja-build-1.11.0-1-linux-arm64.tar.gz
--rw-rw-r-- 1 ilg ilg    112 Sep 28 14:00 xpack-ninja-build-1.11.0-1-linux-arm64.tar.gz.sha
--rw-rw-r-- 1 ilg ilg 199196 Sep 28 14:01 xpack-ninja-build-1.11.0-1-linux-arm.tar.gz
--rw-rw-r-- 1 ilg ilg    110 Sep 28 14:01 xpack-ninja-build-1.11.0-1-linux-arm.tar.gz.sha
+total 532
+-rw-rw-rw- 1 ilg ilg 538649 May 17 09:51 xpack-ninja-build-1.11.0-1-linux-arm64.tar.gz
+-rw-rw-rw- 1 ilg ilg    112 May 17 09:51 xpack-ninja-build-1.11.0-1-linux-arm64.tar.gz.sha
+```
+
+and:
+
+```console
+$ ls -l ~/Work/ninja-build-*/deploy
+total 500
+-rw-rw-rw- 1 ilg ilg 506541 May 17 09:51 xpack-ninja-build-1.11.0-1-linux-arm.tar.gz
+-rw-rw-rw- 1 ilg ilg    110 May 17 09:51 xpack-ninja-build-1.11.0-1-linux-arm.tar.gz.sha
 ```
 
 ### Build the macOS binaries
@@ -315,7 +327,7 @@ or, for development builds:
 screen -S ninja
 
 rm -rf ~/Work/ninja-build-*-*
-caffeinate bash ${HOME}/Work/ninja-build-xpack.git/scripts/helper/build.sh --develop --without-html --disable-tests --macos
+caffeinate bash ${HOME}/Work/ninja-build-xpack.git/scripts/helper/build.sh --develop --disable-tests --macos
 ```
 
 To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
@@ -327,9 +339,18 @@ archive and its SHA signature, created in the `deploy` folder:
 
 ```console
 $ ls -l ~/Work/ninja-build-*/deploy
-total 1768
--rw-r--r--  1 ilg  staff  900060 Sep 28 17:04 xpack-ninja-build-1.11.0-1-darwin-x64.tar.gz
--rw-r--r--  1 ilg  staff     111 Sep 28 17:04 xpack-ninja-build-1.11.0-1-darwin-x64.tar.gz.sha
+total 1080
+-rw-r--r--  1 ilg  staff  547972 May 17 09:50 xpack-ninja-build-1.11.0-1-darwin-x64.tar.gz
+-rw-r--r--  1 ilg  staff     111 May 17 09:50 xpack-ninja-build-1.11.0-1-darwin-x64.tar.gz.sha
+```
+
+and:
+
+```console
+$ ls -l ~/Work/ninja-build-*/deploy
+total 1056
+-rw-r--r--  1 ilg  staff  533014 May 17 09:49 xpack-ninja-build-1.11.0-1-darwin-arm64.tar.gz
+-rw-r--r--  1 ilg  staff     113 May 17 09:49 xpack-ninja-build-1.11.0-1-darwin-arm64.tar.gz.sha
 ```
 
 ## Subsequent runs
@@ -428,16 +449,13 @@ $ tree -L 2 /Users/ilg/Library/xPacks/\@xpack-dev-tools/ninja-build/1.11.0-1.1/.
 ├── README.md
 ├── bin
 │   └── ninja
-├── distro-info
-│   ├── CHANGELOG.md
-│   ├── licenses
-│   ├── patches
-│   └── scripts
-└── libexec
-    ├── libgcc_s.1.dylib
-    └── libstdc++.6.dylib
+└── distro-info
+    ├── CHANGELOG.md
+    ├── licenses
+    ├── patches
+    └── scripts
 
-6 directories, 5 files
+5 directories, 3 files
 ```
 
 No other files are installed in any system folders or other locations.
