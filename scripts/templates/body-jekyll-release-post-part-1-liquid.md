@@ -7,6 +7,8 @@ summary: "Version **{{ RELEASE_VERSION }}** is a maintenance release; it fixes <
 
 summary: "Version **{{ RELEASE_VERSION }}** is a new release; it follows the upstream release."
 
+ninja_version: 0.11.1
+ninja_date: May 15, 2022
 version: {{ RELEASE_VERSION }}
 npm_subversion: 1
 download_url: https://github.com/xpack-dev-tools/ninja-build-xpack/releases/tag/v{{ RELEASE_VERSION }}/
@@ -121,10 +123,8 @@ The xPack Ninja Build generally follows the official
 
 The current version is based on:
 
-TODO: update commit id and date.
-
-- Ninja Build version vvvv
-from <ddddddddd>.
+- Ninja Build version {% raw %}{{ page.ninja_version }}{% endraw %}
+from {% raw %}{{ page.ninja_version }}{% endraw %}.
 
 ## Changes
 
