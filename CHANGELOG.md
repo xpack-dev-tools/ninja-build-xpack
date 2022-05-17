@@ -4,6 +4,7 @@ Entries in this file are in reverse chronological order.
 
 ## 2022-05-17
 
+- v1.11.0-1.1 published on npmjs.com
 - v1.11.0-1 released
 - optimize cmd.exe processing in ninja.git
 
