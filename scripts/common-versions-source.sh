@@ -31,7 +31,7 @@ function build_versions()
   fi
 
   # Keep them in sync with combo archive content.
-  if [[ "${RELEASE_VERSION}" =~ 1\.11\.[0]-* ]]
+  if [[ "${RELEASE_VERSION}" =~ 1\.11\.[01]-* ]]
   then
 
     (
