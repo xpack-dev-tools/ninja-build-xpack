@@ -27,8 +27,8 @@ and compare the the xPack [Releases](https://github.com/xpack-dev-tools/ninja-bu
 
 ### Increase the version
 
-Determine the version (like `1.11.0`) and update the `scripts/VERSION`
-file; the format is `1.11.0-1`. The fourth number is the xPack release number
+Determine the version (like `1.11.1`) and update the `scripts/VERSION`
+file; the format is `1.11.1-1`. The fourth number is the xPack release number
 of this version. A fifth number will be added when publishing
 the package on the `npm` server.
 
@@ -38,7 +38,7 @@ Check GitHub issues and pull requests:
 
 - <https://github.com/xpack-dev-tools/ninja-build-xpack/issues/>
 
-and fix them; assign them to a milestone (like `1.11.0-1`).
+and fix them; assign them to a milestone (like `1.11.1-1`).
 
 ### Check `README.md`
 
@@ -56,8 +56,8 @@ but in the version specific release page.
 
 - open the `CHANGELOG.md` file
 - check if all previous fixed issues are in
-- add a new entry like _- v1.11.0-1 prepared_
-- commit with a message like _prepare v1.11.0-1_
+- add a new entry like _- v1.11.1-1 prepared_
+- commit with a message like _prepare v1.11.1-1_
 
 Note: if you missed to update the `CHANGELOG.md` before starting the build,
 edit the file and rerun the build, it should take only a few minutes to
@@ -75,7 +75,7 @@ repository, in the `xpack-dev-tools/ninja` Git fork repo:
 - merge `release`
 - checkout `xpack`
 - merge `xpack-develop`
-- tag it with `v1.11.0-1-xpack`
+- tag it with `v1.11.1-1-xpack`
 
 ### Update the version specific code
 
@@ -257,20 +257,20 @@ Install the binaries on all platforms.
 On GNU/Linux and macOS systems, use:
 
 ```sh
-.../xpack-ninja-build-1.11.0-1/bin/ninja --version
-1.11.0
+.../xpack-ninja-build-1.11.1-1/bin/ninja --version
+1.11.1
 ```
 
 On Windows use:
 
 ```dos
-...\xpack-ninja-build-1.11.0-1\bin\ninja --version
-1.11.0
+...\xpack-ninja-build-1.11.1-1\bin\ninja --version
+1.11.1
 ```
 
 ## Create a new GitHub pre-release draft
 
-- in `CHANGELOG.md`, add the release date and a message like _- v1.11.0-1 released_
+- in `CHANGELOG.md`, add the release date and a message like _- v1.11.1-1 released_
 - commit with _CHANGELOG update_
 - check and possibly update the `templates/body-github-release-liquid.md`
 - push the `xpack-develop` branch
@@ -281,8 +281,8 @@ The workflow result and logs are available from the
 
 The result is a
 [draft pre-release](https://github.com/xpack-dev-tools/ninja-build-xpack/releases/)
-tagged like **v1.11.0-1** (mind the dash in the middle!) and
-named like **xPack Ninja Build v1.11.0-1** (mind the dash),
+tagged like **v1.11.1-1** (mind the dash in the middle!) and
+named like **xPack Ninja Build v1.11.1-1** (mind the dash),
 with all binaries attached.
 
 - edit the draft and attach it to the `xpack-develop` branch (important!)
@@ -307,7 +307,7 @@ If any, refer to closed
 ## Update the preview Web
 
 - commit the `develop` branch of `xpack/web-jekyll` GitHub repo;
-  use a message like _xPack Ninja Build v1.11.0-1 released_
+  use a message like _xPack Ninja Build v1.11.1-1 released_
 - push to GitHub
 - wait for the GitHub Pages build to complete
 - the preview web is <https://xpack.github.io/web-preview/news/>
@@ -349,18 +349,18 @@ watching this project.
 - compare the SHA sums with those shown by `cat *.sha`
 - check the executable names
 - commit all changes, use a message like
-  _package.json: update urls for 1.11.0-1.1 release_ (without _v_)
+  _package.json: update urls for 1.11.1-1.1 release_ (without _v_)
 
 ## Publish on the npmjs.com server
 
 - select the `xpack-develop` branch
 - check the latest commits `npm run git-log`
-- update `CHANGELOG.md`, add a line like _- v1.11.0-1.1 published on npmjs.com_
-- commit with a message like _CHANGELOG: publish npm v1.11.0-1.1_
+- update `CHANGELOG.md`, add a line like _- v1.11.1-1.1 published on npmjs.com_
+- commit with a message like _CHANGELOG: publish npm v1.11.1-1.1_
 - `npm pack` and check the content of the archive, which should list
   only the `package.json`, the `README.md`, `LICENSE` and `CHANGELOG.md`;
   possibly adjust `.npmignore`
-- `npm version 1.11.0-1.1`; the first 5 numbers are the same as the
+- `npm version 1.11.1-1.1`; the first 5 numbers are the same as the
   GitHub release; the sixth number is the npm specific version
 - the commits and the tag should have been pushed by the `postversion` script;
   if not, push them with `git push origin --tags`
@@ -389,12 +389,12 @@ The tests results are available from the
 When the release is considered stable, promote it as `latest`:
 
 - `npm dist-tag ls @xpack-dev-tools/ninja-build`
-- `npm dist-tag add @xpack-dev-tools/ninja-build@1.11.0-1.1 latest`
+- `npm dist-tag add @xpack-dev-tools/ninja-build@1.11.1-1.1 latest`
 - `npm dist-tag ls @xpack-dev-tools/ninja-build`
 
 In case the previous version is not functional and needs to be unpublished:
 
-- `npm unpublish @xpack-dev-tools/ninja-build@1.11.0-1.X`
+- `npm unpublish @xpack-dev-tools/ninja-build@1.11.1-1.X`
 
 ## Update the Web
 
@@ -416,7 +416,7 @@ In case the previous version is not functional and needs to be unpublished:
 
 - in a separate browser windows, open [TweetDeck](https://tweetdeck.twitter.com/)
 - using the `@xpack_project` account
-- paste the release name like **xPack Ninja Build v1.11.0-1 released**
+- paste the release name like **xPack Ninja Build v1.11.1-1 released**
 - paste the link to the Web page
   [release](https://xpack.github.io/ninja-build/releases/)
 - click the **Tweet** button
