@@ -10,7 +10,10 @@
   ],
   "spellright.notificationClass": "warning",
   "cSpell.ignoreWords": [
+    "Ionescu",
+    "Liviu",
     "RPATH",
+    "Somsubhra",
     "UCRT",
     "aarch",
     "armhf",
@@ -20,6 +23,7 @@
     "cleanlibs",
     "endraw",
     "ilegeul",
+    "libexec",
     "liquidjs",
     "npmignore",
     "npmjs",
@@ -30,6 +34,8 @@
     "xbbla",
     "xbbli",
     "xbbma",
-    "xbbmi"
+    "xbbmi",
+    "xpack",
+    "xpacks"
   ]
 }
