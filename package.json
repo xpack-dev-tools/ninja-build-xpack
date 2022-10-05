@@ -33,7 +33,7 @@
   },
   "license": "MIT",
   "xpack": {
-    "minimumXpmRequired": "0.10.2",
+    "minimumXpmRequired": "0.14.0",
     "binaries": {
       "destination": "./.content",
       "baseUrl": "https://github.com/xpack-dev-tools/ninja-build-xpack/releases/download/v1.11.1-1",
