@@ -73,7 +73,7 @@ function build_ninja()
       LDFLAGS="$(echo ${XBB_CPPFLAGS} ${XBB_LDFLAGS_APP} | sed -e 's|-O[0123s]||')"
       if [ "${TARGET_PLATFORM}" == "linux" ]
       then
-        LDFLAGS+=" -Wl,-rpath,${LD_LIBRARY_PATH}"
+        LDFLAGS+=" -Wl,-rpath,${LD_LIBRARY_PATH:-/non-empty-hack}"
       fi
 
       export CFLAGS
