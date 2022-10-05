@@ -69,7 +69,8 @@ function build_ninja()
         CFLAGS+=" -DUSE_WIN32_CMD_EXE_TO_CREATE_PROCESS"
         CXXFLAGS+=" -DUSE_WIN32_CMD_EXE_TO_CREATE_PROCESS"
       fi
-      LDFLAGS="$(echo ${XBB_CPPFLAGS} ${XBB_LDFLAGS_APP_STATIC_GCC} | sed -e 's|-O[0123s]||')"
+      # LDFLAGS="$(echo ${XBB_CPPFLAGS} ${XBB_LDFLAGS_APP_STATIC_GCC} | sed -e 's|-O[0123s]||')"
+      LDFLAGS="$(echo ${XBB_CPPFLAGS} ${XBB_LDFLAGS_APP} | sed -e 's|-O[0123s]||')"
       if [ "${TARGET_PLATFORM}" == "linux" ]
       then
         LDFLAGS+=" -Wl,-rpath,${LD_LIBRARY_PATH}"
