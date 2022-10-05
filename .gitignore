@@ -112,5 +112,6 @@ Thumbs.db
 # macOS
 .DS_Store
 
-# end
+.vscode/c_cpp_properties.json
 
+# end
