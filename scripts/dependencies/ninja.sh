@@ -22,7 +22,10 @@ function build_ninja()
   # https://github.com/xpack-dev-tools/ninja/tags/
   # https://github.com/xpack-dev-tools/ninja/archive/refs/tags/v1.11.0-1-xpack.tar.gz
 
+  # https://github.com/archlinux/svntogit-community/blob/packages/ninja/trunk/PKGBUILD
   # https://archlinuxarm.org/packages/aarch64/ninja/files/PKGBUILD
+
+  # https://github.com/Homebrew/homebrew-core/blob/master/Formula/ninja.rb
 
   local ninja_src_folder_name="ninja-${ninja_version}-xpack"
   local ninja_folder_name="ninja-${ninja_version}"
@@ -69,7 +72,7 @@ function build_ninja()
         CFLAGS+=" -DUSE_WIN32_CMD_EXE_TO_CREATE_PROCESS"
         CXXFLAGS+=" -DUSE_WIN32_CMD_EXE_TO_CREATE_PROCESS"
       fi
-      
+
       # Surprisingly, the Windows archive is longer with static libs.
       # LDFLAGS="$(echo ${XBB_CPPFLAGS} ${XBB_LDFLAGS_APP_STATIC_GCC} | sed -e 's|-O[0123s]||')"
       LDFLAGS="$(echo ${XBB_CPPFLAGS} ${XBB_LDFLAGS_APP} | sed -e 's|-O[0123s]||')"
