@@ -78,6 +78,7 @@ function build_ninja()
       LDFLAGS="$(echo ${XBB_CPPFLAGS} ${XBB_LDFLAGS_APP} | sed -e 's|-O[0123s]||')"
       if [ "${TARGET_PLATFORM}" == "linux" ]
       then
+        xbb_activate_cxx_rpath
         LDFLAGS+=" -Wl,-rpath,${LD_LIBRARY_PATH:-/non-empty-hack}"
       fi
 
