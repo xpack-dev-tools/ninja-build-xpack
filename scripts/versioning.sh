@@ -23,11 +23,6 @@ function build_versioned_components()
   xbb_set_binaries_install "${APPLICATION_INSTALL_FOLDER_PATH}"
   xbb_set_libraries_install "${DEPENDENCIES_INSTALL_FOLDER_PATH}"
 
-  if [ "${TARGET_PLATFORM}" == "win32" ]
-  then
-    prepare_gcc_env "${XBB_CROSS_COMPILE_PREFIX}-"
-  fi
-
   # Keep them in sync with combo archive content.
   if [[ "${RELEASE_VERSION}" =~ 1\.11\.[01]-* ]]
   then
