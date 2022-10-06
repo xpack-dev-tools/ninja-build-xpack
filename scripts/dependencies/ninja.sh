@@ -69,6 +69,8 @@ function build_ninja()
         CFLAGS+=" -DUSE_WIN32_CMD_EXE_TO_CREATE_PROCESS"
         CXXFLAGS+=" -DUSE_WIN32_CMD_EXE_TO_CREATE_PROCESS"
       fi
+      
+      # Surprisingly, the Windows archive is longer with static libs.
       # LDFLAGS="$(echo ${XBB_CPPFLAGS} ${XBB_LDFLAGS_APP_STATIC_GCC} | sed -e 's|-O[0123s]||')"
       LDFLAGS="$(echo ${XBB_CPPFLAGS} ${XBB_LDFLAGS_APP} | sed -e 's|-O[0123s]||')"
       if [ "${TARGET_PLATFORM}" == "linux" ]
@@ -101,17 +103,16 @@ function build_ninja()
 
           config_options=()
 
-          # With ninja, the windows build fails with:
-          # The install of the ninja target requires changing an RPATH from the build
-          # tree, but this is not supported with the Ninja generator
-          # config_options+=("-G" "Unix Makefiles")
-          config_options+=("-G" "Ninja")
-
           config_options+=("-DCMAKE_BUILD_TYPE=${build_type}")
 
           if [ "${TARGET_PLATFORM}" == "win32" ]
           then
-              config_options+=("-DWIN32=ON")
+            # The install of the ninja target requires changing an RPATH from the build
+            # tree, but this is not supported with the Ninja generator
+            config_options+=("-G" "Unix Makefiles")
+            config_options+=("-DWIN32=ON")
+          else
+            config_options+=("-G" "Ninja")
           fi
 
           if [ "${IS_DEVELOP}" == "y" ]
