@@ -116,10 +116,10 @@
       "update-package-binaries": "bash scripts/helper/update-package-binaries.sh",
       "trigger-workflow-test-xpm": "bash scripts/helper/tests/trigger-workflow-test-xpm.sh",
       "trigger-workflow-deep-clean": "bash scripts/helper/trigger-workflow-deep-clean.sh",
-      "build": "bash {{ properties.dbg }} scripts/build.sh",
-      "build-develop": "bash {{ properties.dbg }} scripts/build.sh --develop",
-      "build-win": "bash {{ properties.dbg }} scripts/build.sh --windows",
-      "build-win-develop": "bash {{ properties.dbg }} scripts/build.sh --develop --windows"
+      "build-native": "bash {{ properties.dbg }} scripts/build.sh",
+      "build-native-develop": "bash {{ properties.dbg }} scripts/build.sh --develop",
+      "build-native-win": "bash {{ properties.dbg }} scripts/build.sh --windows",
+      "build-native-win-develop": "bash {{ properties.dbg }} scripts/build.sh --develop --windows"
     },
     "buildConfigurations": {
       "common-dependencies": {
