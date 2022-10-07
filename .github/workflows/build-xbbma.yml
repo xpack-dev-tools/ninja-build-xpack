@@ -60,7 +60,7 @@ jobs:
       - name: 'Build macOS arm64 binary'
         timeout-minutes: 1440
         run: |
-          # npm install --global xpm@latest
+          npm install --global xpm@latest
           xpm install
           xpm install --config darwin-arm64
           xpm run build --config darwin-arm64
