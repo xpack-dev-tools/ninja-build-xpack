@@ -37,10 +37,18 @@ jobs:
     runs-on: [self-hosted, linux, x64]
     container:
       image: ilegeul/ubuntu:amd64-18.04-npm-v1
+    defaults:
+      run:
+        shell: bash # For nvm settings
+
     steps:
-      - name: 'Machine'
+      - name: 'Environment'
         run: |
           uname -a
+          lsb_release -sd
+          pwd
+          env
+          ls -lLA
           node --version
           npm --version
 
