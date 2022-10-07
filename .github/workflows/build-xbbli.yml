@@ -55,6 +55,9 @@ jobs:
           node --version
           npm --version
 
+      - name: 'Clean working area'
+        run: rm -rf build xpacks
+
       - name: 'Checkout'
         uses: actions/checkout@v1
         with:
