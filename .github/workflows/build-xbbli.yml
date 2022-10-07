@@ -36,7 +36,7 @@ jobs:
     timeout-minutes: 5760 # 4 days
     runs-on: [self-hosted, linux, x64]
     container:
-      image: ilegeul/ubuntu:amd64-18.04-npm-v1
+      image: ilegeul/ubuntu:amd64-18.04-xbb-v4.0
     defaults:
       run:
         shell: bash -e -o pipefail {0} # For nvm settings
