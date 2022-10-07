@@ -39,7 +39,7 @@ jobs:
       image: ilegeul/ubuntu:amd64-18.04-xbb-v4.0
     defaults:
       run:
-        shell: bash -e -o pipefail {0} # For nvm settings
+        shell: bash --login -e -o pipefail {0} # For node PATH
 
     steps:
       - name: 'Environment'
