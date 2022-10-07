@@ -72,8 +72,8 @@ jobs:
         timeout-minutes: 1440
         run: |
           xpm install
-          xpm install --config linux-x64
-          xpm run build --config linux-x64
+          # xpm install --config linux-x64
+          # xpm run build --config linux-x64
 
       - name: 'Build Windows x64 binary'
         timeout-minutes: 1440
