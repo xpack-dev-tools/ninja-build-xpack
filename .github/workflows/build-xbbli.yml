@@ -35,6 +35,8 @@ jobs:
     name: 'Linux Intel - Ninja Build ${{ github.event.inputs.version }} build'
     timeout-minutes: 5760 # 4 days
     runs-on: [self-hosted, linux, x64]
+    container:
+      image: debian:amd64-10-npm-v1
     steps:
       - name: 'Machine'
         run: |
@@ -48,23 +50,20 @@ jobs:
           fetch-depth: 3
           submodules: true
 
-      - name: 'Clean working area'
-        run: rm -rf ~/Work/ninja-build-${{ github.event.inputs.version }}*
-
       - name: 'Build Linux x64 binary'
         timeout-minutes: 1440
-        run: bash scripts/helper/build.sh --version "${{ github.event.inputs.version }}" --linux64
-    
-      - name: 'Build Windows x64 binary'
-        timeout-minutes: 1440
-        run: bash scripts/helper/build.sh --version "${{ github.event.inputs.version }}" --win64
-    
+        run: |
+          npm install --global xpm@latest
+          xpm install
+          xpm install --config linux-x64
+          xpm run build --config linux-x64
+
       - name: 'Publish pre-release'
         # https://github.com/ncipollo/release-action
         uses: ncipollo/release-action@v1
         with:
           allowUpdates: true
-          artifacts: '~/Work/ninja-build-${{ github.event.inputs.version }}/deploy/*'
+          artifacts: 'build/linux-x64/deploy/*'
           bodyFile: '.github/workflows/body-github-pre-releases-test.md'
           commit: 'master'
           draft: false
