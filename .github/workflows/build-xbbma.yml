@@ -55,7 +55,7 @@ jobs:
           submodules: true
 
       - name: 'Clean working area'
-        run: rm -rf ~/Work/ninja-build-${{ github.event.inputs.version }}*
+        run: rm -rf build xpacks
 
       - name: 'Build macOS arm64 binary'
         timeout-minutes: 1440
