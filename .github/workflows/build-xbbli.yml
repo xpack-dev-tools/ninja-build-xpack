@@ -36,7 +36,7 @@ jobs:
     timeout-minutes: 5760 # 4 days
     runs-on: [self-hosted, linux, x64]
     container:
-      image: debian:amd64-10-npm-v1
+      image: ilegeul/ubuntu:amd64-18.04-npm-v1
     steps:
       - name: 'Machine'
         run: |
