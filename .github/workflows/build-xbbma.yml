@@ -41,7 +41,7 @@ jobs:
       - name: 'Environment'
         run: |
           uname -a
-          lsb_release -sd
+          sw_vers
           pwd
           env
           ls -lLA
