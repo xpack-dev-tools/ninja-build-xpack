@@ -48,7 +48,8 @@ jobs:
           lsb_release -sd
           pwd
           whoami
-          id -u -g
+          id -u
+          id -g
           env
           ls -lLA
           node --version
