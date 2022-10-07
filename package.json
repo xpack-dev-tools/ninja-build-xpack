@@ -102,7 +102,7 @@
         "xpm link @xpack-dev-tools/xbb-helper"
       ],
       "trigger-workflow-build-all": "bash scripts/helper/trigger-workflow-build.sh",
-      "trigger-workflow-build-xbbli": "bash scripts/helper/trigger-workflow-build.sh --machine xbbli",
+      "trigger-workflow-build-xbbli": "bash -x xpacks/xpack-dev-tools-xbb-helper/github-actions/trigger-workflow-build.sh --machine xbbli",
       "trigger-workflow-build-xbbla64": "bash scripts/helper/trigger-workflow-build.sh --machine xbbla64",
       "trigger-workflow-build-xbbla32": "bash scripts/helper/trigger-workflow-build.sh --machine xbbla32",
       "trigger-workflow-build-xbbmi": "bash scripts/helper/trigger-workflow-build.sh --machine xbbmi",
