@@ -58,10 +58,13 @@ jobs:
           fetch-depth: 3
           submodules: true
 
+      - name: 'Install xpm'
+        timeout-minutes: 1440
+        run: npm install --global xpm@latest
+
       - name: 'Build Linux x64 binary'
         timeout-minutes: 1440
         run: |
-          npm install --global xpm@latest
           xpm install
           xpm install --config linux-x64
           xpm run build --config linux-x64

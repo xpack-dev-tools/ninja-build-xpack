@@ -57,10 +57,13 @@ jobs:
       - name: 'Clean working area'
         run: rm -rf build xpacks
 
+      - name: 'Install xpm'
+        timeout-minutes: 1440
+        run: npm install --global xpm@latest
+
       - name: 'Build macOS x64 binary'
         timeout-minutes: 1440
         run: |
-          npm install --global xpm@latest
           xpm install
           xpm install --config darwin-x64
           xpm run build --config darwin-x64
