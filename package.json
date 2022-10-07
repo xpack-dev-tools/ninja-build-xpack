@@ -101,12 +101,12 @@
       "link-deps": [
         "xpm link @xpack-dev-tools/xbb-helper"
       ],
-      "trigger-workflow-build-all": "bash scripts/helper/trigger-workflow-build.sh",
-      "trigger-workflow-build-xbbli": "bash -x xpacks/xpack-dev-tools-xbb-helper/github-actions/trigger-workflow-build.sh --machine xbbli",
-      "trigger-workflow-build-xbbla64": "bash scripts/helper/trigger-workflow-build.sh --machine xbbla64",
-      "trigger-workflow-build-xbbla32": "bash scripts/helper/trigger-workflow-build.sh --machine xbbla32",
-      "trigger-workflow-build-xbbmi": "bash scripts/helper/trigger-workflow-build.sh --machine xbbmi",
-      "trigger-workflow-build-xbbma": "bash scripts/helper/trigger-workflow-build.sh --machine xbbma",
+      "trigger-workflow-build-all": "bash xpacks/xpack-dev-tools-xbb-helper/github-actions/trigger-workflow-build.sh",
+      "trigger-workflow-build-xbbli": "bash xpacks/xpack-dev-tools-xbb-helper/github-actions/trigger-workflow-build.sh --machine xbbli",
+      "trigger-workflow-build-xbbla64": "bash xpacks/xpack-dev-tools-xbb-helper/github-actions/trigger-workflow-build.sh --machine xbbla64",
+      "trigger-workflow-build-xbbla32": "bash xpacks/xpack-dev-tools-xbb-helper/github-actions/trigger-workflow-build.sh --machine xbbla32",
+      "trigger-workflow-build-xbbmi": "bash xpacks/xpack-dev-tools-xbb-helper/github-actions/trigger-workflow-build.sh --machine xbbmi",
+      "trigger-workflow-build-xbbma": "bash xpacks/xpack-dev-tools-xbb-helper/github-actions/trigger-workflow-build.sh --machine xbbma",
       "trigger-workflow-test-prime": "bash scripts/helper/tests/trigger-workflow-test-prime.sh",
       "trigger-workflow-test-docker-linux-intel": "bash scripts/helper/tests/trigger-workflow-test-docker-linux-intel.sh",
       "trigger-workflow-test-docker-linux-arm": "bash scripts/helper/tests/trigger-workflow-test-docker-linux-arm.sh",
