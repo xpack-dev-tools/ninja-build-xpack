@@ -47,6 +47,8 @@ jobs:
           uname -a
           lsb_release -sd
           pwd
+          whoami
+          id -u -g
           env
           ls -lLA
           node --version
