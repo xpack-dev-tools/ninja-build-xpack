@@ -131,7 +131,7 @@ function build_ninja()
             \
             "${SOURCES_FOLDER_PATH}/${ninja_src_folder_name}" \
 
-        ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${ninja_folder_name}/cmake-output.txt"
+        ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${ninja_folder_name}/cmake-output-$(ndate).txt"
       fi
 
       (
@@ -159,7 +159,7 @@ function build_ninja()
           install -v -m755 -c ninja "${BINARIES_INSTALL_FOLDER_PATH}/bin"
         fi
 
-      ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${ninja_folder_name}/build-output.txt"
+      ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${ninja_folder_name}/build-output-$(ndate).txt"
 
       copy_license \
         "${SOURCES_FOLDER_PATH}/${ninja_src_folder_name}" \
