@@ -39,7 +39,7 @@ jobs:
       image: ilegeul/ubuntu:amd64-18.04-npm-v1
     defaults:
       run:
-        shell: bash # For nvm settings
+        shell: bash -e -o pipefail {0} # For nvm settings
 
     steps:
       - name: 'Environment'
