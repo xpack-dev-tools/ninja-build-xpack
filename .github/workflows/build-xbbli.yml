@@ -46,14 +46,12 @@ jobs:
         run: |
           uname -a
           lsb_release -sd
-          pwd
           whoami
-          id -u
-          id -g
-          env
-          ls -lLA
+          pwd
           node --version
           npm --version
+          ls -lLA
+          env
 
       - name: 'Clean working area'
         run: rm -rf build xpacks
@@ -68,10 +66,13 @@ jobs:
         timeout-minutes: 1440
         run: npm install --global xpm@latest
 
+      - name: 'Install project dependencies'
+        timeout-minutes: 1440
+        run: xpm install
+
       - name: 'Build Linux x64 binary'
         timeout-minutes: 1440
         run: |
-          xpm install
           xpm install --config linux-x64
           xpm run build --config linux-x64
 

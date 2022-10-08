@@ -42,11 +42,15 @@ jobs:
         run: |
           uname -a
           sw_vers
+          whoami
           pwd
-          env
-          ls -lLA
           node --version
           npm --version
+          ls -lLA
+          env
+
+      - name: 'Clean working area'
+        run: rm -rf build xpacks
 
       - name: 'Checkout'
         uses: actions/checkout@v1
@@ -54,17 +58,17 @@ jobs:
           fetch-depth: 3
           submodules: true
 
-      - name: 'Clean working area'
-        run: rm -rf build xpacks
-
       - name: 'Install xpm'
         timeout-minutes: 1440
         run: npm install --global xpm@latest
 
+      - name: 'Install project dependencies'
+        timeout-minutes: 1440
+        run: xpm install
+
       - name: 'Build macOS x64 binary'
         timeout-minutes: 1440
         run: |
-          xpm install
           xpm install --config darwin-x64
           xpm run build --config darwin-x64
 
