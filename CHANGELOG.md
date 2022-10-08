@@ -2,64 +2,68 @@
 
 Entries in this file are in reverse chronological order.
 
+## 2022-10-08
+
+* v1.11.1-2 prepared
+
 ## 2022-08-31
 
-- v1.11.1-1.1 published on npmjs.com
-- v1.11.1-1 released
+* v1.11.1-1.1 published on npmjs.com
+* v1.11.1-1 released
 
 ## 2022-05-17
 
-- v1.11.0-1.1 published on npmjs.com
-- v1.11.0-1 released
-- optimize cmd.exe processing in ninja.git
+* v1.11.0-1.1 published on npmjs.com
+* v1.11.0-1 released
+* optimize cmd.exe processing in ninja.git
 
 ## 2022-05-16
 
-- v1.11.0-1 prepared
+* v1.11.0-1 prepared
 
 ## 2021-12-06
 
-- v1.10.2-5.1 published on npmjs.com
-- v1.10.2-5 released
+* v1.10.2-5.1 published on npmjs.com
+* v1.10.2-5 released
 
 ## 2021-11-20
 
-- v1.10.2-5 prepared
-- update build scripts for Apple Silicon
+* v1.10.2-5 prepared
+* update build scripts for Apple Silicon
 
 ## 2021-10-13
 
-- v1.10.2-4.1 published on npmjs.com
-- v1.10.2-4 released
-- update for new build scripts & xbb v3.3
+* v1.10.2-4.1 published on npmjs.com
+* v1.10.2-4 released
+* update for new build scripts & xbb v3.3
 
 ## 2021-09-16
 
-- v1.10.2-4 prepared
-- update build scripts
+* v1.10.2-4 prepared
+* update build scripts
 
 ## 2021-04-28
 
-- v1.10.2-3.1 published on npmjs.com
-- v1.10.2-3 released
-- [#1] - add quotes to cmd.exe /c to fix meson builds on windows
+* v1.10.2-3.1 published on npmjs.com
+* v1.10.2-3 released
+* [#1] - add quotes to cmd.exe /c to fix meson builds on windows
 
 ## 2021-03-16
 
-- v1.10.2-2.1 published on npmjs.com
-- v1.10.2-2 released
-- use local fork, with cmd.exe fix
+* v1.10.2-2.1 published on npmjs.com
+* v1.10.2-2 released
+* use local fork, with cmd.exe fix
 
 ## 2020-12-19
 
-- v1.10.2-1.2 published on npmjs.com
-- v1.10.2-1 released
+* v1.10.2-1.2 published on npmjs.com
+* v1.10.2-1 released
 
 ## 2020-09-28
 
-- v1.10.0-1.1 published on npmjs.com
-- v1.10.0-1 released
+* v1.10.0-1.1 published on npmjs.com
+* v1.10.0-1 released
 
 ## 2020-07-23
 
-- v1.10.0-1 prepared
+* v1.10.0-1 prepared

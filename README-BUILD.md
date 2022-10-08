@@ -106,7 +106,7 @@ not be accepted by bash.
 
 ## Versioning
 
-The version string is an extension to semver, the format looks like `1.11.1-1`.
+The version string is an extension to semver, the format looks like `1.11.1-2`.
 It includes the three digits with the original Ninja Build version and a fourth
 digit with the xPack release number.
 
@@ -210,10 +210,10 @@ archives and their SHA signatures, created in the `deploy` folder:
 ```console
 $ ls -l ~/Work/ninja-build-*/deploy
 total 1480
--rw-rw-rw- 1 ilg ilg 551495 May 17 09:49 xpack-ninja-build-1.11.1-1-linux-x64.tar.gz
--rw-rw-rw- 1 ilg ilg    110 May 17 09:49 xpack-ninja-build-1.11.1-1-linux-x64.tar.gz.sha
--rw-rw-rw- 1 ilg ilg 951474 May 17 09:50 xpack-ninja-build-1.11.1-1-win32-x64.zip
--rw-rw-rw- 1 ilg ilg    107 May 17 09:50 xpack-ninja-build-1.11.1-1-win32-x64.zip.sha
+-rw-rw-rw- 1 ilg ilg 551495 May 17 09:49 xpack-ninja-build-1.11.1-2-linux-x64.tar.gz
+-rw-rw-rw- 1 ilg ilg    110 May 17 09:49 xpack-ninja-build-1.11.1-2-linux-x64.tar.gz.sha
+-rw-rw-rw- 1 ilg ilg 951474 May 17 09:50 xpack-ninja-build-1.11.1-2-win32-x64.zip
+-rw-rw-rw- 1 ilg ilg    107 May 17 09:50 xpack-ninja-build-1.11.1-2-win32-x64.zip.sha
 ```
 
 ### Build the Arm GNU/Linux binaries
@@ -284,8 +284,8 @@ archives and their SHA signatures, created in the `deploy` folder:
 ```console
 $ ls -l ~/Work/ninja-build-*/deploy
 total 532
--rw-rw-rw- 1 ilg ilg 538649 May 17 09:51 xpack-ninja-build-1.11.1-1-linux-arm64.tar.gz
--rw-rw-rw- 1 ilg ilg    112 May 17 09:51 xpack-ninja-build-1.11.1-1-linux-arm64.tar.gz.sha
+-rw-rw-rw- 1 ilg ilg 538649 May 17 09:51 xpack-ninja-build-1.11.1-2-linux-arm64.tar.gz
+-rw-rw-rw- 1 ilg ilg    112 May 17 09:51 xpack-ninja-build-1.11.1-2-linux-arm64.tar.gz.sha
 ```
 
 and:
@@ -293,8 +293,8 @@ and:
 ```console
 $ ls -l ~/Work/ninja-build-*/deploy
 total 500
--rw-rw-rw- 1 ilg ilg 506541 May 17 09:51 xpack-ninja-build-1.11.1-1-linux-arm.tar.gz
--rw-rw-rw- 1 ilg ilg    110 May 17 09:51 xpack-ninja-build-1.11.1-1-linux-arm.tar.gz.sha
+-rw-rw-rw- 1 ilg ilg 506541 May 17 09:51 xpack-ninja-build-1.11.1-2-linux-arm.tar.gz
+-rw-rw-rw- 1 ilg ilg    110 May 17 09:51 xpack-ninja-build-1.11.1-2-linux-arm.tar.gz.sha
 ```
 
 ### Build the macOS binaries
@@ -339,8 +339,8 @@ archive and its SHA signature, created in the `deploy` folder:
 ```console
 $ ls -l ~/Work/ninja-build-*/deploy
 total 1080
--rw-r--r--  1 ilg  staff  547972 May 17 09:50 xpack-ninja-build-1.11.1-1-darwin-x64.tar.gz
--rw-r--r--  1 ilg  staff     111 May 17 09:50 xpack-ninja-build-1.11.1-1-darwin-x64.tar.gz.sha
+-rw-r--r--  1 ilg  staff  547972 May 17 09:50 xpack-ninja-build-1.11.1-2-darwin-x64.tar.gz
+-rw-r--r--  1 ilg  staff     111 May 17 09:50 xpack-ninja-build-1.11.1-2-darwin-x64.tar.gz.sha
 ```
 
 and:
@@ -348,8 +348,8 @@ and:
 ```console
 $ ls -l ~/Work/ninja-build-*/deploy
 total 1056
--rw-r--r--  1 ilg  staff  533014 May 17 09:49 xpack-ninja-build-1.11.1-1-darwin-arm64.tar.gz
--rw-r--r--  1 ilg  staff     113 May 17 09:49 xpack-ninja-build-1.11.1-1-darwin-arm64.tar.gz.sha
+-rw-r--r--  1 ilg  staff  533014 May 17 09:49 xpack-ninja-build-1.11.1-2-darwin-arm64.tar.gz
+-rw-r--r--  1 ilg  staff     113 May 17 09:49 xpack-ninja-build-1.11.1-2-darwin-arm64.tar.gz.sha
 ```
 
 ## Subsequent runs
@@ -433,7 +433,7 @@ program from there. For example on macOS the output should
 look like:
 
 ```console
-$ .../xpack-ninja-build-1.11.1-1/bin/ninja --version
+$ .../xpack-ninja-build-1.11.1-2/bin/ninja --version
 1.11.1
 ```
 
@@ -443,8 +443,8 @@ After install, the package should create a structure like this (macOS files;
 only the first two depth levels are shown):
 
 ```console
-$ tree -L 2 /Users/ilg/Library/xPacks/\@xpack-dev-tools/ninja-build/1.11.1-1.1/.content/
-/Users/ilg/Library/xPacks/\@xpack-dev-tools/ninja-build/1.11.1-1.1/.content/
+$ tree -L 2 /Users/ilg/Library/xPacks/\@xpack-dev-tools/ninja-build/1.11.1-2.1/.content/
+/Users/ilg/Library/xPacks/\@xpack-dev-tools/ninja-build/1.11.1-2.1/.content/
 ├── README.md
 ├── bin
 │   └── ninja
