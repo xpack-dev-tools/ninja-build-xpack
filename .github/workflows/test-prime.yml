@@ -99,7 +99,7 @@ jobs:
       image: ilegeul/ubuntu:arm32v7-18.04-xbb-v4.0
     defaults:
       run:
-        shell: bash --login -e -o pipefail {0} # For node PATH
+        shell: /usr/bin/linux32 bash --login -e -o pipefail {0} # For node PATH
 
     steps:
       - name: 'Machine'
