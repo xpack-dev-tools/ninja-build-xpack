@@ -73,6 +73,9 @@ jobs:
       - name: 'Machine'
         run: uname -a
 
+      - name: 'Clean working area'
+        run: rm -rf *
+
       - name: 'Checkout'
         uses: actions/checkout@v1
         with:
@@ -101,6 +104,9 @@ jobs:
     steps:
       - name: 'Machine'
         run: uname -a
+
+      - name: 'Clean working area'
+        run: rm -rf *
 
       - name: 'Checkout'
         uses: actions/checkout@v1
