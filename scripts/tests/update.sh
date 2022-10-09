@@ -9,7 +9,7 @@
 
 # -----------------------------------------------------------------------------
 
-function update_image()
+function tests_update_system()
 {
   local image_name="$1"
 

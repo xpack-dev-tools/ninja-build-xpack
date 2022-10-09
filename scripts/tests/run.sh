@@ -9,12 +9,13 @@
 
 # -----------------------------------------------------------------------------
 
-function tests_run()
+function tests_run_all()
 {
-  echo
-  env | sort
+  local test_bin_path="$1"
 
-  test_ninja "${TEST_BIN_PATH}"
+  (
+    test_ninja "${test_bin_path}"
+  )
 }
 
 # -----------------------------------------------------------------------------
