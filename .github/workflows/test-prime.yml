@@ -122,7 +122,7 @@ jobs:
         run: xpm install
 
       - name: 'Run ${{ github.event.inputs.version }} docker test'
-        run: xpm run test-native -- --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }} --image ubuntu:arm32v7-18.04-xbb-v4.0 --force-32bit
+        run: xpm run test-native -- --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }} --image ubuntu:arm32v7-18.04-xbb-v4.0 --32
 
 
   macos-x64:
