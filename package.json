@@ -107,7 +107,7 @@
       "trigger-workflow-build-xbbla32": "bash xpacks/xpack-dev-tools-xbb-helper/github-actions/trigger-workflow-build.sh --machine xbbla32",
       "trigger-workflow-build-xbbmi": "bash xpacks/xpack-dev-tools-xbb-helper/github-actions/trigger-workflow-build.sh --machine xbbmi",
       "trigger-workflow-build-xbbma": "bash xpacks/xpack-dev-tools-xbb-helper/github-actions/trigger-workflow-build.sh --machine xbbma",
-      "trigger-workflow-test-prime": "bash scripts/helper/tests/trigger-workflow-test-prime.sh",
+      "trigger-workflow-test-prime": "bash xpacks/xpack-dev-tools-xbb-helper/github-actions/trigger-workflow-test-prime.sh",
       "trigger-workflow-test-docker-linux-intel": "bash scripts/helper/tests/trigger-workflow-test-docker-linux-intel.sh",
       "trigger-workflow-test-docker-linux-arm": "bash scripts/helper/tests/trigger-workflow-test-docker-linux-arm.sh",
       "trigger-travis-macos": "bash scripts/helper/tests/trigger-travis-macos.sh",

@@ -57,7 +57,7 @@ jobs:
         run: xpm install
 
       - name: 'Run ${{ github.event.inputs.version }} native test'
-        run: xpm run test -- --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
+        run: xpm run test-native -- --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
 
 
   linux-arm64:
