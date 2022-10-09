@@ -171,7 +171,8 @@ jobs:
 
       - name: Test mingw
         run: |
-          find / -name 'x86_64-w64-mingw32-objdump*'
+          ls -l /
+          find /c -name 'x86_64-w64-mingw32-objdump*'
           x86_64-w64-mingw32-objdump.exe --version
 
 
