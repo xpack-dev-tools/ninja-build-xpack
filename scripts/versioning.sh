@@ -15,7 +15,7 @@ function build_versioned_components()
   # Don't use a comma since the regular expression
   # that processes this string in the Makefile, silently fails and the
   # bfdver.h file remains empty.
-  BRANDING="${DISTRO_NAME} ${APP_NAME} ${TARGET_MACHINE}"
+  # BRANDING="${APP_DISTRO_NAME} ${APP_NAME} ${TARGET_MACHINE}"
 
   NINJA_VERSION="$(echo "${RELEASE_VERSION}" | sed -e 's|-.*||')"
 
