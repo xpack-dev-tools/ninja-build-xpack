@@ -147,6 +147,7 @@ jobs:
         run: xpm run test-native -- --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
 
 
+  # It requires Git for Windows for bash.
   windows-x64:
     name: 'Windows x64 Ninja Build ${{ github.event.inputs.version }} test'
     runs-on: windows-latest
@@ -163,6 +164,10 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 3
+
+      - name: 'Install mingw'
+        timeout-minutes: 1440
+        run: choco install mingw
 
       - name: 'Install xpm'
         timeout-minutes: 1440
