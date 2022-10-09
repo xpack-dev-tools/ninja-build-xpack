@@ -42,13 +42,22 @@ jobs:
     steps:
       - name: 'Machine'
         run: uname -a
+
       - name: 'Checkout'
         uses: actions/checkout@v2
         with:
           fetch-depth: 3
-          submodules: true
+
+      - name: 'Install xpm'
+        timeout-minutes: 1440
+        run: npm install --location=global xpm@latest
+
+      - name: 'Install project dependencies'
+        timeout-minutes: 1440
+        run: xpm install
+
       - name: 'Run ${{ github.event.inputs.version }} native test'
-        run: bash scripts/helper/tests/native-test.sh --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
+        run: xpm run test -- --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
 
 
   linux-arm64:
