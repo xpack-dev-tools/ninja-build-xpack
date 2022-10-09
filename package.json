@@ -122,7 +122,8 @@
       "build-native": "bash {{ properties.dbg }} scripts/build.sh",
       "build-native-develop": "bash {{ properties.dbg }} scripts/build.sh --develop",
       "build-native-win": "bash {{ properties.dbg }} scripts/build.sh --windows",
-      "build-native-win-develop": "bash {{ properties.dbg }} scripts/build.sh --develop --windows"
+      "build-native-win-develop": "bash {{ properties.dbg }} scripts/build.sh --develop --windows",
+      "deep-clean": "rm -rf build xpacks"
     },
     "buildConfigurations": {
       "common-dependencies": {
@@ -138,7 +139,8 @@
         "actions": {
           "build": "{{ properties.commandBashBuild }}",
           "build-develop": "{{ properties.commandBashBuild }} --develop",
-          "publish": "echo publish"
+          "publish": "echo publish",
+          "deep-clean": "rm -rf {{ properties.buildFolderRelativePathPosix }}"
         }
       },
       "darwin-x64": {
