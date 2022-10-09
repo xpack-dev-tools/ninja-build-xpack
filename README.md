@@ -1,6 +1,8 @@
 
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/xpack-dev-tools/ninja-build-xpack)](https://github.com/xpack-dev-tools/ninja-build-xpack/releases)
-[![npm (scoped)](https://img.shields.io/npm/v/@xpack-dev-tools/ninja-build.svg)](https://www.npmjs.com/package/@xpack-dev-tools/ninja-build/)
+[![GitHub package.json version](https://img.shields.io/github/package-json/v/xpack-dev-tools/ninja-build-xpack)](https://github.com/xpack-dev-tools/ninja-build-xpack/blob/xpack/package.json)
+[![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/xpack-dev-tools/ninja-build-xpack)](https://github.com/xpack-dev-tools/ninja-build-xpack/tags/)
+[![npm (scoped)](https://img.shields.io/npm/v/@xpack-dev-tools/ninja-build.svg?color=blue)](https://www.npmjs.com/package/@xpack-dev-tools/ninja-build/)
+[![license](https://img.shields.io/github/license/xpack-dev-tools/ninja-build-xpack)](https://github.com/xpack-dev-tools/ninja-build-xpack/blob/xpack/LICENSE)
 
 # The xPack Ninja Build
 
@@ -43,11 +45,17 @@ from the [`npmjs.com`](https://www.npmjs.com) registry.
 
 #### Prerequisites
 
-The only requirement is a recent
-`xpm`, which is a portable
-[Node.js](https://nodejs.org) command line application. To install it,
-follow the instructions from the
-[xpm](https://xpack.github.io/xpm/install/) page.
+A recent [xpm](https://xpack.github.io/xpm/),
+which is a portable [Node.js](https://nodejs.org/) command line application.
+
+It is recommended to update to the latest version with:
+
+```sh
+npm install --global xpm@latest
+```
+
+For details please follow the instructions in the
+[xPack install](https://xpack.github.io/install/) page.
 
 #### Install
 
@@ -85,7 +93,31 @@ It is also possible to install Ninja Build globally, in the user home folder:
 xpm install --global @xpack-dev-tools/ninja-build@latest
 ```
 
+After install, the package should create a structure like this (macOS files;
+only the first two depth levels are shown):
+
+```console
+$ tree -L 2 xpacks/xpack-dev-tools-ninja-build/.content/
+xpacks/xpack-dev-tools-ninja-build/.content/
+├── README.md
+├── bin
+│   └── ninja
+└── distro-info
+    ├── CHANGELOG.md
+    ├── licenses
+    ├── patches
+    └── scripts
+
+5 directories, 3 files
+```
+
+No other files are installed in any system folders or other locations.
+
 #### Uninstall
+
+The binaries are distributed as portable archives; thus they do not need
+to run a setup and do not require an uninstall; simply removing the
+folder is enough.
 
 To remove the links from the current project:
 
@@ -129,8 +161,8 @@ with caution, and prefer exact matches, like `1.11.1-2.1`.
 
 ## Maintainer info
 
-- [How to build](https://github.com/xpack-dev-tools/ninja-build-xpack/blob/xpack/README-BUILD.md)
-- [How to publish](https://github.com/xpack-dev-tools/ninja-build-xpack/blob/xpack/README-RELEASE.md)
+For maintainer info, please see the
+[README-MAINTAINER](https://github.com/xpack-dev-tools/ninja-build-xpack/blob/xpack/README-MAINTAINER.md)
 
 ## Support
 
