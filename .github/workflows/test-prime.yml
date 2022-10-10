@@ -78,10 +78,11 @@ jobs:
       - name: 'Update'
         run: |
           apt -qq update
-          apt -qq install -y lsb-release git-core curl tar gzip binutils # for readelf
+          # binutils for readelf
+          apt -qq install -y lsb-release git-core curl tar gzip binutils
 
       - name: 'Clean working area'
-        run: rm -rf *
+        run: rm -rf * .*
 
       - name: 'Checkout'
         uses: actions/checkout@v3
