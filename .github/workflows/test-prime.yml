@@ -103,12 +103,12 @@ jobs:
     name: 'Linux arm32 Ninja Build ${{ github.event.inputs.version }} test'
     runs-on: [self-hosted, linux, arm64, xbbla]
     container:
-      image: arm32v7/debian:stable-slim # debian:stable-slim
+      image: ilegeul/ubuntu:arm32v7-18.04-xbb-v4.0 # arm32v7/debian:stable-slim # debian:stable-slim
       # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idcontaineroptions
       # options: --platform linux/arm/v7
     defaults:
       run:
-        shell: /usr/bin/linux32 /bin/bash -e -o pipefail {0}
+        shell: /usr/bin/linux32 /bin/bash -e -o pipefail --login {0}
 
     steps:
       - name: 'Machine'
