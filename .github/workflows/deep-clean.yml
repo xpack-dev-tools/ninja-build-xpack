@@ -43,7 +43,6 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 3
-          submodules: true
 
       - name: 'Clean working area'
         run: rm -rf ~/Work/ninja-build-${{ github.event.inputs.version }}*
@@ -62,7 +61,6 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 3
-          submodules: true
 
       - name: 'Clean working area'
         run: rm -rf ~/Work/ninja-build-${{ github.event.inputs.version }}*
@@ -81,7 +79,6 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 3
-          submodules: true
 
       - name: 'Clean working area'
         run: rm -rf ~/Work/ninja-build-${{ github.event.inputs.version }}*
@@ -102,7 +99,6 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 3
-          submodules: true
 
       - name: 'Clean working area'
         run: rm -rf ~/Work/ninja-build-${{ github.event.inputs.version }}*
@@ -127,7 +123,6 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 3
-          submodules: true
 
       - name: 'Clean working area'
         run: rm -rf ~/Work/ninja-build-${{ github.event.inputs.version }}*
