@@ -74,7 +74,7 @@ jobs:
         run: |
           xpm install --config linux-arm
           xpm run build --config linux-arm
-          
+
       - name: 'Publish pre-release'
         # https://github.com/ncipollo/release-action
         uses: ncipollo/release-action@v1
