@@ -64,20 +64,27 @@ jobs:
     name: 'Linux arm64 Ninja Build ${{ github.event.inputs.version }} test'
     runs-on: [self-hosted, linux, arm64, xbbla]
     container:
-      image: ilegeul/ubuntu:arm64v8-18.04-xbb-v4.0
+      image: node:lts-bullseye-slim
+      # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idcontaineroptions
+      options: --platform linux/arm64/v8
     defaults:
       run:
-        shell: bash --login -e -o pipefail {0} # For node PATH
+        shell: /bin/bash -e -o pipefail {0}
 
     steps:
       - name: 'Machine'
         run: uname -a
 
+      - name: 'Update'
+        run: |
+          apt update
+          apt install -y lsb-release git-core curl tar gzip
+
       - name: 'Clean working area'
         run: rm -rf *
 
       - name: 'Checkout'
-        uses: actions/checkout@v1
+        uses: actions/checkout
         with:
           fetch-depth: 3
 
