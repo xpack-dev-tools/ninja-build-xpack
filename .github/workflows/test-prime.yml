@@ -116,9 +116,8 @@ jobs:
 
       - name: 'Update'
         run: |
-          apt -qq update
-          apt -qq install -y lsb-release git-core curl tar gzip nodejs binutils  # binutils for readelf
-
+          apt-get -qq update
+          apt-get -qq install -y lsb-release git-core curl tar gzip binutils
       - name: 'Clean working area'
         run: rm -rf *
 
