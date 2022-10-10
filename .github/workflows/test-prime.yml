@@ -108,7 +108,7 @@ jobs:
       # options: --platform linux/arm/v7
     defaults:
       run:
-        shell: /usr/bin/linux32 /bin/bash -e -o pipefail --login {0}
+        shell: /usr/bin/linux32 /bin/bash -e -o pipefail -l {0}
 
     steps:
       - name: 'Machine'
