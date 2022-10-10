@@ -54,7 +54,7 @@ jobs:
           env
 
       - name: 'Clean working area'
-        run: rm -rf build xpacks
+        run: rm -rf * .git*
 
       - name: 'Checkout'
         uses: actions/checkout@v1 # v1 for old Git
