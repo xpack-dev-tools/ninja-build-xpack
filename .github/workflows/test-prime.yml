@@ -103,7 +103,7 @@ jobs:
     name: 'Linux arm32 Ninja Build ${{ github.event.inputs.version }} test'
     runs-on: [self-hosted, linux, arm64, xbbla]
     container:
-      image: node:lts-bullseye-slim
+      image: debian:stable-slim
       # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idcontaineroptions
       options: --platform linux/arm/v7
     defaults:
@@ -117,7 +117,7 @@ jobs:
       - name: 'Update'
         run: |
           apt -qq update
-          apt -qq install -y lsb-release git-core curl tar gzip binutils # for readelf
+          apt -qq install -y lsb-release git-core curl tar gzip nodejs binutils  # binutils for readelf
 
       - name: 'Clean working area'
         run: rm -rf *
@@ -136,7 +136,7 @@ jobs:
         run: xpm install
 
       - name: 'Run ${{ github.event.inputs.version }} docker test'
-        run: xpm run test-native -- --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }} --image ubuntu:arm32v7-18.04-xbb-v4.0 --32
+        run: xpm run test-native -- --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }} --image debian
 
 
   macos-x64:
