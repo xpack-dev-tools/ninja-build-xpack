@@ -26,6 +26,7 @@
 # - 8 jessie
 # - 9 stretch
 # - 10 buster
+# - 11 bullseye
 
 # Ubuntu releases
 # - 12.04 LTS (Precise Pangolin)
@@ -33,6 +34,7 @@
 # - 16.04 LTS (Xenial Xerus)
 # - 18.04 LTS (Bionic Beaver)
 # - 20.04 LTS (Focal Fossa)
+# - 22.04 LTS (Jammy Jellyfish)
 
 # -----------------------------------------------------------------------------
 
