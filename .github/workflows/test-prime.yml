@@ -102,6 +102,7 @@ jobs:
   linux-arm32:
     name: 'Linux arm32 Ninja Build ${{ github.event.inputs.version }} test'
     runs-on: [self-hosted, linux, arm64, xbbla]
+    container:
       image: node:lts-bullseye-slim
       # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idcontaineroptions
       options: --platform linux/arm/v7
