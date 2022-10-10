@@ -105,9 +105,10 @@ jobs:
     container:
       image: ilegeul/ubuntu:arm32v7-18.04-xbb-v4.0 # arm32v7/debian:stable-slim # debian:stable-slim
       # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idcontaineroptions
-      # options: --platform linux/arm/v7
+      options: --platform linux/arm/v7
     defaults:
       run:
+        # -l (--login) for the node PATH
         shell: /usr/bin/linux32 /bin/bash -e -o pipefail -l {0}
 
     steps:
@@ -117,7 +118,9 @@ jobs:
       - name: 'Update'
         run: |
           apt-get -qq update
+          # binutils for readelf
           apt-get -qq install -y lsb-release git-core curl tar gzip binutils
+
       - name: 'Clean working area'
         run: rm -rf *
 
