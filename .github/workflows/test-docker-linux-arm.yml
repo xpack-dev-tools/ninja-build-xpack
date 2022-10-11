@@ -272,7 +272,7 @@ jobs:
         uses: docker://arm32v7/ubuntu:22.04
         with:
           entrypoint: /usr/bin/linux32
-          args: /bin/bash /github/workspace/scripts/test.sh --image arm32v7/ubuntu:22.04 --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
+          args: /bin/bash -x /github/workspace/scripts/test.sh --image arm32v7/ubuntu:22.04 --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
 
   # docker://arm32v7/ubuntu:20.04 - fails to update
 
