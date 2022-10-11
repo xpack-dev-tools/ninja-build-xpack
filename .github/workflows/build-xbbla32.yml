@@ -44,7 +44,6 @@ jobs:
     steps:
       - name: 'Environment'
         run: |
-          (ls /.dockerenv && echo Found /.dockerenv) || (echo No /.dockerenv)
           uname -a
           lsb_release -sd
           whoami
