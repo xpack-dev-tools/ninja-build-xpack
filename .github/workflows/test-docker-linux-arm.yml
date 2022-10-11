@@ -249,7 +249,7 @@ jobs:
           ls -lLA
           env
 
-      - name: 'Clean working area'
+      - name: 'Clean working area' # Mandatory for self-hosted runners.
         run: rm -rf * .git*
 
       # https://github.com/actions/checkout
