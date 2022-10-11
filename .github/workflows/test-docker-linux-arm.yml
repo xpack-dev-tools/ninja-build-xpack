@@ -231,51 +231,42 @@ jobs:
           entrypoint: /bin/bash
           args: /github/workspace/scripts/helper/tests/native-test.sh --image opensuse/tumbleweed --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
 
-
+  # 32-bit Arm images exhibit
   # https://hub.docker.com/r/arm32v7/ubuntu/
   ubuntu-arm:
     name: 'arm Ninja Build ${{ github.event.inputs.version }} test on Ubuntu 18 stable'
-    runs-on: [self-hosted, linux, arm64, xbbla]
-    container:
-      image: arm32v7/ubuntu:18.04
-      # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idcontaineroptions
-      options: --platform linux/arm/v7
-    defaults:
-      run:
-        # -l (--login) for the node PATH
-        shell: /usr/bin/linux32 /bin/bash -e -o pipefail -l {0}
+    # Fails to update some distributions, like new Ubuntu.
+    # runs-on: [self-hosted, linux, arm64, xbbla]
+    runs-on: [self-hosted, linux, arm, xbbla32]
 
     steps:
-      - name: 'Machine'
-        run: uname -a
-
-      - name: 'Update'
+      - name: 'Environment'
         run: |
-          apt-get -qq update
-          # binutils for readelf
-          apt-get -qq install -y lsb-release git-core curl tar gzip binutils
-          apt-get -qq install nodejs
+          uname -a
+          lsb_release -sd
+          whoami
+          pwd
+          ls -lLA
+          env
 
       - name: 'Clean working area'
         run: rm -rf * .git*
 
+      # https://github.com/actions/checkout
       - name: 'Checkout'
-        uses: actions/checkout@v1
+        uses: actions/checkout@v3
         with:
-          fetch-depth: 3
+          fetch-depth: 1
 
-      - name: 'Install xpm'
-        timeout-minutes: 1440
-        run: npm install --location=global xpm@latest
+      - name: 'Checkout helper'
+        uses: actions/checkout@v3
+        with:
+          repository: xpack-dev-tools/xbb-helper-xpack
+          path: xpacks/xpack-dev-tools-xbb-helper-xpack
+          fetch-depth: 1
 
-      - name: 'Install project dependencies'
-        timeout-minutes: 1440
-        run: xpm install
-
-
-      # docker://arm32v7/ubuntu:20.04 - fails to update
-      - name: 'Run ${{ github.event.inputs.version }} docker test'
-        run: xpm run test-native -- --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }} --image debian
+      - name: 'Show'
+        run: ls -lR
 
   # docker://arm32v7/ubuntu:20.04 - fails to update
 
