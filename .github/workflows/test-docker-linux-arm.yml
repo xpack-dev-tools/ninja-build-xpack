@@ -235,10 +235,9 @@ jobs:
           entrypoint: /bin/bash
           args: /github/workspace/scripts/helper/tests/native-test.sh --image opensuse/tumbleweed --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
 
-  # 32-bit Arm images exhibit
   # https://hub.docker.com/r/arm32v7/ubuntu/
   ubuntu-arm:
-    name: 'arm Ninja Build ${{ github.event.inputs.version }} test on Ubuntu 18 stable'
+    name: 'arm Ninja Build ${{ github.event.inputs.version }} test on Ubuntu 22 20 18 stable'
     # Fails to update some distributions, like new Ubuntu.
     # runs-on: [self-hosted, linux, arm64, xbbla]
     runs-on: [self-hosted, linux, arm, xbbla32]
@@ -279,20 +278,63 @@ jobs:
           entrypoint: /usr/bin/linux32
           args: /bin/bash -x /github/workspace/scripts/test.sh --image arm32v7/ubuntu:22.04 --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
 
+      - name: 'Ubuntu 20 arm'
+        uses: docker://arm32v7/ubuntu:20.04
+        with:
+          entrypoint: /usr/bin/linux32
+          args: /bin/bash -x /github/workspace/scripts/test.sh --image arm32v7/ubuntu:20.04 --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
+
+      - name: 'Ubuntu 18 arm'
+        uses: docker://arm32v7/ubuntu:18.04
+        with:
+          entrypoint: /usr/bin/linux32
+          args: /bin/bash -x /github/workspace/scripts/test.sh --image arm32v7/ubuntu:18.04 --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
+
   # docker://arm32v7/ubuntu:20.04 - fails to update
 
   # https://hub.docker.com/r/arm32v7/debian
   debian-arm:
     if: ${{ false }}
-    name: 'arm Ninja Build ${{ github.event.inputs.version }} test on Debian 10 stable'
-    runs-on: [self-hosted, linux, arm64, xbbla]
+    name: 'arm Ninja Build ${{ github.event.inputs.version }} test on Debian 11 10 stable'
+    # runs-on: [self-hosted, linux, arm64, xbbla]
+    runs-on: [self-hosted, linux, arm, xbbla32]
+
     steps:
-      - name: 'Machine'
-        run: uname -a
+      - name: 'Environment'
+        run: |
+          uname -a
+          lsb_release -sd
+          whoami
+          pwd
+          ls -lLA
+          env
+
+      - name: 'Clean working area' # Mandatory for self-hosted runners.
+        run: rm -rf * .git*
+
+      # https://github.com/actions/checkout
       - name: 'Checkout project'
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
-          fetch-depth: 3
+          fetch-depth: 1
+
+      - name: 'Checkout helper'
+        uses: actions/checkout@v3
+        with:
+          repository: xpack-dev-tools/xbb-helper-xpack
+          path: xpacks/xpack-dev-tools-xbb-helper
+          ref: ${{ github.event.inputs.helper-git-ref }}
+          fetch-depth: 1
+
+      - name: 'Show'
+        run: ls -lR
+
+      - name: 'Debian 11 arm'
+        uses: docker://arm32v7/debian:bullseye
+        with:
+          entrypoint: /usr/bin/linux32
+          args: /bin/bash /github/workspace/scripts/helper/tests/native-test.sh --image arm32v7/debian:bullseye --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
+
       - name: 'Debian 10 arm'
         uses: docker://arm32v7/debian:buster
         with:
