@@ -40,12 +40,12 @@ function build_ninja()
   if [ ! -f "${ninja_stamp_file_path}" ]
   then
 
-  cd "${SOURCES_FOLDER_PATH}"
+    mkdir -pv "${SOURCES_FOLDER_PATH}"
+    cd "${SOURCES_FOLDER_PATH}"
 
     if [ ! -d "${SOURCES_FOLDER_PATH}/${ninja_src_folder_name}" ]
     then
       (
-        cd "${SOURCES_FOLDER_PATH}"
         if [ ! -z ${NINJA_GIT_URL+x} ]
         then
           git_clone "${NINJA_GIT_URL}" "${NINJA_GIT_BRANCH}" \
@@ -59,7 +59,7 @@ function build_ninja()
     fi
 
     (
-      mkdir -p "${BUILD_FOLDER_PATH}/${ninja_folder_name}"
+      mkdir -pv "${BUILD_FOLDER_PATH}/${ninja_folder_name}"
       cd "${BUILD_FOLDER_PATH}/${ninja_folder_name}"
 
       # xbb_activate_installed_dev
@@ -167,6 +167,7 @@ function build_ninja()
 
     )
 
+    mkdir -pv "${STAMPS_FOLDER_PATH}"
     touch "${ninja_stamp_file_path}"
 
   else
