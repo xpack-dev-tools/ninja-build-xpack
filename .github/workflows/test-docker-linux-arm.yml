@@ -66,7 +66,7 @@ jobs:
     steps:
       - name: 'Machine'
         run: uname -a
-      - name: 'Checkout'
+      - name: 'Checkout project'
         uses: actions/checkout@v2
         with:
           fetch-depth: 3
@@ -90,7 +90,7 @@ jobs:
     steps:
       - name: 'Machine'
         run: uname -a
-      - name: 'Checkout'
+      - name: 'Checkout project'
         uses: actions/checkout@v2
         with:
           fetch-depth: 3
@@ -110,7 +110,7 @@ jobs:
     steps:
       - name: 'Machine'
         run: uname -a
-      - name: 'Checkout'
+      - name: 'Checkout project'
         uses: actions/checkout@v2
         with:
           fetch-depth: 3
@@ -130,7 +130,7 @@ jobs:
     steps:
       - name: 'Machine'
         run: uname -a
-      - name: 'Checkout'
+      - name: 'Checkout project'
         uses: actions/checkout@v2
         with:
           fetch-depth: 3
@@ -160,7 +160,7 @@ jobs:
     steps:
       - name: 'Machine'
         run: uname -a
-      - name: 'Checkout'
+      - name: 'Checkout project'
         uses: actions/checkout@v2
         with:
           fetch-depth: 3
@@ -179,7 +179,7 @@ jobs:
     steps:
       - name: 'Machine'
         run: uname -a
-      - name: 'Checkout'
+      - name: 'Checkout project'
         uses: actions/checkout@v2
         with:
           fetch-depth: 3
@@ -197,7 +197,7 @@ jobs:
     steps:
       - name: 'Machine'
         run: uname -a
-      - name: 'Checkout'
+      - name: 'Checkout project'
         uses: actions/checkout@v2
         with:
           fetch-depth: 3
@@ -221,7 +221,7 @@ jobs:
     steps:
       - name: 'Machine'
         run: uname -a
-      - name: 'Checkout'
+      - name: 'Checkout project'
         uses: actions/checkout@v2
         with:
           fetch-depth: 3
@@ -253,7 +253,7 @@ jobs:
         run: rm -rf * .git*
 
       # https://github.com/actions/checkout
-      - name: 'Checkout'
+      - name: 'Checkout project'
         uses: actions/checkout@v3
         with:
           fetch-depth: 1
@@ -284,7 +284,7 @@ jobs:
     steps:
       - name: 'Machine'
         run: uname -a
-      - name: 'Checkout'
+      - name: 'Checkout project'
         uses: actions/checkout@v2
         with:
           fetch-depth: 3

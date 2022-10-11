@@ -38,7 +38,7 @@ jobs:
     steps:
       - name: 'Machine'
         run: uname -a
-      - name: 'Checkout'
+      - name: 'Checkout project'
         uses: actions/checkout@v2
         with:
           fetch-depth: 3
@@ -55,7 +55,7 @@ jobs:
     steps:
       - name: 'Machine'
         run: uname -a
-      - name: 'Checkout'
+      - name: 'Checkout project'
         uses: actions/checkout@v2
         with:
           fetch-depth: 3
@@ -72,7 +72,7 @@ jobs:
     steps:
       - name: 'Machine'
         run: uname -a
-      - name: 'Checkout'
+      - name: 'Checkout project'
         uses: actions/checkout@v2
         with:
           fetch-depth: 3
@@ -89,7 +89,7 @@ jobs:
     steps:
       - name: 'Machine'
         run: uname -a
-      - name: 'Checkout'
+      - name: 'Checkout project'
         uses: actions/checkout@v2
         with:
           fetch-depth: 3
@@ -108,7 +108,7 @@ jobs:
       - name: 'Machine'
         run: uname -a
 
-      - name: 'Checkout'
+      - name: 'Checkout project'
         uses: actions/checkout@v2
         with:
           fetch-depth: 3
@@ -122,7 +122,7 @@ jobs:
     steps:
       - name: 'Machine'
         run: uname -a
-      - name: 'Checkout'
+      - name: 'Checkout project'
         uses: actions/checkout@v2
         with:
           fetch-depth: 3

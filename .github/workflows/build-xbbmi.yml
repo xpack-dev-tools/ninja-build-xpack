@@ -52,7 +52,7 @@ jobs:
       - name: 'Clean working area'
         run: rm -rf * .git*
 
-      - name: 'Checkout'
+      - name: 'Checkout project'
         uses: actions/checkout@v1
         with:
           fetch-depth: 3
