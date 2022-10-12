@@ -103,7 +103,7 @@ jobs:
 
       - name: 'Rename working area'
         # For just in case absolute paths remain unprocessed.
-        run: mv build build-$(date -u +%Y%m%d-%H%M%S)
+        run: mv -v build build-$(date -u +%Y%m%d-%H%M%S)
 
 
   linux-arm:
@@ -172,7 +172,7 @@ jobs:
 
       - name: 'Rename working area'
         # For just in case absolute paths remain unprocessed.
-        run: mv build build-$(date -u +%Y%m%d-%H%M%S)
+        run: mv -v build build-$(date -u +%Y%m%d-%H%M%S)
 
 
   linux-arm64:
@@ -241,7 +241,7 @@ jobs:
 
       - name: 'Rename working area'
         # For just in case absolute paths remain unprocessed.
-        run: mv build build-$(date -u +%Y%m%d-%H%M%S)
+        run: mv -v build build-$(date -u +%Y%m%d-%H%M%S)
 
 
   macos-x64:
@@ -306,7 +306,7 @@ jobs:
 
       - name: 'Rename working area'
         # For just in case absolute paths remain unprocessed.
-        run: mv build build-$(date -u +%Y%m%d-%H%M%S)
+        run: mv -v build build-$(date -u +%Y%m%d-%H%M%S)
 
 
   macos-arm64:
@@ -375,5 +375,5 @@ jobs:
 
       - name: 'Rename working area'
         # For just in case absolute paths remain unprocessed.
-        run: mv build build-$(date -u +%Y%m%d-%H%M%S)
+        run: mv -v build build-$(date -u +%Y%m%d-%H%M%S)
 

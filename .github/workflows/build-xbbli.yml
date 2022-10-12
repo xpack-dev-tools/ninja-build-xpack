@@ -103,4 +103,4 @@ jobs:
 
       - name: 'Rename working area'
         # For just in case absolute paths remain unprocessed.
-        run: mv build build-$(date -u +%Y%m%d-%H%M%S)
+        run: mv -v build build-$(date -u +%Y%m%d-%H%M%S)
