@@ -33,138 +33,154 @@ on:
         description: 'The semver of the release'
         required: false
         default: 'current'
+      helper-git-ref:
+        description: 'The helper branch, tag or SHA to checkout'
+        required: false
+        default: 'xpack-develop'
 
 jobs:
 
   linux-x64:
     name: 'Linux x64 Ninja Build ${{ github.event.inputs.version }} test'
     runs-on: ubuntu-latest
-    steps:
-      - name: 'Machine'
-        run: uname -a
-
-      - name: 'Checkout project'
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 3
-
-      - name: 'Install xpm'
-        timeout-minutes: 1440
-        run: npm install --location=global xpm@latest
-
-      - name: 'Install project dependencies'
-        timeout-minutes: 1440
-        run: xpm install
-
-      - name: 'Run ${{ github.event.inputs.version }} native test'
-        run: xpm run test-native -- --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
-
-
-  linux-arm64:
-    name: 'Linux arm64 Ninja Build ${{ github.event.inputs.version }} test'
-    runs-on: [self-hosted, linux, arm64, xbbla]
-    container:
-      image: node:lts-bullseye-slim
-      # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idcontaineroptions
-      options: --platform linux/arm64/v8
-    defaults:
-      run:
-        shell: /bin/bash -e -o pipefail {0}
 
     steps:
-      - name: 'Machine'
-        run: uname -a
-
-      - name: 'Update'
+      - name: 'Environment'
         run: |
-          apt -qq update
-          # binutils for readelf
-          apt -qq install -y lsb-release git-core curl tar gzip binutils
-
-      - name: 'Clean working area'
-        run: rm -rf * .git*
+          uname -a
+          lsb_release -sd
+          whoami
+          pwd
+          ls -lLA
+          env
 
       - name: 'Checkout project'
         uses: actions/checkout@v3
         with:
-          fetch-depth: 3
+          fetch-depth: 1
 
-      - name: 'Install xpm'
-        timeout-minutes: 1440
-        run: npm install --location=global xpm@latest
+      - name: 'Checkout helper ${{ github.event.inputs.helper-git-ref }}'
+        uses: actions/checkout@v3
+        with:
+          repository: xpack-dev-tools/xbb-helper-xpack
+          path: xpacks/xpack-dev-tools-xbb-helper
+          ref: ${{ github.event.inputs.helper-git-ref }}
+          fetch-depth: 1
 
-      - name: 'Install project dependencies'
-        timeout-minutes: 1440
-        run: xpm install
+      - name: 'Run ${{ github.event.inputs.version }} native test'
+        run: bash scripts/test.sh --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
+
+
+  linux-arm64:
+    name: 'Linux arm64 Ninja Build ${{ github.event.inputs.version }} test'
+    # runs-on: [self-hosted, linux, arm64, xbbla]
+    runs-on: [self-hosted, linux, arm64, xbbla64]
+
+    steps:
+      - name: 'Environment'
+        run: |
+          uname -a
+          lsb_release -sd
+          whoami
+          pwd
+          ls -lLA
+          env
+
+      - name: 'Clean working area' # Mandatory for self-hosted runners.
+        run: rm -rf * .git*
+
+      # https://github.com/actions/checkout
+      - name: 'Checkout project'
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
+
+      - name: 'Checkout helper ${{ github.event.inputs.helper-git-ref }}'
+        uses: actions/checkout@v3
+        with:
+          repository: xpack-dev-tools/xbb-helper-xpack
+          path: xpacks/xpack-dev-tools-xbb-helper
+          ref: ${{ github.event.inputs.helper-git-ref }}
+          fetch-depth: 1
 
       - name: 'Run ${{ github.event.inputs.version }} docker test'
-        run: xpm run test-native -- --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }} --image ubuntu:arm64v8-18.04-xbb-v4.0
+        uses: docker://ubuntu:latest
+        with:
+          entrypoint: /bin/bash
+          args: /github/workspace/scripts/test.sh --image ubuntu:latest --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
+      # ubuntu:rolling fails during update
 
   linux-arm32:
     name: 'Linux arm32 Ninja Build ${{ github.event.inputs.version }} test'
-    runs-on: [self-hosted, linux, arm64, xbbla]
-    container:
-      image: ilegeul/ubuntu:arm32v7-18.04-xbb-v4.0 # arm32v7/debian:stable-slim # debian:stable-slim
-      # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idcontaineroptions
-      options: --platform linux/arm/v7
-    defaults:
-      run:
-        # -l (--login) for the node PATH
-        shell: /usr/bin/linux32 /bin/bash -e -o pipefail -l {0}
+    # runs-on: [self-hosted, linux, arm64, xbbla]
+    runs-on: [self-hosted, linux, arm, xbbla32]
 
     steps:
-      - name: 'Machine'
-        run: uname -a
-
-      - name: 'Update'
+      - name: 'Environment'
         run: |
-          apt-get -qq update
-          # binutils for readelf
-          apt-get -qq install -y lsb-release git-core curl tar gzip binutils
-          # apt-get -qq install nodejs
+          uname -a
+          lsb_release -sd
+          whoami
+          pwd
+          ls -lLA
+          env
 
-      - name: 'Clean working area'
+      - name: 'Clean working area' # Mandatory for self-hosted runners.
         run: rm -rf * .git*
 
+      # https://github.com/actions/checkout
       - name: 'Checkout project'
-        uses: actions/checkout@v1
+        uses: actions/checkout@v3
         with:
-          fetch-depth: 3
+          fetch-depth: 1
 
-      - name: 'Install xpm'
-        timeout-minutes: 1440
-        run: npm install --location=global xpm@latest
-
-      - name: 'Install project dependencies'
-        timeout-minutes: 1440
-        run: xpm install
+      - name: 'Checkout helper ${{ github.event.inputs.helper-git-ref }}'
+        uses: actions/checkout@v3
+        with:
+          repository: xpack-dev-tools/xbb-helper-xpack
+          path: xpacks/xpack-dev-tools-xbb-helper
+          ref: ${{ github.event.inputs.helper-git-ref }}
+          fetch-depth: 1
 
       - name: 'Run ${{ github.event.inputs.version }} docker test'
-        run: xpm run test-native -- --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }} --image debian
-
+        uses: docker://arm32v7/ubuntu:latest
+        with:
+          entrypoint: /bin/bash # /usr/bin/linux32
+          args: /github/workspace/scripts/test.sh --image arm32v7/ubuntu:latest --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
 
   macos-x64:
     name: 'macOS x64 Ninja Build ${{ github.event.inputs.version }} test'
     runs-on: macos-latest
+
     steps:
-      - name: 'Machine'
-        run: uname -a
+      - name: 'Environment'
+        run: |
+          uname -a
+          lsb_release -sd
+          whoami
+          pwd
+          ls -lLA
+          env
 
+      - name: 'Clean working area' # Mandatory for self-hosted runners.
+        run: rm -rf * .git*
+
+      # https://github.com/actions/checkout
       - name: 'Checkout project'
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
-          fetch-depth: 3
+          fetch-depth: 1
 
-      - name: 'Install xpm'
-        timeout-minutes: 1440
-        run: npm install --location=global xpm@latest
-
-      - name: 'Install project dependencies'
-        timeout-minutes: 1440
-        run: xpm install
+      - name: 'Checkout helper ${{ github.event.inputs.helper-git-ref }}'
+        uses: actions/checkout@v3
+        with:
+          repository: xpack-dev-tools/xbb-helper-xpack
+          path: xpacks/xpack-dev-tools-xbb-helper
+          ref: ${{ github.event.inputs.helper-git-ref }}
+          fetch-depth: 1
 
       - name: 'Run ${{ github.event.inputs.version }} native test'
-        run: xpm run test-native -- --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
+        run: bash scripts/test.sh --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
 
 
   macos-arm64:
@@ -172,25 +188,34 @@ jobs:
     runs-on: [self-hosted, macos, apple]
 
     steps:
-      - name: 'Machine'
-        run: uname -a
+      - name: 'Environment'
+        run: |
+          uname -a
+          lsb_release -sd
+          whoami
+          pwd
+          ls -lLA
+          env
 
+      - name: 'Clean working area' # Mandatory for self-hosted runners.
+        run: rm -rf * .git*
+
+      # https://github.com/actions/checkout
       - name: 'Checkout project'
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
-          fetch-depth: 3
+          fetch-depth: 1
 
-      - name: 'Install xpm'
-        timeout-minutes: 1440
-        run: npm install --location=global xpm@latest
-
-      - name: 'Install project dependencies'
-        timeout-minutes: 1440
-        run: xpm install
+      - name: 'Checkout helper ${{ github.event.inputs.helper-git-ref }}'
+        uses: actions/checkout@v3
+        with:
+          repository: xpack-dev-tools/xbb-helper-xpack
+          path: xpacks/xpack-dev-tools-xbb-helper
+          ref: ${{ github.event.inputs.helper-git-ref }}
+          fetch-depth: 1
 
       - name: 'Run ${{ github.event.inputs.version }} native test'
-        run: xpm run test-native -- --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
-
+        run: bash scripts/test.sh --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
 
   # It requires Git for Windows for bash.
   windows-x64:
@@ -202,24 +227,32 @@ jobs:
         shell: bash # for --
 
     steps:
-      - name: 'Machine'
-        run: uname -a
+      - name: 'Environment'
+        run: |
+          uname -a
+          lsb_release -sd
+          whoami
+          pwd
+          ls -lLA
+          env
 
+      # https://github.com/actions/checkout
       - name: 'Checkout project'
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
-          fetch-depth: 3
+          fetch-depth: 1
 
-      - name: 'Install xpm'
-        timeout-minutes: 1440
-        run: npm install --location=global xpm@latest
-
-      - name: 'Install project dependencies'
-        timeout-minutes: 1440
-        run: xpm install
+      - name: 'Checkout helper ${{ github.event.inputs.helper-git-ref }}'
+        uses: actions/checkout@v3
+        with:
+          repository: xpack-dev-tools/xbb-helper-xpack
+          path: xpacks/xpack-dev-tools-xbb-helper
+          ref: ${{ github.event.inputs.helper-git-ref }}
+          fetch-depth: 1
 
       - name: 'Run ${{ github.event.inputs.version }} native test'
-        run: xpm run test-native -- --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
+        run: bash scripts/test.sh --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
+
 
 
 
