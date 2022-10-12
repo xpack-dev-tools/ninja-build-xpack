@@ -194,6 +194,27 @@ function test_ninja()
     run_app "${test_bin_path}/ninja" --version
 
     run_app "${test_bin_path}/ninja" --help || true
+
+    run_app "${test_bin_path}/ninja" -t list
+
+    rm -rf "${TESTS_FOLDER_PATH}/ninja"
+    mkdir -pv "${TESTS_FOLDER_PATH}/ninja"; cd "${TESTS_FOLDER_PATH}/ninja"
+
+    # Note: __EOF__ is quoted to prevent substitutions here.
+    cat <<'__EOF__' > build.ninja
+cflags = -Wall
+rule cc
+  command = echo gcc $cflags -c $in -o $out
+build foo.o: cc foo.c
+__EOF__
+
+    touch foo.c
+
+    run_app "${test_bin_path}/ninja" -t targets
+    run_app "${test_bin_path}/ninja" -t rules
+    run_app "${test_bin_path}/ninja" -t commands
+
+    run_app "${test_bin_path}/ninja"
   )
 }
 
