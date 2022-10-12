@@ -261,16 +261,13 @@ jobs:
         with:
           fetch-depth: 1
 
-      - name: 'Checkout helper'
+      - name: 'Checkout helper ${{ github.event.inputs.helper-git-ref }}'
         uses: actions/checkout@v3
         with:
           repository: xpack-dev-tools/xbb-helper-xpack
           path: xpacks/xpack-dev-tools-xbb-helper
           ref: ${{ github.event.inputs.helper-git-ref }}
           fetch-depth: 1
-
-      - name: 'Show'
-        run: ls -lR
 
       - name: 'Ubuntu 22 arm'
         uses: docker://arm32v7/ubuntu:22.04
@@ -315,16 +312,13 @@ jobs:
         with:
           fetch-depth: 1
 
-      - name: 'Checkout helper'
+      - name: 'Checkout helper ${{ github.event.inputs.helper-git-ref }}'
         uses: actions/checkout@v3
         with:
           repository: xpack-dev-tools/xbb-helper-xpack
           path: xpacks/xpack-dev-tools-xbb-helper
           ref: ${{ github.event.inputs.helper-git-ref }}
           fetch-depth: 1
-
-      - name: 'Show'
-        run: ls -lR
 
       - name: 'Debian 11 arm'
         uses: docker://arm32v7/debian:bullseye
