@@ -290,11 +290,8 @@ jobs:
           entrypoint: /usr/bin/linux32
           args: /bin/bash -x /github/workspace/scripts/test.sh --image arm32v7/ubuntu:18.04 --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
 
-  # docker://arm32v7/ubuntu:20.04 - fails to update
-
   # https://hub.docker.com/r/arm32v7/debian
   debian-arm:
-    if: ${{ false }}
     name: 'arm Ninja Build ${{ github.event.inputs.version }} test on Debian 11 10 stable'
     # runs-on: [self-hosted, linux, arm64, xbbla]
     runs-on: [self-hosted, linux, arm, xbbla32]
