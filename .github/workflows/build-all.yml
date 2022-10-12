@@ -101,6 +101,9 @@ jobs:
           tag: 'test'
           token: ${{ secrets.PUBLISH_TOKEN }}
 
+      - name: 'Rename working area'
+        # For just in case absolute paths remain unprocessed.
+        run: mv build build-$(date -u +%Y%m%d-%H%M%S)
 
 
   linux-arm:
@@ -167,6 +170,9 @@ jobs:
           tag: 'test'
           token: ${{ secrets.PUBLISH_TOKEN }}
 
+      - name: 'Rename working area'
+        # For just in case absolute paths remain unprocessed.
+        run: mv build build-$(date -u +%Y%m%d-%H%M%S)
 
 
   linux-arm64:
@@ -233,6 +239,9 @@ jobs:
           tag: 'test'
           token: ${{ secrets.PUBLISH_TOKEN }}
 
+      - name: 'Rename working area'
+        # For just in case absolute paths remain unprocessed.
+        run: mv build build-$(date -u +%Y%m%d-%H%M%S)
 
 
   macos-x64:
@@ -295,6 +304,9 @@ jobs:
           tag: 'test'
           token: ${{ secrets.PUBLISH_TOKEN }}
 
+      - name: 'Rename working area'
+        # For just in case absolute paths remain unprocessed.
+        run: mv build build-$(date -u +%Y%m%d-%H%M%S)
 
 
   macos-arm64:
@@ -361,4 +373,7 @@ jobs:
           tag: 'test'
           token: ${{ secrets.PUBLISH_TOKEN }}
 
+      - name: 'Rename working area'
+        # For just in case absolute paths remain unprocessed.
+        run: mv build build-$(date -u +%Y%m%d-%H%M%S)
 
