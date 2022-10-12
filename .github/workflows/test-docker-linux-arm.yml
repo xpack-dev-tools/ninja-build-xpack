@@ -63,7 +63,7 @@ jobs:
   # https://en.wikipedia.org/wiki/Ubuntu_version_history
   # https://hub.docker.com/_/ubuntu
   ubuntu-arm64:
-    name: 'arm64 Ninja Build ${{ github.event.inputs.version }} test on Ubuntu 22 20 18 stable'
+    name: 'arm64 Ninja Build ${{ github.event.inputs.version }} test on Ubuntu 22, 20, 18 stable'
     # runs-on: [self-hosted, linux, arm64, xbbla]
     runs-on: [self-hosted, linux, arm64, xbbla64]
 
@@ -115,7 +115,7 @@ jobs:
   # https://en.wikipedia.org/wiki/Debian_version_history
   # https://hub.docker.com/_/debian
   debian-arm64:
-    name: 'arm64 Ninja Build ${{ github.event.inputs.version }} test on Debian 11 10 stable'
+    name: 'arm64 Ninja Build ${{ github.event.inputs.version }} test on Debian 11, 10 stable'
     # runs-on: [self-hosted, linux, arm64, xbbla]
     runs-on: [self-hosted, linux, arm64, xbbla64]
 
@@ -460,7 +460,7 @@ jobs:
 
   # https://hub.docker.com/r/arm32v7/ubuntu/
   ubuntu-arm:
-    name: 'arm Ninja Build ${{ github.event.inputs.version }} test on Ubuntu 22 20 18 stable'
+    name: 'arm Ninja Build ${{ github.event.inputs.version }} test on Ubuntu 22, 20, 18 stable'
     # Fails to update some distributions, like new Ubuntu.
     # runs-on: [self-hosted, linux, arm64, xbbla]
     runs-on: [self-hosted, linux, arm, xbbla32]
@@ -512,7 +512,7 @@ jobs:
 
   # https://hub.docker.com/r/arm32v7/debian
   debian-arm:
-    name: 'arm Ninja Build ${{ github.event.inputs.version }} test on Debian 11 10 stable'
+    name: 'arm Ninja Build ${{ github.event.inputs.version }} test on Debian 11, 10 stable'
     # runs-on: [self-hosted, linux, arm64, xbbla]
     runs-on: [self-hosted, linux, arm, xbbla32]
 
