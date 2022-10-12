@@ -378,6 +378,46 @@ jobs:
           entrypoint: /bin/bash
           args: /github/workspace/scripts/test.sh --image debian:latest --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
 
+  # https://en.wikipedia.org/wiki/Fedora_version_history
+  # https://hub.docker.com/_/fedora
+  # `-static` disabled, there is no static libc.a.
+  fedora-arm64-latest:
+    name: 'arm64 Ninja Build ${{ github.event.inputs.version }} test on Fedora latest'
+    # runs-on: [self-hosted, linux, arm64, xbbla]
+    runs-on: [self-hosted, linux, arm64, xbbla64]
+
+    steps:
+      - name: 'Environment'
+        run: |
+          uname -a
+          lsb_release -sd
+          whoami
+          pwd
+          ls -lLA
+          env
+
+      - name: 'Clean working area' # Mandatory for self-hosted runners.
+        run: rm -rf * .git*
+
+      # https://github.com/actions/checkout
+      - name: 'Checkout project'
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
+
+      - name: 'Checkout helper ${{ github.event.inputs.helper-git-ref }}'
+        uses: actions/checkout@v3
+        with:
+          repository: xpack-dev-tools/xbb-helper-xpack
+          path: xpacks/xpack-dev-tools-xbb-helper
+          ref: ${{ github.event.inputs.helper-git-ref }}
+          fetch-depth: 1
+
+      - name: 'Fedora latest arm64'
+        uses: docker://fedora:latest
+        with:
+          entrypoint: /bin/bash
+          args: /github/workspace/scripts/test.sh --image fedora:latest --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
 
   # - https://hub.docker.com/r/opensuse/tumbleweed
   opensuse-arm64-latest:
@@ -599,5 +639,85 @@ jobs:
         with:
           entrypoint: /bin/bash # /usr/bin/linux32
           args: /github/workspace/scripts/test.sh --image arm32v7/debian:latest --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
+
+  # https://en.wikipedia.org/wiki/Fedora_version_history
+  # https://hub.docker.com/r/arm32v7/fedora
+  # `-static` disabled, there is no static libc.a.
+  fedora-arm-latest:
+    name: 'arm Ninja Build ${{ github.event.inputs.version }} test on Fedora latest'
+    # runs-on: [self-hosted, linux, arm64, xbbla]
+    runs-on: [self-hosted, linux, arm, xbbla32]
+
+    steps:
+      - name: 'Environment'
+        run: |
+          uname -a
+          lsb_release -sd
+          whoami
+          pwd
+          ls -lLA
+          env
+
+      - name: 'Clean working area' # Mandatory for self-hosted runners.
+        run: rm -rf * .git*
+
+      # https://github.com/actions/checkout
+      - name: 'Checkout project'
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
+
+      - name: 'Checkout helper ${{ github.event.inputs.helper-git-ref }}'
+        uses: actions/checkout@v3
+        with:
+          repository: xpack-dev-tools/xbb-helper-xpack
+          path: xpacks/xpack-dev-tools-xbb-helper
+          ref: ${{ github.event.inputs.helper-git-ref }}
+          fetch-depth: 1
+
+      - name: 'Fedora latest arm'
+        uses: docker://arm32v7/fedora:latest
+        with:
+          entrypoint: /bin/bash
+          args: /github/workspace/scripts/test.sh --image arm32v7/fedora:latest --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
+
+  # - https://hub.docker.com/r/arm32v7/opensuse
+  opensuse-arm-latest:
+    name: 'arm Ninja Build ${{ github.event.inputs.version }} test on OpenSUSE latest'
+    # runs-on: [self-hosted, linux, arm64, xbbla]
+    runs-on: [self-hosted, linux, arm, xbbla32]
+
+    steps:
+      - name: 'Environment'
+        run: |
+          uname -a
+          lsb_release -sd
+          whoami
+          pwd
+          ls -lLA
+          env
+
+      - name: 'Clean working area' # Mandatory for self-hosted runners.
+        run: rm -rf * .git*
+
+      # https://github.com/actions/checkout
+      - name: 'Checkout project'
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
+
+      - name: 'Checkout helper ${{ github.event.inputs.helper-git-ref }}'
+        uses: actions/checkout@v3
+        with:
+          repository: xpack-dev-tools/xbb-helper-xpack
+          path: xpacks/xpack-dev-tools-xbb-helper
+          ref: ${{ github.event.inputs.helper-git-ref }}
+          fetch-depth: 1
+
+      - name: 'OpenSUSE latest arm'
+        uses: docker://arm32v7/opensuse:latest
+        with:
+          entrypoint: /bin/bash
+          args: /github/workspace/scripts/test.sh --image arm32v7/opensuse:latest --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
 
 # -----------------------------------------------------------------------------
