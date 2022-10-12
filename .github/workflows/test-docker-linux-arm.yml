@@ -275,20 +275,20 @@ jobs:
       - name: 'Ubuntu 22 arm'
         uses: docker://arm32v7/ubuntu:22.04
         with:
-          entrypoint: /usr/bin/linux32
-          args: /bin/bash -x /github/workspace/scripts/test.sh --image arm32v7/ubuntu:22.04 --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
+          entrypoint: /bin/bash # /usr/bin/linux32
+          args: /github/workspace/scripts/test.sh --image arm32v7/ubuntu:22.04 --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
 
       - name: 'Ubuntu 20 arm'
         uses: docker://arm32v7/ubuntu:20.04
         with:
-          entrypoint: /usr/bin/linux32
-          args: /bin/bash -x /github/workspace/scripts/test.sh --image arm32v7/ubuntu:20.04 --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
+          entrypoint: /bin/bash # /usr/bin/linux32
+          args: /github/workspace/scripts/test.sh --image arm32v7/ubuntu:20.04 --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
 
       - name: 'Ubuntu 18 arm'
         uses: docker://arm32v7/ubuntu:18.04
         with:
-          entrypoint: /usr/bin/linux32
-          args: /bin/bash -x /github/workspace/scripts/test.sh --image arm32v7/ubuntu:18.04 --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
+          entrypoint: /bin/bash # /usr/bin/linux32
+          args: /github/workspace/scripts/test.sh --image arm32v7/ubuntu:18.04 --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
 
   # https://hub.docker.com/r/arm32v7/debian
   debian-arm:
@@ -329,14 +329,14 @@ jobs:
       - name: 'Debian 11 arm'
         uses: docker://arm32v7/debian:bullseye
         with:
-          entrypoint: /usr/bin/linux32
-          args: /bin/bash /github/workspace/scripts/helper/tests/native-test.sh --image arm32v7/debian:bullseye --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
+          entrypoint: /bin/bash # /usr/bin/linux32
+          args: /github/workspace/scripts/test.sh --image arm32v7/debian:bullseye --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
 
       - name: 'Debian 10 arm'
         uses: docker://arm32v7/debian:buster
         with:
-          entrypoint: /usr/bin/linux32
-          args: /bin/bash /github/workspace/scripts/helper/tests/native-test.sh --image arm32v7/debian:buster --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
+          entrypoint: /bin/bash # /usr/bin/linux32
+          args: /github/workspace/scripts/test.sh --image arm32v7/debian:buster --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
 
 
 
