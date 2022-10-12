@@ -156,7 +156,7 @@ jobs:
       - name: 'Environment'
         run: |
           uname -a
-          lsb_release -sd
+          # lsb_release -sd
           whoami
           pwd
           ls -lLA
@@ -191,7 +191,7 @@ jobs:
       - name: 'Environment'
         run: |
           uname -a
-          lsb_release -sd
+          # lsb_release -sd
           whoami
           pwd
           ls -lLA
@@ -230,7 +230,7 @@ jobs:
       - name: 'Environment'
         run: |
           uname -a
-          lsb_release -sd
+          # lsb_release -sd
           whoami
           pwd
           ls -lLA
