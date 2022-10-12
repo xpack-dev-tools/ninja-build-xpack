@@ -45,7 +45,7 @@ function tests_update_system()
 
     # Update even if up to date (-yy) & upgrade (-u).
     # pacman -S -yy -u -q --noconfirm
-    run_verbose pacman -S -q --noconfirm --noprogressbar git curl tar gzip lsb-release binutils
+    run_verbose pacman -S -q --noconfirm --noprogressbar git curl tar gzip lsb-release binutils which
     # run_verbose pacman -S -q --noconfirm --noprogressbar gcc-libs
   fi
 }
