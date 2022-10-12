@@ -62,28 +62,54 @@ jobs:
 
   # https://en.wikipedia.org/wiki/Ubuntu_version_history
   # https://hub.docker.com/_/ubuntu
-  # The ubuntu:12.04 image fails to update.
   ubuntu-arm64:
-    if: ${{ false }}
-    name: 'arm64 Ninja Build ${{ github.event.inputs.version }} test on Ubuntu 20, 18 stable'
+    name: 'arm64 Ninja Build ${{ github.event.inputs.version }} test on Ubuntu 22 20 18 stable'
     runs-on: [self-hosted, linux, arm64, xbbla]
+
     steps:
-      - name: 'Machine'
-        run: uname -a
+      - name: 'Environment'
+        run: |
+          uname -a
+          lsb_release -sd
+          whoami
+          pwd
+          ls -lLA
+          env
+
+      - name: 'Clean working area' # Mandatory for self-hosted runners.
+        run: rm -rf * .git*
+
+      # https://github.com/actions/checkout
       - name: 'Checkout project'
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
-          fetch-depth: 3
-      - name: 'Ubuntu 20.04 arm64'
+          fetch-depth: 1
+
+      - name: 'Checkout helper ${{ github.event.inputs.helper-git-ref }}'
+        uses: actions/checkout@v3
+        with:
+          repository: xpack-dev-tools/xbb-helper-xpack
+          path: xpacks/xpack-dev-tools-xbb-helper
+          ref: ${{ github.event.inputs.helper-git-ref }}
+          fetch-depth: 1
+
+      - name: 'Ubuntu 22.04 arm64'
+        uses: docker://ubuntu:22.04
+        with:
+          entrypoint: /bin/bash
+          args: /github/workspace/scripts/test.sh --image ubuntu:22.04 --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
+
+      - name: 'Ubuntu 22.04 arm64'
         uses: docker://ubuntu:20.04
         with:
           entrypoint: /bin/bash
-          args: /github/workspace/scripts/helper/tests/native-test.sh --image ubuntu:20.04 --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
+          args: /github/workspace/scripts/test.sh --image ubuntu:20.04 --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
+
       - name: 'Ubuntu 18.04 arm64'
         uses: docker://ubuntu:18.04
         with:
           entrypoint: /bin/bash
-          args: /github/workspace/scripts/helper/tests/native-test.sh --image ubuntu:18.04 --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
+          args: /github/workspace/scripts/test.sh --image ubuntu:18.04 --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
 
   # https://en.wikipedia.org/wiki/Debian_version_history
   # https://hub.docker.com/_/debian
