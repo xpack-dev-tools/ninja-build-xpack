@@ -64,7 +64,8 @@ jobs:
   # https://hub.docker.com/_/ubuntu
   ubuntu-arm64:
     name: 'arm64 Ninja Build ${{ github.event.inputs.version }} test on Ubuntu 22 20 18 stable'
-    runs-on: [self-hosted, linux, arm64, xbbla]
+    # runs-on: [self-hosted, linux, arm64, xbbla]
+    runs-on: [self-hosted, linux, arm64, xbbla64]
 
     steps:
       - name: 'Environment'
