@@ -144,7 +144,7 @@ jobs:
         uses: docker://arm32v7/ubuntu:latest
         with:
           entrypoint: /bin/bash # /usr/bin/linux32
-          args: /bin/bash /github/workspace/scripts/test.sh --image arm32v7/ubuntu:latest --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
+          args: /github/workspace/scripts/test.sh --image arm32v7/ubuntu:latest --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
   
   macos-x64:
     name: 'macOS x64 Ninja Build ${{ github.event.inputs.version }} test'
