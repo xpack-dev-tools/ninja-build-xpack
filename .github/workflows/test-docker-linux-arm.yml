@@ -635,7 +635,7 @@ jobs:
           args: /github/workspace/scripts/test.sh --image arm32v7/debian:testing --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
 
       - name: 'Debian latest arm'
-        uses: docker://arm32v7/debian:testing
+        uses: docker://arm32v7/debian:latest
         with:
           entrypoint: /bin/bash # /usr/bin/linux32
           args: /github/workspace/scripts/test.sh --image arm32v7/debian:latest --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
