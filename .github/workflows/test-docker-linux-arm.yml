@@ -562,7 +562,7 @@ jobs:
           args: /github/workspace/scripts/test.sh --image arm32v7/debian:buster --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
 
   # https://hub.docker.com/r/arm32v7/ubuntu/
-  ubuntu-arm:
+  ubuntu-arm-latest:
     name: 'arm Ninja Build ${{ github.event.inputs.version }} test on Ubuntu latest'
     # runs-on: [self-hosted, linux, arm64, xbbla]
     runs-on: [self-hosted, linux, arm, xbbla32]
