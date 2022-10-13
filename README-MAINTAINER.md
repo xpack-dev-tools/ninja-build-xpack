@@ -404,20 +404,6 @@ The resulting binaries are available for testing from
 
 The automation is provided by GitHub Actions.
 
-From the development machine open a ssh sessions to the Arm GNU/Linux
-test machine `xbbla`:
-
-```sh
-caffeinate ssh xbbla
-```
-
-Start both runners (to allow the 32/64-bit tests to run in parallel):
-
-```sh
-~/actions-runners/xpack-dev-tools/1/run.sh &
-~/actions-runners/xpack-dev-tools/2/run.sh &
-```
-
 To trigger the GitHub Actions tests, use the xPack actions:
 
 - `trigger-workflow-test-prime`
