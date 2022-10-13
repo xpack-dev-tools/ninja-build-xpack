@@ -69,7 +69,7 @@
       "ninja": "./.content/bin/ninja"
     },
     "devDependencies": {
-      "@xpack-dev-tools/xbb-helper": "^0.5.27"
+      "@xpack-dev-tools/xbb-helper": "^0.5.28"
     },
     "properties": {
       "appName": "Ninja Build",
@@ -112,7 +112,7 @@
       "trigger-workflow-test-docker-linux-arm": "bash xpacks/xpack-dev-tools-xbb-helper/github-actions/trigger-workflow-test-docker-linux-arm.sh",
       "trigger-travis-macos": "bash xpacks/xpack-dev-tools-xbb-helper/travis/trigger-travis-macos.sh",
       "trigger-workflow-publish-release": "bash xpacks/xpack-dev-tools-xbb-helper/github-actions/trigger-workflow-publish-release.sh",
-      
+
       "generate-jekyll-post": "bash scripts/helper/generate-jekyll-post.sh",
       "update-package-binaries": "bash scripts/helper/update-package-binaries.sh",
       "trigger-workflow-test-xpm": "bash scripts/helper/tests/trigger-workflow-test-xpm.sh",
