@@ -1,5 +1,5 @@
 # -----------------------------------------------------------------------------
-# DO NOT EDIT! Generated from scripts/helper/templates/*.
+# DO NOT EDIT! Generated from xpacks/xpack-dev-tools-xbb-helper/templates/*.
 #
 # This file is part of the xPack distribution.
 #   (https://xpack.github.io)
@@ -59,7 +59,7 @@ jobs:
       - name: 'Checkout project'
         uses: actions/checkout@v1
         with:
-          fetch-depth: 3
+          fetch-depth: 1
 
       - name: 'Install xpm'
         timeout-minutes: 1440
@@ -74,13 +74,13 @@ jobs:
         run: |
           xpm install --config linux-x64
           xpm run build --config linux-x64
-
+    
       - name: 'Build Windows x64 binary'
         timeout-minutes: 1440
         run: |
           xpm install --config win32-x64
           xpm run build --config win32-x64
-
+  
       - name: 'Publish pre-release'
         # https://github.com/ncipollo/release-action
         uses: ncipollo/release-action@v1

@@ -1,5 +1,5 @@
 # -----------------------------------------------------------------------------
-# DO NOT EDIT! Generated from scripts/helper/templates/*.
+# DO NOT EDIT! Generated from xpacks/xpack-dev-tools-xbb-helper/templates/*.
 #
 # This file is part of the xPack distribution.
 #   (https://xpack.github.io)
@@ -42,7 +42,7 @@ jobs:
       - name: 'Checkout project'
         uses: actions/checkout@v2
         with:
-          fetch-depth: 3
+          fetch-depth: 1
 
       - name: 'Clean working area'
         run: rm -rf ~/Work/ninja-build-${{ github.event.inputs.version }}*
@@ -60,7 +60,7 @@ jobs:
       - name: 'Checkout project'
         uses: actions/checkout@v2
         with:
-          fetch-depth: 3
+          fetch-depth: 1
 
       - name: 'Clean working area'
         run: rm -rf ~/Work/ninja-build-${{ github.event.inputs.version }}*
@@ -78,7 +78,7 @@ jobs:
       - name: 'Checkout project'
         uses: actions/checkout@v2
         with:
-          fetch-depth: 3
+          fetch-depth: 1
 
       - name: 'Clean working area'
         run: rm -rf ~/Work/ninja-build-${{ github.event.inputs.version }}*
@@ -98,7 +98,7 @@ jobs:
       - name: 'Checkout project'
         uses: actions/checkout@v2
         with:
-          fetch-depth: 3
+          fetch-depth: 1
 
       - name: 'Clean working area'
         run: rm -rf ~/Work/ninja-build-${{ github.event.inputs.version }}*
@@ -111,10 +111,6 @@ jobs:
 
     runs-on: [self-hosted, macos, apple]
 
-    defaults:
-      run:
-        shell: "/usr/bin/arch -arch arm64e /bin/bash -l {0}"
-
     steps:
       - name: 'Machine'
         run: uname -a
@@ -122,9 +118,7 @@ jobs:
       - name: 'Checkout project'
         uses: actions/checkout@v2
         with:
-          fetch-depth: 3
+          fetch-depth: 1
 
       - name: 'Clean working area'
         run: rm -rf ~/Work/ninja-build-${{ github.event.inputs.version }}*
-
-

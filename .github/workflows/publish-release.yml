@@ -1,5 +1,5 @@
 # -----------------------------------------------------------------------------
-# DO NOT EDIT! Generated from scripts/helper/templates/*.
+# DO NOT EDIT! Generated from xpacks/xpack-dev-tools-xbb-helper/templates/*.
 #
 # This file is part of the xPack distribution.
 #   (https://xpack.github.io)
@@ -87,4 +87,3 @@ jobs:
           repo: 'ninja-build-xpack'
           tag: 'v${{ github.event.inputs.version }}'
           token: ${{ secrets.PUBLISH_TOKEN }}
-

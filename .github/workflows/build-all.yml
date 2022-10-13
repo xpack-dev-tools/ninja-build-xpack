@@ -1,5 +1,5 @@
 # -----------------------------------------------------------------------------
-# DO NOT EDIT! Generated from scripts/helper/templates/*.
+# DO NOT EDIT! Generated from xpacks/xpack-dev-tools-xbb-helper/templates/*.
 #
 # This file is part of the xPack distribution.
 #   (https://xpack.github.io)
@@ -59,7 +59,7 @@ jobs:
       - name: 'Checkout project'
         uses: actions/checkout@v1 # v1 for old Git
         with:
-          fetch-depth: 3
+          fetch-depth: 1
 
       - name: 'Install xpm'
         timeout-minutes: 1440
@@ -74,13 +74,13 @@ jobs:
         run: |
           xpm install --config linux-x64
           xpm run build --config linux-x64
-
+    
       - name: 'Build Windows x64 binary'
         timeout-minutes: 1440
         run: |
           xpm install --config win32-x64
           xpm run build --config win32-x64
-
+  
       - name: 'Publish pre-release'
         # https://github.com/ncipollo/release-action
         uses: ncipollo/release-action@v1
@@ -134,7 +134,7 @@ jobs:
       - name: 'Checkout project'
         uses: actions/checkout@v1 # v1 for old Git
         with:
-          fetch-depth: 3
+          fetch-depth: 1
 
       - name: 'Install xpm'
         timeout-minutes: 1440
@@ -174,7 +174,6 @@ jobs:
         # For just in case absolute paths remain unprocessed.
         run: mv -v build build-$(date -u +%Y%m%d-%H%M%S)
 
-
   linux-arm64:
     name: 'Linux Arm 64 - Ninja Build ${{ github.event.inputs.version }} build'
     timeout-minutes: 2880 # 2 days
@@ -203,7 +202,7 @@ jobs:
       - name: 'Checkout project'
         uses: actions/checkout@v1 # v1 for old Git
         with:
-          fetch-depth: 3
+          fetch-depth: 1
 
       - name: 'Install xpm'
         timeout-minutes: 1440
@@ -243,7 +242,6 @@ jobs:
         # For just in case absolute paths remain unprocessed.
         run: mv -v build build-$(date -u +%Y%m%d-%H%M%S)
 
-
   macos-x64:
     name: 'macOS Intel - Ninja Build ${{ github.event.inputs.version }} build'
     timeout-minutes: 2880 # 2 days
@@ -268,7 +266,7 @@ jobs:
       - name: 'Checkout project'
         uses: actions/checkout@v1 # v1 for old Git
         with:
-          fetch-depth: 3
+          fetch-depth: 1
 
       - name: 'Install xpm'
         timeout-minutes: 1440
@@ -278,12 +276,13 @@ jobs:
         timeout-minutes: 1440
         run: xpm install
 
+
       - name: 'Build macOS x64 binary'
         timeout-minutes: 1440
         run: |
           xpm install --config darwin-x64
           xpm run build --config darwin-x64
-
+  
       - name: 'Publish pre-release'
         # https://github.com/ncipollo/release-action
         uses: ncipollo/release-action@v1
@@ -308,16 +307,11 @@ jobs:
         # For just in case absolute paths remain unprocessed.
         run: mv -v build build-$(date -u +%Y%m%d-%H%M%S)
 
-
   macos-arm64:
     name: 'macOS Arm - Ninja Build ${{ github.event.inputs.version }} build'
     timeout-minutes: 2880 # 2 days
 
     runs-on: [self-hosted, macos, apple]
-
-    defaults:
-      run:
-        shell: "/usr/bin/arch -arch arm64e /bin/bash -l {0}"
 
     steps:
       - name: 'Environment'
@@ -337,7 +331,7 @@ jobs:
       - name: 'Checkout project'
         uses: actions/checkout@v1 # v1 for old Git
         with:
-          fetch-depth: 3
+          fetch-depth: 1
 
       - name: 'Install xpm'
         timeout-minutes: 1440
@@ -347,12 +341,14 @@ jobs:
         timeout-minutes: 1440
         run: xpm install
 
+
       - name: 'Build macOS arm64 binary'
         timeout-minutes: 1440
         run: |
           xpm install --config darwin-arm64
           xpm run build --config darwin-arm64
 
+  
       - name: 'Publish pre-release'
         # https://github.com/ncipollo/release-action
         uses: ncipollo/release-action@v1
@@ -376,4 +372,3 @@ jobs:
       - name: 'Rename working area'
         # For just in case absolute paths remain unprocessed.
         run: mv -v build build-$(date -u +%Y%m%d-%H%M%S)
-

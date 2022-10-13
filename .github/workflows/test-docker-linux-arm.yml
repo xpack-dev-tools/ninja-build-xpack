@@ -1,6 +1,6 @@
 
 # -----------------------------------------------------------------------------
-# DO NOT EDIT! Generated from scripts/helper/templates/*.
+# DO NOT EDIT! Generated from xpacks/xpack-dev-tools-xbb-helper/templates/*.
 #
 # This file is part of the xPack distribution.
 #   (https://xpack.github.io)
@@ -62,8 +62,9 @@ jobs:
 
   # https://en.wikipedia.org/wiki/Ubuntu_version_history
   # https://hub.docker.com/_/ubuntu
+  # The ubuntu:12.04 image fails to update.
   ubuntu-arm64:
-    name: 'arm64 Ninja Build ${{ github.event.inputs.version }} test on Ubuntu 22, 20, 18 stable'
+    name: 'arm64 Ninja Build ${{ github.event.inputs.version }} test on Ubuntu stable'
     # runs-on: [self-hosted, linux, arm64, xbbla]
     runs-on: [self-hosted, linux, arm64, xbbla64]
 
@@ -100,7 +101,7 @@ jobs:
           entrypoint: /bin/bash
           args: /github/workspace/scripts/test.sh --image ubuntu:22.04 --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
 
-      - name: 'Ubuntu 22.04 arm64'
+      - name: 'Ubuntu 20.04 arm64'
         uses: docker://ubuntu:20.04
         with:
           entrypoint: /bin/bash
@@ -115,7 +116,7 @@ jobs:
   # https://en.wikipedia.org/wiki/Debian_version_history
   # https://hub.docker.com/_/debian
   debian-arm64:
-    name: 'arm64 Ninja Build ${{ github.event.inputs.version }} test on Debian 11, 10 stable'
+    name: 'arm64 Ninja Build ${{ github.event.inputs.version }} test on Debian stable'
     # runs-on: [self-hosted, linux, arm64, xbbla]
     runs-on: [self-hosted, linux, arm64, xbbla64]
 
@@ -162,7 +163,7 @@ jobs:
   # https://hub.docker.com/r/redhat/ubi8
   # `-static` disabled, there is no static libc.a.
   redhat-arm64:
-    name: 'arm64 Ninja Build ${{ github.event.inputs.version }} test on RedHat 8 stable'
+    name: 'arm64 Ninja Build ${{ github.event.inputs.version }} test on RedHat stable'
     # runs-on: [self-hosted, linux, arm64, xbbla]
     runs-on: [self-hosted, linux, arm64, xbbla64]
 
@@ -203,7 +204,7 @@ jobs:
   # https://hub.docker.com/_/fedora
   # `-static` disabled, there is no static libc.a.
   fedora-arm64:
-    name: 'arm64 Ninja Build ${{ github.event.inputs.version }} test on Fedora 37, 33, 29 stable'
+    name: 'arm64 Ninja Build ${{ github.event.inputs.version }} test on Fedora stable'
     # runs-on: [self-hosted, linux, arm64, xbbla]
     runs-on: [self-hosted, linux, arm64, xbbla64]
 
@@ -256,7 +257,7 @@ jobs:
   # https://hub.docker.com/u/opensuse
   # `-static` disabled, there is no static libc.a.
   opensuse-arm64:
-    name: 'arm64 Ninja Build ${{ github.event.inputs.version }} test on OpenSUSE 15 stable'
+    name: 'arm64 Ninja Build ${{ github.event.inputs.version }} test on OpenSUSE stable'
     # runs-on: [self-hosted, linux, arm64, xbbla]
     runs-on: [self-hosted, linux, arm64, xbbla64]
 
@@ -287,7 +288,13 @@ jobs:
           ref: ${{ github.event.inputs.helper-git-ref }}
           fetch-depth: 1
 
-      - name: 'OpenSUSE 15 arm64'
+      - name: 'OpenSUSE 15.4 arm64'
+        uses: docker://opensuse/leap:15.4
+        with:
+          entrypoint: /bin/bash
+          args: /github/workspace/scripts/test.sh --image opensuse/leap:15.4 --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
+
+      - name: 'OpenSUSE 15.3 arm64'
         uses: docker://opensuse/leap:15.3
         with:
           entrypoint: /bin/bash
@@ -457,11 +464,10 @@ jobs:
         with:
           entrypoint: /bin/bash
           args: /github/workspace/scripts/test.sh --image opensuse/tumbleweed --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
-
+  
   # https://hub.docker.com/r/arm32v7/ubuntu/
   ubuntu-arm:
-    name: 'arm Ninja Build ${{ github.event.inputs.version }} test on Ubuntu 22, 20, 18 stable'
-    # Fails to update some distributions, like new Ubuntu.
+    name: 'arm Ninja Build ${{ github.event.inputs.version }} test on Ubuntu stable'
     # runs-on: [self-hosted, linux, arm64, xbbla]
     runs-on: [self-hosted, linux, arm, xbbla32]
 
@@ -492,19 +498,19 @@ jobs:
           ref: ${{ github.event.inputs.helper-git-ref }}
           fetch-depth: 1
 
-      - name: 'Ubuntu 22 arm'
+      - name: 'Ubuntu 22.04 arm'
         uses: docker://arm32v7/ubuntu:22.04
         with:
           entrypoint: /bin/bash # /usr/bin/linux32
           args: /github/workspace/scripts/test.sh --image arm32v7/ubuntu:22.04 --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
 
-      - name: 'Ubuntu 20 arm'
+      - name: 'Ubuntu 20.04 arm'
         uses: docker://arm32v7/ubuntu:20.04
         with:
           entrypoint: /bin/bash # /usr/bin/linux32
           args: /github/workspace/scripts/test.sh --image arm32v7/ubuntu:20.04 --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
 
-      - name: 'Ubuntu 18 arm'
+      - name: 'Ubuntu 18.04 arm'
         uses: docker://arm32v7/ubuntu:18.04
         with:
           entrypoint: /bin/bash # /usr/bin/linux32
@@ -512,7 +518,7 @@ jobs:
 
   # https://hub.docker.com/r/arm32v7/debian
   debian-arm:
-    name: 'arm Ninja Build ${{ github.event.inputs.version }} test on Debian 11, 10 stable'
+    name: 'arm Ninja Build ${{ github.event.inputs.version }} test on Debian stable'
     # runs-on: [self-hosted, linux, arm64, xbbla]
     runs-on: [self-hosted, linux, arm, xbbla32]
 
@@ -556,9 +562,8 @@ jobs:
           args: /github/workspace/scripts/test.sh --image arm32v7/debian:buster --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
 
   # https://hub.docker.com/r/arm32v7/ubuntu/
-  ubuntu-arm-latest:
+  ubuntu-arm:
     name: 'arm Ninja Build ${{ github.event.inputs.version }} test on Ubuntu latest'
-    # Fails to update some distributions, like new Ubuntu.
     # runs-on: [self-hosted, linux, arm64, xbbla]
     runs-on: [self-hosted, linux, arm, xbbla32]
 
@@ -684,5 +689,5 @@ jobs:
   # - https://hub.docker.com/r/arm32v7/opensuse
   # arm32v7/opensuse:latest is leap 42.3 and fails due to http: URLs
   # (zypper lr -u)
-
+  
 # -----------------------------------------------------------------------------
