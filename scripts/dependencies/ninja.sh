@@ -34,16 +34,16 @@ function build_ninja()
   local ninja_github_archive="ninja-${ninja_version}-xpack.tar.gz"
   local ninja_github_url="https://github.com/xpack-dev-tools/ninja/archive/refs/tags/v${ninja_version}-xpack.tar.gz"
 
-  mkdir -pv "${LOGS_FOLDER_PATH}/${ninja_folder_name}"
+  mkdir -pv "${XBB_LOGS_FOLDER_PATH}/${ninja_folder_name}"
 
-  local ninja_stamp_file_path="${STAMPS_FOLDER_PATH}/stamp-${ninja_folder_name}-installed"
+  local ninja_stamp_file_path="${XBB_STAMPS_FOLDER_PATH}/stamp-${ninja_folder_name}-installed"
   if [ ! -f "${ninja_stamp_file_path}" ]
   then
 
-    mkdir -pv "${SOURCES_FOLDER_PATH}"
-    cd "${SOURCES_FOLDER_PATH}"
+    mkdir -pv "${XBB_SOURCES_FOLDER_PATH}"
+    cd "${XBB_SOURCES_FOLDER_PATH}"
 
-    if [ ! -d "${SOURCES_FOLDER_PATH}/${ninja_src_folder_name}" ]
+    if [ ! -d "${XBB_SOURCES_FOLDER_PATH}/${ninja_src_folder_name}" ]
     then
       (
         if [ ! -z ${NINJA_GIT_URL+x} ]
@@ -59,15 +59,15 @@ function build_ninja()
     fi
 
     (
-      mkdir -pv "${BUILD_FOLDER_PATH}/${ninja_folder_name}"
-      cd "${BUILD_FOLDER_PATH}/${ninja_folder_name}"
+      mkdir -pv "${XBB_BUILD_FOLDER_PATH}/${ninja_folder_name}"
+      cd "${XBB_BUILD_FOLDER_PATH}/${ninja_folder_name}"
 
       # xbb_activate_installed_dev
 
       # CPPFLAGS="${XBB_CPPFLAGS}"
       CFLAGS="$(echo ${XBB_CPPFLAGS} ${XBB_CFLAGS_NO_W} | sed -e 's|-O[0123s]||')"
       CXXFLAGS="$(echo ${XBB_CPPFLAGS} ${XBB_CXXFLAGS_NO_W} | sed -e 's|-O[0123s]||')"
-      if [ "${TARGET_PLATFORM}" == "win32" ]
+      if [ "${XBB_TARGET_PLATFORM}" == "win32" ]
       then
         CFLAGS+=" -DUSE_WIN32_CMD_EXE_TO_CREATE_PROCESS"
         CXXFLAGS+=" -DUSE_WIN32_CMD_EXE_TO_CREATE_PROCESS"
@@ -78,7 +78,7 @@ function build_ninja()
       LDFLAGS="$(echo ${XBB_CPPFLAGS} ${XBB_LDFLAGS_APP_STATIC_GCC} | sed -e 's|-O[0123s]||')"
       # LDFLAGS="$(echo ${XBB_CPPFLAGS} ${XBB_LDFLAGS_APP} | sed -e 's|-O[0123s]||')"
 
-      if [ "${TARGET_PLATFORM}" == "linux" ]
+      if [ "${XBB_TARGET_PLATFORM}" == "linux" ]
       then
         xbb_activate_cxx_rpath
         LDFLAGS+=" -Wl,-rpath,${LD_LIBRARY_PATH:-/non-empty-hack}"
@@ -89,7 +89,7 @@ function build_ninja()
       export LDFLAGS
 
       local build_type
-      if [ "${IS_DEBUG}" == "y" ]
+      if [ "${XBB_IS_DEBUG}" == "y" ]
       then
         build_type="Debug"
       else
@@ -99,7 +99,7 @@ function build_ninja()
       if true # [ ! -f "CMakeCache.txt" ]
       then
         (
-          if [ "${IS_DEVELOP}" == "y" ]
+          if [ "${XBB_IS_DEVELOP}" == "y" ]
           then
             env | sort
           fi
@@ -111,7 +111,7 @@ function build_ninja()
 
           config_options+=("-DCMAKE_BUILD_TYPE=${build_type}")
 
-          if [ "${TARGET_PLATFORM}" == "win32" ]
+          if [ "${XBB_TARGET_PLATFORM}" == "win32" ]
           then
             # The install of the ninja target requires changing an RPATH from the build
             # tree, but this is not supported with the Ninja generator
@@ -121,19 +121,19 @@ function build_ninja()
             config_options+=("-G" "Ninja")
           fi
 
-          if [ "${IS_DEVELOP}" == "y" ]
+          if [ "${XBB_IS_DEVELOP}" == "y" ]
           then
             config_options+=("-DCMAKE_VERBOSE_MAKEFILE=ON")
           fi
 
-          config_options+=("-DCMAKE_INSTALL_PREFIX=${BINARIES_INSTALL_FOLDER_PATH}")
+          config_options+=("-DCMAKE_INSTALL_PREFIX=${XBB_BINARIES_INSTALL_FOLDER_PATH}")
 
           run_verbose cmake \
             "${config_options[@]}" \
             \
-            "${SOURCES_FOLDER_PATH}/${ninja_src_folder_name}" \
+            "${XBB_SOURCES_FOLDER_PATH}/${ninja_src_folder_name}" \
 
-        ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${ninja_folder_name}/cmake-output-$(ndate).txt"
+        ) 2>&1 | tee "${XBB_LOGS_FOLDER_PATH}/${ninja_folder_name}/cmake-output-$(ndate).txt"
       fi
 
       (
@@ -142,41 +142,41 @@ function build_ninja()
 
         run_verbose cmake \
           --build . \
-          --parallel ${JOBS} \
+          --parallel ${XBB_JOBS} \
           --verbose \
           --config "${build_type}" \
 
-        if [ "${TARGET_PLATFORM}" != "win32" ]
+        if [ "${XBB_TARGET_PLATFORM}" != "win32" ]
         then
           run_verbose ctest -vv
         fi
 
         echo
         # The install target is not functional:
-        mkdir -pv "${BINARIES_INSTALL_FOLDER_PATH}/bin"
-        if [ "${TARGET_PLATFORM}" == "win32" ]
+        mkdir -pv "${XBB_BINARIES_INSTALL_FOLDER_PATH}/bin"
+        if [ "${XBB_TARGET_PLATFORM}" == "win32" ]
         then
-          install -v -m755 -c ninja.exe "${BINARIES_INSTALL_FOLDER_PATH}/bin"
+          install -v -m755 -c ninja.exe "${XBB_BINARIES_INSTALL_FOLDER_PATH}/bin"
         else
-          install -v -m755 -c ninja "${BINARIES_INSTALL_FOLDER_PATH}/bin"
+          install -v -m755 -c ninja "${XBB_BINARIES_INSTALL_FOLDER_PATH}/bin"
         fi
 
-      ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${ninja_folder_name}/build-output-$(ndate).txt"
+      ) 2>&1 | tee "${XBB_LOGS_FOLDER_PATH}/${ninja_folder_name}/build-output-$(ndate).txt"
 
       copy_license \
-        "${SOURCES_FOLDER_PATH}/${ninja_src_folder_name}" \
+        "${XBB_SOURCES_FOLDER_PATH}/${ninja_src_folder_name}" \
         "${ninja_folder_name}"
 
     )
 
-    mkdir -pv "${STAMPS_FOLDER_PATH}"
+    mkdir -pv "${XBB_STAMPS_FOLDER_PATH}"
     touch "${ninja_stamp_file_path}"
 
   else
     echo "Component wine already installed."
   fi
 
-  tests_add "test_ninja" "${BINARIES_INSTALL_FOLDER_PATH}/bin"
+  tests_add "test_ninja" "${XBB_BINARIES_INSTALL_FOLDER_PATH}/bin"
 }
 
 # -----------------------------------------------------------------------------
@@ -199,8 +199,8 @@ function test_ninja()
 
     run_app "${test_bin_path}/ninja" -t list
 
-    rm -rf "${TESTS_FOLDER_PATH}/ninja"
-    mkdir -pv "${TESTS_FOLDER_PATH}/ninja"; cd "${TESTS_FOLDER_PATH}/ninja"
+    rm -rf "${XBB_TESTS_FOLDER_PATH}/ninja"
+    mkdir -pv "${XBB_TESTS_FOLDER_PATH}/ninja"; cd "${XBB_TESTS_FOLDER_PATH}/ninja"
 
     # Note: __EOF__ is quoted to prevent substitutions here.
     cat <<'__EOF__' > build.ninja

@@ -15,21 +15,21 @@ function build_versioned_components()
   # Don't use a comma since the regular expression
   # that processes this string in the Makefile, silently fails and the
   # bfdver.h file remains empty.
-  # BRANDING="${APP_DISTRO_NAME} ${APP_NAME} ${TARGET_MACHINE}"
+  # BRANDING="${XBB_APPLICATION_DISTRO_NAME} ${XBB_APPLICATION_NAME} ${TARGET_MACHINE}"
 
-  NINJA_VERSION="$(echo "${RELEASE_VERSION}" | sed -e 's|-.*||')"
+  XBB_NINJA_VERSION="$(echo "${XBB_RELEASE_VERSION}" | sed -e 's|-.*||')"
 
-  # xbb_set_binaries_install "${DEPENDENCIES_INSTALL_FOLDER_PATH}"
-  xbb_set_binaries_install "${APPLICATION_INSTALL_FOLDER_PATH}"
-  xbb_set_libraries_install "${DEPENDENCIES_INSTALL_FOLDER_PATH}"
+  # xbb_set_binaries_install "${XBB_DEPENDENCIES_INSTALL_FOLDER_PATH}"
+  xbb_set_binaries_install "${XBB_APPLICATION_INSTALL_FOLDER_PATH}"
+  xbb_set_libraries_install "${XBB_DEPENDENCIES_INSTALL_FOLDER_PATH}"
 
   # Keep them in sync with combo archive content.
-  if [[ "${RELEASE_VERSION}" =~ 1\.11\.[01]-* ]]
+  if [[ "${XBB_RELEASE_VERSION}" =~ 1\.11\.[01]-* ]]
   then
-    build_ninja "${RELEASE_VERSION}" # Pass the full xpack version
+    build_ninja "${XBB_RELEASE_VERSION}" # Pass the full xpack version
     # -------------------------------------------------------------------------
   else
-    echo "Unsupported version ${RELEASE_VERSION}."
+    echo "Unsupported version ${XBB_RELEASE_VERSION}."
     exit 1
   fi
 }

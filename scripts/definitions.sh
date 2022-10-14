@@ -12,23 +12,23 @@
 # -----------------------------------------------------------------------------
 
 # Used to display the application name.
-APP_NAME=${APP_NAME:-"Ninja Build"}
+XBB_APPLICATION_NAME=${XBB_APPLICATION_NAME:-"Ninja Build"}
 
 # Used as part of file/folder paths.
-APP_LC_NAME=${APP_LC_NAME:-"ninja-build"}
+XBB_APPLICATION_LOWER_CASE_NAME=${XBB_APPLICATION_LOWER_CASE_NAME:-"ninja-build"}
 
-APP_DISTRO_NAME=${APP_DISTRO_NAME:-"xPack"}
-APP_DISTRO_LC_NAME=${APP_DISTRO_LC_NAME:-"xpack"}
-APP_DISTRO_TOP_FOLDER=${APP_DISTRO_TOP_FOLDER:-"xPacks"}
+XBB_APPLICATION_DISTRO_NAME=${XBB_APPLICATION_DISTRO_NAME:-"xPack"}
+XBB_APPLICATION_DISTRO_LOWER_CASE_NAME=${XBB_APPLICATION_DISTRO_LOWER_CASE_NAME:-"xpack"}
+XBB_APPLICATION_DISTRO_TOP_FOLDER=${XBB_APPLICATION_DISTRO_TOP_FOLDER:-"xPacks"}
 
-APP_DESCRIPTION="${APP_DISTRO_NAME} ${APP_NAME}"
+XBB_APPLICATION_DESCRIPTION="${XBB_APPLICATION_DISTRO_NAME} ${XBB_APPLICATION_NAME}"
 
 # -----------------------------------------------------------------------------
 
-GITHUB_ORG="${GITHUB_ORG:-"xpack-dev-tools"}"
-GITHUB_REPO="${GITHUB_REPO:-"${APP_LC_NAME}-xpack"}"
-GITHUB_PRE_RELEASES="${GITHUB_PRE_RELEASES:-"pre-releases"}"
+XBB_GITHUB_ORG="${XBB_GITHUB_ORG:-"xpack-dev-tools"}"
+XBB_GITHUB_REPO="${XBB_GITHUB_REPO:-"${XBB_APPLICATION_LOWER_CASE_NAME}-xpack"}"
+XBB_GITHUB_PRE_RELEASES="${XBB_GITHUB_PRE_RELEASES:-"pre-releases"}"
 
-NPM_PACKAGE="${NPM_PACKAGE:-"@xpack-dev-tools/${APP_LC_NAME}@next"}"
+XBB_NPM_PACKAGE="${XBB_NPM_PACKAGE:-"@xpack-dev-tools/${XBB_APPLICATION_LOWER_CASE_NAME}@next"}"
 
 # -----------------------------------------------------------------------------
