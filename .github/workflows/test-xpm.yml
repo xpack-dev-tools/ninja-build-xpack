@@ -140,7 +140,7 @@ jobs:
           fetch-depth: 1
 
       - name: 'Run ${{ github.event.inputs.version }} xpm docker test'
-        uses: docker://node:lts-slim
+        uses: docker://arm32v7/node:lts-slim
         with:
           entrypoint: /bin/bash # /usr/bin/linux32
           args: /github/workspace/scripts/test.sh --image debian --version ${{ github.event.inputs.version }} --xpm
