@@ -123,7 +123,7 @@
       "build-native-develop": "bash {{ properties.dbg }} scripts/build.sh --develop",
       "build-native-win": "bash {{ properties.dbg }} scripts/build.sh --windows",
       "build-native-win-develop": "bash {{ properties.dbg }} scripts/build.sh --develop --windows",
-      "deep-clean": "rm -rf build xpacks"
+      "deep-clean": "rm -rf build xpacks node_modules"
     },
     "buildConfigurations": {
       "common-dependencies": {
