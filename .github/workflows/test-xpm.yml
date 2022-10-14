@@ -64,10 +64,10 @@ jobs:
           fetch-depth: 1
 
       - name: 'Run ${{ github.event.inputs.version }} xpm docker test'
-        uses: docker://node:lts-bullseye-slim
+        uses: docker://node:lts-slim
         with:
           entrypoint: /bin/bash
-          args: /github/workspace/scripts/test.sh --image debian:buster --version ${{ github.event.inputs.version }} --xpm
+          args: /github/workspace/scripts/test.sh --image debian --version ${{ github.event.inputs.version }} --xpm
   
   linux-arm64:
     name: 'Linux Arm 64-bit Ninja Build@${{ github.event.inputs.version }} test'
@@ -102,10 +102,10 @@ jobs:
           fetch-depth: 1
 
       - name: 'Run ${{ github.event.inputs.version }} xpm docker test'
-        uses: docker://docker://node:lts-bullseye-slim
+        uses: docker://node:lts-slim
         with:
           entrypoint: /bin/bash
-          args: /github/workspace/scripts/test.sh --image ilegeul/debian:arm64v8-10-npm-v1 --version ${{ github.event.inputs.version }} --xpm
+          args: /github/workspace/scripts/test.sh --image debian --version ${{ github.event.inputs.version }} --xpm
   
   linux-arm32:
     name: 'Linux Arm 32-bit Ninja Build@${{ github.event.inputs.version }} test'
@@ -140,10 +140,10 @@ jobs:
           fetch-depth: 1
 
       - name: 'Run ${{ github.event.inputs.version }} xpm docker test'
-        uses: docker://docker://node:lts-bullseye-slim
+        uses: docker://node:lts-slim
         with:
           entrypoint: /bin/bash # /usr/bin/linux32
-          args: /github/workspace/scripts/test.sh --image ilegeul/debian:arm32v7-10-npm-v1 --version ${{ github.event.inputs.version }} --xpm
+          args: /github/workspace/scripts/test.sh --image debian --version ${{ github.event.inputs.version }} --xpm
   
   macos-x64:
     name: 'macOS Intel 64-bit Ninja Build@${{ github.event.inputs.version }} test'
