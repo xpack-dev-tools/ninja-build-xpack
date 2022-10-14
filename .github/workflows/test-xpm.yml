@@ -39,6 +39,7 @@ jobs:
   linux-x64:
     name: 'Linux Intel 64-bit Ninja Build@${{ github.event.inputs.version }} test'
     runs-on: ubuntu-latest
+
     steps:
       - name: 'Environment'
         run: |
@@ -221,6 +222,7 @@ jobs:
         shell: bash # for --
 
     steps:
+      - name: 'Environment'
         run: |
           uname -a
           systeminfo # lsb_release -sd

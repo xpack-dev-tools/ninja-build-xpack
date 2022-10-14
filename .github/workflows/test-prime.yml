@@ -102,11 +102,11 @@ jobs:
           ref: ${{ github.event.inputs.helper-git-ref }}
           fetch-depth: 1
 
-      - name: 'Run ${{ github.event.inputs.version }} native test'
-        uses: docker://debian:buster
+      - name: 'Run ${{ github.event.inputs.version }} docker test'
+        uses: docker://ubuntu:latest
         with:
           entrypoint: /bin/bash
-          args: /github/workspace/scripts/test.sh --image debian:buster --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
+          args: /github/workspace/scripts/test.sh --image ubuntu:latest --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
   
   linux-arm32:
     name: 'Linux arm32 Ninja Build ${{ github.event.inputs.version }} test'
