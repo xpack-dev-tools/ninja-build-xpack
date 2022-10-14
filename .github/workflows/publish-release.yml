@@ -46,7 +46,7 @@ jobs:
           whoami
           pwd
           ls -lLA
-          env
+          env | sort
 
       # https://github.com/actions/checkout
       - name: 'Checkout project'

@@ -47,7 +47,7 @@ jobs:
           node --version
           npm --version
           ls -lLA
-          env
+          env | sort
 
       - name: 'Clean working area'
         run: rm -rf * .git*
