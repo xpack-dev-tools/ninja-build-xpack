@@ -73,9 +73,11 @@ function build_ninja()
         CXXFLAGS+=" -DUSE_WIN32_CMD_EXE_TO_CREATE_PROCESS"
       fi
 
-      # Surprisingly, the Windows archive is longer with static libs.
-      # LDFLAGS="$(echo ${XBB_CPPFLAGS} ${XBB_LDFLAGS_APP_STATIC_GCC} | sed -e 's|-O[0123s]||')"
-      LDFLAGS="$(echo ${XBB_CPPFLAGS} ${XBB_LDFLAGS_APP} | sed -e 's|-O[0123s]||')"
+      # Surprisingly, the Windows archive is longer with static libs, but the
+      # Linux archives are significantly smaller, so static wins.
+      LDFLAGS="$(echo ${XBB_CPPFLAGS} ${XBB_LDFLAGS_APP_STATIC_GCC} | sed -e 's|-O[0123s]||')"
+      # LDFLAGS="$(echo ${XBB_CPPFLAGS} ${XBB_LDFLAGS_APP} | sed -e 's|-O[0123s]||')"
+
       if [ "${TARGET_PLATFORM}" == "linux" ]
       then
         xbb_activate_cxx_rpath
