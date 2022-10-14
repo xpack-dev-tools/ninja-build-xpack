@@ -64,7 +64,7 @@ jobs:
           fetch-depth: 1
 
       - name: 'Run ${{ github.event.inputs.version }} xpm docker test'
-        uses: docker://ilegeul/debian:amd64-10-npm-v1
+        uses: docker://node:lts-bullseye-slim
         with:
           entrypoint: /bin/bash
           args: /github/workspace/scripts/test.sh --image debian:buster --version ${{ github.event.inputs.version }} --xpm
@@ -102,7 +102,7 @@ jobs:
           fetch-depth: 1
 
       - name: 'Run ${{ github.event.inputs.version }} xpm docker test'
-        uses: docker://ilegeul/debian:arm64v8-10-npm-v1
+        uses: docker://docker://node:lts-bullseye-slim
         with:
           entrypoint: /bin/bash
           args: /github/workspace/scripts/test.sh --image ilegeul/debian:arm64v8-10-npm-v1 --version ${{ github.event.inputs.version }} --xpm
@@ -140,7 +140,7 @@ jobs:
           fetch-depth: 1
 
       - name: 'Run ${{ github.event.inputs.version }} xpm docker test'
-        uses: docker://ilegeul/debian:arm32v7-10-npm-v1
+        uses: docker://docker://node:lts-bullseye-slim
         with:
           entrypoint: /bin/bash # /usr/bin/linux32
           args: /github/workspace/scripts/test.sh --image ilegeul/debian:arm32v7-10-npm-v1 --version ${{ github.event.inputs.version }} --xpm
