@@ -181,7 +181,7 @@ function build_ninja()
     touch "${ninja_stamp_file_path}"
 
   else
-    echo "Component wine already installed."
+    echo "Component ninja already installed."
   fi
 
   tests_add "test_ninja" "${XBB_BINARIES_INSTALL_FOLDER_PATH}/bin"
