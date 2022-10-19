@@ -15,17 +15,27 @@ function build_versioned_components()
   # Don't use a comma since the regular expression
   # that processes this string in the Makefile, silently fails and the
   # bfdver.h file remains empty.
-  # BRANDING="${XBB_APPLICATION_DISTRO_NAME} ${XBB_APPLICATION_NAME} ${TARGET_MACHINE}"
+  # XBB_BRANDING="${XBB_APPLICATION_DISTRO_NAME} ${XBB_APPLICATION_NAME} ${XBB_TARGET_MACHINE}"
 
   XBB_NINJA_VERSION="$(echo "${XBB_RELEASE_VERSION}" | sed -e 's|-.*||')"
-
-  # xbb_set_binaries_install "${XBB_DEPENDENCIES_INSTALL_FOLDER_PATH}"
-  xbb_set_binaries_install "${XBB_APPLICATION_INSTALL_FOLDER_PATH}"
-  xbb_set_libraries_install "${XBB_DEPENDENCIES_INSTALL_FOLDER_PATH}"
 
   # Keep them in sync with combo archive content.
   if [[ "${XBB_RELEASE_VERSION}" =~ 1\.11\.[01]-* ]]
   then
+    xbb_set_binaries_install "${XBB_DEPENDENCIES_INSTALL_FOLDER_PATH}"
+    xbb_set_libraries_install "${XBB_DEPENDENCIES_INSTALL_FOLDER_PATH}"
+
+    if [ "${XBB_TARGET_PLATFORM}" == "darwin" ]
+    then
+      # https://ftp.gnu.org/pub/gnu/libiconv/
+      build_libiconv "1.17" # "1.16"
+
+      # https://ftp.gnu.org/gnu/coreutils/
+      build_coreutils "9.1"
+    fi
+
+    xbb_set_binaries_install "${XBB_APPLICATION_INSTALL_FOLDER_PATH}"
+
     build_ninja "${XBB_RELEASE_VERSION}" # Pass the full xpack version
     # -------------------------------------------------------------------------
   else
