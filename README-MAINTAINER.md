@@ -43,8 +43,6 @@ a few weeks may be skipped.
 
 ## How to make new releases
 
-## Prepare the build
-
 Before starting the build, perform some checks and tweaks.
 
 ### Download the build scripts
@@ -94,7 +92,7 @@ but in the version specific release page.
 
 ### Update versions in `README` files
 
-- update version in `README-RELEASE.md`
+- update version in `README-MAINTAINER.md`
 - update version in `README.md`
 
 ### Update `CHANGELOG.md`
@@ -335,6 +333,13 @@ location (like
 <https://github.com/xpack-dev-tools/files-cache/tree/master/libs>),
 place them in the XBB cache (`Work/cache`) and restart the build.
 
+## Push the build scripts
+
+In this Git repo:
+
+- push the `xpack-develop` branch to GitHub
+- possibly push the helper project too
+
 ## Run the CI build
 
 The automation is provided by GitHub Actions and three self-hosted runners.
@@ -342,7 +347,7 @@ The automation is provided by GitHub Actions and three self-hosted runners.
 Run the `generate-workflows` to re-generate the
 GitHub workflow files; commit and push if necessary.
 
-- on the macOS machine (`xbbmi`) open ssh sessions to the build
+- on a permanently running machine (`berry`) open ssh sessions to the build
 machines (`xbbma`, `xbbli`, `xbbla64` and `xbbla32`):
 
 ```sh

@@ -1,6 +1,6 @@
 
 [![GitHub package.json version](https://img.shields.io/github/package-json/v/xpack-dev-tools/ninja-build-xpack)](https://github.com/xpack-dev-tools/ninja-build-xpack/blob/xpack/package.json)
-[![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/xpack-dev-tools/ninja-build-xpack)](https://github.com/xpack-dev-tools/ninja-build-xpack/tags/)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/xpack-dev-tools/ninja-build-xpack)](https://github.com/xpack-dev-tools/ninja-build-xpack/releases/)
 [![npm (scoped)](https://img.shields.io/npm/v/@xpack-dev-tools/ninja-build.svg?color=blue)](https://www.npmjs.com/package/@xpack-dev-tools/ninja-build/)
 [![license](https://img.shields.io/github/license/xpack-dev-tools/ninja-build-xpack)](https://github.com/xpack-dev-tools/ninja-build-xpack/blob/xpack/LICENSE)
 
@@ -51,7 +51,7 @@ which is a portable [Node.js](https://nodejs.org/) command line application.
 It is recommended to update to the latest version with:
 
 ```sh
-npm install --global xpm@latest
+npm install --location=global xpm@latest
 ```
 
 For details please follow the instructions in the
@@ -119,7 +119,7 @@ The binaries are distributed as portable archives; thus they do not need
 to run a setup and do not require an uninstall; simply removing the
 folder is enough.
 
-To remove the links from the current project:
+To remove the links created by xpm in the current project:
 
 ```sh
 cd my-project
