@@ -42,10 +42,10 @@ jobs:
         run: |
           uname -a
           sw_vers
-          whoami
-          pwd
-          node --version
-          npm --version
+          echo "whoami: $(whoami)"
+          echo "pwd: $(pwd)"
+          echo "node: $(node --version)"
+          echo "npm: $(npm --version)"
           ls -lLA
           env | sort
 
@@ -59,7 +59,7 @@ jobs:
 
       - name: 'Install xpm'
         timeout-minutes: 1440
-        run: npm install --global xpm@latest
+        run: npm install --location=global xpm@latest
 
       - name: 'Install project dependencies'
         timeout-minutes: 1440

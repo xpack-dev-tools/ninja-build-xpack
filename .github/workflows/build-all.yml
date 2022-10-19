@@ -46,10 +46,10 @@ jobs:
         run: |
           uname -a
           lsb_release -sd
-          whoami
-          pwd
-          node --version
-          npm --version
+          echo "whoami: $(whoami)"
+          echo "pwd: $(pwd)"
+          echo "node: $(node --version)"
+          echo "npm: $(npm --version)"
           ls -lLA
           env | sort
 
@@ -121,10 +121,10 @@ jobs:
         run: |
           uname -a
           lsb_release -sd
-          whoami
-          pwd
-          node --version
-          npm --version
+          echo "whoami: $(whoami)"
+          echo "pwd: $(pwd)"
+          echo "node: $(node --version)"
+          echo "npm: $(npm --version)"
           ls -lLA
           env | sort
 
@@ -189,10 +189,10 @@ jobs:
         run: |
           uname -a
           lsb_release -sd
-          whoami
-          pwd
-          node --version
-          npm --version
+          echo "whoami: $(whoami)"
+          echo "pwd: $(pwd)"
+          echo "node: $(node --version)"
+          echo "npm: $(npm --version)"
           ls -lLA
           env | sort
 
@@ -253,10 +253,10 @@ jobs:
         run: |
           uname -a
           sw_vers
-          whoami
-          pwd
-          node --version
-          npm --version
+          echo "whoami: $(whoami)"
+          echo "pwd: $(pwd)"
+          echo "node: $(node --version)"
+          echo "npm: $(npm --version)"
           ls -lLA
           env | sort
 
@@ -318,10 +318,10 @@ jobs:
         run: |
           uname -a
           sw_vers
-          whoami
-          pwd
-          node --version
-          npm --version
+          echo "whoami: $(whoami)"
+          echo "pwd: $(pwd)"
+          echo "node: $(node --version)"
+          echo "npm: $(npm --version)"
           ls -lLA
           env | sort
 
