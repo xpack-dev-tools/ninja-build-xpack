@@ -14,8 +14,6 @@
 
 function build_ninja()
 {
-  local ninja_version="$1" # The full xpack version
-
   # https://ninja-build.org
   # https://github.com/ninja-build/ninja/archive/v1.10.0.tar.gz
 
@@ -27,12 +25,16 @@ function build_ninja()
 
   # https://github.com/Homebrew/homebrew-core/blob/master/Formula/ninja.rb
 
-  local ninja_src_folder_name="ninja-${ninja_version}-xpack"
+  local ninja_xpack_version="$1" # The full xpack version
+
+  local ninja_version="$(echo "${ninja_xpack_version}" | sed -e 's|-.*||')"
+
+  local ninja_src_folder_name="ninja-${ninja_xpack_version}-xpack"
   local ninja_folder_name="ninja-${ninja_version}"
 
   # GitHub release archive.
-  local ninja_github_archive="ninja-${ninja_version}-xpack.tar.gz"
-  local ninja_github_url="https://github.com/xpack-dev-tools/ninja/archive/refs/tags/v${ninja_version}-xpack.tar.gz"
+  local ninja_github_archive="ninja-${ninja_xpack_version}-xpack.tar.gz"
+  local ninja_github_url="https://github.com/xpack-dev-tools/ninja/archive/refs/tags/v${ninja_xpack_version}-xpack.tar.gz"
 
   mkdir -pv "${XBB_LOGS_FOLDER_PATH}/${ninja_folder_name}"
 
