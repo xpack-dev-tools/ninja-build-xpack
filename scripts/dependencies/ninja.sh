@@ -128,6 +128,12 @@ function build_ninja()
 
           config_options+=("-DCMAKE_INSTALL_PREFIX=${XBB_BINARIES_INSTALL_FOLDER_PATH}")
 
+          if [ "${XBB_TARGET_PLATFORM}" == "darwin" ]
+          then
+            # Otherwise it'll generate two -mmacosx-version-min
+            config_options+=("-DCMAKE_OSX_DEPLOYMENT_TARGET=${XBB_MACOSX_DEPLOYMENT_TARGET}")
+          fi
+
           run_verbose cmake \
             "${config_options[@]}" \
             \
