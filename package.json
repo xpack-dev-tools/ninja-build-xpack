@@ -75,13 +75,15 @@
       "appName": "Ninja Build",
       "appLCName": "ninja-build",
       "platforms": "all",
-      "LIQUIDJS": "liquidjs '{ \"XBB_APPLICATION_NAME\": \"{{ properties.appName }}\", \"XBB_APPLICATION_LOWER_CASE_NAME\": \"{{ properties.appLCName }}\", \"platforms\": \"{{ properties.platforms }}\" }'",
-      "buildFolderRelativePath": "{{ 'build' | path_join: configuration.name | to_filename | downcase }}",
+      "LIQUIDJS": "liquidjs '{ \"XBB_APPLICATION_NAME\": \"{{ properties.appName }}\", \"XBB_APPLICATION_LOWER_CASE_NAME\": \"{{ properties.appLCName }}\", \"platforms\": \"{{ properties.platforms }}\" }'",      "buildFolderRelativePath": "{{ 'build' | path_join: configuration.name | to_filename | downcase }}",
       "buildFolderRelativePathPosix": "{{ 'build' | path_posix_join: configuration.name | downcase }}",
       "commandBashBuild": "bash {{ properties.dbg }} scripts/build.sh --target {{ configuration.name }} --build-folder {{ properties.buildFolderRelativePathPosix }}",
       "dbg": ""
     },
     "actions": {
+      "link-deps": [
+        "xpm link @xpack-dev-tools/xbb-helper"
+      ],
       "generate-workflows": [
         "mkdir -p .github/workflows/",
         "cp xpacks/xpack-dev-tools-xbb-helper/templates/body-github-pre-releases-test.md .github/workflows/",
@@ -97,9 +99,6 @@
         "cat xpacks/xpack-dev-tools-xbb-helper/templates/publish-release-liquid.yml | {{ properties.LIQUIDJS }} > .github/workflows/publish-release.yml",
         "cat xpacks/xpack-dev-tools-xbb-helper/templates/test-xpm-liquid.yml | {{ properties.LIQUIDJS }} > .github/workflows/test-xpm.yml",
         "cat xpacks/xpack-dev-tools-xbb-helper/templates/deep-clean-liquid.yml | {{ properties.LIQUIDJS }} > .github/workflows/deep-clean.yml"
-      ],
-      "link-deps": [
-        "xpm link @xpack-dev-tools/xbb-helper"
       ],
       "trigger-workflow-build-all": "bash xpacks/xpack-dev-tools-xbb-helper/github-actions/trigger-workflow-build.sh",
       "trigger-workflow-build-xbbli": "bash xpacks/xpack-dev-tools-xbb-helper/github-actions/trigger-workflow-build.sh --machine xbbli",
@@ -123,7 +122,7 @@
       "build-native-develop": "bash {{ properties.dbg }} scripts/build.sh --develop",
       "build-native-win": "bash {{ properties.dbg }} scripts/build.sh --windows",
       "build-native-win-develop": "bash {{ properties.dbg }} scripts/build.sh --develop --windows",
-      "deep-clean": "rm -rf build xpacks node_modules"
+      "deep-clean": "rm -rf build xpacks node_modules package-lock.json"
     },
     "buildConfigurations": {
       "common-dependencies": {
