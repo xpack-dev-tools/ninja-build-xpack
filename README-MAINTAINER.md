@@ -16,7 +16,7 @@ terminal (on Windows use the _Git Bash_ console):
 ```sh
 rm -rf ~/Work/ninja-build-xpack.git; \
 git clone https://github.com/xpack-dev-tools/ninja-build-xpack.git \
-  ~/Work/ninja-build-xpack.git; \
+  ~/Work/ninja-build-xpack.git
 ```
 
 For development purposes, clone the `xpack-develop` branch:
@@ -26,7 +26,7 @@ rm -rf ~/Work/ninja-build-xpack.git; \
 git clone \
   --branch xpack-develop \
   https://github.com/xpack-dev-tools/ninja-build-xpack.git \
-  ~/Work/ninja-build-xpack.git; \
+  ~/Work/ninja-build-xpack.git
 ```
 
 ## Prerequisites
