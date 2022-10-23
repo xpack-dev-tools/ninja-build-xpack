@@ -23,6 +23,7 @@ For development purposes, clone the `xpack-develop` branch:
 
 ```sh
 rm -rf ~/Work/ninja-build-xpack.git; \
+mkdir -p ~/Work; \
 git clone \
   --branch xpack-develop \
   https://github.com/xpack-dev-tools/ninja-build-xpack.git \

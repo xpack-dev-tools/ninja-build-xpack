@@ -9,7 +9,8 @@ The binaries can be available from one of the pre-releases:
 The test script is part of the Ninja Build xPack:
 
 ```sh
-rm -rf ${HOME}/Work/meson-build-xpack.git; \
+rm -rf ${HOME}/Work/ninja-build-xpack.git; \
+mkdir -p ~/Work; \
 git clone \
   --branch xpack-develop \
   https://github.com/xpack-dev-tools/ninja-build-xpack.git  \
