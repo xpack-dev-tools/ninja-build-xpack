@@ -25,15 +25,7 @@ function build_versioned_components()
     xbb_set_binaries_install "${XBB_DEPENDENCIES_INSTALL_FOLDER_PATH}"
     xbb_set_libraries_install "${XBB_DEPENDENCIES_INSTALL_FOLDER_PATH}"
 
-    if [ "${XBB_TARGET_PLATFORM}" == "darwin" ]
-    then
-      # https://ftp.gnu.org/pub/gnu/libiconv/
-      build_libiconv "1.17" # "1.16"
-
-      XBB_COREUTILS_INSTALL_REALPATH_ONLY="y"
-      # https://ftp.gnu.org/gnu/coreutils/
-      build_coreutils "9.1"
-    fi
+    # No dependencies.
 
     xbb_set_binaries_install "${XBB_APPLICATION_INSTALL_FOLDER_PATH}"
 
