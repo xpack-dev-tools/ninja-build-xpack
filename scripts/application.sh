@@ -7,9 +7,8 @@
 # for any purpose is hereby granted, under the terms of the MIT license.
 # -----------------------------------------------------------------------------
 
-# Warning: MUST NOT depend on $HOME or other environment variables.
-
 # -----------------------------------------------------------------------------
+# Application specific definitions. Included with source.
 
 # Used to display the application name.
 XBB_APPLICATION_NAME=${XBB_APPLICATION_NAME:-"Ninja Build"}
