@@ -186,7 +186,7 @@
         },
         "actions": {
           "docker-prepare": [
-            "docker create --name {{ properties.containerName }} --tty --hostname docker --volume $(pwd):$(pwd) --volume ${HOME}/.cache/xPacks:/root/.cache/xPacks --workdir $(pwd) {{ properties.dockerImage }}",
+            "docker create --name {{ properties.containerName }} --tty --hostname docker --volume $(pwd):$(pwd) --volume ${HOME}/.cache/xPacks:/root/.cache/xPacks --volume ${HOME}/Work/cache:/root/Work/cache --workdir $(pwd) {{ properties.dockerImage }}",
             "docker start {{ properties.containerName }}",
             "docker exec {{ properties.containerName }} bash -c 'lsb_release -sd && whoami && pwd && ls -lLA'",
             "docker exec {{ properties.containerName }} npm install --location=global xpm@latest",
