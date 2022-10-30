@@ -30,6 +30,18 @@ git clone \
   ~/Work/ninja-build-xpack.git
 ```
 
+Same for the helper and link it to the central xPacks store:
+
+```sh
+rm -rf ~/Work/xbb-helper-xpack.git; \
+mkdir -p ~/Work; \
+git clone \
+  --branch xpack-develop \
+  https://github.com/xpack-dev-tools/xbb-helper-xpack.git \
+  ~/Work/xbb-helper-xpack.git; \
+xpm link -C ~/Work/xbb-helper-xpack.git
+```
+
 ## Prerequisites
 
 A recent [xpm](https://xpack.github.io/xpm/), which is a portable
@@ -138,7 +150,7 @@ For Intel macOS, first run the build on the development machine (`wksi`):
 
 ```sh
 # Update the build scripts.
-git pull -C ~/Work/ninja-build-xpack.git
+git -C ~/Work/ninja-build-xpack.git pull
 
 xpm install -C ~/Work/ninja-build-xpack.git
 
@@ -160,7 +172,7 @@ caffeinate ssh xbbmi
 
 ```sh
 # Update the build scripts (or clone them the first time).
-git pull -C ~/Work/ninja-build-xpack.git
+git -C ~/Work/ninja-build-xpack.git pull
 
 xpm install -C ~/Work/ninja-build-xpack.git
 
@@ -190,7 +202,7 @@ caffeinate ssh xbbma
 
 ```sh
 # Update the build scripts (or clone them the first time).
-git pull -C ~/Work/ninja-build-xpack.git
+git -C ~/Work/ninja-build-xpack.git pull
 
 xpm install -C ~/Work/ninja-build-xpack.git
 
@@ -222,7 +234,7 @@ Build the GNU/Linux binaries:
 
 ```sh
 # Update the build scripts (or clone them the first time).
-git pull -C ~/Work/ninja-build-xpack.git
+git -C ~/Work/ninja-build-xpack.git pull
 
 xpm install -C ~/Work/ninja-build-xpack.git
 
@@ -271,7 +283,7 @@ caffeinate ssh xbbla64
 
 ```sh
 # Update the build scripts (or clone if the first time)
-git pull -C ~/Work/ninja-build-xpack.git
+git -C ~/Work/ninja-build-xpack.git pull
 
 xpm install -C ~/Work/ninja-build-xpack.git
 
@@ -301,7 +313,7 @@ caffeinate ssh xbbla32
 
 ```sh
 # Update the build scripts (or clone if the first time)
-git pull -C ~/Work/ninja-build-xpack.git
+git -C ~/Work/ninja-build-xpack.git pull
 
 xpm install -C ~/Work/ninja-build-xpack.git
 
@@ -597,7 +609,7 @@ When the release is considered stable, promote it as `latest`:
 
 In case the previous version is not functional and needs to be unpublished:
 
-- `npm unpublish @xpack-dev-tools/ninja-build@1.11.1-2.X`
+- `npm unpublish @xpack-dev-tools/ninja-build@1.11.1-2.1`
 
 ## Update the Web
 
