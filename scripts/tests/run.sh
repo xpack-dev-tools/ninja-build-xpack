@@ -14,9 +14,7 @@ function tests_run_all()
 {
   local test_bin_path="$1"
 
-  (
-    test_ninja "${test_bin_path}"
-  )
+  ninja_test "${test_bin_path}"
 }
 
 # -----------------------------------------------------------------------------

@@ -10,7 +10,7 @@
 
 # -----------------------------------------------------------------------------
 
-function build_application_versioned_components()
+function application_build_versioned_components()
 {
   # Don't use a comma since the regular expression
   # that processes this string in the Makefile, silently fails and the
@@ -29,7 +29,7 @@ function build_application_versioned_components()
 
     xbb_set_binaries_install "${XBB_APPLICATION_INSTALL_FOLDER_PATH}"
 
-    build_ninja "${XBB_RELEASE_VERSION}" # Pass the full xpack version
+    ninja_build "${XBB_RELEASE_VERSION}" # Pass the full xpack version
     # -------------------------------------------------------------------------
   else
     echo "Unsupported version ${XBB_RELEASE_VERSION}."

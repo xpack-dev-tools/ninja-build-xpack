@@ -12,7 +12,7 @@
 # https://github.com/ninja-build/ninja/wiki
 # https://sourceforge.net/projects/msys2/files/REPOS/MSYS2/Sources/ninja-1.10.0-1.src.tar.gz/download
 
-function build_ninja()
+function ninja_build()
 {
   # https://ninja-build.org
   # https://github.com/ninja-build/ninja/archive/v1.10.0.tar.gz
@@ -181,12 +181,12 @@ function build_ninja()
     echo "Component ninja already installed."
   fi
 
-  tests_add "test_ninja" "${XBB_BINARIES_INSTALL_FOLDER_PATH}/bin"
+  tests_add "ninja_test" "${XBB_EXECUTABLES_INSTALL_FOLDER_PATH}/bin"
 }
 
 # -----------------------------------------------------------------------------
 
-function test_ninja()
+function ninja_test()
 {
   local test_bin_path="$1"
 
