@@ -2,6 +2,10 @@
 
 Entries in this file are in reverse chronological order.
 
+## 2022-12-24
+
+* update for xbb v5.x
+
 ## 2022-10-08
 
 * v1.11.1-2 prepared
