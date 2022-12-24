@@ -20,6 +20,9 @@ function application_build_versioned_components()
     # -------------------------------------------------------------------------
     # Build the native dependencies.
 
+    # xbb_set_executables_install_path "${XBB_DEPENDENCIES_INSTALL_FOLDER_PATH}"
+    # xbb_set_libraries_install_path "${XBB_DEPENDENCIES_INSTALL_FOLDER_PATH}"
+
     # None
 
     # -------------------------------------------------------------------------
@@ -28,8 +31,8 @@ function application_build_versioned_components()
     xbb_reset_env
     xbb_set_target "requested"
 
-    xbb_set_executables_install_path "${XBB_DEPENDENCIES_INSTALL_FOLDER_PATH}"
-    xbb_set_libraries_install_path "${XBB_DEPENDENCIES_INSTALL_FOLDER_PATH}"
+    # xbb_set_executables_install_path "${XBB_DEPENDENCIES_INSTALL_FOLDER_PATH}"
+    # xbb_set_libraries_install_path "${XBB_DEPENDENCIES_INSTALL_FOLDER_PATH}"
 
     # None
 
