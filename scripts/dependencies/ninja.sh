@@ -9,22 +9,24 @@
 
 # -----------------------------------------------------------------------------
 
+# https://ninja-build.org
 # https://github.com/ninja-build/ninja/wiki
 # https://sourceforge.net/projects/msys2/files/REPOS/MSYS2/Sources/ninja-1.10.0-1.src.tar.gz/download
 
+# https://github.com/ninja-build/ninja/archive/v1.10.0.tar.gz
+
+# https://github.com/xpack-dev-tools/ninja/tags/
+# https://github.com/xpack-dev-tools/ninja/archive/refs/tags/v1.11.0-1-xpack.tar.gz
+
+# https://github.com/archlinux/svntogit-community/blob/packages/ninja/trunk/PKGBUILD
+# https://archlinuxarm.org/packages/aarch64/ninja/files/PKGBUILD
+
+# https://github.com/Homebrew/homebrew-core/blob/master/Formula/ninja.rb
+
+# -----------------------------------------------------------------------------
+
 function ninja_build()
 {
-  # https://ninja-build.org
-  # https://github.com/ninja-build/ninja/archive/v1.10.0.tar.gz
-
-  # https://github.com/xpack-dev-tools/ninja/tags/
-  # https://github.com/xpack-dev-tools/ninja/archive/refs/tags/v1.11.0-1-xpack.tar.gz
-
-  # https://github.com/archlinux/svntogit-community/blob/packages/ninja/trunk/PKGBUILD
-  # https://archlinuxarm.org/packages/aarch64/ninja/files/PKGBUILD
-
-  # https://github.com/Homebrew/homebrew-core/blob/master/Formula/ninja.rb
-
   local ninja_xpack_version="$1" # The full xpack version
 
   local ninja_version="$(echo "${ninja_xpack_version}" | sed -e 's|-.*||')"
