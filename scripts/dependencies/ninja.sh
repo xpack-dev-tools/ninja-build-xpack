@@ -27,6 +27,9 @@
 
 function ninja_build()
 {
+  echo_develop
+  echo_develop "[${FUNCNAME[0]} $@]"
+
   local ninja_xpack_version="$1" # The full xpack version
 
   local ninja_version="$(echo "${ninja_xpack_version}" | sed -e 's|-.*||')"
