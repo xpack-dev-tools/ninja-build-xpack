@@ -115,7 +115,8 @@ function ninja_build()
             # The install of the ninja target requires changing an RPATH from the build
             # tree, but this is not supported with the Ninja generator
             config_options+=("-G" "Unix Makefiles")
-            config_options+=("-DWIN32=ON")
+
+            config_options+=("-DCMAKE_SYSTEM_NAME=Windows")
           else
             config_options+=("-G" "Ninja")
           fi
