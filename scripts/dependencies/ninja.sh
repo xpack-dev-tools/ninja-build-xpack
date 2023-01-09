@@ -146,11 +146,19 @@ function ninja_build()
         echo
         echo "Running ninja build..."
 
-        run_verbose cmake \
-          --build . \
-          --parallel ${XBB_JOBS} \
-          --verbose \
-          --config "${build_type}" \
+        if [ "${XBB_IS_DEVELOP}" == "y" ]
+        then
+          run_verbose cmake \
+            --build . \
+            --parallel ${XBB_JOBS} \
+            --verbose \
+            --config "${build_type}"
+        else
+          run_verbose cmake \
+            --build . \
+            --parallel ${XBB_JOBS} \
+            --config "${build_type}"
+        fi
 
         if [ "${XBB_HOST_PLATFORM}" != "win32" ]
         then
