@@ -76,8 +76,8 @@ jobs:
           xpm run build --config linux-x64
 
       - name: 'Publish pre-release'
-        # https://github.com/ncipollo/release-action
-        uses: ncipollo/release-action@v1
+        # https://github.com/xpack/release-action
+        uses: xpack/release-action@v1
         with:
           allowUpdates: true
           artifacts: 'build/linux-x64/deploy/*'
@@ -142,10 +142,10 @@ jobs:
         run: |
           xpm install --config win32-x64
           xpm run build --config win32-x64
-  
+
       - name: 'Publish pre-release'
-        # https://github.com/ncipollo/release-action
-        uses: ncipollo/release-action@v1
+        # https://github.com/xpack/release-action
+        uses: xpack/release-action@v1
         with:
           allowUpdates: true
           artifacts: 'build/win32-x64/deploy/*'
