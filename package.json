@@ -41,27 +41,27 @@
       "platforms": {
         "darwin-arm64": {
           "fileName": "xpack-ninja-build-1.11.1-2-darwin-arm64.tar.gz",
-          "sha256": "02c2051b8956faf04fbefc0b17bc94291984a1b1a4acbe9610b5e1090f77bd73"
+          "sha256": "cbf57ea055028966107fa377b9e4325e4508308fcc47a238f4d678eb65c094ae"
         },
         "darwin-x64": {
           "fileName": "xpack-ninja-build-1.11.1-2-darwin-x64.tar.gz",
-          "sha256": "08fc1f11f4ceaf13a655c662ade4cd71f7f14b8952a0095a413fd0d81c926910"
+          "sha256": "915eeff2cb8d106804435bca654cc81b35c935f8cd00be3b84e60d42aa5e8555"
         },
         "linux-arm64": {
           "fileName": "xpack-ninja-build-1.11.1-2-linux-arm64.tar.gz",
-          "sha256": "f39bfdeee193b16d1add18aef7d9477512b12572957c4c5f7003a15fd5444476"
+          "sha256": "44e0263a886a75baf4fb56e348326dfb62ae5325c38a2ba02977982ecb1818a8"
         },
         "linux-arm": {
           "fileName": "xpack-ninja-build-1.11.1-2-linux-arm.tar.gz",
-          "sha256": "49a7292f7af4a5635a4e510ad59d2d0db248696ef7ab51bb22ef7a68471dc475"
+          "sha256": "28f68d64fdcf5fbb2e816dc4ae049c689ebbac6ddb5156bf7c4cf6b36c1d0efd"
         },
         "linux-x64": {
           "fileName": "xpack-ninja-build-1.11.1-2-linux-x64.tar.gz",
-          "sha256": "bbd3e32472a939bde9953088b468ec837a1b618bfd431efc8bb714085426ca2d"
+          "sha256": "cfd4c4b815183ef513151b05aa576974fc169164d4a706ca1f1b7c350b66107b"
         },
         "win32-x64": {
           "fileName": "xpack-ninja-build-1.11.1-2-win32-x64.zip",
-          "sha256": "4d7f22b905187d9c2510dc45d18cdf93441dbce56bebf2934e8c93819962be17"
+          "sha256": "da68e7157bda76cb79c9b86ae00fd1856a24f971fdeab7138ab06ab6882c9d13"
         }
       }
     },
