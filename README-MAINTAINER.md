@@ -231,9 +231,9 @@ archive and its SHA signature, created in the `deploy` folder:
 
 ```console
 $ ls -l ~/Work/ninja-build-xpack.git/build/darwin-x64/deploy
-total 1080
--rw-r--r--  1 ilg  staff  547972 May 17 09:50 xpack-ninja-build-1.11.1-2-darwin-x64.tar.gz
--rw-r--r--  1 ilg  staff     111 May 17 09:50 xpack-ninja-build-1.11.1-2-darwin-x64.tar.gz.sha
+total 312
+-rw-r--r--  1 ilg  staff  153317 Jan 23 23:11 xpack-ninja-build-1.11.1-2-darwin-x64.tar.gz
+-rw-r--r--  1 ilg  staff     111 Jan 23 23:11 xpack-ninja-build-1.11.1-2-darwin-x64.tar.gz.sha
 ```
 
 #### Apple Silicon macOS
@@ -264,9 +264,9 @@ archive and its SHA signature, created in the `deploy` folder:
 
 ```console
 $ ls -l ~/Work/ninja-build-xpack.git/build/darwin-arm64/deploy
-total 1056
--rw-r--r--  1 ilg  staff  533014 May 17 09:49 xpack-ninja-build-1.11.1-2-darwin-arm64.tar.gz
--rw-r--r--  1 ilg  staff     113 May 17 09:49 xpack-ninja-build-1.11.1-2-darwin-arm64.tar.gz.sha
+total 304
+-rw-r--r--  1 ilg  staff  147640 Jan 23 23:11 xpack-ninja-build-1.11.1-2-darwin-arm64.tar.gz
+-rw-r--r--  1 ilg  staff     113 Jan 23 23:11 xpack-ninja-build-1.11.1-2-darwin-arm64.tar.gz.sha
 ```
 
 #### Intel GNU/Linux
@@ -298,9 +298,9 @@ archive and its SHA signature, created in the `deploy` folder:
 
 ```console
 $ ls -l ~/Work/ninja-build-xpack.git/build/linux-x64/deploy
-total 1480
--rw-rw-rw- 1 ilg ilg 551495 May 17 09:49 xpack-ninja-build-1.11.1-2-linux-x64.tar.gz
--rw-rw-rw- 1 ilg ilg    110 May 17 09:49 xpack-ninja-build-1.11.1-2-linux-x64.tar.gz.sha
+total 364
+-rw-r--r-- 1 ilg ilg 367167 Jan 23 21:12 xpack-ninja-build-1.11.1-2-linux-x64.tar.gz
+-rw-r--r-- 1 ilg ilg    110 Jan 23 21:12 xpack-ninja-build-1.11.1-2-linux-x64.tar.gz.sha
 ```
 
 ##### Build the Windows binaries
@@ -323,9 +323,9 @@ archive and its SHA signature, created in the `deploy` folder:
 
 ```console
 $ ls -l ~/Work/ninja-build-xpack.git/build/win32-x64/deploy
-total 1480
--rw-rw-rw- 1 ilg ilg 951474 May 17 09:50 xpack-ninja-build-1.11.1-2-win32-x64.zip
--rw-rw-rw- 1 ilg ilg    107 May 17 09:50 xpack-ninja-build-1.11.1-2-win32-x64.zip.sha
+total 520
+-rw-r--r-- 1 ilg ilg 527262 Jan 23 21:14 xpack-ninja-build-1.11.1-2-win32-x64.zip
+-rw-r--r-- 1 ilg ilg    107 Jan 23 21:14 xpack-ninja-build-1.11.1-2-win32-x64.zip.sha
 ```
 
 #### Arm GNU/Linux 64-bit
@@ -355,9 +355,9 @@ archive and its SHA signature, created in the `deploy` folder:
 
 ```console
 $ ls -l ~/Work/ninja-build-xpack.git/build/linux-arm64/deploy
-total 532
--rw-rw-rw- 1 ilg ilg 538649 May 17 09:51 xpack-ninja-build-1.11.1-2-linux-arm64.tar.gz
--rw-rw-rw- 1 ilg ilg    112 May 17 09:51 xpack-ninja-build-1.11.1-2-linux-arm64.tar.gz.sha
+total 344
+-rw-r--r-- 1 ilg ilg 347709 Jan 23 21:15 xpack-ninja-build-1.11.1-2-linux-arm64.tar.gz
+-rw-r--r-- 1 ilg ilg    112 Jan 23 21:15 xpack-ninja-build-1.11.1-2-linux-arm64.tar.gz.sha
 ```
 
 #### Arm GNU/Linux 32-bit
@@ -387,9 +387,9 @@ archive and its SHA signature, created in the `deploy` folder:
 
 ```console
 $ ls -l ~/Work/ninja-build-xpack.git/build/linux-arm/deploy
-total 500
--rw-rw-rw- 1 ilg ilg 506541 May 17 09:51 xpack-ninja-build-1.11.1-2-linux-arm.tar.gz
--rw-rw-rw- 1 ilg ilg    110 May 17 09:51 xpack-ninja-build-1.11.1-2-linux-arm.tar.gz.sha
+total 316
+-rw-r--r-- 1 ilg ilg 317951 Jan 23 21:16 xpack-ninja-build-1.11.1-2-linux-arm.tar.gz
+-rw-r--r-- 1 ilg ilg    110 Jan 23 21:16 xpack-ninja-build-1.11.1-2-linux-arm.tar.gz.sha
 ```
 
 ### Files cache
