@@ -2,6 +2,11 @@
 
 Entries in this file are in reverse chronological order.
 
+## 2024-01-24
+
+* v1.11.1-2 released
+* 7c8658f re-generate workflows with xpm@next
+
 ## 2023-01-23
 
 * c7e074b re-generate workflows
