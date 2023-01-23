@@ -4,6 +4,10 @@ Entries in this file are in reverse chronological order.
 
 ## 2024-01-24
 
+* v1.11.1-2.1 published on npmjs.com
+* 50387a3 README update
+* 67d229c package.json: update urls for 1.11.1-2.1 release
+* fb9c339 CHANGELOG update
 * v1.11.1-2 released
 * 7c8658f re-generate workflows with xpm@next
 
