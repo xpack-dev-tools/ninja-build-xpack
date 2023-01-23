@@ -34,7 +34,7 @@ on:
         description: 'The version of xpm to install'
         required: false
         type: string
-        default: 'latest'
+        default: 'next'
       xpm_install_loglevel:
         description: 'Optional loglevel for xpm install'
         required: false
