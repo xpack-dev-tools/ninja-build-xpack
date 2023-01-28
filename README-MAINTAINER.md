@@ -176,7 +176,7 @@ xpm run install -C ~/Work/ninja-build-xpack.git
 rm -rf ~/Work/ninja-build-[0-9]*-*
 
 xpm install --config darwin-x64 -C ~/Work/ninja-build-xpack.git
-caffeinate xpm run build-develop --config darwin-x64 -C ~/Work/ninja-build-xpack.git
+xpm run build-develop --config darwin-x64 -C ~/Work/ninja-build-xpack.git
 ```
 
 When functional, push the `xpack-develop` branch to GitHub.
@@ -198,7 +198,7 @@ xpm run install -C ~/Work/ninja-build-xpack.git
 xpm run deep-clean --config darwin-x64 -C ~/Work/ninja-build-xpack.git
 
 xpm install --config darwin-x64 -C ~/Work/ninja-build-xpack.git
-caffeinate xpm run build-develop --config darwin-x64 -C ~/Work/ninja-build-xpack.git
+xpm run build-develop --config darwin-x64 -C ~/Work/ninja-build-xpack.git
 ```
 
 The build takes about 30 minutes.
@@ -223,7 +223,7 @@ xpm link -C ~/Work/xbb-helper-xpack.git && \
 xpm run link-deps -C ~/Work/ninja-build-xpack.git && \
 xpm run deep-clean --config darwin-x64  -C ~/Work/ninja-build-xpack.git && \
 xpm install --config darwin-x64 -C ~/Work/ninja-build-xpack.git
-caffeinate xpm run build-develop --config darwin-x64 -C ~/Work/ninja-build-xpack.git
+xpm run build-develop --config darwin-x64 -C ~/Work/ninja-build-xpack.git
 ```
 
 Several minutes later, the output of the build script is a compressed
@@ -256,7 +256,7 @@ xpm link -C ~/Work/xbb-helper-xpack.git && \
 xpm run link-deps -C ~/Work/ninja-build-xpack.git && \
 xpm run deep-clean --config darwin-arm64  -C ~/Work/ninja-build-xpack.git && \
 xpm install --config darwin-arm64 -C ~/Work/ninja-build-xpack.git
-caffeinate xpm run build-develop --config darwin-arm64 -C ~/Work/ninja-build-xpack.git
+xpm run build-develop --config darwin-arm64 -C ~/Work/ninja-build-xpack.git
 ```
 
 Several minutes later, the output of the build script is a compressed
