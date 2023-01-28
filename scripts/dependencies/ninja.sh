@@ -32,7 +32,7 @@ function ninja_build()
 
   local ninja_xpack_version="$1" # The full xpack version
 
-  local ninja_version="$(echo "${ninja_xpack_version}" | sed -e 's|-.*||')"
+  local ninja_version="$(xbb_strip_version_pre_release "${ninja_xpack_version}")"
 
   local ninja_src_folder_name="ninja-${ninja_xpack_version}-xpack"
   local ninja_folder_name="ninja-${ninja_version}"
