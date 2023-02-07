@@ -7,10 +7,12 @@ summary: "Version **{{ XBB_RELEASE_VERSION }}** is a maintenance release; it fix
 
 summary: "Version **{{ XBB_RELEASE_VERSION }}** is a new release; it follows the upstream release."
 
-ninja_version: 1.11.1
-ninja_date: 30 Aug 2022
+ninja_version: "1.11.1"
+ninja_date: "30 Aug 2022"
+
 version: "{{ XBB_RELEASE_VERSION }}"
-npm_subversion: 1
+npm_subversion: "1"
+
 download_url: https://github.com/xpack-dev-tools/ninja-build-xpack/releases/tag/v{{ XBB_RELEASE_VERSION }}/
 
 date:   {{ RELEASE_DATE }}
@@ -31,7 +33,7 @@ tags:
 
 [The xPack Ninja Build](https://xpack.github.io/ninja-build/)
 is a standalone cross-platform binary distribution of
-[Ninja Build](http://ninja-build.org).
+[Ninja Build](https://ninja-build.org).
 
 There are separate binaries for **Windows** (Intel 64-bit),
 **macOS** (Intel 64-bit, Apple Silicon 64-bit)
@@ -63,7 +65,7 @@ The binary files are available from GitHub [Releases]({% raw %}{{ page.download_
 
 The full details of installing the **xPack Ninja Build** on various platforms
 are presented in the separate
-[Install]({% raw %}{{ site.baseurl }}{% endraw %}/ninja-build/install/) page.
+[Install]({% raw %}{{ site.baseurl }}{% endraw %}/dev-tools/ninja-build/install/) page.
 
 ### Easy install
 
@@ -81,7 +83,7 @@ a dependency for a project is quite easy:
 cd my-project
 xpm init # Only at first use.
 
-xpm install @xpack-dev-tools/ninja-build@latest
+xpm install @xpack-dev-tools/ninja-build@latest --verbose
 
 ls -l xpacks/.bin
 ```
@@ -89,7 +91,7 @@ ls -l xpacks/.bin
 To install this specific version, use:
 
 ```sh
-xpm install @xpack-dev-tools/ninja-build@{% raw %}{{ page.version }}.{{ page.npm_subversion }}{% endraw %}
+xpm install @xpack-dev-tools/ninja-build@{% raw %}{{ page.version }}.{{ page.npm_subversion }}{% endraw %} --verbose
 ```
 
 It is also possible to install Meson Build globally, in the user home folder,
@@ -97,7 +99,7 @@ but this requires xPack aware tools to automatically identify them and
 manage paths.
 
 ```sh
-xpm install --global @xpack-dev-tools/ninja-build@latest
+xpm install --global @xpack-dev-tools/ninja-build@latest --verbose
 ```
 
 ### Uninstall
@@ -119,7 +121,7 @@ xpm uninstall --global @xpack-dev-tools/ninja-build
 ## Compliance
 
 The xPack Ninja Build generally follows the official
-[Ninja Build](http://ninja-build.org) releases.
+[Ninja Build](https://ninja-build.org) releases.
 
 The current version is based on:
 
