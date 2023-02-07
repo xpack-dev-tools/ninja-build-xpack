@@ -6,7 +6,7 @@ the **Ninja** build system, an open source project.
 For more details, please read the corresponding release pages:
 
 - <https://xpack.github.io/ninja-build/releases/>
-- <http://ninja-build.org>
+- <https://ninja-build.org>
 
 Thank you for using open source software,
 
