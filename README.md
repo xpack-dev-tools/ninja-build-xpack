@@ -20,7 +20,7 @@ and provides the platform specific binaries for the
 [xPack Ninja Build](https://xpack.github.io/ninja-build/).
 
 This distribution follows the official
-[Ninja](http://ninja-build.org) build system.
+[Ninja](https://ninja-build.org) build system.
 
 The binaries can be installed automatically as **binary xPacks** or manually as
 **portable archives**.
@@ -67,7 +67,7 @@ a dependency for a project is quite easy:
 cd my-project
 xpm init # Only at first use.
 
-xpm install @xpack-dev-tools/ninja-build@latest
+xpm install @xpack-dev-tools/ninja-build@latest --verbose
 
 ls -l xpacks/.bin
 ```
@@ -90,7 +90,7 @@ This location is configurable via the environment variable
 It is also possible to install Ninja Build globally, in the user home folder:
 
 ```sh
-xpm install --global @xpack-dev-tools/ninja-build@latest
+xpm install --global @xpack-dev-tools/ninja-build@latest --verbose
 ```
 
 After install, the package should create a structure like this (macOS files;
