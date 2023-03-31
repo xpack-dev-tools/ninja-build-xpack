@@ -85,6 +85,8 @@ function ninja_build()
       LDFLAGS="$(echo ${XBB_CPPFLAGS} ${XBB_LDFLAGS_APP_STATIC_GCC} | sed -e 's|-O[0123s]||')"
       # LDFLAGS="$(echo ${XBB_CPPFLAGS} ${XBB_LDFLAGS_APP} | sed -e 's|-O[0123s]||')"
 
+      CMAKE=$(which cmake)
+
       xbb_adjust_ldflags_rpath
 
       export CFLAGS
@@ -134,7 +136,7 @@ function ninja_build()
             config_options+=("-DCMAKE_OSX_DEPLOYMENT_TARGET=${MACOSX_DEPLOYMENT_TARGET}")
           fi
 
-          run_verbose cmake \
+          run_verbose "${CMAKE}" \
             "${config_options[@]}" \
             \
             "${XBB_SOURCES_FOLDER_PATH}/${ninja_src_folder_name}" \
@@ -148,13 +150,13 @@ function ninja_build()
 
         if [ "${XBB_IS_DEVELOP}" == "y" ]
         then
-          run_verbose cmake \
+          run_verbose "${CMAKE}" \
             --build . \
             --parallel ${XBB_JOBS} \
             --verbose \
             --config "${build_type}"
         else
-          run_verbose cmake \
+          run_verbose "${CMAKE}" \
             --build . \
             --parallel ${XBB_JOBS} \
             --config "${build_type}"
