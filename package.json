@@ -175,7 +175,7 @@
         },
         "actions": {
           "docker-prepare": [
-            "mkdir -pv ${HOME}/Work/xpacks/xbb-helper-xpack.git",
+            "mkdir -pv ${HOME}/Work/xpack-dev-tools/xbb-helper-xpack.git",
             "mkdir -pv ${HOME}/.local/xPacks ${HOME}/.cache/xPacks ${HOME}/Work/cache",
             "mkdir -pv ${HOME}/.wine",
             "docker rm --force {{ properties.containerName }}",
