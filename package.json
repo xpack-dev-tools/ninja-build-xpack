@@ -64,7 +64,7 @@
       "ninja": "./.content/bin/ninja"
     },
     "devDependencies": {
-      "@xpack-dev-tools/xbb-helper": "^1.11.1"
+      "@xpack-dev-tools/xbb-helper": "^1.11.2"
     },
     "properties": {
       "appName": "Ninja Build",
