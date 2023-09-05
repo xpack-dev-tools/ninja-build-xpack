@@ -4,6 +4,7 @@ Entries in this file are in reverse chronological order.
 
 ## 2023-09-05
 
+* v1.11.1-3 prepared
 * e365c35 dot.*ignore update
 * bc5881a re-generate workflows
 * 481431b READMEs update
