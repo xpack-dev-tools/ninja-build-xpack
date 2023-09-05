@@ -2,9 +2,138 @@
 
 Entries in this file are in reverse chronological order.
 
+## 2023-09-05
+
+* e365c35 dot.*ignore update
+* bc5881a re-generate workflows
+* 481431b READMEs update
+* f67d7f3 package.json: bump deps
+
+## 2023-09-03
+
+* c68a6bb package.json: bump deps
+
+## 2023-08-28
+
+* db01444 READMEs update
+
+## 2023-08-25
+
+* 337a803 package.json: rm xpack-dev-tools-build/*
+* 81e39f2 package.json: bump deps
+
+## 2023-08-21
+
+* 2b2bb40 READMEs update
+* 5ec8d82 package.json: bump deps
+
+## 2023-08-19
+
+* a10992f READMEs update
+* 0dc2adf package.json: bump deps
+
+## 2023-08-15
+
+* ac2b5f1 re-generate workflows
+* 9b5600d README-MAINTAINER rename xbbla
+* 65d1967 package.json: rename xbbla
+* 077bf04 package.json: bump deps
+* 335ff4c READMEs update
+* 38520e7 package.json: bump deps
+
+## 2023-08-05
+
+* f646bf3 READMEs update
+
+## 2023-08-04
+
+* 4ded8d0 READMEs update
+* 8afc87d READMEs update
+* 1efea34 package.json: add build-develop-debug
+* d76848a READMEs update
+
+## 2023-08-03
+
+* f11c094 package.json: reorder build actions
+* dd8cf9d READMEs update
+* d6d5822 package.json: bump deps
+
+## 2023-07-28
+
+* ec89b5e READMEs update
+* ad7abf3 READMEs update
+* 40b93d1 package.json: bump deps
+* 3c731db package.json: liquidjs --context --template
+* 8490d96 scripts cosmetics
+* fefe4b7 re-generate workflows
+* 4e76125 READMEs update
+* 53fe610 package.json: minXpm 0.16.3 & @xpack-dev-tools/xbb-helper
+* 41a6193 READMEs update
+* 4843758 package.json: bump deps
+
+## 2023-07-26
+
+* 2f90082 package.json: move scripts to actions
+* 2a428ff package.json: update xpack-dev-tools path
+* 4a3f746 READMEs update xpack-dev-tools path
+* e9d753c body-jekyll update
+* 5a18017 READMEs update
+
+## 2023-07-17
+
+* 340c7ad package.json: bump deps
+
+## 2023-03-31
+
+* 8b9dbc3 dependencies CMAKE=$(which cmake)
+
+## 2023-03-25
+
+* 9dd5d37 READMEs update
+* 26ea605 READMEs update prerequisites
+* 17c5ca6 package.json: mkdir -pv cache
+
+## 2023-02-22
+
+* a95175a READMEs update
+
+## 2023-02-14
+
+* 031c471 body-jekyll update
+
+## 2023-02-10
+
+* daa86a2 READMEs update
+
+## 2023-02-07
+
+* e3d24b8 READMEs update
+* e384848 body-jekyll update
+
+## 2023-01-31
+
+* db80736 re-generate workflows
+* 3f88601 package.json:bump deps
+
+## 2023-01-28
+
+* 91bc3a6 README-MAINTAINER remove caffeinate xpm
+* 4625ad9 ninja.sh: cosmetics
+* 7881335 ninja.sh: use MACOSX_DEPLOYMENT_TARGET
+* 0c70e0b ninja.sh: use versioning functions
+* cfa6ea5 README-MAINTAINER remove caffeinate xpm
+
+## 2023-01-27
+
+* adb0d76 package.json: reorder scripts
+
 ## 2024-01-24
 
-* v1.11.1-2.1 published on npmjs.com
+* 6390849 README updates
+* d20372f 1.11.1-2.1
+* 9211692 package.json: 1.11.1-2.1-pre
+* 0a7efb9 1.11.1-2.1
+* a9a3724 CHANGELOG: publish npm v1.11.1-2.1
 * 50387a3 README update
 * 67d229c package.json: update urls for 1.11.1-2.1 release
 * fb9c339 CHANGELOG update
