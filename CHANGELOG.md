@@ -4,7 +4,15 @@ Entries in this file are in reverse chronological order.
 
 ## 2023-09-05
 
-* v1.11.1-3 prepared
+* v1.11.1-3 released
+* b599303 README update
+* d3945ad .vscode/settings.json: ignoreWords
+* c159184 README update
+* 8c9d219 package.json update
+* 762355b package.json: bump deps
+* ca0ac7c prepare v1.11.1-3
+* fea22fc CHANGELOG update
+* c500001 README update
 * e365c35 dot.*ignore update
 * bc5881a re-generate workflows
 * 481431b READMEs update
