@@ -205,7 +205,7 @@ For a debug build:
 xpm run build-develop-debug --config darwin-x64 -C ~/Work/xpack-dev-tools/ninja-build-xpack.git
 ```
 
-The build takes a few minutes.
+The build takes a few minutes to complete.
 
 When functional, push the `xpack-develop` branch to GitHub.
 
