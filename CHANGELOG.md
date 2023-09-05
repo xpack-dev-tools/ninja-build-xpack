@@ -2,9 +2,15 @@
 
 Entries in this file are in reverse chronological order.
 
+## 2023-09-06
+
+* v1.11.1-3.1 published on npmjs.com
+* 1873457 package.json: update urls for 1.11.1-3.1 release
+
 ## 2023-09-05
 
-* v1.11.1-3 released
+* b98bb93 README update
+* 6861bbc CHANGELOG update
 * b599303 README update
 * d3945ad .vscode/settings.json: ignoreWords
 * c159184 README update
