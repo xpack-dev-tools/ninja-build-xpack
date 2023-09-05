@@ -112,7 +112,7 @@ $ tree -L 2 /Users/ilg/Library/xPacks/\@xpack-dev-tools/ninja-build/1.11.1-3.1/.
     ├── patches
     └── scripts
 
-5 directories, 3 files
+6 directories, 3 files
 ```
 
 No other files are installed in any system folders or other locations.
