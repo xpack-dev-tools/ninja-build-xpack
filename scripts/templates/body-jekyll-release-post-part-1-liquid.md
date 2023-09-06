@@ -19,10 +19,12 @@ comments: true
 
 date:   {{ RELEASE_DATE }}
 
+# For Jekyll releases selection.
 categories:
   - releases
   - ninja-build
 
+# For navigation; use scripts/createtag.sh in Jekyll.
 tags:
   - releases
   - ninja-build
