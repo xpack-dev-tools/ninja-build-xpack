@@ -101,6 +101,7 @@ jobs:
           xpm install --config linux-arm --loglevel ${{ github.event.inputs.xpm_install_loglevel }} ${{ github.event.inputs.xpm_install_options }}
           pwd
           ls -lLAR .
+          ls -lLA /github/home/.local/xPacks/@xpack-dev-tools/
           xpm run build --config linux-arm
 
       - name: 'Publish pre-release'
