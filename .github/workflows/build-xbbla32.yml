@@ -98,6 +98,8 @@ jobs:
       - name: 'Build Linux arm32 binary'
         timeout-minutes: 1440
         run: |
+          ls -lLAR xpacks
+          ls -lLAR build/linux-arm/xpacks
           xpm install --config linux-arm --loglevel ${{ github.event.inputs.xpm_install_loglevel }} ${{ github.event.inputs.xpm_install_options }}
           xpm run build --config linux-arm
 
