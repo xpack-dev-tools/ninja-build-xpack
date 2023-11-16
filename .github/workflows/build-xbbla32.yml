@@ -78,7 +78,9 @@ jobs:
           env | sort | egrep '^[^ \t]+='
 
       - name: 'Clean working area'
-        run: rm -rf * .git*
+        run: |
+          rm -rf * .git*
+          rm -rf ~/.local/xPacks
 
       - name: 'Checkout project'
         uses: actions/checkout@v1 # v1 for old Git
