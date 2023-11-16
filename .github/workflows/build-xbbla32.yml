@@ -63,7 +63,7 @@ jobs:
       image: ilegeul/ubuntu:arm32v7-18.04-xbb-v5.1.0
     defaults:
       run:
-        shell: bash
+        shell: linux32 bash
 
     steps:
       - name: 'Environment'
