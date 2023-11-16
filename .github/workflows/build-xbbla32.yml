@@ -102,6 +102,7 @@ jobs:
           pwd
           ls -lLAR .
           ls -lLA /github/home/.local/xPacks/@xpack-dev-tools/
+          touch /github/home/.local/xPacks/baburiba
           xpm run build --config linux-arm
 
       - name: 'Publish pre-release'
