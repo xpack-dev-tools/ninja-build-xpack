@@ -19,7 +19,7 @@
 # -----------------------------------------------------------------------------
 
 
-name: 'Build xPack Ninja Build xbbla32'
+name: 'Build xPack Ninja Build ampere(32)'
 
 on:
   workflow_dispatch:
@@ -58,7 +58,7 @@ jobs:
   linux-arm:
     name: 'Linux Arm 32 - ninja-build ${{ github.event.inputs.version }} build'
     timeout-minutes: 2880 # 2 days
-    runs-on: [self-hosted, linux, arm, xbbla32]
+    runs-on: [self-hosted, linux, ampere]
     container:
       image: ilegeul/ubuntu:arm32v7-18.04-xbb-v5.1.0
     defaults:
