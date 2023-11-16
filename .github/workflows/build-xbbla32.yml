@@ -98,9 +98,9 @@ jobs:
       - name: 'Build Linux arm32 binary'
         timeout-minutes: 1440
         run: |
+          xpm install --config linux-arm --loglevel ${{ github.event.inputs.xpm_install_loglevel }} ${{ github.event.inputs.xpm_install_options }}
           pwd
           ls -lLAR .
-          xpm install --config linux-arm --loglevel ${{ github.event.inputs.xpm_install_loglevel }} ${{ github.event.inputs.xpm_install_options }}
           xpm run build --config linux-arm
 
       - name: 'Publish pre-release'
