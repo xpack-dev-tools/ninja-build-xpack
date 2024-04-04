@@ -19,7 +19,7 @@
 # -----------------------------------------------------------------------------
 
 
-name: 'Build xPack Ninja Build ampere(32)'
+name: 'Build xPack Ninja Build xbbla32'
 
 on:
   workflow_dispatch:
@@ -58,12 +58,12 @@ jobs:
   linux-arm:
     name: 'Linux Arm 32 - ninja-build ${{ github.event.inputs.version }} build'
     timeout-minutes: 2880 # 2 days
-    runs-on: [self-hosted, linux, ampere]
+    runs-on: [self-hosted, linux, arm, xbbla32]
     container:
       image: ilegeul/ubuntu:arm32v7-18.04-xbb-v5.1.1
     defaults:
       run:
-        shell: linux32 bash --noprofile --norc -eo pipefail {0}
+        shell: bash
 
     steps:
       - name: 'Environment'
@@ -78,9 +78,7 @@ jobs:
           env | sort | egrep '^[^ \t]+='
 
       - name: 'Clean working area'
-        run: |
-          rm -rf * .git*
-          rm -rf ~/.local/xPacks
+        run: rm -rf * .git*
 
       - name: 'Checkout project'
         uses: actions/checkout@v1 # v1 for old Git
@@ -105,7 +103,7 @@ jobs:
 
       - name: 'Publish pre-release'
         # https://github.com/ncipollo/release-action
-        uses: ncipollo/release-action@v1
+        uses: ncipollo/release-action@v1.13.0
         with:
           allowUpdates: true
           artifacts: 'build/linux-arm/deploy/*'
