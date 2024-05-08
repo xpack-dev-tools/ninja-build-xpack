@@ -124,7 +124,7 @@ function ninja_build()
             config_options+=("-G" "Ninja")
           fi
 
-          if [ "${XBB_IS_DEVELOP}" == "y" ]
+          if is_develop
           then
             config_options+=("-DCMAKE_VERBOSE_MAKEFILE=ON")
           fi
@@ -151,7 +151,7 @@ function ninja_build()
         echo
         echo "Running ninja build..."
 
-        if [ "${XBB_IS_DEVELOP}" == "y" ]
+        if is_develop
         then
           run_verbose "${CMAKE}" \
             --build . \
