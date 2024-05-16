@@ -82,7 +82,7 @@ function ninja_build()
 
       # Surprisingly, the Windows archive is longer with static libs, but the
       # Linux archives are significantly smaller, so static wins this time.
-      LDFLAGS="$(echo ${XBB_CPPFLAGS} ${XBB_LDFLAGS_APP_STATIC_GCC} | sed -e 's|-O[0123s]||')"
+      LDFLAGS="$(echo ${XBB_CPPFLAGS} ${XBB_LDFLAGS_APP} ${XBB_LDFLAGS_STATIC_LIBS} | sed -e 's|-O[0123s]||')"
       # LDFLAGS="$(echo ${XBB_CPPFLAGS} ${XBB_LDFLAGS_APP} | sed -e 's|-O[0123s]||')"
 
       CMAKE=$(which cmake)
