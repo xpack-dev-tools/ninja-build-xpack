@@ -55,8 +55,11 @@ function ninja_build()
       (
         if [ ! -z ${NINJA_GIT_URL+x} ]
         then
-          git_clone "${NINJA_GIT_URL}" "${NINJA_GIT_BRANCH}" \
-              "${NINJA_GIT_COMMIT}" "${ninja_src_folder_name}"
+          run_verbose git_clone \
+            "${NINJA_GIT_URL}" \
+            "${ninja_src_folder_name}" \
+            --branch="${NINJA_GIT_BRANCH}" \
+            --commit="${NINJA_GIT_COMMIT}"
         else
           download_and_extract "${ninja_github_url}" "${ninja_github_archive}" \
             "${ninja_src_folder_name}"
