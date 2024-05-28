@@ -27,9 +27,8 @@ The binaries can be installed automatically as **binary xPacks** or manually as
 
 ## Release schedule
 
-This distribution is generally one minor release behind the upstream releases.
-In practical terms, when the minor release number changes, it awaits a few
-more weeks to get the latest patch release.
+The xPack Ninja Build release schedule generally follows the upstream
+[releases](https://github.com/ninja-build/ninja/releases/).
 
 ## User info
 
