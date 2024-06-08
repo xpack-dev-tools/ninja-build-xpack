@@ -318,8 +318,8 @@ jobs:
           path: ${{ github.workspace }}/buildwin32-x64/artefacts/tests-summary-*.md
           overwrite: true
   
-  generate-test-report:
-    name: 'Generate test report for Ninja Build@${{ github.event.inputs.version }}'
+  generate-tests-report:
+    name: 'Generate tests report for Ninja Build@${{ github.event.inputs.version }}'
     runs-on: ubuntu-22.04
     needs: [linux-x64, linux-arm64, linux-arm, darwin-x64, darwin-arm64, win32-x64]
 
@@ -347,7 +347,7 @@ jobs:
           fetch-depth: 3
 
       - name: Download tests reports
-        uses: actions/upload-artifact@v4
+        uses: actions/download-artifact@v4
         with:
           name: tests-summary-linux-x64
           path: ${{ github.workspace }}/artefacts
