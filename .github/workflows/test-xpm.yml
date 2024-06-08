@@ -356,6 +356,6 @@ jobs:
         run: |
           ls -R ${{ github.workspace }}/artefacts
           echo linux-x64 linux-arm64 linux-arm darwin-x64 darwin-arm64 win32-x64
-          cat ${{ github.workspace }}/artefacts/tests-summary-linux-x64linux-arm64linux-armdarwin-x64darwin-arm64win32-x64.md ${{ github.workspace }}/artefacts/tests-summary-linux-x64linux-arm64linux-armdarwin-x64darwin-arm64win32-x64.md ${{ github.workspace }}/artefacts/tests-summary-linux-x64linux-arm64linux-armdarwin-x64darwin-arm64win32-x64.md ${{ github.workspace }}/artefacts/tests-summary-linux-x64linux-arm64linux-armdarwin-x64darwin-arm64win32-x64.md ${{ github.workspace }}/artefacts/tests-summary-linux-x64linux-arm64linux-armdarwin-x64darwin-arm64win32-x64.md ${{ github.workspace }}/artefacts/tests-summary-linux-x64linux-arm64linux-armdarwin-x64darwin-arm64win32-x64.md  | tee ${{ github.workspace }}/artefacts/tests-report.md
+          cat ${{ github.workspace }}/artefacts/tests-summary-linux-x64.md ${{ github.workspace }}/artefacts/tests-summary-linux-arm64.md ${{ github.workspace }}/artefacts/tests-summary-linux-arm.md ${{ github.workspace }}/artefacts/tests-summary-darwin-x64.md ${{ github.workspace }}/artefacts/tests-summary-darwin-arm64.md ${{ github.workspace }}/artefacts/tests-summary-win32-x64.md  | tee ${{ github.workspace }}/artefacts/tests-report.md
 
 # -----------------------------------------------------------------------------
