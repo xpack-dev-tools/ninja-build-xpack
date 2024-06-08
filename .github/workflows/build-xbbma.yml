@@ -16,6 +16,9 @@
 # https://docs.github.com/en/developers/webhooks-and-events/webhooks/webhook-events-and-payloads#workflow_dispatch
 # https://docs.github.com/en/rest/reference/actions#create-a-workflow-dispatch-event
 
+# https://github.com/actions/checkout
+# https://github.com/actions/upload-artifact
+
 # -----------------------------------------------------------------------------
 
 
@@ -62,19 +65,24 @@ jobs:
     runs-on: [self-hosted, macos, apple]
 
     steps:
-      - name: 'Environment'
+      - name: 'Show environment'
         run: |
-          uname -a
-          sw_vers
-          echo "whoami: $(whoami)"
           echo "pwd: $(pwd)"
+          echo "whoami: $(whoami)"
           echo "node: $(node --version)"
           echo "npm: $(npm --version)"
+          uname -a
+          sw_vers
+          xcode-select --print-path
+          pkgutil --pkg-info=com.apple.pkg.CLTools_Executables || xcodebuild -version
+          ls -l /Library/Developer/CommandLineTools/usr/include || true
           ls -lLA
-          env | sort | egrep '^[^ \t]+='
+          env | sort | grep -E '^[^ \t]+='
 
       - name: 'Clean working area'
-        run: rm -rf * .git*
+        run: |
+          chmod -Rf a+w * || true
+          rm -rf * .git*
 
       - name: 'Checkout project'
         uses: actions/checkout@v1 # v1 for old Git

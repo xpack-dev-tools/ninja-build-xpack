@@ -17,6 +17,9 @@
 # https://docs.github.com/en/developers/webhooks-and-events/webhooks/webhook-events-and-payloads#workflow_dispatch
 # https://docs.github.com/en/rest/reference/actions#create-a-workflow-dispatch-event
 
+# https://github.com/actions/checkout
+# https://github.com/actions/upload-artifact
+
 # -----------------------------------------------------------------------------
 
 
@@ -25,10 +28,14 @@ name: 'Test xPack Ninja Build via xpm'
 on:
   workflow_dispatch:
     inputs:
-      version:
+      package-version:
         description: 'The semver of the npm release'
         required: false
         default: 'next'
+      version:
+        description: 'The GitHub release version'
+        required: false
+        default: 'current'
       helper-git-ref:
         description: 'The helper branch, tag or SHA to checkout'
         required: false
@@ -41,22 +48,22 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-      - name: 'Environment'
+      - name: 'Show environment'
         run: |
           uname -a
           lsb_release -sd
           echo "whoami: $(whoami)"
           echo "pwd: $(pwd)"
           ls -lLA
-          env | sort | egrep '^[^ \t]+='
+          env | sort | grep -E '^[^ \t]+='
 
       - name: 'Checkout project'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 3
 
       - name: 'Checkout helper ${{ github.event.inputs.helper-git-ref }}'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: xpack-dev-tools/xbb-helper-xpack
           path: xpacks/@xpack-dev-tools/xbb-helper
@@ -67,33 +74,42 @@ jobs:
         uses: docker://node:lts-slim
         with:
           entrypoint: /bin/bash
-          args: /github/workspace/scripts/test.sh --image debian --version ${{ github.event.inputs.version }} --xpm
+          args: /github/workspace/scripts/test.sh --image debian --package-version ${{ github.event.inputs.package-version }} --version ${{ github.event.inputs.version }} --xpm
+
+      - name: Upload tests summary
+        uses: actions/upload-artifact@v4
+        with:
+          name: tests-summary-linux-x64
+          path: ${{ github.workspace }}/build/linux-x64/artefacts/tests-summary-*.md
+          overwrite: true
   
   linux-arm64:
     name: 'Linux Arm 64-bit Ninja Build@${{ github.event.inputs.version }} test'
     runs-on: [self-hosted, linux, arm64, xbbla]
 
     steps:
-      - name: 'Environment'
+      - name: 'Show environment'
         run: |
           uname -a
           lsb_release -sd
           echo "whoami: $(whoami)"
           echo "pwd: $(pwd)"
           ls -lLA
-          env | sort | egrep '^[^ \t]+='
+          env | sort | grep -E '^[^ \t]+='
 
       - name: 'Clean working area' # Mandatory for self-hosted runners.
-        run: rm -rf * .git*
+        run: |
+          chmod -Rf a+w * || true
+          rm -rf * .git*
 
       # https://github.com/actions/checkout
       - name: 'Checkout project'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 3
 
       - name: 'Checkout helper ${{ github.event.inputs.helper-git-ref }}'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: xpack-dev-tools/xbb-helper-xpack
           path: xpacks/@xpack-dev-tools/xbb-helper
@@ -104,33 +120,42 @@ jobs:
         uses: docker://node:lts-slim
         with:
           entrypoint: /bin/bash
-          args: /github/workspace/scripts/test.sh --image debian --version ${{ github.event.inputs.version }} --xpm
+          args: /github/workspace/scripts/test.sh --image debian --package-version ${{ github.event.inputs.package-version }} --version ${{ github.event.inputs.version }} --xpm
+
+      - name: Upload tests summary
+        uses: actions/upload-artifact@v4
+        with:
+          name: tests-summary-linux-arm64
+          path: ${{ github.workspace }}/build/linux-arm64/artefacts/tests-summary-*.md
+          overwrite: true
   
   linux-arm32:
     name: 'Linux Arm 32-bit Ninja Build@${{ github.event.inputs.version }} test'
     runs-on: [self-hosted, linux, arm, xbbla32]
 
     steps:
-      - name: 'Environment'
+      - name: 'Show environment'
         run: |
           uname -a
           lsb_release -sd
           echo "whoami: $(whoami)"
           echo "pwd: $(pwd)"
           ls -lLA
-          env | sort | egrep '^[^ \t]+='
+          env | sort | grep -E '^[^ \t]+='
 
       - name: 'Clean working area' # Mandatory for self-hosted runners.
-        run: rm -rf * .git*
+        run: |
+          chmod -Rf a+w * || true
+          rm -rf * .git*
 
       # https://github.com/actions/checkout
       - name: 'Checkout project'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 3
 
       - name: 'Checkout helper ${{ github.event.inputs.helper-git-ref }}'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: xpack-dev-tools/xbb-helper-xpack
           path: xpacks/@xpack-dev-tools/xbb-helper
@@ -141,33 +166,49 @@ jobs:
         uses: docker://arm32v7/node:lts-slim
         with:
           entrypoint: /bin/bash # /usr/bin/linux32
-          args: /github/workspace/scripts/test.sh --image debian --version ${{ github.event.inputs.version }} --xpm
+          args: /github/workspace/scripts/test.sh --image debian --package-version ${{ github.event.inputs.package-version }} --version ${{ github.event.inputs.version }} --xpm
+
+      - name: Upload tests summary
+        uses: actions/upload-artifact@v4
+        with:
+          name: tests-summary-linux-arm
+          path: ${{ github.workspace }}/build/linux-arm/artefacts/tests-summary-*.md
+          overwrite: true
   
   macos-x64:
     name: 'macOS Intel 64-bit Ninja Build@${{ github.event.inputs.version }} test'
     runs-on: macos-12
 
     steps:
-      - name: 'Environment'
+      - name: 'Show environment'
         run: |
           uname -a
-          sw_vers # lsb_release -sd
+          sw_vers
+          ls -lA /Library/Developer/CommandLineTools/SDKs || true
+          ls -lA /Applications
+          sudo xcode-select --switch /Applications/Xcode_14.2.app
+          xcode-select --print-path
+          xcodebuild -version || true
+          pkgutil --pkg-info=com.apple.pkg.CLTools_Executables || true
+          clang++ -v
           echo "whoami: $(whoami)"
           echo "pwd: $(pwd)"
           ls -lLA
-          env | sort | egrep '^[^ \t]+='
+          env | sort | grep -E '^[^ \t]+='
 
       - name: 'Clean working area' # Mandatory for self-hosted runners.
-        run: rm -rf * .git*
+        run: |
+          chmod -Rf a+w * || true
+          rm -rf * .git*
 
       # https://github.com/actions/checkout
       - name: 'Checkout project'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 3
 
       - name: 'Checkout helper ${{ github.event.inputs.helper-git-ref }}'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: xpack-dev-tools/xbb-helper-xpack
           path: xpacks/@xpack-dev-tools/xbb-helper
@@ -175,33 +216,49 @@ jobs:
           fetch-depth: 3
 
       - name: 'Run ${{ github.event.inputs.version }} xpm test'
-        run: bash scripts/test.sh --version ${{ github.event.inputs.version }} --xpm
+        run: bash scripts/test.sh --package-version ${{ github.event.inputs.package-version }} --version ${{ github.event.inputs.version }} --xpm
+
+      - name: Upload tests summary
+        uses: actions/upload-artifact@v4
+        with:
+          name: tests-summary-darwin-x64
+          path: ${{ github.workspace }}/build/darwin-x64/artefacts/tests-summary-*.md
+          overwrite: true
   
   macos-arm64:
     name: 'macOS Arm 64-bit Ninja Build@${{ github.event.inputs.version }} test'
-    runs-on: [self-hosted, macos, apple]
+    runs-on: macos-14
 
     steps:
-      - name: 'Environment'
+      - name: 'Show environment'
         run: |
           uname -a
-          sw_vers # lsb_release -sd
+          sw_vers
+          ls -lA /Library/Developer/CommandLineTools/SDKs || true
+          ls -lA /Applications
+          sudo xcode-select --switch /Applications/Xcode_15.4.app
+          xcode-select --print-path
+          xcodebuild -version || true
+          pkgutil --pkg-info=com.apple.pkg.CLTools_Executables || true
+          clang++ -v
           echo "whoami: $(whoami)"
           echo "pwd: $(pwd)"
           ls -lLA
-          env | sort | egrep '^[^ \t]+='
+          env | sort | grep -E '^[^ \t]+='
 
       - name: 'Clean working area' # Mandatory for self-hosted runners.
-        run: rm -rf * .git*
+        run: |
+          chmod -Rf a+w * || true
+          rm -rf * .git*
 
       # https://github.com/actions/checkout
       - name: 'Checkout project'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 3
 
       - name: 'Checkout helper ${{ github.event.inputs.helper-git-ref }}'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: xpack-dev-tools/xbb-helper-xpack
           path: xpacks/@xpack-dev-tools/xbb-helper
@@ -209,7 +266,14 @@ jobs:
           fetch-depth: 3
 
       - name: 'Run ${{ github.event.inputs.version }} xpm test'
-        run: bash scripts/test.sh --version ${{ github.event.inputs.version }} --xpm
+        run: bash scripts/test.sh --package-version ${{ github.event.inputs.package-version }} --version ${{ github.event.inputs.version }} --xpm
+
+      - name: Upload tests summary
+        uses: actions/upload-artifact@v4
+        with:
+          name: tests-summary-darwin-arm64
+          path: ${{ github.workspace }}/build/darwin-arm64/artefacts/tests-summary-*.md
+          overwrite: true
   
   windows-x64:
     name: 'Windows 64-bit Ninja Build@${{ github.event.inputs.version }} test'
@@ -220,23 +284,23 @@ jobs:
         shell: bash # for --
 
     steps:
-      - name: 'Environment'
+      - name: 'Show environment'
         run: |
           uname -a
           systeminfo # lsb_release -sd
           echo "whoami: $(whoami)"
           echo "pwd: $(pwd)"
           ls -lLA
-          env | sort | egrep '^[^ \t]+='
+          env | sort | grep -E '^[^ \t]+='
 
       # https://github.com/actions/checkout
       - name: 'Checkout project'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 3
 
       - name: 'Checkout helper ${{ github.event.inputs.helper-git-ref }}'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: xpack-dev-tools/xbb-helper-xpack
           path: xpacks/@xpack-dev-tools/xbb-helper
@@ -244,6 +308,13 @@ jobs:
           fetch-depth: 3
 
       - name: 'Run ${{ github.event.inputs.version }} xpm test'
-        run: bash scripts/test.sh --version ${{ github.event.inputs.version }} --xpm
+        run: bash scripts/test.sh --package-version ${{ github.event.inputs.package-version }} --version ${{ github.event.inputs.version }} --xpm
+
+      - name: Upload tests summary
+        uses: actions/upload-artifact@v4
+        with:
+          name: tests-summary-win32-x64
+          path: ${{ github.workspace }}/build/win32-x64/artefacts/tests-summary-*.md
+          overwrite: true
   
 # -----------------------------------------------------------------------------
