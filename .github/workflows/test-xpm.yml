@@ -19,6 +19,7 @@
 
 # https://github.com/actions/checkout
 # https://github.com/actions/upload-artifact
+# https://github.com/actions/download-artifact
 
 # -----------------------------------------------------------------------------
 
@@ -129,7 +130,7 @@ jobs:
           path: ${{ github.workspace }}/build/linux-arm64/artefacts/tests-summary-*.md
           overwrite: true
   
-  linux-arm32:
+  linux-arm:
     name: 'Linux Arm 32-bit Ninja Build@${{ github.event.inputs.version }} test'
     runs-on: [self-hosted, linux, arm, xbbla32]
 
@@ -175,7 +176,7 @@ jobs:
           path: ${{ github.workspace }}/build/linux-arm/artefacts/tests-summary-*.md
           overwrite: true
   
-  macos-x64:
+  darwin-x64:
     name: 'macOS Intel 64-bit Ninja Build@${{ github.event.inputs.version }} test'
     runs-on: macos-12
 
@@ -225,7 +226,7 @@ jobs:
           path: ${{ github.workspace }}/build/darwin-x64/artefacts/tests-summary-*.md
           overwrite: true
   
-  macos-arm64:
+  darwin-arm64:
     name: 'macOS Arm 64-bit Ninja Build@${{ github.event.inputs.version }} test'
     runs-on: macos-14
 
@@ -275,7 +276,7 @@ jobs:
           path: ${{ github.workspace }}/build/darwin-arm64/artefacts/tests-summary-*.md
           overwrite: true
   
-  windows-x64:
+  win32-x64:
     name: 'Windows 64-bit Ninja Build@${{ github.event.inputs.version }} test'
     runs-on: windows-2022
     defaults:
@@ -314,7 +315,47 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: tests-summary-win32-x64
-          path: ${{ github.workspace }}/build/win32-x64/artefacts/tests-summary-*.md
+          path: ${{ github.workspace }}/buildwin32-x64/artefacts/tests-summary-*.md
           overwrite: true
   
+  generate-test-report:
+    name: 'Generate test report for Ninja Build@${{ github.event.inputs.version }}'
+    runs-on: ubuntu-22.04
+    needs: [linux-x64, linux-arm64, linux-arm, darwin-x64, darwin-arm64, win32-x64]
+
+    steps:
+      - name: 'Show environment'
+        run: |
+          uname -a
+          lsb_release -sd
+          echo "whoami: $(whoami)"
+          echo "pwd: $(pwd)"
+          ls -lLA
+          env | sort | grep -E '^[^ \t]+='
+
+      - name: 'Checkout project'
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 3
+
+      - name: 'Checkout helper ${{ github.event.inputs.helper-git-ref }}'
+        uses: actions/checkout@v4
+        with:
+          repository: xpack-dev-tools/xbb-helper-xpack
+          path: xpacks/@xpack-dev-tools/xbb-helper
+          ref: ${{ github.event.inputs.helper-git-ref }}
+          fetch-depth: 3
+
+      - name: Download tests reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: tests-summary-linux-x64
+          path: ${{ github.workspace }}/artefacts
+          merge-multiple: true
+
+      - name: Display structure of downloaded files
+        run: |
+          ls -R ${{ github.workspace }}/artefacts
+          echo linux-x64 linux-arm64 linux-arm darwin-x64 darwin-arm64 win32-x64
+
 # -----------------------------------------------------------------------------
