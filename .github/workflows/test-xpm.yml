@@ -315,7 +315,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: tests-summary-win32-x64
-          path: ${{ github.workspace }}/buildwin32-x64/artefacts/tests-summary-*.md
+          path: ${{ github.workspace }}/build/win32-x64/artefacts/tests-summary-*.md
           overwrite: true
   
   generate-tests-report:
@@ -356,5 +356,6 @@ jobs:
         run: |
           ls -R ${{ github.workspace }}/artefacts
           echo linux-x64 linux-arm64 linux-arm darwin-x64 darwin-arm64 win32-x64
+          cat ${{ github.workspace }}/artefacts/tests-summary-linux-x64linux-arm64linux-armdarwin-x64darwin-arm64win32-x64.md ${{ github.workspace }}/artefacts/tests-summary-linux-x64linux-arm64linux-armdarwin-x64darwin-arm64win32-x64.md ${{ github.workspace }}/artefacts/tests-summary-linux-x64linux-arm64linux-armdarwin-x64darwin-arm64win32-x64.md ${{ github.workspace }}/artefacts/tests-summary-linux-x64linux-arm64linux-armdarwin-x64darwin-arm64win32-x64.md ${{ github.workspace }}/artefacts/tests-summary-linux-x64linux-arm64linux-armdarwin-x64darwin-arm64win32-x64.md ${{ github.workspace }}/artefacts/tests-summary-linux-x64linux-arm64linux-armdarwin-x64darwin-arm64win32-x64.md  | tee ${{ github.workspace }}/artefacts/tests-report.md
 
 # -----------------------------------------------------------------------------
