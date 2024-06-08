@@ -324,38 +324,16 @@ jobs:
     needs: [linux-x64, linux-arm64, linux-arm, darwin-x64, darwin-arm64, win32-x64]
 
     steps:
-      - name: 'Show environment'
-        run: |
-          uname -a
-          lsb_release -sd
-          echo "whoami: $(whoami)"
-          echo "pwd: $(pwd)"
-          ls -lLA
-          env | sort | grep -E '^[^ \t]+='
-
-      - name: 'Checkout project'
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 3
-
-      - name: 'Checkout helper ${{ github.event.inputs.helper-git-ref }}'
-        uses: actions/checkout@v4
-        with:
-          repository: xpack-dev-tools/xbb-helper-xpack
-          path: xpacks/@xpack-dev-tools/xbb-helper
-          ref: ${{ github.event.inputs.helper-git-ref }}
-          fetch-depth: 3
-
-      - name: Download tests reports
+      - name: Download platform test reports
         uses: actions/download-artifact@v4
         with:
           path: ${{ github.workspace }}/artefacts
           merge-multiple: true
 
-      - name: Display structure of downloaded files
+      - name: Concatenate platform test reports
         run: |
           ls -lR ${{ github.workspace }}/artefacts
-          cat ${{ github.workspace }}/artefacts/tests-summary-linux-x64.md ${{ github.workspace }}/artefacts/tests-summary-linux-arm64.md ${{ github.workspace }}/artefacts/tests-summary-linux-arm.md ${{ github.workspace }}/artefacts/tests-summary-darwin-x64.md ${{ github.workspace }}/artefacts/tests-summary-darwin-arm64.md ${{ github.workspace }}/artefacts/tests-summary-win32-x64.md  | tee ${{ github.workspace }}/artefacts/tests-report.md
+          cat -s ${{ github.workspace }}/artefacts/tests-summary-linux-x64.md ${{ github.workspace }}/artefacts/tests-summary-linux-arm64.md ${{ github.workspace }}/artefacts/tests-summary-linux-arm.md ${{ github.workspace }}/artefacts/tests-summary-darwin-x64.md ${{ github.workspace }}/artefacts/tests-summary-darwin-arm64.md ${{ github.workspace }}/artefacts/tests-summary-win32-x64.md  | tee ${{ github.workspace }}/artefacts/tests-report.md
 
       - name: Upload tests report
         uses: actions/upload-artifact@v4
