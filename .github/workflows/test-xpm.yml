@@ -81,7 +81,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: tests-report-linux-x64
-          path: ${{ github.workspace }}/build/linux-x64/artefacts/tests-summary-*.md
+          path: ${{ github.workspace }}/build/linux-x64/artefacts/tests-report-*.md
           overwrite: true
   
   linux-arm64:
@@ -127,7 +127,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: tests-report-linux-arm64
-          path: ${{ github.workspace }}/build/linux-arm64/artefacts/tests-summary-*.md
+          path: ${{ github.workspace }}/build/linux-arm64/artefacts/tests-report-*.md
           overwrite: true
   
   linux-arm:
@@ -173,7 +173,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: tests-report-linux-arm
-          path: ${{ github.workspace }}/build/linux-arm/artefacts/tests-summary-*.md
+          path: ${{ github.workspace }}/build/linux-arm/artefacts/tests-report-*.md
           overwrite: true
   
   darwin-x64:
@@ -223,7 +223,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: tests-report-darwin-x64
-          path: ${{ github.workspace }}/build/darwin-x64/artefacts/tests-summary-*.md
+          path: ${{ github.workspace }}/build/darwin-x64/artefacts/tests-report-*.md
           overwrite: true
   
   darwin-arm64:
@@ -273,7 +273,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: tests-report-darwin-arm64
-          path: ${{ github.workspace }}/build/darwin-arm64/artefacts/tests-summary-*.md
+          path: ${{ github.workspace }}/build/darwin-arm64/artefacts/tests-report-*.md
           overwrite: true
   
   win32-x64:
@@ -315,7 +315,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: tests-report-win32-x64
-          path: ${{ github.workspace }}/build/win32-x64/artefacts/tests-summary-*.md
+          path: ${{ github.workspace }}/build/win32-x64/artefacts/tests-report-*.md
           overwrite: true
   
   generate-tests-report:
