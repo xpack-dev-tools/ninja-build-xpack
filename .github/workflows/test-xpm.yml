@@ -345,13 +345,13 @@ jobs:
           echo "---" >>${{ github.workspace }}/artefacts/tests-report.md
           echo >>${{ github.workspace }}/artefacts/tests-report.md
           (cd ${{ github.workspace }}; cat -s artefacts/tests-report-linux-x64.md artefacts/tests-report-linux-arm64.md artefacts/tests-report-linux-arm.md artefacts/tests-report-darwin-x64.md artefacts/tests-report-darwin-arm64.md artefacts/tests-report-win32-x64.md  | tee -a artefacts/tests-report.md)
-          mv -v ${{ github.workspace }}/artefacts/tests-report.md ${{ github.workspace }}/artefacts/tests-report-${{ github.event.inputs.version }}.md
+          mv -v ${{ github.workspace }}/artefacts/tests-report.md ${{ github.workspace }}/artefacts/${{ github.event.inputs.version }}.md
 
       - name: Upload tests report
         uses: actions/upload-artifact@v4
         with:
           name: tests-report
-          path: ${{ github.workspace }}/artefacts/tests-report-${{ github.event.inputs.version }}.md
+          path: ${{ github.workspace }}/artefacts/${{ github.event.inputs.version }}.md
           overwrite: true
 
 # -----------------------------------------------------------------------------
