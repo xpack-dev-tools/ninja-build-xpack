@@ -77,10 +77,10 @@ jobs:
           entrypoint: /bin/bash
           args: /github/workspace/scripts/test.sh --image debian --package-version ${{ github.event.inputs.package-version }} --version ${{ github.event.inputs.version }} --xpm
 
-      - name: Upload tests summary
+      - name: Upload platform tests report
         uses: actions/upload-artifact@v4
         with:
-          name: tests-summary-linux-x64
+          name: tests-report-linux-x64
           path: ${{ github.workspace }}/build/linux-x64/artefacts/tests-summary-*.md
           overwrite: true
   
@@ -123,10 +123,10 @@ jobs:
           entrypoint: /bin/bash
           args: /github/workspace/scripts/test.sh --image debian --package-version ${{ github.event.inputs.package-version }} --version ${{ github.event.inputs.version }} --xpm
 
-      - name: Upload tests summary
+      - name: Upload platform tests report
         uses: actions/upload-artifact@v4
         with:
-          name: tests-summary-linux-arm64
+          name: tests-report-linux-arm64
           path: ${{ github.workspace }}/build/linux-arm64/artefacts/tests-summary-*.md
           overwrite: true
   
@@ -169,10 +169,10 @@ jobs:
           entrypoint: /bin/bash # /usr/bin/linux32
           args: /github/workspace/scripts/test.sh --image debian --package-version ${{ github.event.inputs.package-version }} --version ${{ github.event.inputs.version }} --xpm
 
-      - name: Upload tests summary
+      - name: Upload platform tests report
         uses: actions/upload-artifact@v4
         with:
-          name: tests-summary-linux-arm
+          name: tests-report-linux-arm
           path: ${{ github.workspace }}/build/linux-arm/artefacts/tests-summary-*.md
           overwrite: true
   
@@ -219,10 +219,10 @@ jobs:
       - name: 'Run ${{ github.event.inputs.version }} xpm test'
         run: bash scripts/test.sh --package-version ${{ github.event.inputs.package-version }} --version ${{ github.event.inputs.version }} --xpm
 
-      - name: Upload tests summary
+      - name: Upload platform tests report
         uses: actions/upload-artifact@v4
         with:
-          name: tests-summary-darwin-x64
+          name: tests-report-darwin-x64
           path: ${{ github.workspace }}/build/darwin-x64/artefacts/tests-summary-*.md
           overwrite: true
   
@@ -269,10 +269,10 @@ jobs:
       - name: 'Run ${{ github.event.inputs.version }} xpm test'
         run: bash scripts/test.sh --package-version ${{ github.event.inputs.package-version }} --version ${{ github.event.inputs.version }} --xpm
 
-      - name: Upload tests summary
+      - name: Upload platform tests report
         uses: actions/upload-artifact@v4
         with:
-          name: tests-summary-darwin-arm64
+          name: tests-report-darwin-arm64
           path: ${{ github.workspace }}/build/darwin-arm64/artefacts/tests-summary-*.md
           overwrite: true
   
@@ -311,10 +311,10 @@ jobs:
       - name: 'Run ${{ github.event.inputs.version }} xpm test'
         run: bash scripts/test.sh --package-version ${{ github.event.inputs.package-version }} --version ${{ github.event.inputs.version }} --xpm
 
-      - name: Upload tests summary
+      - name: Upload platform tests report
         uses: actions/upload-artifact@v4
         with:
-          name: tests-summary-win32-x64
+          name: tests-report-win32-x64
           path: ${{ github.workspace }}/build/win32-x64/artefacts/tests-summary-*.md
           overwrite: true
   
@@ -333,7 +333,7 @@ jobs:
       - name: Concatenate platform test reports
         run: |
           ls -lR ${{ github.workspace }}/artefacts
-          cat -s ${{ github.workspace }}/artefacts/tests-summary-linux-x64.md ${{ github.workspace }}/artefacts/tests-summary-linux-arm64.md ${{ github.workspace }}/artefacts/tests-summary-linux-arm.md ${{ github.workspace }}/artefacts/tests-summary-darwin-x64.md ${{ github.workspace }}/artefacts/tests-summary-darwin-arm64.md ${{ github.workspace }}/artefacts/tests-summary-win32-x64.md  | tee ${{ github.workspace }}/artefacts/tests-report.md
+          cat -s ${{ github.workspace }}/artefacts/tests-report-linux-x64.md ${{ github.workspace }}/artefacts/tests-report-linux-arm64.md ${{ github.workspace }}/artefacts/tests-report-linux-arm.md ${{ github.workspace }}/artefacts/tests-report-darwin-x64.md ${{ github.workspace }}/artefacts/tests-report-darwin-arm64.md ${{ github.workspace }}/artefacts/tests-report-win32-x64.md  | tee ${{ github.workspace }}/artefacts/tests-report.md
 
       - name: Upload tests report
         uses: actions/upload-artifact@v4
