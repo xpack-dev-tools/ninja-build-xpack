@@ -336,7 +336,7 @@ jobs:
           touch ${{ github.workspace }}/artefacts/tests-report.md
           echo "---" >>${{ github.workspace }}/artefacts/tests-report.md
           echo "title: Ninja Build ${{ github.event.inputs.version }} test results" >>${{ github.workspace }}/artefacts/tests-report.md
-          echo "permalink: /dev-tools/gcc/tests/${{ github.event.inputs.version }}/" >>${{ github.workspace }}/artefacts/tests-report.md
+          echo "permalink: /dev-tools/ninja-build/tests/${{ github.event.inputs.version }}/" >>${{ github.workspace }}/artefacts/tests-report.md
           echo >>${{ github.workspace }}/artefacts/tests-report.md
           echo "comments: true" >>${{ github.workspace }}/artefacts/tests-report.md
           echo >>${{ github.workspace }}/artefacts/tests-report.md
@@ -345,7 +345,7 @@ jobs:
           echo "---" >>${{ github.workspace }}/artefacts/tests-report.md
           echo >>${{ github.workspace }}/artefacts/tests-report.md
           (cd ${{ github.workspace }}; cat -s artefacts/tests-report-linux-x64.md artefacts/tests-report-linux-arm64.md artefacts/tests-report-linux-arm.md artefacts/tests-report-darwin-x64.md artefacts/tests-report-darwin-arm64.md artefacts/tests-report-win32-x64.md  | tee -a artefacts/tests-report.md)
-          mv ${{ github.workspace }}/artefacts/tests-report.md ${{ github.workspace }}/artefacts/tests-report-${{ github.event.inputs.version }}.md
+          mv -v ${{ github.workspace }}/artefacts/tests-report.md ${{ github.workspace }}/artefacts/tests-report-${{ github.event.inputs.version }}.md
 
       - name: Upload tests report
         uses: actions/upload-artifact@v4
