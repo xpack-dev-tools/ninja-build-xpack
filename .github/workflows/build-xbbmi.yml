@@ -187,7 +187,7 @@ jobs:
           fetch-depth: 3
 
       - name: 'Run ${{ github.event.inputs.version }} native test'
-        run: bash scripts/test.sh --version ${{ github.event.inputs.version }} --base-url pre-releases
+        run: bash scripts/test.sh --version ${{ github.event.inputs.version }} --base-url pre-release
 
       - name: Upload platform tests report
         uses: actions/upload-artifact@v4
