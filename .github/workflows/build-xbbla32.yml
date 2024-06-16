@@ -112,7 +112,7 @@ jobs:
           xpm run build --config linux-arm
 
       - name: Upload platform artefacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
           name: deploy-linux-arm
           path: ${{ github.workspace }}/build/linux-arm/deploy/*
