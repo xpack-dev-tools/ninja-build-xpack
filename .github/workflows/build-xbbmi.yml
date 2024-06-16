@@ -87,7 +87,7 @@ jobs:
           ls -lLA
           env | sort | grep -E '^[^ \t]+='
 
-      - name: 'Clean working area'
+      - name: 'Clean working area' # Mandatory for self-hosted runners.
         run: |
           chmod -Rf a+w * || true
           rm -rf * .git*
@@ -107,7 +107,7 @@ jobs:
         timeout-minutes: 1440
         run: xpm install --loglevel ${{ github.event.inputs.xpm_install_loglevel }} ${{ github.event.inputs.xpm_install_options }}
 
-      - name: 'Build macOS x64 binary'
+      - name: 'Build darwin-x64 binaries'
         timeout-minutes: 1440
         run: |
           xpm install --config darwin-x64 --loglevel ${{ github.event.inputs.xpm_install_loglevel }} ${{ github.event.inputs.xpm_install_options }}
@@ -166,11 +166,6 @@ jobs:
           echo "pwd: $(pwd)"
           ls -lLA
           env | sort | grep -E '^[^ \t]+='
-
-      - name: 'Clean working area' # Mandatory for self-hosted runners.
-        run: |
-          chmod -Rf a+w * || true
-          rm -rf * .git*
 
       # https://github.com/actions/checkout
       - name: 'Checkout project'
