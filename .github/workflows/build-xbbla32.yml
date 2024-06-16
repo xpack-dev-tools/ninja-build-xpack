@@ -164,7 +164,7 @@ jobs:
 
       # https://github.com/actions/checkout
       - name: 'Checkout project'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
         with:
           fetch-depth: 3
 
@@ -183,7 +183,7 @@ jobs:
           args: /github/workspace/scripts/test.sh --image debian --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
 
       - name: Upload platform tests report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
           name: tests-report-linux-arm
           path: ${{ github.workspace }}/build/linux-arm/artefacts/tests-report-*.md
