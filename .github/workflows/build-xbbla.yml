@@ -63,7 +63,7 @@ on:
 
 jobs:
 
- linux-arm64-build:
+  linux-arm64-build:
     name: 'linux-arm64 ninja-build ${{ github.event.inputs.version }} build'
     timeout-minutes: 2880 # 2 days
     runs-on: [self-hosted, linux, arm64, xbbla]
