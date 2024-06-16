@@ -56,6 +56,10 @@ on:
         required: false
         type: string
         default: ''
+      helper-git-ref:
+        description: 'The helper branch, tag or SHA to checkout'
+        required: false
+        default: 'xpack-develop'
 
 jobs:
 
@@ -183,7 +187,7 @@ jobs:
           fetch-depth: 3
 
       - name: 'Run ${{ github.event.inputs.version }} native test'
-        run: bash scripts/test.sh --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
+        run: bash scripts/test.sh --version ${{ github.event.inputs.version }} --base-url pre-releases
 
       - name: Upload platform tests report
         uses: actions/upload-artifact@v4
