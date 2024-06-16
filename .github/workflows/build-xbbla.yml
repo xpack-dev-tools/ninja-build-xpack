@@ -112,7 +112,7 @@ jobs:
           xpm run build --config linux-arm64
 
       - name: Upload platform artefacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3 # v3 for 18.04
         with:
           name: deploy-linux-arm64
           path: ${{ github.workspace }}/build/linux-arm64/deploy/*
@@ -120,7 +120,7 @@ jobs:
 
       - name: 'Publish pre-release'
         # https://github.com/ncipollo/release-action
-        uses: ncipollo/release-action@v1.14.0
+        uses: ncipollo/release-action@v1.13.0 # v1.13 for 18.04
         with:
           allowUpdates: true
           artifacts: 'build/linux-arm64/deploy/*'
@@ -164,7 +164,7 @@ jobs:
 
       # https://github.com/actions/checkout
       - name: 'Checkout project'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3 # v3 for 18.04
         with:
           fetch-depth: 3
 
@@ -180,10 +180,10 @@ jobs:
         uses: docker://node:lts-slim # Currently based on debian:12-slim
         with:
           entrypoint: /bin/bash
-          args: /github/workspace/scripts/test.sh --image debian --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
+          args: /github/workspace/scripts/test.sh --image debian --version ${{ github.event.inputs.version }} --base-url pre-release
 
       - name: Upload platform tests report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3 # v3 for 18.04
         with:
           name: tests-report-linux-arm64
           path: ${{ github.workspace }}/build/linux-arm64/artefacts/tests-report-*.md
