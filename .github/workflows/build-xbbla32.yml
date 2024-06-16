@@ -112,7 +112,7 @@ jobs:
           xpm run build --config linux-arm
 
       - name: Upload platform artefacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v3 # v3 for 18.04
         with:
           name: deploy-linux-arm
           path: ${{ github.workspace }}/build/linux-arm/deploy/*
@@ -120,7 +120,7 @@ jobs:
 
       - name: 'Publish pre-release'
         # https://github.com/ncipollo/release-action
-        uses: ncipollo/release-action@v1.14.0
+        uses: ncipollo/release-action@v1.13.0 # v1.13 for 18.04
         with:
           allowUpdates: true
           artifacts: 'build/linux-arm/deploy/*'
