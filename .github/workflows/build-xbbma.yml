@@ -63,7 +63,7 @@ on:
 
 jobs:
 
-  macos-arm64:
+  darwin-arm64-build:
     name: 'darwin-arm64 ninja-build ${{ github.event.inputs.version }} build'
     timeout-minutes: 2880 # 2 days
 
@@ -148,6 +148,7 @@ jobs:
     name: 'darwin-arm64 ninja-build ${{ github.event.inputs.version }} test'
     # https://github.com/actions/runner-images/blob/main/images/macos/macos-14-Readme.md
     runs-on: macos-14
+    needs: [darwin-arm64-build]
 
     steps:
       - name: 'Show environment'

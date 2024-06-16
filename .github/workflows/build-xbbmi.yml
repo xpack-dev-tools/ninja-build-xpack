@@ -93,7 +93,7 @@ jobs:
           rm -rf * .git*
 
       - name: 'Checkout project'
-        uses: actions/checkout@v1
+        uses: actions/checkout@v1 # v1 for old Git
         with:
           fetch-depth: 3
 
