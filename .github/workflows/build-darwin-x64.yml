@@ -23,7 +23,7 @@
 # -----------------------------------------------------------------------------
 
 
-name: 'Build xPack Ninja Build xbbmi'
+name: 'Build xPack Ninja Build darwin-x64'
 
 on:
   workflow_dispatch:
