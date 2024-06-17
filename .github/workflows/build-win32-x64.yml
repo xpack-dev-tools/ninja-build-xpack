@@ -145,6 +145,7 @@ jobs:
   win32-x64-test:
     name: 'win32-x64 ninja-build ${{ github.event.inputs.version }} test'
     runs-on: windows-2022
+    needs: [win32-x64-build]
     defaults:
       run:
         # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsshell
