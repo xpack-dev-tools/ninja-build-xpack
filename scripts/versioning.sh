@@ -15,7 +15,7 @@ function application_build_versioned_components()
   XBB_NINJA_VERSION="$(xbb_strip_version_pre_release "${XBB_RELEASE_VERSION}")"
 
   # Keep them in sync with the combo archive content.
-  if [[ "${XBB_RELEASE_VERSION}" =~ 1[.]11[.][01]-.* ]]
+  if [[ "${XBB_RELEASE_VERSION}" =~ 1[.]1[12][.][01]-.* ]]
   then
     # -------------------------------------------------------------------------
     # Build the native dependencies.
