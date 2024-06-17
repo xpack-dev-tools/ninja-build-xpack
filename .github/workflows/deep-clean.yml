@@ -36,7 +36,7 @@ on:
 jobs:
 
   linux-x64:
-    name: 'Linux Intel - ninja-build ${{ github.event.inputs.version }} clean'
+    name: 'linux-x64 ninja-build ${{ github.event.inputs.version }} clean'
     timeout-minutes: 5760 # 4 days
     runs-on: [self-hosted, linux, x64]
     steps:
@@ -78,7 +78,7 @@ jobs:
 
 
 
- linux-arm64:
+  linux-arm64:
     name: 'linux-arm64 ninja-build ${{ github.event.inputs.version }} clean'
     timeout-minutes: 2880 # 2 days
     runs-on: [self-hosted, linux, arm64, xbbla]
@@ -99,8 +99,8 @@ jobs:
 
 
 
-  macos-x64:
-    name: 'macOS Intel - ninja-build ${{ github.event.inputs.version }} clean'
+  darwin-x64:
+    name: 'darwin-x64 ninja-build ${{ github.event.inputs.version }} clean'
     timeout-minutes: 2880 # 2 days
 
     runs-on: [self-hosted, macos, intel]
@@ -122,8 +122,8 @@ jobs:
 
 
 
-  macos-arm64:
-    name: 'macOS Arm - ninja-build ${{ github.event.inputs.version }} clean'
+  darwin-arm64:
+    name: 'darwin-arm64 ninja-build ${{ github.event.inputs.version }} clean'
     timeout-minutes: 2880 # 2 days
 
     runs-on: [self-hosted, macos, apple]
