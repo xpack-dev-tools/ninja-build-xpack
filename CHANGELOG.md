@@ -2,9 +2,175 @@
 
 Entries in this file are in reverse chronological order.
 
+## 2024-06-17
+
+* v1.12.1-1 prepared
+* 4e1820a re-generate workflows with new names
+* 9464599 package.json update actions
+* 1a0f107 re-generate workflows
+* c097b3f re-generate workflows
+* 537d05c re-generate workflows
+* 891935f package.json: update actions
+* b4b1ec5 re-generate workflows with new names
+* 8a47929 re-generate workflows
+* 57edafc re-generate workflows
+* ab7e9d1 re-generate workflows
+* 04330ce re-generate workflows
+* f43d963 re-generate workflows
+* 8d4e2fe re-generate workflows
+* 4174b40 re-generate workflows
+
+## 2024-06-16
+
+* 968e1a6 re-generate workflows
+* b6db60a re-generate workflows
+* eb87946 re-generate workflows
+* 211fabe re-generate workflows
+* 90d211f re-generate workflows
+* ae9bac9 package.json: bump deps
+* 8e2b865 re-generate workflows
+* 812926e application.sh update
+
+## 2024-06-10
+
+* d7c98cf re-generate workflows
+* 92a5fd6 re-generate workflows
+* 3406ef9 re-generate workflows
+* 51ec5aa re-generate workflows
+* 26eeeba re-generate workflows
+
+## ## 2024-06-09
+
+* 768fc07 re-generate workflows
+* f681b2d re-generate workflows
+* ca105ae re-generate workflows
+
+## 2024-06-08
+
+* 57ff0eb re-generate workflows
+* d66d212 re-generate workflows
+* 67f7dbb re-generate workflows
+* 2914175 regenerate workflows with generate report
+* 4a3d469 re-generate workflows
+* 146f3dc package.json: bump deps
+
+## 2024-05-28
+
+* 2f27aa4 README update
+
+## 2024-05-23
+
+* c549064 package.json: clang 16.0.6-1.1
+
+## 2024-05-18
+
+* 482b0bf rework git_clone call
+* 566a521 READMEs update
+* 65fc73f package.json: XBB_ENVIRONMENT_SKIP_CHECKS
+
+## 2024-05-17
+
+* add7588 ninja.sh: use XBB_LDFLAGS_STATIC_LIBS
+
+## 2024-05-16
+
+* 6940d42 READMEs update
+
+## 2024-05-09
+
+* 69950cd use is_develop and with_strip
+
+## 2024-05-03
+
+* ed47020 package.json: add bison to deps
+
+## 2024-05-02
+
+* fa08644 package.json: add m4 to deps
+* eb62df3 package.json: clang 17.0.6-1.1
+* 716ce1d ninja.sh: conditional -DCMAKE_OSX_DEPLOYMENT_TARGET
+
+## 2024-04-04
+
+* 91c3e4c README update
+* 5aa75be package.json: clang 17
+* 1f49daf package.json: bump deps
+* aa00dc1 re-generate workflows
+
+## 2024-03-22
+
+* f061ace package.json: xpm-version 0.18.0
+
+## 2024-03-08
+
+* 8d7e8f6 package.json: xpm-version 0.18.0
+
+## 2024-03-07
+
+* 2104332 package.json: xpm-version 0.18.0
+* ff4d9c2 package.json: bump deps
+
+## 2024-03-06
+
+* bb1dff9 body-jekyll update
+* 0826280 package.json: bump deps
+
+## 2024-02-07
+
+* cbfd32b READMEs update
+* a27da38 package.json: bump deps
+
+## 2023-12-03
+
+* c2d7da8 package.json: bump deps
+* 697f3ce re-generate workflows
+
+## 2023-11-16
+
+* b00333f build-xbbla32 cleanup
+* 3066ea5 build-xbbla32 debug ls -l
+* 8828b36 build-xbbla32 debug ls -l
+* efa345a build-xbbla32 debug ls -l
+* 1594e12 build-xbbla32 debug ls -l
+* 66e3e75 build-xbbla32 debug ls -l
+* 2476ee9 build-xbbla32 debug ls -l
+* 7159f58 build-xbbla32 debug ls -l
+* 4987773 build-xbbla32 use linux32 bash
+* 5914cee build-xbbla32 use linux32
+* 8f136f7 try ampere
+
+## 2023-11-12
+
+* 6d8797c package.json: bump deps
+
+## 2023-09-25
+
+* e65a5a8 body-jekyll update
+
+## 2023-09-20
+
+* 65183e1 package.json: bump deps
+
+## 2023-09-16
+
+* f6379de package.json: add linux32
+* a4694ee body-jekyll update
+
+## 2023-09-11
+
+* 020c3df package.json: bump deps
+
+## 2023-09-08
+
+* 1330753 package.json: bump deps
+
 ## 2023-09-06
 
-* v1.11.1-3.1 published on npmjs.com
+2023-09-06 * 8011af9 package.json: bump deps
+2023-09-06 * 9469e95 READMEs update
+2023-09-06 * 4d82a54 body-jekyll update
+2023-09-06 * 6e39672 1.11.1-3.1
+2023-09-06 * 30ac425 CHANGELOG: publish npm v1.11.1-3.1
 * 1873457 package.json: update urls for 1.11.1-3.1 release
 
 ## 2023-09-05

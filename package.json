@@ -1,6 +1,6 @@
 {
   "name": "@xpack-dev-tools/ninja-build",
-  "version": "1.11.1-3.1",
+  "version": "1.12.1-1.1.pre",
   "description": "A binary xPack with the Ninja Build executables",
   "main": "",
   "scripts": {
@@ -119,7 +119,6 @@
         "cp xpacks/@xpack-dev-tools/xbb-helper/templates/build.sh scripts/",
         "cp xpacks/@xpack-dev-tools/xbb-helper/templates/test.sh scripts/"
       ],
-      "trigger-workflow-build-all": "bash xpacks/@xpack-dev-tools/xbb-helper/github-actions/trigger-workflow-build.sh --xpm-version {{ properties.xpm-version }} --loglevel {{ properties.xpm-install-loglevel }}",
       "trigger-workflow-build-darwin-x64": "bash xpacks/@xpack-dev-tools/xbb-helper/github-actions/trigger-workflow-build.sh --workflow build-darwin-x64.yml --xpm-version {{ properties.xpm-version }} --loglevel {{ properties.xpm-install-loglevel }}",
       "trigger-workflow-build-darwin-arm64": "bash xpacks/@xpack-dev-tools/xbb-helper/github-actions/trigger-workflow-build.sh --workflow build-darwin-arm64.yml --xpm-version {{ properties.xpm-version }} --loglevel {{ properties.xpm-install-loglevel }}",
       "trigger-workflow-build-linux-x64": "bash xpacks/@xpack-dev-tools/xbb-helper/github-actions/trigger-workflow-build.sh --workflow build-linux-x64.yml --xpm-version {{ properties.xpm-version }} --loglevel {{ properties.xpm-install-loglevel }}",
