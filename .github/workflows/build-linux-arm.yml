@@ -115,8 +115,6 @@ jobs:
     name: 'linux-arm ninja-build ${{ github.event.inputs.version }} upload'
     timeout-minutes: 2880 # 2 days
     runs-on: [self-hosted, linux, arm, xbbla32]
-    container:
-      image: ilegeul/ubuntu:arm32v7-18.04-xbb-v5.2.1
     defaults:
       run:
         shell: bash
