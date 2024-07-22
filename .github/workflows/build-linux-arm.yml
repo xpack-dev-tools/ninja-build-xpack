@@ -161,7 +161,7 @@ jobs:
 
       - name: 'Rename working area'
         # For just in case absolute paths remain unprocessed.
-        run: mv -v build build-$(date -u +%Y%m%d-%H%M%S)
+        run: echo mv -v build build-$(date -u +%Y%m%d-%H%M%S)
 
   linux-arm-test:
     name: 'linux-arm ninja-build@${{ github.event.inputs.version }} test'
