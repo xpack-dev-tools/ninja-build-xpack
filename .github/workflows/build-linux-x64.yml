@@ -112,7 +112,7 @@ jobs:
           xpm run build --config linux-x64
 
   linux-x64-upload:
-    name: 'linux-x64 ninja-build ${{ github.event.inputs.version }} build'
+    name: 'linux-x64 ninja-build ${{ github.event.inputs.version }} upload'
     timeout-minutes: 5760 # 4 days
     runs-on: [self-hosted, linux, x64]
     defaults:
@@ -159,7 +159,7 @@ jobs:
 
       - name: 'Rename working area'
         # For just in case absolute paths remain unprocessed.
-        run: echo mv -v build build-$(date -u +%Y%m%d-%H%M%S)
+        run: mv -v build build-$(date -u +%Y%m%d-%H%M%S)
 
   linux-x64-test:
     name: 'linux-x64 ninja-build ${{ github.event.inputs.version }} test'
