@@ -144,6 +144,7 @@ jobs:
         shell: bash
     needs: [linux-x64-build]
 
+    steps:
       - name: 'Show environment'
         run: |
           uname -a
