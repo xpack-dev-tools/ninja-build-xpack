@@ -112,7 +112,7 @@ jobs:
           xpm run build --config linux-x64
 
       - name: Upload platform artefacts
-        uses: actions/upload-artifact@v3 # v3 for 18.04
+        uses: actions/upload-artifact@v2 # v3 for 18.04
         with:
           name: deploy-linux-x64
           path: ${{ github.workspace }}/build/linux-x64/deploy/*
