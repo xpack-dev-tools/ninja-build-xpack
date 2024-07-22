@@ -111,30 +111,6 @@ jobs:
           xpm install --config linux-x64 --loglevel ${{ github.event.inputs.xpm_install_loglevel }} ${{ github.event.inputs.xpm_install_options }}
           xpm run build --config linux-x64
 
-      - name: 'Publish pre-release'
-        # https://github.com/ncipollo/release-action
-        uses: ncipollo/release-action@v1.13.0 # v1.13 for 18.04
-        with:
-          allowUpdates: true
-          artifacts: 'build/linux-x64/deploy/*'
-          bodyFile: '.github/workflows/body-github-pre-releases-test.md'
-          commit: 'master'
-          draft: false
-          name: 'Test binaries'
-          omitBodyDuringUpdate: true
-          omitDraftDuringUpdate: true
-          omitNameDuringUpdate: true
-          owner: 'xpack-dev-tools'
-          prerelease: true
-          replacesArtifacts: true
-          repo: 'pre-releases'
-          tag: 'test'
-          token: ${{ secrets.PUBLISH_TOKEN }}
-
-      - name: 'Rename working area'
-        # For just in case absolute paths remain unprocessed.
-        run: mv -v build build-$(date -u +%Y%m%d-%H%M%S)
-
   linux-x64-upload:
     name: 'linux-x64 ninja-build ${{ github.event.inputs.version }} build'
     timeout-minutes: 5760 # 4 days
@@ -160,6 +136,30 @@ jobs:
           name: deploy-linux-x64
           path: $/build/linux-x64/deploy/*
           overwrite: true
+
+      - name: 'Publish pre-release'
+        # https://github.com/ncipollo/release-action
+        uses: ncipollo/release-action@v1.13.0 # v1.13 for 18.04
+        with:
+          allowUpdates: true
+          artifacts: 'build/linux-x64/deploy/*'
+          bodyFile: '.github/workflows/body-github-pre-releases-test.md'
+          commit: 'master'
+          draft: false
+          name: 'Test binaries'
+          omitBodyDuringUpdate: true
+          omitDraftDuringUpdate: true
+          omitNameDuringUpdate: true
+          owner: 'xpack-dev-tools'
+          prerelease: true
+          replacesArtifacts: true
+          repo: 'pre-releases'
+          tag: 'test'
+          token: ${{ secrets.PUBLISH_TOKEN }}
+
+      - name: 'Rename working area'
+        # For just in case absolute paths remain unprocessed.
+        run: echo mv -v build build-$(date -u +%Y%m%d-%H%M%S)
 
   linux-x64-test:
     name: 'linux-x64 ninja-build ${{ github.event.inputs.version }} test'
