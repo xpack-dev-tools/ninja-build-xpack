@@ -17,7 +17,7 @@ download_url: https://github.com/xpack-dev-tools/ninja-build-xpack/releases/tag/
 
 comments: true
 
-date:   {{ RELEASE_DATE }}
+date: {{ RELEASE_DATE }}
 
 # For Jekyll releases selection.
 categories:
