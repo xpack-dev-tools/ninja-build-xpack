@@ -56,14 +56,14 @@ git clone \
   --branch xpack-develop \
   https://github.com/xpack-dev-tools/xbb-helper-xpack.git \
   ~/Work/xpack-dev-tools/xbb-helper-xpack.git && \
-xpm link -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git/build-assets
+xpm link -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git
 ```
 
 Or, if the repo was already cloned:
 
 ```sh
-git -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git/build-assets pull
-xpm link -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git/build-assets
+git -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git pull
+xpm link -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git
 ```
 
 ## Release schedule
@@ -192,8 +192,8 @@ git -C ~/Work/xpack-dev-tools/ninja-build-xpack.git pull
 
 xpm run install -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets
 
-git -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git/build-assets pull
-xpm link -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git/build-assets
+git -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git pull
+xpm link -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git
 
 xpm run link-deps -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets
 
@@ -226,8 +226,8 @@ Repeat the same steps as before.
 rm -f ~/Work/xpack-dev-tools/ninja-build-xpack.git/package-lock.json && \
 git -C ~/Work/xpack-dev-tools/ninja-build-xpack.git pull && \
 xpm run install -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets && \
-git -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git/build-assets pull && \
-xpm link -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git/build-assets && \
+git -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git pull && \
+xpm link -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git && \
 xpm run link-deps -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets && \
 \
 xpm run deep-clean --config darwin-x64  -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets && \
@@ -261,8 +261,8 @@ Update the build scripts (or clone them at the first use):
 rm -f ~/Work/xpack-dev-tools/ninja-build-xpack.git/package-lock.json && \
 git -C ~/Work/xpack-dev-tools/ninja-build-xpack.git pull && \
 xpm run install -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets && \
-git -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git/build-assets pull && \
-xpm link -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git/build-assets && \
+git -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git pull && \
+xpm link -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git && \
 xpm run link-deps -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets && \
 \
 xpm run deep-clean --config darwin-arm64  -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets && \
@@ -297,8 +297,8 @@ Update the build scripts (or clone them at the first use):
 rm -f ~/Work/xpack-dev-tools/ninja-build-xpack.git/package-lock.json && \
 git -C ~/Work/xpack-dev-tools/ninja-build-xpack.git pull && \
 xpm run install -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets && \
-git -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git/build-assets pull && \
-xpm link -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git/build-assets && \
+git -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git pull && \
+xpm link -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git && \
 xpm run link-deps -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets && \
 \
 xpm run deep-clean --config linux-x64 -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets && \
@@ -325,8 +325,8 @@ Clean the build folder and prepare the docker container:
 rm -f ~/Work/xpack-dev-tools/ninja-build-xpack.git/package-lock.json && \
 git -C ~/Work/xpack-dev-tools/ninja-build-xpack.git pull && \
 xpm run install -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets && \
-git -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git/build-assets pull && \
-xpm link -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git/build-assets && \
+git -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git pull && \
+xpm link -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git && \
 xpm run link-deps -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets && \
 \
 xpm run deep-clean --config win32-x64 -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets && \
@@ -360,8 +360,8 @@ Update the build scripts (or clone them at the first use):
 rm -f ~/Work/xpack-dev-tools/ninja-build-xpack.git/package-lock.json && \
 git -C ~/Work/xpack-dev-tools/ninja-build-xpack.git pull && \
 xpm run install -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets && \
-git -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git/build-assets pull && \
-xpm link -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git/build-assets && \
+git -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git pull && \
+xpm link -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git && \
 xpm run link-deps -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets && \
 \
 xpm run deep-clean --config linux-arm64 -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets && \
@@ -395,8 +395,8 @@ Update the build scripts (or clone them at the first use):
 rm -f ~/Work/xpack-dev-tools/ninja-build-xpack.git/package-lock.json && \
 git -C ~/Work/xpack-dev-tools/ninja-build-xpack.git pull && \
 xpm run install -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets && \
-git -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git/build-assets pull && \
-xpm link -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git/build-assets && \
+git -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git pull && \
+xpm link -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git && \
 xpm run link-deps -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets && \
 \
 xpm run deep-clean --config linux-arm -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets && \
