@@ -2,9 +2,56 @@
 
 Entries in this file are in reverse chronological order.
 
+## 2024-08-01
+
+* v1.12.1-2 prepared
+* f2e359e website: preliminary content
+* ff58b88 updates for build-assets
+* 2fc5b2c move to build-assets
+* 816cd41 re-generate workflows
+* d83b671 README updates
+* f296104 package.json: rename build-development*
+
+## 2024-07-27
+
+* ae2114a package.json: add actions, bump deps
+* 043e048 templates/jekyll update
+
+## 2024-07-23
+
+* d678ef3 READMEs update
+* 900c979 package.json: rework generate workflows
+* 7d1bc71 package.json: bump deps
+
+## 2024-07-22
+
+* 6f10658 re-generate workflows
+* daf5d26 re-generate workflows
+* af48c28 re-generate workflows
+* 04413eb re-generate workflows
+* 5c0161a re-generate workflows
+* cc0a796 re-generate workflows
+* 1edd11c workflow linux move publish
+* 088dccf workflow linux fix syntax
+* 8c293b4 workflow linux separate upload
+* 0ebb2d4 build-linux: try upload v2
+* a8e49b5 package.json: xbb 5.2.1
+* 02058a2 package.json: loglevel: info
+* 352996f package.json: bump deps
+* 211969a scripts update
+* 365bcb4 templates/jekyll update
+* f26aaaf re-generate workflows
+
 ## 2024-06-17
 
-* v1.12.1-1 prepared
+* 3115b81 re-generate workflows
+* 1029e6a re-generate workflows
+* e1c334c workflow cleanups
+* 8b980a5 fix deep-clean, remove build-all
+* 841b502 package-lock.json update
+* 0a3532a README update
+* 83377b6 prepare v1.12.1-1
+* 8f19050 prepare v1.12.1-1
 * 4e1820a re-generate workflows with new names
 * 9464599 package.json update actions
 * 1a0f107 re-generate workflows

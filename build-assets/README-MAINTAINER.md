@@ -109,7 +109,7 @@ and compare the the xPack [Releases](https://github.com/xpack-dev-tools/ninja-bu
 ### Increase the version
 
 Determine the version (like `1.12.1`) and update the `scripts/VERSION`
-file; the format is `1.12.1-1`. The fourth number is the xPack release number
+file; the format is `1.12.1-2`. The fourth number is the xPack release number
 of this version. A fifth number will be added when publishing
 the package on the `npm` server.
 
@@ -119,7 +119,7 @@ Check GitHub issues and pull requests:
 
 - <https://github.com/xpack-dev-tools/ninja-build-xpack/issues/>
 
-and fix them; assign them to a milestone (like `1.12.1-1`).
+and fix them; assign them to a milestone (like `1.12.1-2`).
 
 ### Check `README.md`
 
@@ -134,14 +134,14 @@ but in the version specific release page.
 
 ### Update version in `package.json` to a pre-release
 
-Use the new version, suffixed by `pre`, like `1.12.1-1.1.pre`.
+Use the new version, suffixed by `pre`, like `1.12.1-2.1.pre`.
 
 ### Update `CHANGELOG.md`
 
 - open the `CHANGELOG.md` file
 - check if all previous fixed issues are in
-- add a new entry like _* v1.12.1-1 prepared_
-- commit with a message like _prepare v1.12.1-1_
+- add a new entry like _* v1.12.1-2 prepared_
+- commit with a message like _prepare v1.12.1-2_
 
 ### Merge upstream repo
 
@@ -155,7 +155,7 @@ repository, in the `xpack-dev-tools/ninja` Git fork repo:
 - merge `release`
 - checkout `xpack`
 - merge `xpack-develop`
-- tag it with `v1.12.1-1-xpack`; important, this tag will be used by the build
+- tag it with `v1.12.1-2-xpack`; important, this tag will be used by the build
 - push `release`, `xpack-develop`, `xpack` to `origin`
 
 ### Update the version specific code
@@ -241,8 +241,8 @@ archive and its SHA signature, created in the `deploy` folder:
 ```console
 $ ls -l ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets/build/darwin-x64/deploy
 total 1072
--rw-r--r--  1 ilg  staff  544546 Jun 17 20:09 xpack-ninja-build-1.12.1-1-darwin-x64.tar.gz
--rw-r--r--  1 ilg  staff     111 Jun 17 20:09 xpack-ninja-build-1.12.1-1-darwin-x64.tar.gz.sha
+-rw-r--r--  1 ilg  staff  544546 Jun 17 20:09 xpack-ninja-build-1.12.1-2-darwin-x64.tar.gz
+-rw-r--r--  1 ilg  staff     111 Jun 17 20:09 xpack-ninja-build-1.12.1-2-darwin-x64.tar.gz.sha
 ```
 
 #### Apple Silicon macOS
@@ -276,8 +276,8 @@ archive and its SHA signature, created in the `deploy` folder:
 ```console
 $ ls -l ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets/build/darwin-arm64/deploy
 total 1024
--rw-r--r--  1 ilg  staff  517625 Jun 17 20:10 xpack-ninja-build-1.12.1-1-darwin-arm64.tar.gz
--rw-r--r--  1 ilg  staff     113 Jun 17 20:10 xpack-ninja-build-1.12.1-1-darwin-arm64.tar.gz.sha
+-rw-r--r--  1 ilg  staff  517625 Jun 17 20:10 xpack-ninja-build-1.12.1-2-darwin-arm64.tar.gz
+-rw-r--r--  1 ilg  staff     113 Jun 17 20:10 xpack-ninja-build-1.12.1-2-darwin-arm64.tar.gz.sha
 ```
 
 #### Intel GNU/Linux
@@ -313,8 +313,8 @@ archive and its SHA signature, created in the `deploy` folder:
 ```console
 $ ls -l ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets/build/linux-x64/deploy
 total 360
--rw-r--r-- 1 ilg ilg 361102 Jun 17 17:15 xpack-ninja-build-1.12.1-1-linux-x64.tar.gz
--rw-r--r-- 1 ilg ilg    110 Jun 17 17:15 xpack-ninja-build-1.12.1-1-linux-x64.tar.gz.sha
+-rw-r--r-- 1 ilg ilg 361102 Jun 17 17:15 xpack-ninja-build-1.12.1-2-linux-x64.tar.gz
+-rw-r--r-- 1 ilg ilg    110 Jun 17 17:15 xpack-ninja-build-1.12.1-2-linux-x64.tar.gz.sha
 ```
 
 ##### Build the Intel Windows binaries
@@ -341,8 +341,8 @@ archive and its SHA signature, created in the `deploy` folder:
 ```console
 $ ls -l ~/Work/xpack-dev-tools/ninja-build-xpack.git/build/win32-x64/deploy
 total 508
--rw-r--r-- 1 ilg ilg 515756 Jun 17 17:12 xpack-ninja-build-1.12.1-1-win32-x64.zip
--rw-r--r-- 1 ilg ilg    107 Jun 17 17:12 xpack-ninja-build-1.12.1-1-win32-x64.zip.sha
+-rw-r--r-- 1 ilg ilg 515756 Jun 17 17:12 xpack-ninja-build-1.12.1-2-win32-x64.zip
+-rw-r--r-- 1 ilg ilg    107 Jun 17 17:12 xpack-ninja-build-1.12.1-2-win32-x64.zip.sha
 ```
 
 #### Arm GNU/Linux 64-bit
@@ -376,8 +376,8 @@ archive and its SHA signature, created in the `deploy` folder:
 ```console
 $ ls -l ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets/build/linux-arm64/deploy
 total 336
--rw-r--r-- 1 ilg ilg 336093 Jun 17 17:18 xpack-ninja-build-1.12.1-1-linux-arm64.tar.gz
--rw-r--r-- 1 ilg ilg    112 Jun 17 17:18 xpack-ninja-build-1.12.1-1-linux-arm64.tar.gz.sha
+-rw-r--r-- 1 ilg ilg 336093 Jun 17 17:18 xpack-ninja-build-1.12.1-2-linux-arm64.tar.gz
+-rw-r--r-- 1 ilg ilg    112 Jun 17 17:18 xpack-ninja-build-1.12.1-2-linux-arm64.tar.gz.sha
 ```
 
 #### Arm GNU/Linux 32-bit
@@ -411,8 +411,8 @@ archive and its SHA signature, created in the `deploy` folder:
 ```console
 $ ls -l ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets/build/linux-arm/deploy
 total 304
--rw-r--r-- 1 ilg ilg 305618 Jun 17 17:17 xpack-ninja-build-1.12.1-1-linux-arm.tar.gz
--rw-r--r-- 1 ilg ilg    110 Jun 17 17:17 xpack-ninja-build-1.12.1-1-linux-arm.tar.gz.sha
+-rw-r--r-- 1 ilg ilg 305618 Jun 17 17:17 xpack-ninja-build-1.12.1-2-linux-arm.tar.gz
+-rw-r--r-- 1 ilg ilg    110 Jun 17 17:17 xpack-ninja-build-1.12.1-2-linux-arm.tar.gz.sha
 ```
 
 ### Update README-MAINTAINER listing output
@@ -633,20 +633,20 @@ xattr -cr ${HOME}/Downloads/xpack-*
 On GNU/Linux and macOS systems, use:
 
 ```sh
-.../xpack-ninja-build-1.12.1-1/bin/ninja --version
+.../xpack-ninja-build-1.12.1-2/bin/ninja --version
 1.12.1
 ```
 
 On Windows use:
 
 ```dos
-...\xpack-ninja-build-1.12.1-1\bin\ninja --version
+...\xpack-ninja-build-1.12.1-2\bin\ninja --version
 1.12.1
 ```
 
 ## Create a new GitHub pre-release draft
 
-- in `CHANGELOG.md`, add the release date and a message like _* v1.12.1-1 released_
+- in `CHANGELOG.md`, add the release date and a message like _* v1.12.1-2 released_
 - commit with _CHANGELOG update_
 - check and possibly update the `templates/body-github-release-liquid.md`
 - push the `xpack-develop` branch
@@ -657,8 +657,8 @@ The workflow result and logs are available from the
 
 The result is a
 [draft pre-release](https://github.com/xpack-dev-tools/ninja-build-xpack/releases/)
-tagged like **v1.12.1-1** (mind the dash in the middle!) and
-named like **xPack Ninja Build v1.12.1-1** (mind the dash),
+tagged like **v1.12.1-2** (mind the dash in the middle!) and
+named like **xPack Ninja Build v1.12.1-2** (mind the dash),
 with all binaries attached.
 
 - edit the draft and attach it to the `xpack-develop` branch (important!)
@@ -684,7 +684,7 @@ If any, refer to closed
 ## Update the preview Web
 
 - commit the `develop` branch of `xpack/web-jekyll` GitHub repo;
-  use a message like _xPack Ninja Build v1.12.1-1 released_
+  use a message like _xPack Ninja Build v1.12.1-2 released_
 - push to GitHub
 - wait for the GitHub Pages build to complete
 - the preview web is <https://xpack.github.io/web-preview/news/>
@@ -725,18 +725,18 @@ watching this project.
 - compare the SHA sums with those shown by `cat *.sha`
 - check the executable names
 - commit all changes, use a message like
-  _package.json: update urls for 1.12.1-1.1 release_ (without _v_)
+  _package.json: update urls for 1.12.1-2.1 release_ (without _v_)
 
 ## Publish on the npmjs.com server
 
 - select the `xpack-develop` branch
 - check the latest commits `npm run git-log`
-- update `CHANGELOG.md`, add a line like _* v1.12.1-1.1 published on npmjs.com_
-- commit with a message like _CHANGELOG: publish npm v1.12.1-1.1_
+- update `CHANGELOG.md`, add a line like _* v1.12.1-2.1 published on npmjs.com_
+- commit with a message like _CHANGELOG: publish npm v1.12.1-2.1_
 - `npm pack` and check the content of the archive, which should list
   only the `package.json`, the `README.md`, `LICENSE` and `CHANGELOG.md`;
   possibly adjust `.npmignore`
-- `npm version 1.12.1-1.1`; the first 4 numbers are the same as the
+- `npm version 1.12.1-2.1`; the first 4 numbers are the same as the
   GitHub release; the fifth number is the npm specific version
 - the commits and the tag should have been pushed by the `postversion` script;
   if not, push them with `git push origin --tags`
@@ -765,12 +765,12 @@ The tests results are available from the
 When the release is considered stable, promote it as `latest`:
 
 - `npm dist-tag ls @xpack-dev-tools/ninja-build`
-- `npm dist-tag add @xpack-dev-tools/ninja-build@1.12.1-1.1 latest`
+- `npm dist-tag add @xpack-dev-tools/ninja-build@1.12.1-2.1 latest`
 - `npm dist-tag ls @xpack-dev-tools/ninja-build`
 
 In case the previous version is not functional and needs to be unpublished:
 
-- `npm unpublish @xpack-dev-tools/ninja-build@1.12.1-1.1`
+- `npm unpublish @xpack-dev-tools/ninja-build@1.12.1-2.1`
 
 ## Update the Web
 
@@ -792,7 +792,7 @@ In case the previous version is not functional and needs to be unpublished:
 
 - in a separate browser windows, open [X/Twitter](https://twitter.com)
 - using the `@xpack_project` account
-- paste the release name like **xPack Ninja Build v1.12.1-1 released**
+- paste the release name like **xPack Ninja Build v1.12.1-2 released**
 - paste the link to the Web page
   [release](https://xpack.github.io/ninja-build/releases/)
 - click the **Tweet** button
