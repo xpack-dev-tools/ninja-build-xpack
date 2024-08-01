@@ -65,7 +65,7 @@ export XBB_WHILE_RUNNING_SEPARATE_TESTS="y"
 # -----------------------------------------------------------------------------
 # Options must be parsed as early as possible, being used even in application.sh.
 
-source "${helper_folder_path}/scripts/test-parse-options.sh"
+source "${helper_folder_path}/build-scripts/test-parse-options.sh"
 
 tests_parse_options "$@"
 
@@ -74,7 +74,7 @@ tests_parse_options "$@"
 source "${scripts_folder_path}/application.sh"
 
 # Common definitions.
-source "${helper_folder_path}/scripts/test-common.sh"
+source "${helper_folder_path}/build-scripts/test-common.sh"
 
 # Possibly override common definitions.
 source "${scripts_folder_path}/tests/run.sh"

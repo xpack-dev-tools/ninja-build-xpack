@@ -59,7 +59,7 @@ helper_folder_path="${root_folder_path}/xpacks/@xpack-dev-tools/xbb-helper"
 source "${scripts_folder_path}/application.sh"
 
 # Common definitions.
-source "${helper_folder_path}/scripts/build-common.sh"
+source "${helper_folder_path}/build-scripts/build-common.sh"
 
 source "${scripts_folder_path}/versioning.sh"
 
