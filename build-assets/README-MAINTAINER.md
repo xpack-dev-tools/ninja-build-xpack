@@ -56,14 +56,14 @@ git clone \
   --branch xpack-develop \
   https://github.com/xpack-dev-tools/xbb-helper-xpack.git \
   ~/Work/xpack-dev-tools/xbb-helper-xpack.git && \
-xpm link -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git
+xpm link -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git/build-assets
 ```
 
 Or, if the repo was already cloned:
 
 ```sh
-git -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git pull
-xpm link -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git
+git -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git/build-assets pull
+xpm link -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git/build-assets
 ```
 
 ## Release schedule
@@ -187,25 +187,25 @@ For Intel macOS, first run the build on the development machine
 export XBB_ENVIRONMENT_SKIP_CHECKS="y"
 
 # Update the build scripts.
-rm -f ~/Work/xpack-dev-tools/ninja-build-xpack.git/package-lock.json
+rm -f ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets/package-lock.json
 git -C ~/Work/xpack-dev-tools/ninja-build-xpack.git pull
 
-xpm run install -C ~/Work/xpack-dev-tools/ninja-build-xpack.git
+xpm run install -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets
 
-git -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git pull
-xpm link -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git
+git -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git/build-assets pull
+xpm link -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git/build-assets
 
-xpm run link-deps -C ~/Work/xpack-dev-tools/ninja-build-xpack.git
+xpm run link-deps -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets
 
-xpm run deep-clean --config darwin-x64  -C ~/Work/xpack-dev-tools/ninja-build-xpack.git && \
-xpm install --config darwin-x64 -C ~/Work/xpack-dev-tools/ninja-build-xpack.git && \
-xpm run build-development --config darwin-x64 -C ~/Work/xpack-dev-tools/ninja-build-xpack.git
+xpm run deep-clean --config darwin-x64  -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets && \
+xpm install --config darwin-x64 -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets && \
+xpm run build-development --config darwin-x64 -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets
 ```
 
 For a debug build:
 
 ```sh
-xpm run build-development-debug --config darwin-x64 -C ~/Work/xpack-dev-tools/ninja-build-xpack.git
+xpm run build-development-debug --config darwin-x64 -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets
 ```
 
 The build takes several minutes to complete.
@@ -225,21 +225,21 @@ Repeat the same steps as before.
 ```sh
 rm -f ~/Work/xpack-dev-tools/ninja-build-xpack.git/package-lock.json && \
 git -C ~/Work/xpack-dev-tools/ninja-build-xpack.git pull && \
-xpm run install -C ~/Work/xpack-dev-tools/ninja-build-xpack.git && \
-git -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git pull && \
-xpm link -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git && \
-xpm run link-deps -C ~/Work/xpack-dev-tools/ninja-build-xpack.git && \
+xpm run install -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets && \
+git -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git/build-assets pull && \
+xpm link -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git/build-assets && \
+xpm run link-deps -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets && \
 \
-xpm run deep-clean --config darwin-x64  -C ~/Work/xpack-dev-tools/ninja-build-xpack.git && \
-xpm install --config darwin-x64 -C ~/Work/xpack-dev-tools/ninja-build-xpack.git && \
-xpm run build-development --config darwin-x64 -C ~/Work/xpack-dev-tools/ninja-build-xpack.git
+xpm run deep-clean --config darwin-x64  -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets && \
+xpm install --config darwin-x64 -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets && \
+xpm run build-development --config darwin-x64 -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets
 ```
 
 Several minutes later, the output of the build script is a compressed
 archive and its SHA signature, created in the `deploy` folder:
 
 ```console
-$ ls -l ~/Work/xpack-dev-tools/ninja-build-xpack.git/build/darwin-x64/deploy
+$ ls -l ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets/build/darwin-x64/deploy
 total 1072
 -rw-r--r--  1 ilg  staff  544546 Jun 17 20:09 xpack-ninja-build-1.12.1-1-darwin-x64.tar.gz
 -rw-r--r--  1 ilg  staff     111 Jun 17 20:09 xpack-ninja-build-1.12.1-1-darwin-x64.tar.gz.sha
@@ -260,21 +260,21 @@ Update the build scripts (or clone them at the first use):
 ```sh
 rm -f ~/Work/xpack-dev-tools/ninja-build-xpack.git/package-lock.json && \
 git -C ~/Work/xpack-dev-tools/ninja-build-xpack.git pull && \
-xpm run install -C ~/Work/xpack-dev-tools/ninja-build-xpack.git && \
-git -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git pull && \
-xpm link -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git && \
-xpm run link-deps -C ~/Work/xpack-dev-tools/ninja-build-xpack.git && \
+xpm run install -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets && \
+git -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git/build-assets pull && \
+xpm link -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git/build-assets && \
+xpm run link-deps -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets && \
 \
-xpm run deep-clean --config darwin-arm64  -C ~/Work/xpack-dev-tools/ninja-build-xpack.git && \
-xpm install --config darwin-arm64 -C ~/Work/xpack-dev-tools/ninja-build-xpack.git && \
-xpm run build-development --config darwin-arm64 -C ~/Work/xpack-dev-tools/ninja-build-xpack.git
+xpm run deep-clean --config darwin-arm64  -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets && \
+xpm install --config darwin-arm64 -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets && \
+xpm run build-development --config darwin-arm64 -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets
 ```
 
 Several minutes later, the output of the build script is a compressed
 archive and its SHA signature, created in the `deploy` folder:
 
 ```console
-$ ls -l ~/Work/xpack-dev-tools/ninja-build-xpack.git/build/darwin-arm64/deploy
+$ ls -l ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets/build/darwin-arm64/deploy
 total 1024
 -rw-r--r--  1 ilg  staff  517625 Jun 17 20:10 xpack-ninja-build-1.12.1-1-darwin-arm64.tar.gz
 -rw-r--r--  1 ilg  staff     113 Jun 17 20:10 xpack-ninja-build-1.12.1-1-darwin-arm64.tar.gz.sha
@@ -296,22 +296,22 @@ Update the build scripts (or clone them at the first use):
 ```sh
 rm -f ~/Work/xpack-dev-tools/ninja-build-xpack.git/package-lock.json && \
 git -C ~/Work/xpack-dev-tools/ninja-build-xpack.git pull && \
-xpm run install -C ~/Work/xpack-dev-tools/ninja-build-xpack.git && \
-git -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git pull && \
-xpm link -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git && \
-xpm run link-deps -C ~/Work/xpack-dev-tools/ninja-build-xpack.git && \
+xpm run install -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets && \
+git -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git/build-assets pull && \
+xpm link -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git/build-assets && \
+xpm run link-deps -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets && \
 \
-xpm run deep-clean --config linux-x64 -C ~/Work/xpack-dev-tools/ninja-build-xpack.git && \
-xpm run docker-prepare --config linux-x64 -C ~/Work/xpack-dev-tools/ninja-build-xpack.git && \
-xpm run docker-link-deps --config linux-x64 -C ~/Work/xpack-dev-tools/ninja-build-xpack.git && \
-xpm run docker-build-development --config linux-x64 -C ~/Work/xpack-dev-tools/ninja-build-xpack.git
+xpm run deep-clean --config linux-x64 -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets && \
+xpm run docker-prepare --config linux-x64 -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets && \
+xpm run docker-link-deps --config linux-x64 -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets && \
+xpm run docker-build-development --config linux-x64 -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets
 ```
 
 Several minutes later, the output of the build script is a compressed
 archive and its SHA signature, created in the `deploy` folder:
 
 ```console
-$ ls -l ~/Work/xpack-dev-tools/ninja-build-xpack.git/build/linux-x64/deploy
+$ ls -l ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets/build/linux-x64/deploy
 total 360
 -rw-r--r-- 1 ilg ilg 361102 Jun 17 17:15 xpack-ninja-build-1.12.1-1-linux-x64.tar.gz
 -rw-r--r-- 1 ilg ilg    110 Jun 17 17:15 xpack-ninja-build-1.12.1-1-linux-x64.tar.gz.sha
@@ -324,14 +324,14 @@ Clean the build folder and prepare the docker container:
 ```sh
 rm -f ~/Work/xpack-dev-tools/ninja-build-xpack.git/package-lock.json && \
 git -C ~/Work/xpack-dev-tools/ninja-build-xpack.git pull && \
-xpm run install -C ~/Work/xpack-dev-tools/ninja-build-xpack.git && \
-git -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git pull && \
-xpm link -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git && \
-xpm run link-deps -C ~/Work/xpack-dev-tools/ninja-build-xpack.git && \
+xpm run install -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets && \
+git -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git/build-assets pull && \
+xpm link -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git/build-assets && \
+xpm run link-deps -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets && \
 \
-xpm run deep-clean --config win32-x64 -C ~/Work/xpack-dev-tools/ninja-build-xpack.git && \
-xpm run docker-prepare --config win32-x64 -C ~/Work/xpack-dev-tools/ninja-build-xpack.git && \
-xpm run docker-link-deps --config win32-x64 -C ~/Work/xpack-dev-tools/ninja-build-xpack.git && \
+xpm run deep-clean --config win32-x64 -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets && \
+xpm run docker-prepare --config win32-x64 -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets && \
+xpm run docker-link-deps --config win32-x64 -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets && \
 xpm run docker-build-development --config win32-x64 -C ~/Work/xpack-dev-tools/ninja-build-xpack.git
 ```
 
@@ -359,14 +359,14 @@ Update the build scripts (or clone them at the first use):
 ```sh
 rm -f ~/Work/xpack-dev-tools/ninja-build-xpack.git/package-lock.json && \
 git -C ~/Work/xpack-dev-tools/ninja-build-xpack.git pull && \
-xpm run install -C ~/Work/xpack-dev-tools/ninja-build-xpack.git && \
-git -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git pull && \
-xpm link -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git && \
-xpm run link-deps -C ~/Work/xpack-dev-tools/ninja-build-xpack.git && \
+xpm run install -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets && \
+git -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git/build-assets pull && \
+xpm link -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git/build-assets && \
+xpm run link-deps -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets && \
 \
-xpm run deep-clean --config linux-arm64 -C ~/Work/xpack-dev-tools/ninja-build-xpack.git && \
-xpm run docker-prepare --config linux-arm64 -C ~/Work/xpack-dev-tools/ninja-build-xpack.git && \
-xpm run docker-link-deps --config linux-arm64 -C ~/Work/xpack-dev-tools/ninja-build-xpack.git && \
+xpm run deep-clean --config linux-arm64 -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets && \
+xpm run docker-prepare --config linux-arm64 -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets && \
+xpm run docker-link-deps --config linux-arm64 -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets && \
 xpm run docker-build-development --config linux-arm64 -C ~/Work/xpack-dev-tools/ninja-build-xpack.git
 ```
 
@@ -374,7 +374,7 @@ Several minutes later, the output of the build script is a compressed
 archive and its SHA signature, created in the `deploy` folder:
 
 ```console
-$ ls -l ~/Work/xpack-dev-tools/ninja-build-xpack.git/build/linux-arm64/deploy
+$ ls -l ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets/build/linux-arm64/deploy
 total 336
 -rw-r--r-- 1 ilg ilg 336093 Jun 17 17:18 xpack-ninja-build-1.12.1-1-linux-arm64.tar.gz
 -rw-r--r-- 1 ilg ilg    112 Jun 17 17:18 xpack-ninja-build-1.12.1-1-linux-arm64.tar.gz.sha
@@ -394,14 +394,14 @@ Update the build scripts (or clone them at the first use):
 ```sh
 rm -f ~/Work/xpack-dev-tools/ninja-build-xpack.git/package-lock.json && \
 git -C ~/Work/xpack-dev-tools/ninja-build-xpack.git pull && \
-xpm run install -C ~/Work/xpack-dev-tools/ninja-build-xpack.git && \
-git -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git pull && \
-xpm link -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git && \
-xpm run link-deps -C ~/Work/xpack-dev-tools/ninja-build-xpack.git && \
+xpm run install -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets && \
+git -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git/build-assets pull && \
+xpm link -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git/build-assets && \
+xpm run link-deps -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets && \
 \
-xpm run deep-clean --config linux-arm -C ~/Work/xpack-dev-tools/ninja-build-xpack.git && \
-xpm run docker-prepare --config linux-arm -C ~/Work/xpack-dev-tools/ninja-build-xpack.git && \
-xpm run docker-link-deps --config linux-arm -C ~/Work/xpack-dev-tools/ninja-build-xpack.git && \
+xpm run deep-clean --config linux-arm -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets && \
+xpm run docker-prepare --config linux-arm -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets && \
+xpm run docker-link-deps --config linux-arm -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets && \
 xpm run docker-build-development --config linux-arm -C ~/Work/xpack-dev-tools/ninja-build-xpack.git
 ```
 
@@ -409,7 +409,7 @@ Several minutes later, the output of the build script is a compressed
 archive and its SHA signature, created in the `deploy` folder:
 
 ```console
-$ ls -l ~/Work/xpack-dev-tools/ninja-build-xpack.git/build/linux-arm/deploy
+$ ls -l ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets/build/linux-arm/deploy
 total 304
 -rw-r--r-- 1 ilg ilg 305618 Jun 17 17:17 xpack-ninja-build-1.12.1-1-linux-arm.tar.gz
 -rw-r--r-- 1 ilg ilg    110 Jun 17 17:17 xpack-ninja-build-1.12.1-1-linux-arm.tar.gz.sha
@@ -533,12 +533,12 @@ To trigger the GitHub Actions builds, use the xPack actions:
 These are equivalent to:
 
 ```sh
-bash ~/Work/xpack-dev-tools/ninja-build-xpack.git/xpacks/@xpack-dev-tools/xbb-helper/github-actions/trigger-workflow-build.sh --workflow build-darwin-x64.yml
-bash ~/Work/xpack-dev-tools/ninja-build-xpack.git/xpacks/@xpack-dev-tools/xbb-helper/github-actions/trigger-workflow-build.sh --workflow build-darwin-arm64.yml
-bash ~/Work/xpack-dev-tools/ninja-build-xpack.git/xpacks/@xpack-dev-tools/xbb-helper/github-actions/trigger-workflow-build.sh --workflow build-linux-x64.yml
-bash ~/Work/xpack-dev-tools/ninja-build-xpack.git/xpacks/@xpack-dev-tools/xbb-helper/github-actions/trigger-workflow-build.sh --workflow build-win32-x64.yml
-bash ~/Work/xpack-dev-tools/ninja-build-xpack.git/xpacks/@xpack-dev-tools/xbb-helper/github-actions/trigger-workflow-build.sh --workflow build-linux-arm64.yml
-bash ~/Work/xpack-dev-tools/ninja-build-xpack.git/xpacks/@xpack-dev-tools/xbb-helper/github-actions/trigger-workflow-build.sh --workflow build-linux-arm.yml
+bash ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets/xpacks/@xpack-dev-tools/xbb-helper/github-actions/trigger-workflow-build.sh --workflow build-darwin-x64.yml
+bash ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets/xpacks/@xpack-dev-tools/xbb-helper/github-actions/trigger-workflow-build.sh --workflow build-darwin-arm64.yml
+bash ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets/xpacks/@xpack-dev-tools/xbb-helper/github-actions/trigger-workflow-build.sh --workflow build-linux-x64.yml
+bash ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets/xpacks/@xpack-dev-tools/xbb-helper/github-actions/trigger-workflow-build.sh --workflow build-win32-x64.yml
+bash ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets/xpacks/@xpack-dev-tools/xbb-helper/github-actions/trigger-workflow-build.sh --workflow build-linux-arm64.yml
+bash ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets/xpacks/@xpack-dev-tools/xbb-helper/github-actions/trigger-workflow-build.sh --workflow build-linux-arm.yml
 ```
 
 These scripts require the `GITHUB_API_DISPATCH_TOKEN` variable to be present
@@ -574,9 +574,9 @@ To trigger the GitHub Actions tests, use the xPack actions:
 These are equivalent to:
 
 ```sh
-bash ~/Work/xpack-dev-tools/ninja-build-xpack.git/xpacks/@xpack-dev-tools/xbb-helper/github-actions/trigger-workflow-test-prime.sh
-bash ~/Work/xpack-dev-tools/ninja-build-xpack.git/xpacks/@xpack-dev-tools/xbb-helper/github-actions/trigger-workflow-test-docker-linux-intel.sh
-bash ~/Work/xpack-dev-tools/ninja-build-xpack.git/xpacks/@xpack-dev-tools/xbb-helper/github-actions/trigger-workflow-test-docker-linux-arm.sh
+bash ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets/xpacks/@xpack-dev-tools/xbb-helper/github-actions/trigger-workflow-test-prime.sh
+bash ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets/xpacks/@xpack-dev-tools/xbb-helper/github-actions/trigger-workflow-test-docker-linux-intel.sh
+bash ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets/xpacks/@xpack-dev-tools/xbb-helper/github-actions/trigger-workflow-test-docker-linux-arm.sh
 ```
 
 These scripts require the `GITHUB_API_DISPATCH_TOKEN` variable to be present
@@ -599,7 +599,7 @@ To trigger the Travis test, use the xPack action:
 This is equivalent to:
 
 ```sh
-bash ~/Work/xpack-dev-tools/ninja-build-xpack.git/xpacks/@xpack-dev-tools/xbb-helper/github-actions/trigger-travis-macos.sh
+bash ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets/xpacks/@xpack-dev-tools/xbb-helper/github-actions/trigger-travis-macos.sh
 ```
 
 This script requires the `TRAVIS_COM_TOKEN` variable to be present
@@ -615,8 +615,8 @@ and run the tests, use:
 
 ```sh
 git -C ~/Work/xpack-dev-tools/ninja-build-xpack.git pull
-xpm run install -C ~/Work/xpack-dev-tools/ninja-build-xpack.git
-xpm run test-pre-release -C ~/Work/xpack-dev-tools/ninja-build-xpack.git
+xpm run install -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets
+xpm run test-pre-release -C ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets
 ```
 
 For even more tests, on each platform (MacOS, GNU/Linux, Windows),
