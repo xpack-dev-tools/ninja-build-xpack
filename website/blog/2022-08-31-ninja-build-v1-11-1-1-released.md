@@ -1,0 +1,179 @@
+---
+title:  xPack Ninja Build v1.11.1-1 released
+
+date: 2022-08-31 17:05:18 +0300
+
+authors: ilg-ul
+
+# To be listed in the Releases page.
+tags:
+  - releases
+
+# ----- Custom properties -----------------------------------------------------
+
+ninja_version: 1.11.1
+ninja_date: 30 Aug 2022
+version: "1.11.1-1"
+npm_subversion: 1
+
+download_url: https://github.com/xpack-dev-tools/ninja-build-xpack/releases/tag/v1.11.1-1/
+
+---
+
+Version **1.11.1-1** is a new release; it follows the upstream release.
+
+<!-- truncate -->
+
+import Image from '@theme/IdealImage';
+
+[The xPack Ninja Build](https://xpack-dev-tools.github.io/ninja-build-xpack)
+is a standalone cross-platform binary distribution of
+[Ninja Build](https://ninja-build.org).
+
+There are separate binaries for **Windows** (Intel 64-bit),
+**macOS** (Intel 64-bit, Apple Silicon 64-bit)
+and **GNU/Linux** (Intel 64-bit, Arm 32/64-bit).
+
+:::note Raspberry Pi
+
+The main targets for the GNU/Linux Arm
+binaries are the **Raspberry Pi** class devices (armv7l and aarch64;
+armv6 is not supported).
+
+:::
+
+## Download
+
+The binary files are available from <a href={ frontMatter.download_url }>GitHub Releases</a>.
+
+## Prerequisites
+
+- GNU/Linux Intel 64-bit: any system with **GLIBC 2.27** or higher
+  (like Ubuntu 18 or later, Debian 10 or later, RedHat 8 later,
+  Fedora 29 or later, etc)
+- GNU/Linux Arm 32/64-bit: any system with **GLIBC 2.27** or higher
+  (like Raspberry Pi OS, Ubuntu 18 or later, Debian 10 or later, RedHat 8 later,
+  Fedora 29 or later, etc)
+- Intel Windows 64-bit: Windows 7 with the Universal C Runtime
+  ([UCRT](https://support.microsoft.com/en-us/topic/update-for-universal-c-runtime-in-windows-c0514201-7fe6-95a3-b0a5-287930f3560c)),
+  Windows 8, Windows 10
+- Intel macOS 64-bit: 10.13 or later
+- Apple Silicon macOS 64-bit: 11.6 or later
+
+## Install
+
+The full details of installing the **xPack Ninja Build** on various platforms
+are presented in the [Install Guide](/docs/install/).
+
+## Compliance
+
+The xPack Ninja Build generally follows the official
+[Ninja Build](https://ninja-build.org) releases.
+
+The current version is based on:
+
+- Ninja Build version { frontMatter.ninja_version }
+from { frontMatter.ninja_version }.
+
+## Changes
+
+Compared to the upstream version, the Windows version also supports
+spawning scripts via `cmd.exe /c`. These scripts are used by **npm**/**xpm**
+to redirect invocations to the central packages repository.
+
+## Bug fixes
+
+- none
+
+## Enhancements
+
+- none
+
+## Known problems
+
+- none
+
+## Documentation
+
+The original documentation is available
+[online](https://ninja-build.org/manual.html).
+
+## Build
+
+The binaries for all supported platforms
+(Windows, macOS and GNU/Linux) were built using the
+[xPack Build Box (XBB)](https://xpack.github.io/xbb/), a set
+of build environments based on slightly older distributions, that should be
+compatible with most recent systems.
+
+The scripts used to build this distribution are in:
+
+- `distro-info/scripts`
+
+For the prerequisites and more details on the build procedure, please see the
+[README-MAINTAINER](https://github.com/xpack-dev-tools/ninja-build-xpack/blob/xpack/README-MAINTAINER.md) page.
+
+## CI tests
+
+Before publishing, a set of simple tests were performed on an exhaustive
+set of platforms. The results are available from:
+
+- [GitHub Actions](https://github.com/xpack-dev-tools/ninja-build-xpack/actions/)
+- [Travis CI](https://app.travis-ci.com/github/xpack-dev-tools/ninja-build-xpack/builds/)
+
+## Tests
+
+TBD
+
+## Checksums
+
+The SHA-256 hashes for the files are:
+
+```txt
+347f01fe91f181bef77fed4b4465af8fca08817ae320bfec202a3980f48d48c3
+xpack-ninja-build-1.11.1-1-darwin-arm64.tar.gz
+
+d8192cc82eee37c58697a0e749c47be995bebe0d88f40f619db282fb39833d93
+xpack-ninja-build-1.11.1-1-darwin-x64.tar.gz
+
+d6c24a1f0f753064344ad252bbb58ee79a4f36fed9b29ad33ac1f8231eaa893f
+xpack-ninja-build-1.11.1-1-linux-arm.tar.gz
+
+0ec0e91d35202784131e9bce8d304ec99e611882f94d42a976d1054ed04be4a5
+xpack-ninja-build-1.11.1-1-linux-arm64.tar.gz
+
+ad0576c0741eb1226451b1958ae8ad438731ec51a356a39613c1d31d48a836b4
+xpack-ninja-build-1.11.1-1-linux-x64.tar.gz
+
+ff70b47e1e8a8b4fff22b48e0fd3e23ac15c76838b8f4b0db2805dc402f53c43
+xpack-ninja-build-1.11.1-1-win32-x64.zip
+
+```
+
+## Deprecation notices
+
+### 32-bit support
+
+Support for 32-bit Intel Linux and Intel Windows was
+dropped in 2022. Support for 32-bit Arm Linux (armv7l) will be preserved
+for a while, due to the large user base of 32-bit Raspberry Pi systems.
+
+### Linux minimum requirements
+
+Support for RedHat 7 was dropped in 2022 and the
+minimum requirement was raised to GLIBC 2.27, available starting
+with Ubuntu 18, Debian 10 and RedHat 8.
+
+## Download analytics
+
+- GitHub [xpack-dev-tools/ninja-build-xpack](https://github.com/xpack-dev-tools/ninja-build-xpack/)
+  - this release <a href={ `https://github.com/xpack-dev-tools/ninja-build-xpack/releases/v${ frontMatter.version }/` } ><Image img={ `https://img.shields.io/github/downloads/xpack-dev-tools/ninja-build-xpack/v${ frontMatter.version }/total.svg` } alt='Github Release' /></a>
+  - all xPack releases [![Github All Releases](https://img.shields.io/github/downloads/xpack-dev-tools/ninja-build-xpack/total.svg)](https://github.com/xpack-dev-tools/ninja-build-xpack/releases/)
+  - [individual file counters](https://somsubhra.github.io/github-release-stats/?username=xpack-dev-tools&repository=ninja-build-xpack) (grouped per release)
+- npmjs.com [@xpack-dev-tools/ninja-build](https://www.npmjs.com/package/@xpack-dev-tools/ninja-build)
+  - latest releases [![npm](https://img.shields.io/npm/dw/@xpack-dev-tools/ninja-build.svg)](https://www.npmjs.com/package/@xpack-dev-tools/ninja-build/)
+  - all @xpack-dev-tools releases [![npm](https://img.shields.io/npm/dt/@xpack-dev-tools/ninja-build.svg)](https://www.npmjs.com/package/@xpack-dev-tools/ninja-build/)
+
+Credit to [Shields IO](https://shields.io) for the badges and to
+[Somsubhra/github-release-stats](https://github.com/Somsubhra/github-release-stats)
+for the individual file counters.
