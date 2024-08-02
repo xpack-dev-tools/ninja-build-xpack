@@ -114,9 +114,9 @@ The build configurations are defined in the `package.json` file, in the
         },
         "actions": {
           "build": "{{ properties.commandBashBuild }} --windows",
-          "build-development": "{{ properties.commandBashBuild }} --windows --develop",
-          "build-development-debug": "{{ properties.commandBashBuild }} --windows --develop --debug",
-          "build-development-tests-only": "{{ properties.commandBashBuild }} --windows --develop --tests-only"
+          "build-development": "{{ properties.commandBashBuild }} --windows --development",
+          "build-development-debug": "{{ properties.commandBashBuild }} --windows --development --debug",
+          "build-development-tests-only": "{{ properties.commandBashBuild }} --windows --development --tests-only"
         }
       }
     }
@@ -201,12 +201,12 @@ The project is hosted on GitHub:
 Apart from the unused `master` branch, there are two active branches:
 
 - `xpack`, with the latest stable version (default)
-- `xpack-develop`, with the current development version
+- <code>xpack-development</code>, with the current development version
 
-All development is done in the `xpack-develop` branch, and contributions via
+All development is done in the <code>xpack-development</code> branch, and contributions via
 Pull Requests should be directed to this branch.
 
-When new releases are published, the `xpack-develop` branch is merged
+When new releases are published, the <code>xpack-development</code> branch is merged
 into `xpack`.
 
 </details>
@@ -221,13 +221,13 @@ git clone https://github.com/xpack-dev-tools/ninja-build-xpack.git \
 ```
 
 <details>
-<summary>For development purposes, clone the `xpack-develop` branch.</summary>
+<summary>For development purposes, clone the <code>xpack-development</code> branch.</summary>
 
 ```sh
 rm -rf ~/Work/xpack-dev-tools/ninja-build-xpack.git && \
 mkdir -p ~/Work/xpack-dev-tools && \
 git clone \
-  --branch xpack-develop \
+  --branch xpack-development \
   https://github.com/xpack-dev-tools/ninja-build-xpack.git \
   ~/Work/xpack-dev-tools/ninja-build-xpack.git
 ```
@@ -240,14 +240,14 @@ git clone \
 The project has a dependency to a common **helper**, that is
 normally installed as a read-only dependency; **for development
 purposes**, to be able to make changes to the scripts located in the helper,
-clone the `xpack-develop` branch and link it to the central
+clone the <code>xpack-development</code> branch and link it to the central
 xPacks store:
 
 ```sh
 rm -rf ~/Work/xpack-dev-tools/xbb-helper-xpack.git && \
 mkdir -p ~/Work/xpack-dev-tools && \
 git clone \
-  --branch xpack-develop \
+  --branch xpack-development \
   https://github.com/xpack-dev-tools/xbb-helper-xpack.git \
   ~/Work/xpack-dev-tools/xbb-helper-xpack.git && \
 xpm link -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git
