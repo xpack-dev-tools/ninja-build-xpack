@@ -127,7 +127,7 @@ function ninja_build()
             config_options+=("-G" "Ninja")
           fi
 
-          if is_develop
+          if is_development
           then
             config_options+=("-DCMAKE_VERBOSE_MAKEFILE=ON")
           fi
@@ -142,6 +142,9 @@ function ninja_build()
             fi
           fi
 
+          # The DOWNLOAD_EXTRACT_TIMESTAMP option was not given
+          config_options+=("-Wno-dev}")
+
           run_verbose "${CMAKE}" \
             "${config_options[@]}" \
             \
@@ -154,7 +157,7 @@ function ninja_build()
         echo
         echo "Running ninja build..."
 
-        if is_develop
+        if is_development
         then
           run_verbose "${CMAKE}" \
             --build . \

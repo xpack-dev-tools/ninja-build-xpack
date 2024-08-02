@@ -45,7 +45,7 @@ script_folder_name="$(basename "${script_folder_path}")"
 
 scripts_folder_path="${script_folder_path}"
 root_folder_path="$(dirname ${script_folder_path})"
-if [ "$(basename "${root_folder}")" == "build-assets" ]
+if [ "$(basename "${root_folder_path}")" == "build-assets" ]
 then
   project_folder_path="$(dirname "${root_folder_path}")"
 else
@@ -83,7 +83,7 @@ fi
 
 # -----------------------------------------------------------------------------
 
-help_message="    bash $0 [--win] [--debug] [--develop] [--jobs N] [--help]"
+help_message="    bash $0 [--win] [--debug] [--development] [--jobs N] [--help]"
 build_common_parse_options "${help_message}" "$@"
 
 build_common_run

@@ -27,13 +27,13 @@ git clone https://github.com/xpack-dev-tools/ninja-build-xpack.git \
   ~/Work/xpack-dev-tools/ninja-build-xpack.git
 ```
 
-For development purposes, clone the `xpack-develop` branch:
+For development purposes, clone the `xpack-development` branch:
 
 ```sh
 rm -rf ~/Work/xpack-dev-tools/ninja-build-xpack.git && \
 mkdir -p ~/Work/xpack-dev-tools && \
 git clone \
-  --branch xpack-develop \
+  --branch xpack-development \
   https://github.com/xpack-dev-tools/ninja-build-xpack.git \
   ~/Work/xpack-dev-tools/ninja-build-xpack.git
 ```
@@ -47,13 +47,13 @@ git -C ~/Work/xpack-dev-tools/ninja-build-xpack.git pull
 ## Get helper sources
 
 The project has a dependency to a common **helper**; clone the
-`xpack-develop` branch and link it to the central xPacks store:
+`xpack-development` branch and link it to the central xPacks store:
 
 ```sh
 rm -rf ~/Work/xpack-dev-tools/xbb-helper-xpack.git && \
 mkdir -p ~/Work/xpack-dev-tools && \
 git clone \
-  --branch xpack-develop \
+  --branch xpack-development \
   https://github.com/xpack-dev-tools/xbb-helper-xpack.git \
   ~/Work/xpack-dev-tools/xbb-helper-xpack.git && \
 xpm link -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git
@@ -83,14 +83,14 @@ The build scripts are available in the `scripts` folder of the
 [`xpack-dev-tools/ninja-build-xpack`](https://github.com/xpack-dev-tools/ninja-build-xpack)
 Git repo.
 
-To download them on a new machine, clone the `xpack-develop` branch,
+To download them on a new machine, clone the `xpack-development` branch,
 as seen above.
 
 ### Check Git
 
 In the `xpack-dev-tools/ninja-build-xpack` Git repo:
 
-- switch to the `xpack-develop` branch
+- switch to the `xpack-development` branch
 - pull new changes
 - if needed, merge the `xpack` branch
 
@@ -151,12 +151,12 @@ repository, in the `xpack-dev-tools/ninja` Git fork repo:
 - fetch `upstream`
 - checkout `release`
 - merge from `upstream/release`
-- checkout `xpack-develop`
+- checkout `xpack-development`
 - merge `release`
 - checkout `xpack`
-- merge `xpack-develop`
+- merge `xpack-development`
 - tag it with `v1.12.1-2-xpack`; important, this tag will be used by the build
-- push `release`, `xpack-develop`, `xpack` to `origin`
+- push `release`, `xpack-development`, `xpack` to `origin`
 
 ### Update the version specific code
 
@@ -210,7 +210,7 @@ xpm run build-development-debug --config darwin-x64 -C ~/Work/xpack-dev-tools/ni
 
 The build takes several minutes to complete.
 
-When functional, push the `xpack-develop` branch to GitHub.
+When functional, push the `xpack-development` branch to GitHub.
 
 Run the native build on the production machine
 (`xbbmi`, an older macOS);
@@ -499,7 +499,7 @@ Check if the runners are active:
 
 ### Push the build scripts
 
-- push the `xpack-develop` branch to GitHub
+- push the `xpack-development` branch to GitHub
 - possibly push the helper project too
 
 From here it'll be cloned on the production machines.
@@ -547,7 +547,7 @@ Settings → Action →
 [Secrets](https://github.com/xpack-dev-tools/ninja-build-xpack/settings/secrets/actions)
 page.
 
-These commands use the `xpack-develop` branch of this repo.
+These commands use the `xpack-development` branch of this repo.
 
 ## Durations & results
 
@@ -582,7 +582,7 @@ bash ~/Work/xpack-dev-tools/ninja-build-xpack.git/build-assets/xpacks/@xpack-dev
 These scripts require the `GITHUB_API_DISPATCH_TOKEN` variable to be present
 in the environment.
 
-These actions use the `xpack-develop` branch of this repo and the
+These actions use the `xpack-development` branch of this repo and the
 [pre-releases/test](https://github.com/xpack-dev-tools/pre-releases/releases/tag/test/)
 binaries.
 
@@ -649,7 +649,7 @@ On Windows use:
 - in `CHANGELOG.md`, add the release date and a message like _* v1.12.1-2 released_
 - commit with _CHANGELOG update_
 - check and possibly update the `templates/body-github-release-liquid.md`
-- push the `xpack-develop` branch
+- push the `xpack-development` branch
 - run the xPack action `trigger-workflow-publish-release`
 
 The workflow result and logs are available from the
@@ -661,7 +661,7 @@ tagged like **v1.12.1-2** (mind the dash in the middle!) and
 named like **xPack Ninja Build v1.12.1-2** (mind the dash),
 with all binaries attached.
 
-- edit the draft and attach it to the `xpack-develop` branch (important!)
+- edit the draft and attach it to the `xpack-development` branch (important!)
 - save the draft (do **not** publish yet!)
 
 ## Prepare a new blog post
@@ -716,7 +716,7 @@ watching this project.
 
 ## Update package.json binaries
 
-- select the `xpack-develop` branch
+- select the `xpack-development` branch
 - run the xPack action `update-package-binaries`
 - open the `package.json` file
 - check the `baseUrl:` it should match the file URLs (including the tag/version);
@@ -729,7 +729,7 @@ watching this project.
 
 ## Publish on the npmjs.com server
 
-- select the `xpack-develop` branch
+- select the `xpack-development` branch
 - check the latest commits `npm run git-log`
 - update `CHANGELOG.md`, add a line like _* v1.12.1-2.1 published on npmjs.com_
 - commit with a message like _CHANGELOG: publish npm v1.12.1-2.1_
@@ -757,7 +757,7 @@ The tests results are available from the
 
 ## Update the repo
 
-- merge `xpack-develop` into `xpack`
+- merge `xpack-development` into `xpack`
 - push to GitHub
 
 ## Tag the npm package as `latest`

@@ -60,7 +60,7 @@ on:
       helper-git-ref:
         description: 'The helper branch, tag or SHA to checkout'
         required: false
-        default: 'xpack-develop'
+        default: 'xpack-development'
 
 jobs:
 
