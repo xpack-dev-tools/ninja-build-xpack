@@ -143,7 +143,7 @@ function ninja_build()
           fi
 
           # The DOWNLOAD_EXTRACT_TIMESTAMP option was not given
-          config_options+=("-Wno-dev}")
+          config_options+=("-Wno-dev")
 
           run_verbose "${CMAKE}" \
             "${config_options[@]}" \
