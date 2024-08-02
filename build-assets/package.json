@@ -9,7 +9,7 @@
   "xpack": {
     "minimumXpmRequired": "0.16.3",
     "devDependencies": {
-      "@xpack-dev-tools/xbb-helper": "^2.1.38"
+      "@xpack-dev-tools/xbb-helper": "^3.0.0"
     },
     "properties": {
       "appName": "Ninja Build",
@@ -228,6 +228,6 @@
     "https://www.npmjs.com/package/liquidjs"
   ],
   "devDependencies": {
-    "liquidjs": "^10.9.2"
+    "liquidjs": "^10.16.1"
   }
 }
