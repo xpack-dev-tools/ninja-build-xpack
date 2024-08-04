@@ -1,7 +1,6 @@
 {
   "name": "build-assets",
   "version": "0.0.0",
-  "description": "A binary xPack with the Ninja Build executables",
   "private": true,
   "scripts": {
   },
@@ -15,7 +14,6 @@
       "appName": "Ninja Build",
       "appLcName": "ninja-build",
       "platforms": "all",
-      "LIQUIDJS": "liquidjs --context '{ \"XBB_APPLICATION_NAME\": \"{{ properties.appName }}\", \"XBB_APPLICATION_LOWER_CASE_NAME\": \"{{ properties.appLcName }}\", \"platforms\": \"{{ properties.platforms }}\" }'",
       "buildFolderRelativePath": "{{ 'build' | path_join: configuration.name | to_filename | downcase }}",
       "buildFolderRelativePathPosix": "{{ 'build' | path_posix_join: configuration.name | downcase }}",
       "commandBashBuild": "bash {{ properties.dbg }} scripts/build.sh --target {{ configuration.name }} --build-folder {{ properties.buildFolderRelativePathPosix }}",
@@ -27,7 +25,6 @@
       "npm-pack": "cd .. && npm pack",
       "npm-version-patch": "cd .. && npm version patch",
       "npm-version-minor": "cd .. && npm version minor",
-      "git-log": "git -C .. log --pretty='%cd * %h %s' --date=short",
       "deep-clean": [
         "rm -rf build xpacks node_modules package-lock.json",
         "rm -rf ${HOME}/Work/xpack-dev-tools-build/{{ properties.appLcName }}-[0-9]*-*"
@@ -42,6 +39,7 @@
       "git-pull-helper": [
         "git -C ${HOME}/Work/xpack-dev-tools/xbb-helper-xpack.git pull"
       ],
+      "git-log": "git -C .. log --pretty='%cd * %h %s' --date=short",
       "generate-workflows": "bash xpacks/@xpack-dev-tools/xbb-helper/maintainer-scripts/generate-workflows.sh",
       "website-generate-commons": "bash xpacks/@xpack-dev-tools/xbb-helper/maintainer-scripts/website-generate-commons.sh",
       "website-import-releases": "bash xpacks/@xpack-dev-tools/xbb-helper/maintainer-scripts/website-import-releases.sh",
