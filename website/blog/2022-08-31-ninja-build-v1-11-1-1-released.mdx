@@ -1,7 +1,7 @@
 ---
-title:  xPack Ninja Build v1.11.1-3 released
+title:  xPack Ninja Build v1.11.1-1 released
 
-date: 2023-09-05 23:47:56 +0300
+date: 2022-08-31 17:05:18 +0300
 
 authors: ilg-ul
 
@@ -11,23 +11,22 @@ tags:
 
 # ----- Custom properties -----------------------------------------------------
 
-ninja_version: "1.11.1"
-ninja_date: "30 Aug 2022"
+ninja_version: 1.11.1
+ninja_date: 30 Aug 2022
+version: "1.11.1-1"
+npm_subversion: 1
 
-version: "1.11.1-3"
-npm_subversion: "1"
-
-download_url: https://github.com/xpack-dev-tools/ninja-build-xpack/releases/tag/v1.11.1-3/
+download_url: https://github.com/xpack-dev-tools/ninja-build-xpack/releases/tag/v1.11.1-1/
 
 ---
 
-Version **1.11.1-3** is a maintenance release, built with the lates tools.
+Version **1.11.1-1** is a new release; it follows the upstream release.
 
 <!-- truncate -->
 
 import Image from '@theme/IdealImage';
 
-[The xPack Ninja Build](https://xpack.github.io/ninja-build/)
+[The xPack Ninja Build](https://xpack-dev-tools.github.io/ninja-build-xpack)
 is a standalone cross-platform binary distribution of
 [Ninja Build](https://ninja-build.org).
 
@@ -50,10 +49,10 @@ The binary files are available from <a href={ frontMatter.download_url }>GitHub 
 ## Prerequisites
 
 - GNU/Linux Intel 64-bit: any system with **GLIBC 2.27** or higher
-  (like Ubuntu 18 or later, Debian 10 or later, RedHat 8 later,
+  (like Ubuntu 18 or later, Debian 10 or later, RedHat 8 or later,
   Fedora 29 or later, etc)
 - GNU/Linux Arm 32/64-bit: any system with **GLIBC 2.27** or higher
-  (like Raspberry Pi OS, Ubuntu 18 or later, Debian 10 or later, RedHat 8 later,
+  (like Raspberry Pi OS, Ubuntu 18 or later, Debian 10 or later, RedHat 8 or later,
   Fedora 29 or later, etc)
 - Intel Windows 64-bit: Windows 7 with the Universal C Runtime
   ([UCRT](https://support.microsoft.com/en-us/topic/update-for-universal-c-runtime-in-windows-c0514201-7fe6-95a3-b0a5-287930f3560c)),
@@ -74,7 +73,7 @@ The xPack Ninja Build generally follows the official
 The current version is based on:
 
 - Ninja Build version { frontMatter.ninja_version }
-from { frontMatter.ninja_date }.
+from { frontMatter.ninja_version }.
 
 ## Changes
 
@@ -107,8 +106,12 @@ The binaries for all supported platforms
 of build environments based on slightly older distributions, that should be
 compatible with most recent systems.
 
+The scripts used to build this distribution are in:
+
+- `distro-info/scripts`
+
 For the prerequisites and more details on the build procedure, please see the
-[Maintainer Info](/docs/maintainer-info/) page.
+[README-MAINTAINER](https://github.com/xpack-dev-tools/ninja-build-xpack/blob/xpack/README-MAINTAINER.md) page.
 
 ## CI tests
 
@@ -127,23 +130,23 @@ TBD
 The SHA-256 hashes for the files are:
 
 ```txt
-4413f1743393c537e0fdad52aa85e2edd4d04bae1e26c05b42501017520d3bbe
-xpack-ninja-build-1.11.1-3-darwin-arm64.tar.gz
+347f01fe91f181bef77fed4b4465af8fca08817ae320bfec202a3980f48d48c3
+xpack-ninja-build-1.11.1-1-darwin-arm64.tar.gz
 
-fe9b6ffbcfc5898dc155025d3401cad6f0bf61bae11b32b8c825d3f6ead339fc
-xpack-ninja-build-1.11.1-3-darwin-x64.tar.gz
+d8192cc82eee37c58697a0e749c47be995bebe0d88f40f619db282fb39833d93
+xpack-ninja-build-1.11.1-1-darwin-x64.tar.gz
 
-336bcd6d98c77713c7623f8f1b353b5f573e6b6d8156ee183e3083a944258a39
-xpack-ninja-build-1.11.1-3-linux-arm.tar.gz
+d6c24a1f0f753064344ad252bbb58ee79a4f36fed9b29ad33ac1f8231eaa893f
+xpack-ninja-build-1.11.1-1-linux-arm.tar.gz
 
-a1db9d23ae0c4bd330162aecf43f9bc15d31d741001c92d51e289c37bad25a02
-xpack-ninja-build-1.11.1-3-linux-arm64.tar.gz
+0ec0e91d35202784131e9bce8d304ec99e611882f94d42a976d1054ed04be4a5
+xpack-ninja-build-1.11.1-1-linux-arm64.tar.gz
 
-e14b37987b1681d86661db41830623b3c8e67714610006db9199e50c22f2a4ad
-xpack-ninja-build-1.11.1-3-linux-x64.tar.gz
+ad0576c0741eb1226451b1958ae8ad438731ec51a356a39613c1d31d48a836b4
+xpack-ninja-build-1.11.1-1-linux-x64.tar.gz
 
-35cb9bdcf0022584366ad6c15badf1441671c8e3343512b9f32b101cb36b4bc6
-xpack-ninja-build-1.11.1-3-win32-x64.zip
+ff70b47e1e8a8b4fff22b48e0fd3e23ac15c76838b8f4b0db2805dc402f53c43
+xpack-ninja-build-1.11.1-1-win32-x64.zip
 
 ```
 
@@ -160,20 +163,6 @@ for a while, due to the large user base of 32-bit Raspberry Pi systems.
 Support for RedHat 7 was dropped in 2022 and the
 minimum requirement was raised to GLIBC 2.27, available starting
 with Ubuntu 18, Debian 10 and RedHat 8.
-
-## Pre-deprecation notice for Ubuntu 18.04
-
-Ubuntu 18.04 LTS _Bionic Beaver_ reached the end of the standard five-year
-maintenance window for Long-Term Support (LTS) release on 31 May 2023.
-
-As a courtesy, the xPack GNU/Linux releases will continue to be based on
-Ubuntu 18.04 for another year.
-
-From 2025 onwards, the GNU/Linux binaries will be built on **Debian 10**,
-(**GLIBC 2.28**), and are also expected to run on RedHat 8.
-
-Users are urged to update their build and test infrastructure to
-ensure a smooth transition to the next xPack releases.
 
 ## Download analytics
 
