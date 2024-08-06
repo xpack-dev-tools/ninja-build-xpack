@@ -4,11 +4,10 @@
   "private": true,
   "scripts": {
   },
-  "license": "MIT",
   "xpack": {
     "minimumXpmRequired": "0.16.3",
     "devDependencies": {
-      "@xpack-dev-tools/xbb-helper": "^3.0.2"
+      "@xpack-dev-tools/xbb-helper": "^3.0.3"
     },
     "properties": {
       "appName": "Ninja Build",
