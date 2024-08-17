@@ -1,23 +1,23 @@
 ---
-title:  xPack Ninja Build v{{ XBB_RELEASE_VERSION }} released
+title:  xPack Ninja Build v{{releaseVersion}} released
 
 TODO: select one summary
 
-summary: "Version **{{ XBB_RELEASE_VERSION }}** is a maintenance release; it fixes <...>."
+summary: "Version **{{releaseVersion}}** is a maintenance release; it fixes ..."
 
-summary: "Version **{{ XBB_RELEASE_VERSION }}** is a new release; it follows the upstream release."
+summary: "Version **{{releaseVersion}}** is a new release; it follows the upstream release."
 
 ninja_version: "1.11.1"
 ninja_date: "30 Aug 2022"
 
-version: "{{ XBB_RELEASE_VERSION }}"
+version: "{{releaseVersion}}"
 npm_subversion: "1"
 
-download_url: https://github.com/xpack-dev-tools/ninja-build-xpack/releases/tag/v{{ XBB_RELEASE_VERSION }}/
+download_url: https://github.com/xpack-dev-tools/ninja-build-xpack/releases/tag/v{{releaseVersion}}/
 
 comments: true
 
-date: {{ RELEASE_DATE }}
+date: {{releaseDate}}
 
 # For Jekyll releases selection.
 categories:
@@ -49,7 +49,7 @@ armv6 is not supported)." %}{% endraw %}
 
 ## Download
 
-The binary files are available from GitHub [Releases]({% raw %}{{ page.download_url }}{% endraw %}).
+The binary files are available from GitHub [Releases]({% raw %}{{page.download_url}}{% endraw %}).
 
 ## Prerequisites
 
@@ -69,12 +69,12 @@ The binary files are available from GitHub [Releases]({% raw %}{{ page.download_
 
 The full details of installing the **xPack Ninja Build** on various platforms
 are presented in the separate
-[Install]({% raw %}{{ site.baseurl }}{% endraw %}/dev-tools/ninja-build/install/) page.
+[Install]({% raw %}{{site.baseurl}}{% endraw %}/dev-tools/ninja-build/install/) page.
 
 ### Easy install
 
 The easiest way to install Ninja Build is with
-[`xpm`]({% raw %}{{ site.baseurl }}{% endraw %}/xpm/)
+[`xpm`]({% raw %}{{site.baseurl}}{% endraw %}/xpm/)
 by using the **binary xPack**, available as
 [`@xpack-dev-tools/ninja-build`](https://www.npmjs.com/package/@xpack-dev-tools/ninja-build)
 from the [`npmjs.com`](https://www.npmjs.com) registry.
@@ -95,7 +95,7 @@ ls -l xpacks/.bin
 To install this specific version, use:
 
 ```sh
-xpm install @xpack-dev-tools/ninja-build@{% raw %}{{ page.version }}.{{ page.npm_subversion }}{% endraw %} --verbose
+xpm install @xpack-dev-tools/ninja-build@{% raw %}{{page.version}}.{{page.npm_subversion}}{% endraw %} --verbose
 ```
 
 It is also possible to install Meson Build globally, in the user home folder,
@@ -129,8 +129,8 @@ The xPack Ninja Build generally follows the official
 
 The current version is based on:
 
-- Ninja Build version {% raw %}{{ page.ninja_version }}{% endraw %}
-from {% raw %}{{ page.ninja_date }}{% endraw %}.
+- Ninja Build version {% raw %}{{page.ninja_version}}{% endraw %}
+from {% raw %}{{page.ninja_date}}{% endraw %}.
 
 ## Changes
 
