@@ -34,12 +34,16 @@ function ninja_build()
 
   local ninja_version="$(xbb_strip_version_pre_release "${ninja_xpack_version}")"
 
-  local ninja_src_folder_name="ninja-${ninja_xpack_version}-xpack"
-  local ninja_folder_name="ninja-${ninja_version}"
-
   # GitHub release archive.
-  local ninja_github_archive="ninja-${ninja_xpack_version}-xpack.tar.gz"
-  local ninja_github_url="https://github.com/xpack-dev-tools/ninja/archive/refs/tags/v${ninja_xpack_version}-xpack.tar.gz"
+  # local ninja_github_archive="ninja-${ninja_xpack_version}.tar.gz"
+  # local ninja_src_folder_name="ninja-${ninja_xpack_version}-xpack"
+  # local ninja_github_url="https://github.com/xpack-dev-tools/ninja/archive/refs/tags/v${ninja_xpack_version}-xpack.tar.gz"
+
+  local ninja_github_archive="ninja-${ninja_version}.tar.gz"
+  local ninja_src_folder_name="ninja-${ninja_version}"
+  local ninja_github_url="https://github.com/ninja-build/ninja/archive/refs/tags/v${ninja_version}.tar.gz"
+
+  local ninja_folder_name="ninja-${ninja_version}"
 
   mkdir -pv "${XBB_LOGS_FOLDER_PATH}/${ninja_folder_name}"
 
