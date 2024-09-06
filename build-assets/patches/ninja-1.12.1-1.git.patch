@@ -1,0 +1,95 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 90e3418..b514003 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -116,7 +116,11 @@ endfunction()
+ 
+ set(NINJA_PYTHON "python" CACHE STRING "Python interpreter to use for the browse tool")
+ 
+-check_platform_supports_browse_mode(platform_supports_ninja_browse)
++if(WIN32)
++  set(platform_supports_ninja_browse FALSE)
++else()
++  check_platform_supports_browse_mode(platform_supports_ninja_browse)
++endif()
+ 
+ # Core source files all build into ninja library.
+ add_library(libninja OBJECT
+diff --git a/src/subprocess-win32.cc b/src/subprocess-win32.cc
+index ff3baac..3430952 100644
+--- a/src/subprocess-win32.cc
++++ b/src/subprocess-win32.cc
+@@ -109,10 +109,69 @@ bool Subprocess::Start(SubprocessSet* set, const string& command) {
+ 
+   // Do not prepend 'cmd /c' on Windows, this breaks command
+   // lines greater than 8,191 chars.
+-  if (!CreateProcessA(NULL, (char*)command.c_str(), NULL, NULL,
+-                      /* inherit handles */ TRUE, process_flags,
+-                      NULL, NULL,
+-                      &startup_info, &process_info)) {
++
++#if defined(USE_WIN32_CMD_EXE_TO_CREATE_PROCESS)
++  // Unfortunately without cmd.exe it is not possible to start
++  // npm/xpm applications which use a .cmd shim to forward the
++  // call to the .exe file.
++  // To make things worse, some invocations do not even have the .cmd
++  // extension. Thus, the safe rule is to identify only .exe to be passed
++  // directly, the rest being passed via a cmd.exe.
++
++  // String to collect the application name, to test the extension.
++  std::string executable;
++
++  std::size_t i;
++  for (i = 0; i < command.length() && command[i] == ' '; ++i) {
++    ;  // Skip initial spaces, if any.
++  }
++  for (; i < command.length() && command[i] != ' '; ++i) {
++    if (command[i] == '"') {
++      ++i;  // Skip first quotes
++      for (; i < command.length() && command[i] != '"'; ++i) {
++        executable.push_back(std::tolower(command[i]));
++      }
++      continue;
++    }
++    executable.push_back(std::tolower(command[i]));
++  }
++
++  BOOL ret;
++
++  // fprintf(stderr, "<<<<%s>>>>\n", executable.c_str());
++  std::string extension = ".exe";
++  if (executable.length() > extension.length() &&
++      executable.substr(executable.length() - extension.length()) ==
++          extension) {
++    // If explicit .exe, create process directly.
++    ret = CreateProcessA(NULL, (char*)command.c_str(), NULL, NULL,
++                         /* inherit handles */ TRUE, process_flags, NULL, NULL,
++                         &startup_info, &process_info);
++  } else {
++    // For anything else (like .cmd or no extension at all),
++    // invoke it via a cmd.exe.
++    std::string cmd_command;
++    cmd_command.append("cmd.exe /c ");
++    cmd_command.push_back('"');
++    // Windows seems capable of parsing inner quotes, so there is
++    // no need to explicitly escape them.
++    cmd_command.append(command);
++    cmd_command.push_back('"');
++
++    // fprintf(stderr, "<<<%s>>>\n", cmd_command.c_str());
++
++    // https://docs.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-createprocessa
++    ret = CreateProcessA(NULL, (char*)cmd_command.c_str(), NULL, NULL,
++                         /* inherit handles */ TRUE, process_flags, NULL, NULL,
++                         &startup_info, &process_info);
++  }
++#else
++  BOOL ret = CreateProcessA(NULL, command.c_str(), NULL, NULL,
++                            /* inherit handles */ TRUE, process_flags, NULL,
++                            NULL, &startup_info, &process_info);
++#endif  // USE_WIN32_CMD_EXE_TO_CREATE_PROCESS
++
++  if (!ret) {
+     DWORD error = GetLastError();
+     if (error == ERROR_FILE_NOT_FOUND) {
+       // File (program) not found error is treated as a normal build
