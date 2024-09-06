@@ -45,6 +45,7 @@ function ninja_build()
 
   local ninja_folder_name="ninja-${ninja_version}"
 
+  local ninja_patch_file_name="ninja-${ninja_xpack_version}.git.patch"
   mkdir -pv "${XBB_LOGS_FOLDER_PATH}/${ninja_folder_name}"
 
   local ninja_stamp_file_path="${XBB_STAMPS_FOLDER_PATH}/stamp-${ninja_folder_name}-installed"
@@ -66,7 +67,7 @@ function ninja_build()
             --commit="${NINJA_GIT_COMMIT}"
         else
           download_and_extract "${ninja_github_url}" "${ninja_github_archive}" \
-            "${ninja_src_folder_name}"
+            "${ninja_src_folder_name}" "${ninja_patch_file_name}"
         fi
         # exit 1
       )
