@@ -4,6 +4,9 @@ Entries in this file are in reverse chronological order.
 
 ## 2024-09-09
 
+* v1.12.1-1 released
+* 94326f6 ninja.sh: rework test .cmd & script
+* a963ce5 CHANGELOG update
 * 9eed95b README update
 * e2ab19c remove 1.12.1-1 patch
 
