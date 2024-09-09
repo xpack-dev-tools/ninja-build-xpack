@@ -2,9 +2,77 @@
 
 Entries in this file are in reverse chronological order.
 
+## 2024-09-09
+
+* 9eed95b README update
+* e2ab19c remove 1.12.1-1 patch
+
+## 2024-09-06
+
+* 43c981e website update
+* b412de1 ninja.sh: use patch
+* 1887b4e add patches/README
+* 2e8f39d add ninja-1.12.1-1.git.patch
+* d506b60 VERSION 1.12.1-1
+* c981efa build-assets/package.json: bump deps
+* 6829cfa website update
+* 0a6046c ninja.sh: switch to upstream git
+* ed46f05 package.json: 1.12.1-1.1.pre
+* e3098ec generate website
+* bdf042f re-generate workflows
+
+## 2024-08-17
+
+* 6359811 website remove preliminary
+* b8f0357 build-assets/package.json: updates
+* fdead27 templates/body-blog update
+* e727b0b templates/body-github: update
+* 042c716 re-generate workflows
+
+## 2024-08-16
+
+* f71f40a templates/body-github: update
+
+## 2024-08-14
+
+* e868594 build-assets/package.json: updates
+
+## 2024-08-09
+
+* fd4567d READMEs update
+* d8fc42a package.json: git+https
+* aa69488 build-assets/package.json: updates
+* b74d46d templates/body-blog update
+
+## 2024-08-07
+
+* 15c1d41 build-assets/package.json: updates
+* 1ac7e6e build-assets/package.json: updates
+* f4a6c7c website: preliminary content
+* b2ff362 build-assets updates
+
+## 2024-08-04
+
+* 092212b package.json: bump deps
+* a3faf8b website: re-generate
+* 87724ef move to build-assets/templates
+* addab36 body-jekyll update
+* 5428435 build-assets/package.json: build-development & docker 5.2.2
+
+## 2024-08-02
+
+* 97d080c package.json: bump deps
+* 8799726 ninja.sh: -Wno-dev
+* 6c27627 website: regenerate commons
+* 02724d9 re-generate workflows & update assets for 'development'
+
 ## 2024-08-01
 
-* v1.12.1-2 prepared
+* a3086cb re-generate scripts
+* ee705e9 package.json: docker 5.2.2
+* d707e13 README update
+* ded7e31 README update
+* fb8cb44 prepare v1.12.1-2
 * f2e359e website: preliminary content
 * ff58b88 updates for build-assets
 * 2fc5b2c move to build-assets
