@@ -232,13 +232,38 @@ function ninja_test()
     rm -rf "${XBB_TESTS_FOLDER_PATH}/ninja"
     mkdir -pv "${XBB_TESTS_FOLDER_PATH}/ninja"; cd "${XBB_TESTS_FOLDER_PATH}/ninja"
 
-    # Note: __EOF__ is quoted to prevent substitutions here.
-    cat <<'__EOF__' > build.ninja
+    if [ "${XBB_HOST_PLATFORM}" == "win32" ]
+    then
+
+cat <<'__EOF__' > gcc.cmd
+@ECHO Pretend compiling %*
+__EOF__
+
+# Note: __EOF__ is quoted to prevent substitutions here.
+cat <<'__EOF__' > build.ninja
 cflags = -Wall
 rule cc
-  command = echo gcc $cflags -c $in -o $out
+  command = gcc.cmd $cflags -c $in -o $out
 build foo.o: cc foo.c
 __EOF__
+
+  else
+
+cat <<'__EOF__' > gcc
+echo Pretend compiling $@
+__EOF__
+
+chmod +x gcc
+
+# Note: __EOF__ is quoted to prevent substitutions here.
+cat <<'__EOF__' > build.ninja
+cflags = -Wall
+rule cc
+  command = ./gcc $cflags -c $in -o $out
+build foo.o: cc foo.c
+__EOF__
+
+    fi
 
     touch foo.c
 
