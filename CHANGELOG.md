@@ -4,7 +4,11 @@ Entries in this file are in reverse chronological order.
 
 ## 2024-09-09
 
-* v1.12.1-1 released
+* v1.12.1-1 published on npmjs.com
+* c58d3c4 package.json: update urls for 1.12.1-1.1 release
+* 4fa35e6 blog post release 1.12.1-1 published
+* c3f8cae build-assets/templates updates
+* c4806d8 CHANGELOG update
 * 94326f6 ninja.sh: rework test .cmd & script
 * a963ce5 CHANGELOG update
 * 9eed95b README update
