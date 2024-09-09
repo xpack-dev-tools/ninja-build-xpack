@@ -1,6 +1,6 @@
 {
   "name": "@xpack-dev-tools/ninja-build",
-  "version": "1.12.1-1.1.pre",
+  "version": "1.12.1-1.1",
   "description": "A binary xPack with the Ninja Build executables",
   "main": "",
   "scripts": {
