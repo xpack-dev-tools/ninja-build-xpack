@@ -1,0 +1,151 @@
+---
+title:  xPack Ninja Build v1.12.1-1 released
+
+date: 2024-09-09 11:24:38 +0300
+
+authors: ilg-ul
+
+# To be listed in the Releases page.
+tags:
+  - releases
+
+# ----- Custom properties -----------------------------------------------------
+
+ninja_version: "1.12.1"
+ninja_date: "May 11, 2024"
+
+version: "1.12.1-1"
+npm_subversion: "1"
+
+download_url: https://github.com/xpack-dev-tools/ninja-build-xpack/releases/tag/v1.12.1-1/
+
+---
+
+Version **1.12.1-1** is a new release; it follows the upstream release.
+
+<!-- truncate -->
+
+import Image from '@theme/IdealImage';
+import CodeBlock from '@theme/CodeBlock';
+
+import Prerequisites from './_common/_prerequisites-glib-2.27.mdx'
+import DeprecationNotices from './_common/_deprecation-notices-glib-2.27.mdx'
+import DownloadAnalytics from './_common/_download-analytics.mdx'
+
+The [xPack Ninja Build](https://xpack-dev-tools.github.io/ninja-build-xpack/)
+is a standalone cross-platform binary distribution of
+[Ninja Build](https://ninja-build.org).
+
+There are separate binaries for **Windows** (x64),
+**macOS** (x64 and arm64)
+and **GNU/Linux** (x64, arm64 and arm).
+
+:::note Raspberry Pi
+
+The main targets for the GNU/Linux Arm
+binaries are the **Raspberry Pi** class devices (armv7l and aarch64;
+armv6 is not supported).
+
+:::
+
+## Download
+
+The binary files can be downloaded automatically with **xpm** or manually
+from <a href={frontMatter.download_url}>GitHub Releases</a>.
+
+<Prerequisites/>
+
+## Install
+
+The full details of installing the **xPack GNU RISC-V Embedded GCC**
+on various platforms are presented in the [Install Guide](/docs/install/).
+
+## Compliance
+
+The xPack Ninja Build generally follows the official
+[Ninja Build](https://ninja-build.org) releases.
+
+The current version is based on:
+
+- Ninja Build version {frontMatter.ninja_version}
+from {frontMatter.ninja_date}.
+
+## Changes
+
+Compared to the upstream, there are no functional changes.
+
+:::note
+
+The patch used in previous releases to enforce
+spawning scripts via `cmd.exe /c` was removed.
+
+:::
+
+## Bug fixes
+
+- none
+
+## Enhancements
+
+- none
+
+## Known problems
+
+- none
+
+# Documentation
+
+The original documentation is available
+[online](https://ninja-build.org/manual.html).
+
+## Build
+
+The binaries for all supported platforms
+(Windows, macOS and GNU/Linux) were built using the
+[xPack Build Box (XBB)](https://xpack.github.io/xbb/), a set
+of build environments based on slightly older distributions, that should be
+compatible with most recent systems.
+
+For the prerequisites and more details on the build procedure, please see the
+[Maintainer Info](/docs/maintainer/) page.
+
+## CI tests
+
+Before publishing, a set of simple tests were performed on an exhaustive
+set of platforms. The results are available from:
+
+- [GitHub Actions](https://github.com/xpack-dev-tools/ninja-build-xpack/actions/)
+- [Travis CI](https://app.travis-ci.com/github/xpack-dev-tools/ninja-build-xpack/builds/)
+
+## Tests
+
+TBD
+
+## Checksums
+
+The SHA-256 hashes for the files are:
+
+```txt
+c14ff61e1eec49470cf596c505e830c5480fe16d945e4f923df0bf8252a166a2
+xpack-ninja-build-1.12.1-1-darwin-arm64.tar.gz
+
+626dab87702db4c8930c4f24d790731ccfb8320c64e9d402affbd70ddb046de1
+xpack-ninja-build-1.12.1-1-darwin-x64.tar.gz
+
+095383ba4f01865ab9e6c921616cba9e688f6e8fd0498f9b5f1100a178fb8278
+xpack-ninja-build-1.12.1-1-linux-arm.tar.gz
+
+03f6435a74a95f83af95a3d506bc9457d3075d075d78e3071f4aca108d437d35
+xpack-ninja-build-1.12.1-1-linux-arm64.tar.gz
+
+9bf1361598b29de3969d80be09d7fcbaea90369173f85d491bd56a9e02302b82
+xpack-ninja-build-1.12.1-1-linux-x64.tar.gz
+
+96215c069128c0a71284a0a03bba4fb0b91dba8a776480f8f0cbc871037b588f
+xpack-ninja-build-1.12.1-1-win32-x64.zip
+
+```
+
+<DeprecationNotices/>
+
+<DownloadAnalytics version={frontMatter.version}/>
