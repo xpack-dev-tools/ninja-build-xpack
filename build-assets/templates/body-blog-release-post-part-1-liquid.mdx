@@ -12,7 +12,7 @@ tags:
 # ----- Custom properties -----------------------------------------------------
 
 ninja_version: "{{upstreamVersion}}"
-ninja_date: "{{customFields.ninjaDate}}"
+ninja_release_date: "{{customFields.upstreamReleaseDate}}"
 
 version: "{{releaseVersion}}"
 npm_subversion: "1"
@@ -72,7 +72,7 @@ The xPack Ninja Build generally follows the official
 The current version is based on:
 
 - Ninja Build version {frontMatter.ninja_version}
-from {frontMatter.ninja_date}.
+from {frontMatter.ninja_release_date}.
 
 ## Changes
 
