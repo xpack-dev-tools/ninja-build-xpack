@@ -1,0 +1,72 @@
+
+import CodeBlock from '@theme/CodeBlock';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+import customField from '@site/src/libs/customField';
+
+{/* ------------------------------------------------------------------------ */}
+
+## Folder hierarchy
+
+After install, the package creates a folder hierarchy like the following
+(only the first two depth levels are shown):
+
+<Tabs groupId="operating-systems">
+
+<TabItem value="windows" label="Windows" default>
+
+<CodeBlock language="console"> {
+`C:\> tree /f %USERPROFILE%\\AppData\\Roaming\\xPacks\\@xpack-dev-tools\\ninja-build\\${customField('xpackVersion')}\\.content
+Folder PATH listing
+Volume serial number is B02D-925C
+├── README.md
+├── bin
+│   ├── libwinpthread-1.dll
+│   └── ninja.exe
+└── distro-info
+    └── licenses
+
+3 directories, 3 files
+`} </CodeBlock>
+
+</TabItem>
+
+<TabItem value="macos" label="macOS">
+
+<CodeBlock language="console"> {
+`$ tree -L 2 ~/Library/xPacks/\@xpack-dev-tools/ninja-build/${customField('xpackVersion')}/.content/
+/Users/ilg/Library/xPacks/\@xpack-dev-tools/ninja-build/${customField('xpackVersion')}/.content/
+├── README.md
+├── bin
+│   └── ninja
+├── distro-info
+│   └── licenses
+└── libexec
+    ├── libc++.1.0.dylib
+    ├── libc++abi.1.0.dylib
+    └── libunwind.1.0.dylib
+
+5 directories, 5 files
+`} </CodeBlock>
+
+</TabItem>
+
+<TabItem value="linux" label="GNU/Linux">
+
+<CodeBlock language="console"> {
+`$ tree -L 2 ~/.local/xPacks/\@xpack-dev-tools/ninja-build/${customField('xpackVersion')}/.content/
+/home/ilg/.local/xPacks/\@xpack-dev-tools/ninja-build/${customField('xpackVersion')}/.content/
+├── README.md
+├── bin
+│   └── ninja
+└── distro-info
+    └── licenses
+
+3 directories, 2 files
+`} </CodeBlock>
+
+</TabItem>
+
+</Tabs>
+
