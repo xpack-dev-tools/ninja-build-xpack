@@ -17,7 +17,7 @@
         "programName": "ninja",
         "branding": "",
         "link": "https://github.com/ninja-build/ninja/releases/",
-        "ninjaDate": "May 11, 2024"
+        "ninjaReleaseDate": "11 May 2024"
       },
       "buildFolderRelativePath": "{{ 'build' | path_join: configuration.name | to_filename | downcase }}",
       "buildFolderRelativePathPosix": "{{ 'build' | path_posix_join: configuration.name | downcase }}",
