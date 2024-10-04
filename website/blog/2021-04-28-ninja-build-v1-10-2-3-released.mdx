@@ -23,13 +23,14 @@ Version 1.10.2-3 is a maintenance release of the **xPack Ninja Build** package, 
 <!-- truncate -->
 
 import Image from '@theme/IdealImage';
+import CodeBlock from '@theme/CodeBlock';
 
 The [xPack Ninja Build](https://xpack-dev-tools.github.io/ninja-build-xpack)
 is the **xPack** distribution of the
 [Ninja](https://ninja-build.org) build system.
 
-There are binaries for **x64 Windows**,
-**macOS** (Intel 64-bit) and **GNU/Linux** (Intel 32/64-bit, Arm 32/64-bit).
+There are separate binaries for **Windows** (x64 and x86),
+**macOS** (x64) and **GNU/Linux** (x64 and x86, arm64 and arm).
 
 :::note Raspberry Pi
 
@@ -51,8 +52,14 @@ For consistency with the Node.js naming conventions, the names of the Intel 32-b
 
 ## Install
 
-The full details of installing the **xPack Ninja Build** on various platforms
-are presented in the [Install Guide](/docs/install/).
+The easiest way to install this specific version, is by using **xpm**:
+
+<CodeBlock language="console"> {
+`xpm install @xpack-dev-tools/ninja-build@${frontMatter.version}.${frontMatter.npm_subversion} -verbose
+`} </CodeBlock>
+
+Comprehensive instructions for installing **xPack Ninja Build** on different platforms
+can be found in the [Install Guide](/docs/install/).
 
 ## Compliance
 
