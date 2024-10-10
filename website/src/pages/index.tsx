@@ -41,9 +41,9 @@ function HomepageHeader() {
 export default function Home(): JSX.Element {
   const {siteConfig} = useDocusaurusContext();
   return (
-    <Layout
-      title={`Hello from xPack Binary Development Tools`}
-      description="A binary package with the Ninja Build executables">
+    <Layout 
+      title={`Hello from ninja-build`}
+      description="A binary package with the ninja-build executables">
       <HomepageHeader />
       <main>
         <HomepageFeatures />

@@ -1,0 +1,22 @@
+
+import CodeBlock from '@theme/CodeBlock';
+
+import customField from '@site/src/libs/customField';
+
+{/* ------------------------------------------------------------------------ */}
+
+<CodeBlock language="console"> {
+`$ tree -L 2 ~/Library/xPacks/\@xpack-dev-tools/ninja-build/${customField('xpackVersion')}/.content/
+/Users/ilg/Library/xPacks/\@xpack-dev-tools/ninja-build/${customField('xpackVersion')}/.content/
+├── README.md
+├── bin
+│   └── ninja
+├── distro-info
+│   └── licenses
+└── libexec
+    ├── libc++.1.0.dylib
+    ├── libc++abi.1.0.dylib
+    └── libunwind.1.0.dylib
+
+5 directories, 5 files
+`} </CodeBlock>

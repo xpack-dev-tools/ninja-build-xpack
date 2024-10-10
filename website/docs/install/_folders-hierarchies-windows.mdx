@@ -1,0 +1,20 @@
+
+import CodeBlock from '@theme/CodeBlock';
+
+import customField from '@site/src/libs/customField';
+
+{/* ------------------------------------------------------------------------ */}
+
+<CodeBlock language="console"> {
+`C:\> tree /f %USERPROFILE%\\AppData\\Roaming\\xPacks\\@xpack-dev-tools\\ninja-build\\${customField('xpackVersion')}\\.content
+Folder PATH listing
+Volume serial number is B02D-925C
+├── README.md
+├── bin
+│   ├── libwinpthread-1.dll
+│   └── ninja.exe
+└── distro-info
+    └── licenses
+
+3 directories, 3 files
+`} </CodeBlock>

@@ -1,0 +1,18 @@
+
+import CodeBlock from '@theme/CodeBlock';
+
+import customField from '@site/src/libs/customField';
+
+{/* ------------------------------------------------------------------------ */}
+
+<CodeBlock language="console"> {
+`$ tree -L 2 ~/.local/xPacks/\@xpack-dev-tools/ninja-build/${customField('xpackVersion')}/.content/
+/home/ilg/.local/xPacks/\@xpack-dev-tools/ninja-build/${customField('xpackVersion')}/.content/
+├── README.md
+├── bin
+│   └── ninja
+└── distro-info
+    └── licenses
+
+3 directories, 2 files
+`} </CodeBlock>
