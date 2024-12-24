@@ -1,0 +1,7 @@
+Sitemap: https://xpack-dev-tools.github.io/ninja-build-xpack/sitemap.xml
+
+User-agent: *
+Disallow: /ninja-build-xpack/blog/archive/
+Disallow: /ninja-build-xpack/blog/authors/
+Disallow: /ninja-build-xpack/blog/page/
+Disallow: /ninja-build-xpack/blog/tags/
