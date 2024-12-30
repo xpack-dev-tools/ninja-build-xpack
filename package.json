@@ -1,7 +1,7 @@
 {
   "name": "@xpack-dev-tools/ninja-build",
   "version": "1.12.1-1.1",
-  "description": "A binary xPack with the Ninja Build executables",
+  "description": "A binary xpm package with the Ninja Build executables",
   "main": "",
   "scripts": {
     "postversion": "git push origin --all && git push origin --tags"
