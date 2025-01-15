@@ -5,8 +5,7 @@
 
 # The xPack Ninja Build
 
-A standalone cross-platform (Windows, macOS, GNU/Linux)
-binary distribution of Ninja Build,
+A standalone, cross-platform (Windows, macOS, GNU/Linux) binary distribution of Ninja Build,
 intended for reproducible builds.
 
 ## Project documentation
