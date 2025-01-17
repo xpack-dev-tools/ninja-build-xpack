@@ -75,7 +75,8 @@
     "liquidjs": "^10.19.1"
   },
   "topConfig": {
-    "longName": "Ninja Build"
+    "longName": "Ninja Build",
+    "shortName": "ninja-build"
   },
   "engines": {
     "node": " >=18.0.0"
