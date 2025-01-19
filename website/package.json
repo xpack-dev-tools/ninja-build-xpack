@@ -56,7 +56,14 @@
       "last 5 safari version"
     ]
   },
-  "websiteConfig": {},
+  "websiteConfig": {
+    "customFields": {
+      "programName": "ninja",
+      "branding": "",
+      "link": "https://github.com/ninja-build/ninja/releases/",
+      "ninjaReleaseDate": "11 May 2024"
+    }
+  },
   "engines": {
     "node": ">=18.0"
   }
