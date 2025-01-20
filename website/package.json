@@ -57,12 +57,10 @@
     ]
   },
   "websiteConfig": {
-    "customFields": {
-      "programName": "ninja",
-      "branding": "",
-      "link": "https://github.com/ninja-build/ninja/releases/",
-      "ninjaReleaseDate": "11 May 2024"
-    }
+    "programName": "ninja",
+    "branding": "",
+    "link": "https://github.com/ninja-build/ninja/releases/",
+    "ninjaReleaseDate": "11 May 2024"
   },
   "engines": {
     "node": ">=18.0"
