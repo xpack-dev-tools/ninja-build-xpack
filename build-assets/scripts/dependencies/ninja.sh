@@ -182,7 +182,7 @@ function ninja_build()
 
         if [ "${XBB_HOST_PLATFORM}" != "win32" ]
         then
-          run_verbose ctest -vv
+          run_verbose ctest --extra-verbose
         fi
 
         echo
