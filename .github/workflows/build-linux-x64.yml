@@ -157,6 +157,7 @@ jobs:
           ls -lLA
           env | sort | grep -E '^[^ \t]+='
 
+      # https://github.com/actions/checkout
       - name: 'Checkout project'
         uses: actions/checkout@v4
         with:
