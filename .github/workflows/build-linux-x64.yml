@@ -78,7 +78,7 @@ jobs:
 
   linux-x64-build:
     name: 'linux-x64 ninja-build ${{github.event.inputs.version}} build'
-    timeout-minutes: 5760 # 4 days
+    timeout-minutes: 2880 # 2 days
     runs-on: [self-hosted, linux, x64, xbblix]
     container:
       image: ilegeul/debian:amd64-10-xbb-v6.0.0
@@ -124,25 +124,6 @@ jobs:
           xpm install --config linux-x64 --loglevel ${{github.event.inputs.xpm_install_loglevel}} ${{github.event.inputs.xpm_install_options}} -C build-assets
           xpm run build --config linux-x64 -C build-assets
 
-  linux-x64-upload:
-    name: 'linux-x64 ninja-build ${{github.event.inputs.version}} upload'
-    timeout-minutes: 5760 # 4 days
-    runs-on: [self-hosted, linux, x64, xbblix]
-    defaults:
-      run:
-        shell: bash
-    needs: [linux-x64-build]
-
-    steps:
-      - name: 'Show environment'
-        run: |
-          uname -a
-          lsb_release -sd
-          echo "whoami: $(whoami)"
-          echo "pwd: $(pwd)"
-          ls -lLA
-          env | sort | grep -E '^[^ \t]+='
-
       - name: Upload platform artefacts
         uses: actions/upload-artifact@v4
         with:
@@ -177,7 +158,7 @@ jobs:
   linux-x64-test:
     name: 'linux-x64 ninja-build ${{github.event.inputs.version}} test'
     runs-on: ubuntu-24.04
-    needs: [linux-x64-upload]
+    needs: [linux-x64-build]
 
     steps:
       - name: 'Show environment'
