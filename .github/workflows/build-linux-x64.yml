@@ -102,13 +102,10 @@ jobs:
           npm install --location=global xpm@${{github.event.inputs.xpm_version}}
           xpm --version
 
-      - name: 'Install project dependencies'
-        timeout-minutes: 1440
-        run: xpm install --loglevel ${{github.event.inputs.xpm_install_loglevel}} ${{github.event.inputs.xpm_install_options}} -C build-assets
-
       - name: 'Build linux-x64 binaries'
         timeout-minutes: 1440
         run: |
+          xpm install --loglevel ${{github.event.inputs.xpm_install_loglevel}} ${{github.event.inputs.xpm_install_options}} -C build-assets
           xpm run docker-prepare --config linux-x64 --loglevel ${{github.event.inputs.xpm_install_loglevel}} ${{github.event.inputs.xpm_install_options}} -C build-assets
           xpm run docker-build --config linux-x64 -C build-assets
           ls -l build-assets/build/linux-x64/application
