@@ -27,8 +27,6 @@
 # -----------------------------------------------------------------------------
 
 
-
-
 name: 'Build xPack Ninja Build linux-x64'
 
 on:
@@ -68,20 +66,10 @@ on:
         default: 'xpack-development'
 
 jobs:
-
-
-
-
-
-
-
-
   linux-x64-build:
     name: 'linux-x64 ninja-build ${{github.event.inputs.version}} build'
     timeout-minutes: 2880 # 2 days
-    runs-on: [self-hosted, linux, x64, xbblix]
-    container:
-      image: ilegeul/debian:amd64-10-xbb-v6.0.0
+    runs-on: ubuntu-24.04
     defaults:
       run:
         shell: bash
@@ -97,11 +85,6 @@ jobs:
           echo "npm: $(npm --version)"
           ls -lLA
           env | sort | grep -E '^[^ \t]+='
-
-      - name: 'Clean working area' # Mandatory for self-hosted runners.
-        run: |
-          chmod -Rf a+w * || true
-          rm -rf * .git*
 
       - name: 'Checkout project'
         uses: actions/checkout@v1 # v1 for old Git
@@ -121,8 +104,8 @@ jobs:
       - name: 'Build linux-x64 binaries'
         timeout-minutes: 1440
         run: |
-          xpm install --config linux-x64 --loglevel ${{github.event.inputs.xpm_install_loglevel}} ${{github.event.inputs.xpm_install_options}} -C build-assets
-          xpm run build --config linux-x64 -C build-assets
+          xpm run docker-prepare --config linux-x64 --loglevel ${{github.event.inputs.xpm_install_loglevel}} ${{github.event.inputs.xpm_install_options}} -C build-assets
+          xpm run docker-build --config linux-x64 -C build-assets
 
       - name: Upload platform artefacts
         uses: actions/upload-artifact@v4
@@ -150,10 +133,6 @@ jobs:
           repo: 'pre-releases'
           tag: 'test'
           token: ${{secrets.PUBLISH_TOKEN}}
-
-      - name: 'Rename working area'
-        # For just in case absolute paths remain unprocessed.
-        run: echo mv -v build-assets/build build-assets/build-$(date -u +%Y%m%d-%H%M%S)
 
   linux-x64-test:
     name: 'linux-x64 ninja-build ${{github.event.inputs.version}} test'
@@ -185,6 +164,3 @@ jobs:
 
       - name: 'Run ${{github.event.inputs.version}} native test'
         run: bash build-assets/scripts/test.sh --image github-actions-ubuntu-latest --version ${{github.event.inputs.version}} --base-url pre-release
-
-
-
