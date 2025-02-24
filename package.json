@@ -71,8 +71,9 @@
     "liquidjs": "^10.19.1"
   },
   "topConfig": {
-    "longName": "Ninja Build",
-    "shortName": "ninja-build"
+    "descriptiveName": "Ninja Build",
+    "permalinkName": "ninja-build",
+    "useSelfHostedRunners": "true"
   },
   "engines": {
     "node": " >=18.0.0"
