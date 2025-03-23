@@ -75,7 +75,8 @@
     "programName": "ninja",
     "branding": "",
     "link": "https://github.com/ninja-build/ninja/releases/",
-    "ninjaReleaseDate": "11 May 2024"
+    "ninjaReleaseDate": "11 May 2024",
+    "shareOnTwitter": "true"
   },
   "engines": {
     "node": ">=18.0"
