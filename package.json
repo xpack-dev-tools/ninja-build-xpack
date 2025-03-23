@@ -73,6 +73,7 @@
   "topConfig": {
     "descriptiveName": "Ninja Build",
     "permalinkName": "ninja-build",
+    "skipCiTests": "true",
     "useSelfHostedRunners": "true"
   },
   "engines": {
