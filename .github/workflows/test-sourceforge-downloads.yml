@@ -45,7 +45,7 @@
 
             # https://sourceforge.net/projects/ninja-build-xpack/files/
             name="ninja-build"
-            threshold=16383 # (50%)
+            threshold=0 # 16383 # (50%)
 
             # 2025
             platforms="win32-x64,linux-x64,linux-arm64,darwin-x64,darwin-arm64"
@@ -56,14 +56,13 @@
 
             # 2023
             platforms="win32-x64,linux-x64,linux-arm64,linux-arm,darwin-x64,darwin-arm64"
-            download_sourceforge "${name}" "1.12.1-1" ${threshold} "${platforms}"
             download_sourceforge "${name}" "1.11.1-3" ${threshold} "${platforms}"
 
             # 2021
-            platforms="win32-x64,linux-x64,linux-arm64,linux-arm,darwin-x64,darwin-arm64"
+            platforms="win32-x64,win32-ia32,linux-x64,linux-arm64,linux-arm,darwin-x64,darwin-arm64"
             download_sourceforge "${name}" "1.10.2-5" ${threshold} "${platforms}"
 
             # 2019
-            platforms="win32-x64,win32-x32,linux-x64,linux-x32,darwin-x64"
+            platforms="win32-x64,win32-x32,linux-x64,linux-arm64,linux-arm,linux-x32,darwin-x64"
             download_sourceforge "${name}" "1.10.1-1" ${threshold} "${platforms}"
             download_sourceforge "${name}" "1.10.0-1" ${threshold} "${platforms}"
