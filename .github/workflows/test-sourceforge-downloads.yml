@@ -45,7 +45,7 @@
 
             # https://sourceforge.net/projects/ninja-build-xpack/files/
             name="ninja-build"
-            threshold=0 # 16383 # (50%)
+            threshold=16383 # (50%)
 
             # 2025
             platforms="win32-x64,linux-x64,linux-arm64,darwin-x64,darwin-arm64"
