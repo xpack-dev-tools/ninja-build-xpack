@@ -65,4 +65,3 @@
             platforms="win32-x64,win32-x32,linux-x64,linux-x32,linux-arm64,linux-arm,darwin-x64"
 
             download_sourceforge "${name}" "1.10.1-1" ${threshold} "${platforms}"
-            download_sourceforge "${name}" "1.10.0-1" ${threshold} "${platforms}"
