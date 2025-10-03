@@ -104,12 +104,12 @@ jobs:
 
       # https://github.com/actions/checkout
       - name: 'Checkout project'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 3
 
       - name: 'Checkout helper ${{github.event.inputs.helper-git-ref}}'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: xpack-dev-tools/xbb-helper-xpack
           path: build-assets/xpacks/@xpack-dev-tools/xbb-helper
@@ -159,12 +159,12 @@ jobs:
 
       # https://github.com/actions/checkout
       - name: 'Checkout project'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 3
 
       - name: 'Checkout helper ${{github.event.inputs.helper-git-ref}}'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: xpack-dev-tools/xbb-helper-xpack
           path: build-assets/xpacks/@xpack-dev-tools/xbb-helper
@@ -214,12 +214,12 @@ jobs:
 
       # https://github.com/actions/checkout
       - name: 'Checkout project'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 3
 
       - name: 'Checkout helper ${{github.event.inputs.helper-git-ref}}'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: xpack-dev-tools/xbb-helper-xpack
           path: build-assets/xpacks/@xpack-dev-tools/xbb-helper
@@ -257,12 +257,12 @@ jobs:
 
       # https://github.com/actions/checkout
       - name: 'Checkout project'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 3
 
       - name: 'Checkout helper ${{github.event.inputs.helper-git-ref}}'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: xpack-dev-tools/xbb-helper-xpack
           path: build-assets/xpacks/@xpack-dev-tools/xbb-helper
@@ -319,12 +319,12 @@ jobs:
 
       # https://github.com/actions/checkout
       - name: 'Checkout project'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 3
 
       - name: 'Checkout helper ${{github.event.inputs.helper-git-ref}}'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: xpack-dev-tools/xbb-helper-xpack
           path: build-assets/xpacks/@xpack-dev-tools/xbb-helper
@@ -367,12 +367,12 @@ jobs:
 
       # https://github.com/actions/checkout
       - name: 'Checkout project'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 3
 
       - name: 'Checkout helper ${{github.event.inputs.helper-git-ref}}'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: xpack-dev-tools/xbb-helper-xpack
           path: build-assets/xpacks/@xpack-dev-tools/xbb-helper
@@ -409,12 +409,12 @@ jobs:
 
       # https://github.com/actions/checkout
       - name: 'Checkout project'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 3
 
       - name: 'Checkout helper ${{github.event.inputs.helper-git-ref}}'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: xpack-dev-tools/xbb-helper-xpack
           path: build-assets/xpacks/@xpack-dev-tools/xbb-helper
@@ -458,12 +458,12 @@ jobs:
 
       # https://github.com/actions/checkout
       - name: 'Checkout project'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 3
 
       - name: 'Checkout helper ${{github.event.inputs.helper-git-ref}}'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: xpack-dev-tools/xbb-helper-xpack
           path: build-assets/xpacks/@xpack-dev-tools/xbb-helper
@@ -499,12 +499,12 @@ jobs:
 
       # https://github.com/actions/checkout
       - name: 'Checkout project'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 3
 
       - name: 'Checkout helper ${{github.event.inputs.helper-git-ref}}'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: xpack-dev-tools/xbb-helper-xpack
           path: build-assets/xpacks/@xpack-dev-tools/xbb-helper
@@ -535,12 +535,12 @@ jobs:
 
       # https://github.com/actions/checkout
       - name: 'Checkout project'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 3
 
       - name: 'Checkout helper ${{github.event.inputs.helper-git-ref}}'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: xpack-dev-tools/xbb-helper-xpack
           path: build-assets/xpacks/@xpack-dev-tools/xbb-helper
