@@ -38,7 +38,7 @@ function HomepageHeader() {
         </span>
         </p>
         <div className={styles.installWithCopy}>
-          <InstallWithCopy>xpm install @xpack-dev-tools/ninja-build@1.12.1-1.1 --verbose</InstallWithCopy>
+          <InstallWithCopy>xpm install @xpack-dev-tools/ninja-build@1.13.1-1.1 --verbose</InstallWithCopy>
         </div>
       </div>
     </header>

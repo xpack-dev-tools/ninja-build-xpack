@@ -17,7 +17,7 @@ For information on how to install and use this project, please refer to the
 ## Project source
 
 The source code of the current release is available on
-[GitHub tag v1.12.1-1.1 tree](https://github.com/xpack-dev-tools/ninja-build-xpack/tree/v1.12.1-1.1).
+[GitHub tag v1.13.1-1.1 tree](https://github.com/xpack-dev-tools/ninja-build-xpack/tree/v1.13.1-1.1).
 
 ## License
 
