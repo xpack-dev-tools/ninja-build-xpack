@@ -4,6 +4,7 @@ Entries in this file are in reverse chronological order.
 
 ## 2025-10-03
 
+* v1.13.1-1.1 published on npmjs.com
 * v1.13.1-1 released
 * 7434099 workflows bump deps
 * eb7ee40 website: update folder hierarchies
