@@ -4,6 +4,10 @@ Entries in this file are in reverse chronological order.
 
 ## 2025-10-03
 
+* v1.13.1-1 released
+* 7434099 workflows bump deps
+* eb7ee40 website: update folder hierarchies
+* c74c761 prepare v1.12.1-1
 * v1.12.1-1 prepared
 * 8a4f963 re-generate website commons
 * 8cae014 re-generate top commons
