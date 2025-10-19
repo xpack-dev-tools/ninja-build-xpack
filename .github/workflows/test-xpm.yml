@@ -52,7 +52,7 @@ jobs:
 
 
   win32-x64-test:
-    name: 'win32-x64 xPack Ninja Build@${{github.event.inputs.version}} test'
+    name: 'win32-x64 Ninja Build@${{github.event.inputs.version}} test'
     runs-on: windows-2025
     defaults:
       run:
@@ -91,7 +91,7 @@ jobs:
 
 
   darwin-x64-test:
-    name: 'darwin-x64 xPack Ninja Build@${{github.event.inputs.version}} test'
+    name: 'darwin-x64 Ninja Build@${{github.event.inputs.version}} test'
     runs-on: macos-15-intel
 
     steps:
@@ -110,6 +110,20 @@ jobs:
           echo "pwd: $(pwd)"
           ls -lLA
           env | sort | grep -E '^[^ \t]+='
+
+      - name: 'Remove Homebrew'
+        uses: xpack/remove-homebrew-action@v1
+
+      - name: 'Setup Node.js'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          check-latest: true
+
+      - name: 'Verify Node.js and npm'
+        run: |
+          echo "$(which node): $(node --version)"
+          echo "$(which npm): $(npm --version)"
 
       - name: 'Clean working area' # Mandatory for self-hosted runners.
         run: |
@@ -138,7 +152,7 @@ jobs:
 
 
   darwin-arm64-test:
-    name: 'darwin-arm64 xPack Ninja Build@${{github.event.inputs.version}} test'
+    name: 'darwin-arm64 Ninja Build@${{github.event.inputs.version}} test'
     runs-on: macos-15
 
     steps:
@@ -157,6 +171,20 @@ jobs:
           echo "pwd: $(pwd)"
           ls -lLA
           env | sort | grep -E '^[^ \t]+='
+
+      - name: 'Remove Homebrew'
+        uses: xpack/remove-homebrew-action@v1
+
+      - name: 'Setup Node.js'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          check-latest: true
+
+      - name: 'Verify Node.js and npm'
+        run: |
+          echo "$(which node): $(node --version)"
+          echo "$(which npm): $(npm --version)"
 
       - name: 'Clean working area' # Mandatory for self-hosted runners.
         run: |
@@ -185,7 +213,7 @@ jobs:
 
 
   linux-x64-test:
-    name: 'linux-x64 xPack Ninja Build@${{github.event.inputs.version}} test'
+    name: 'linux-x64 Ninja Build@${{github.event.inputs.version}} test'
     runs-on: ubuntu-24.04
 
     steps:
@@ -222,7 +250,7 @@ jobs:
 
 
   linux-arm64-test:
-    name: 'linux-arm64 xPack Ninja Build@${{github.event.inputs.version}} test'
+    name: 'linux-arm64 Ninja Build@${{github.event.inputs.version}} test'
     # runs-on: [self-hosted, linux, arm64, xbbla]
     runs-on: ubuntu-24.04-arm
 
