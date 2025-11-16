@@ -47,11 +47,11 @@ jobs:
           # https://github.com/xpack-dev-tools/ninja-build-xpack/tags
           # https://sourceforge.net/projects/ninja-build-xpack/files/
           name="ninja-build"
-          threshold=13107 # (60%, i.e. 32767 * (100-60)/100)
+          threshold=100
 
           # 2025
           platforms="win32-x64,linux-x64,linux-arm64,darwin-x64,darwin-arm64"
-          
+
           download_sourceforge "${name}" "1.13.1-1" ${threshold} "${platforms}"
 
           # 2024-2022
