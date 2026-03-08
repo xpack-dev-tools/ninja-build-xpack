@@ -20,7 +20,7 @@
   "xpack": {
     "minimumXpmRequired": "0.20.5",
     "devDependencies": {
-      "@xpack-dev-tools/xbb-helper": "github:xpack-dev-tools/xbb-helper-xpack#v5.1.0"
+      "@xpack-dev-tools/xbb-helper": "github:xpack-dev-tools/xbb-helper-xpack#v5.4.2"
     },
     "properties": {
       "platforms": "win32-x64,darwin-x64,darwin-arm64,linux-x64,linux-arm64",
@@ -153,7 +153,7 @@
           "common-actions-native"
         ],
         "devDependencies": {
-          "@xpack-dev-tools/clang": "20.1.8-1.1",
+          "@xpack-dev-tools/clang": "21.1.8-1.1",
           "@xpack-dev-tools/realpath": "9.8.0-1.1",
           "@xpack-dev-tools/sed": "4.9.0-3.1"
         },
