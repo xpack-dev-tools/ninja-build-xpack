@@ -1,0 +1,8 @@
+{
+  "descriptiveName": "xPack Ninja Build",
+  "permalinkName": "ninja-build",
+  "preferredName": "xPack Ninja Build",
+  "upstreamDescriptiveName": "Ninja Build",
+  "skipCiTests": true,
+  "useSelfHostedRunners": false
+}
